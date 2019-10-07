@@ -1,4 +1,3 @@
-import IA.Bicing.Estacion;
 import IA.Bicing.Estaciones;
 
 public class BicingDemo {
@@ -7,14 +6,16 @@ public class BicingDemo {
         int nbic = 1250;
         int dem = Estaciones.EQUILIBRIUM;
         int seed = 15;
+        int nfurgonetas = 5;
         Estaciones estaciones = new Estaciones(nest, nbic, dem, seed);
-        HillClimbingSearch(estaciones);
-        SimulatedAnnealingSearch(estaciones);
+        BicingBoard bc = new BicingBoard(estaciones , 5);
+        HillClimbingSearch();
+        //SimulatedAnnealingSearch();
 
 
     }
 
-    private static void HillClimbingSearch(Estaciones estaciones) {
+    private static void HillClimbingSearch() {
         System.out.println("\nTSP HillClimbing  -->");
         try {
 
@@ -26,7 +27,7 @@ public class BicingDemo {
 
     }
 
-    private static void SimulatedAnnealingSearch(Estaciones estaciones) {
+    private static void SimulatedAnnealingSearch() {
 
     }
 }
