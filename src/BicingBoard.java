@@ -33,6 +33,14 @@ public class BicingBoard {
         }
     }
 
+    public int getN_estaciones() {
+        return this.n_estaciones;
+    }
+
+    public int getN_furgonetas() {
+        return this.n_furgonetas;
+    }
+
     public int[][][] getRuta() {
         return ruta;
     }
@@ -48,8 +56,7 @@ public class BicingBoard {
         }
     }
 
-    public BicingBoard() {
-    }
+    public BicingBoard(){};
 
     //Lo que obtenemos por los traslados de las bicicletas , transporte es gratis (no funciona correctamente)
     public double biketransport(){
