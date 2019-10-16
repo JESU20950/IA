@@ -33,6 +33,10 @@ public class BicingBoard {
         }
     }
 
+    public Estaciones getEstaciones() {
+        return this.estaciones;
+    }
+
     public int getN_estaciones() {
         return this.n_estaciones;
     }
