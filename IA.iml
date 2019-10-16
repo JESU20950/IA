@@ -10,7 +10,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/AIMA.jar!/" />
+          <root url="jar://$USER_HOME$/Desktop/Bicing/AIMA.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -19,7 +19,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/Bicing.jar!/" />
+          <root url="jar://$USER_HOME$/Desktop/Bicing/Bicing.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
