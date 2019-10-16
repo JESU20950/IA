@@ -22,8 +22,8 @@ public class BicingBoard {
         for (int i = 0; i<n_estaciones;++i) estaciones_de_recogida[i] = false;
         ruta = new int[n_furgonetas][3][2];
         for (int i = 0; i<n_furgonetas; ++i){
-                int numero =new Random().nextInt(n_furgonetas);
-                while (estaciones_de_recogida[numero]) numero = new Random().nextInt(n_furgonetas);
+                int numero =new Random().nextInt(n_estaciones);
+                while (estaciones_de_recogida[numero]) numero = new Random().nextInt(n_estaciones);
                 estaciones_de_recogida[numero] = true;
                 ruta[i][0][0] = numero;
                 numero = new Random().nextInt(estaciones.get(numero).getNumBicicletasNoUsadas()) % 30;
@@ -94,7 +94,7 @@ public class BicingBoard {
                 }
             }else if (Bicicletas_sobrantes+estaciones[i]<0) beneficios += Bicicletas_sobrantes+estaciones[i];
         }
-        return beneficios;
+        return -beneficios;
     }
 
     public int distance_between_stations(int i, int j) {

@@ -17,9 +17,10 @@ public class BicingDemo {
         int nfurgonetas = 2;
         Estaciones estaciones = new Estaciones(nest, nbic, dem, seed);
         BicingBoard bc = new BicingBoard(estaciones , nfurgonetas);
-        //bc.print_info_estaciones();
-        //bc.print_info_ruta();
+        bc.print_info_estaciones();
+        bc.print_info_ruta();
         HillClimbingSearch(bc);
+        System.out.println(bc.biketransport());
         //System.out.println(bc.biketransport());
         //System.out.println(bc.transportcost());
 
