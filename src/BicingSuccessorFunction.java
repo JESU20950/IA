@@ -70,7 +70,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
             String info2 = "Coste " + state2.biketransport() + " --> El camion " + i + " no se usa";
             successors.add(new Successor(info2,state2));
 
-            /*
+
             if (b.getRuta()[i][1][0] != -1){
                 //Añadir una ciudad2
                 for (int k = 0; k< b.getN_estaciones(); ++k){
@@ -86,7 +86,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                     }
                 }
             }
-             */
+
         }
 
         //Modificar cargas
