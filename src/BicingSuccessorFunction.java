@@ -177,6 +177,17 @@ public class BicingSuccessorFunction implements SuccessorFunction {
     public List getSuccessors(Object o) {
         BicingBoard b = (BicingBoard) o;
         ArrayList successors = new ArrayList();
+        ArrayList aux = new ArrayList();
+        aux = (ArrayList) modify_both_destinies(o);
+        successors.addAll(aux);
+        aux = (ArrayList) erase_destination2(o);
+        successors.addAll(aux);
+        aux = (ArrayList) erase_van(o);
+        successors.addAll(aux);
+        aux = (ArrayList) add_destination2(o);
+        successors.addAll(aux);
+        aux = (ArrayList) modify_bikes(o);
+        successors.addAll(aux);
         return successors;
     }
 
