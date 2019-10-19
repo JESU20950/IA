@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 public class BicingSuccessorFunction implements SuccessorFunction {
-
+    /*
     // Recoger mas bicis en el origen
     private List take_more_bikes(Object o) {
         BicingBoard b = (BicingBoard) o;
@@ -112,7 +112,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
         }
         return successors;
     }
-
+    */
      //Get successors Jesus Molina
     public List getSuccessors(Object o){
         BicingBoard b = (BicingBoard) o;
@@ -161,7 +161,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                         state_add_city2.setRuta(b.getRuta());
                         state_add_city2.getRuta()[i][2][0] = k;
                         state_add_city2.getRuta()[i][1][1] = (-state_add_city2.getRuta()[i][0][1])/2;
-                        state_add_city2.getRuta()[i][2][1] = state_add_city2.getRuta()[i][1][1] + state_add_city2.getRuta()[i][0][1];
+                        state_add_city2.getRuta()[i][2][1] = -state_add_city2.getRuta()[i][1][1] - state_add_city2.getRuta()[i][0][1];
                         String info3 = "Coste " + state_add_city2.biketransport() + " --> El camión empieza a usar ciudad 2 " + k + " dejara una cantidad de bicis " + state_add_city2.getRuta()[i][2][1];
                         info3 = info3 + " y la ciudad 1 dejara una cantidad de bicis " + state_add_city2.getRuta()[i][1][1] + " .Bicis en total " + state_add_city2.getRuta()[i][0][1];
                         successors.add(new Successor(info3, state_add_city2));
@@ -170,6 +170,8 @@ public class BicingSuccessorFunction implements SuccessorFunction {
             }
 
         }
+
+
 
         //Modificar cargas
         for (int i = 0; i<b.getN_furgonetas(); ++i){
@@ -184,8 +186,8 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                             state.getRuta()[i][0][1] = -j;
                             state.getRuta()[i][1][1] = k;
                             state.getRuta()[i][2][1] = j - k;
-                            String info = "Modificamos las cargas entre estaciones de la furgoneta " + i + " ahora recoge " + j + " bicis. Deja en la estacion 1 " + state.getRuta()[i][1][1] + " bicis y deja en la estacion 2 ";
-                            info = info + state.getRuta()[i][2][1] + " bicis.";
+                            String info = "Modificamos las cargas entre estaciones de la furgoneta " + i + " ahora recoge " + j + " bicis. Deja en la estacion "+  state.getRuta()[i][0][1] + state.getRuta()[i][1][1] +  " bicis y deja en la estacion ";
+                            info = info + state.getRuta()[i][2][0] + state.getRuta()[i][2][1] + " bicis.";
                             info = "Coste " + state.biketransport() + " --> " + info;
                             successors.add(new Successor(info, state));
                         }
@@ -195,7 +197,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                         state.setRuta(b.getRuta());
                         state.getRuta()[i][0][1] = -j;
                         state.getRuta()[i][1][1] = j;
-                        String info = "Modificamos las cargas entre estaciones de la furgoneta " + i + " ahora recoge " + j + " bicis. Deja en la estacion 1 " + state.getRuta()[i][1][1];
+                        String info = "Modificamos las cargas entre estaciones de la furgoneta " + i + " ahora recoge " + j + " bicis. Deja en la estacion "+ state.getRuta()[i][1][0]+ " " + state.getRuta()[i][1][1] + " bicis.";
                         info = "Coste " + state.biketransport() + " --> " + info;
                         successors.add(new Successor(info, state));
                     }
