@@ -6,17 +6,17 @@ import java.util.List;
 import java.util.Random;
 
 public class BicingSuccessorFunction implements SuccessorFunction {
-    /*
+
     // Recoger mas bicis en el origen
     private List take_more_bikes(Object o) {
         BicingBoard b = (BicingBoard) o;
-        ArrayList successor = new ArrayList();
+        ArrayList successors = new ArrayList();
         for (int i = 0; i < b.getN_furgonetas(); ++i) {
             int station = b.getRuta()[i][0][0]; // Identificador de la estacion
             // Si nos quedan bicis que no se van a usar y la furgoneta esta en el origen
-            if (b.getEstaciones().get(station).getNumBicicletasNoUsadas() > b.getRuta()[i][0][1] && station != -1) {
-                int bikes_van = -b.getRuta()[i][0][1];
-                int not_used_bikes = b.getEstaciones().get(station).getNumBicicletasNoUsadas();
+            int bikes_van = -b.getRuta()[i][0][1];
+            int not_used_bikes = b.getEstaciones().get(station).getNumBicicletasNoUsadas();
+            if (station != -1 && not_used_bikes > bikes_van) {
                 if (not_used_bikes > 30) not_used_bikes = 30;
                 int add = not_used_bikes - bikes_van;
                 //System.out.println(i + " " + b.getRuta()[i][0][1]);
@@ -27,10 +27,30 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                 state.getRuta()[i][0][1] = state.getRuta()[i][0][1] - num;
                 //System.out.println(s.getRuta()[i][0][1]);
                 String info = "Coste " + state.biketransport() +" --> Añadir "+ num + " al origen ";
-                successor.add(new Successor(info, state));
+                successors.add(new Successor(info, state));
             }
         }
-        return successor;
+        return successors;
+    }
+
+    // Recoger menos bicicletas en el origen
+    private List take_less_bikes(Object o) {
+        BicingBoard b = (BicingBoard) o;
+        ArrayList successors = new ArrayList();
+        for (int i = 0; i < b.getN_furgonetas(); ++i) {
+            int station = b.getRuta()[i][0][0]; // Identificador de la estacion
+            // Si la furgoneta esta en el origen y
+            int bikes_van = -b.getRuta()[i][0][1];
+            if (station != -1 && bikes_van > 0) {
+                int num = new Random().nextInt(bikes_van);
+                BicingBoard state = new BicingBoard();
+                state.setRuta(b.getRuta());
+                state.getRuta()[i][0][1] = state.getRuta()[i][0][1] + num;
+                String info = "Coste " + state.biketransport() +" --> Quitar "+ num + " al origen ";
+                successors.add(new Successor(info, state));
+            }
+        }
+        return successors;
     }
 
     // Modificar la ruta de ambas ciudades destino
@@ -112,9 +132,56 @@ public class BicingSuccessorFunction implements SuccessorFunction {
         }
         return successors;
     }
-    */
+
+    // Modificar el numero de bicicletas de las furgonetas
+    private List modify_bikes(Object o) {
+        BicingBoard b = (BicingBoard) o;
+        ArrayList successors = new ArrayList();
+        for (int i = 0; i<b.getN_furgonetas(); ++i){
+            if (b.getRuta()[i][0][0] != -1) {
+                int bicis_disponibles = (b.getEstaciones().get(b.getRuta()[i][0][0]).getNumBicicletasNoUsadas());
+                if (bicis_disponibles > 30) bicis_disponibles = 30;
+                for (int j = 1; j <= bicis_disponibles; ++j) {
+                    for (int k = 1; k < j; ++k) {
+                        if (b.getRuta()[i][2][0] != -1) {
+                            BicingBoard state = new BicingBoard();
+                            state.setRuta(b.getRuta());
+                            state.getRuta()[i][0][1] = -j;
+                            state.getRuta()[i][1][1] = k;
+                            state.getRuta()[i][2][1] = j - k;
+                            String info = "Modificamos las cargas entre estaciones de la furgoneta " + i + " ahora recoge " + j + " bicis. Deja en la estacion "+  state.getRuta()[i][0][1] + state.getRuta()[i][1][1] +  " bicis y deja en la estacion ";
+                            info = info + state.getRuta()[i][2][0] + state.getRuta()[i][2][1] + " bicis.";
+                            info = "Coste " + state.biketransport() + " --> " + info;
+                            successors.add(new Successor(info, state));
+                        }
+                    }
+                    if (b.getRuta()[i][2][0] == -1){
+                        BicingBoard state = new BicingBoard();
+                        state.setRuta(b.getRuta());
+                        state.getRuta()[i][0][1] = -j;
+                        state.getRuta()[i][1][1] = j;
+                        String info = "Modificamos las cargas entre estaciones de la furgoneta " + i + " ahora recoge " + j + " bicis. Deja en la estacion "+ state.getRuta()[i][1][0]+ " " + state.getRuta()[i][1][1] + " bicis.";
+                        info = "Coste " + state.biketransport() + " --> " + info;
+                        successors.add(new Successor(info, state));
+                    }
+                }
+            }
+        }
+        return  successors;
+    }
+
+    // swap destino1 destino2
+
+    // Dejar mas bicis en el destino
+
+    public List getSuccessors(Object o) {
+        BicingBoard b = (BicingBoard) o;
+        ArrayList successors = new ArrayList();
+        return successors;
+    }
+
      //Get successors Jesus Molina
-    public List getSuccessors(Object o){
+    /*public List getSuccessors(Object o){
         BicingBoard b = (BicingBoard) o;
         ArrayList successors = new ArrayList();
         //Modificar rutas
@@ -205,6 +272,6 @@ public class BicingSuccessorFunction implements SuccessorFunction {
             }
         }
         return  successors;
-    }
+    }*/
 
 }
