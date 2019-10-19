@@ -26,9 +26,11 @@ public class BicingBoard {
                 while (estaciones_de_recogida[numero]) numero = new Random().nextInt(n_estaciones);
                 estaciones_de_recogida[numero] = true;
                 ruta[i][0][0] = numero;
-                numero = new Random().nextInt(estaciones.get(numero).getNumBicicletasNoUsadas()) % 30;
+                while ( numero == ruta[i][0][0]) numero = new Random().nextInt(n_estaciones);
+                ruta[i][1][0] = numero;
+                numero = new Random().nextInt(estaciones.get(ruta[i][0][0]).getNumBicicletasNoUsadas()) % 31;
                 ruta[i][0][1] = -numero;
-                ruta[i][1][0] = -1;
+                ruta[i][1][1] = numero;
                 ruta[i][2][0] = -1;
         }
     }
@@ -71,28 +73,35 @@ public class BicingBoard {
         //calculo de lo que queda en cada estación
         for (int furgoneta = 0; furgoneta<n_furgonetas; ++furgoneta){
             for (int j = 0; j<3; ++j) {
-                if (! (ruta[furgoneta][j][0] == -1) ) estaciones[ruta[furgoneta][j][0]] +=  ruta[furgoneta][j][1];
+                if (ruta[furgoneta][j][0] != -1 ) estaciones[ruta[furgoneta][j][0]] +=  ruta[furgoneta][j][1];
             }
         }
 
         for (int i = 0; i< n_estaciones; ++i){
             //System.out.println(estaciones[i]);
         }
-
         double beneficios = 0;
         //calculo de beneficios
+
         for (int i = 0; i<n_estaciones; ++i){
             int NumBicicletasNext = this.estaciones.get(i).getNumBicicletasNext();
             int Demanda = this.estaciones.get(i).getDemanda();
             int Bicicletas_sobrantes = NumBicicletasNext-Demanda;
             //System.out.println("Bicicletas sobrantes" + Bicicletas_sobrantes);
             if (Bicicletas_sobrantes < 0) {
-                if (estaciones[i]<0) beneficios += estaciones[i];
-                else {
-                    if (Bicicletas_sobrantes+estaciones[i] > 0) beneficios = beneficios - Bicicletas_sobrantes;
-                    else beneficios = beneficios + estaciones[i];
+                if (estaciones[i]<0){
+                    beneficios += estaciones[i];
                 }
-            }else if (Bicicletas_sobrantes+estaciones[i]<0) beneficios += Bicicletas_sobrantes+estaciones[i];
+                else if (Bicicletas_sobrantes+estaciones[i] > 0){
+                    beneficios = beneficios - Bicicletas_sobrantes;
+                }
+                else{
+                    beneficios = beneficios + estaciones[i];
+                }
+
+            }else if (Bicicletas_sobrantes+estaciones[i]<0){
+                beneficios += Bicicletas_sobrantes+estaciones[i];
+            }
         }
         return -beneficios;
     }
