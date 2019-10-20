@@ -28,6 +28,7 @@ public class BicingBoard {
                 ruta[i][0][0] = numero;
                 while ( numero == ruta[i][0][0]) numero = new Random().nextInt(n_estaciones);
                 ruta[i][1][0] = numero;
+                // El random siguiente, a veces peta porque el numero da negativo
                 numero = new Random().nextInt(estaciones.get(ruta[i][0][0]).getNumBicicletasNoUsadas()) % 31;
                 ruta[i][0][1] = -numero;
                 ruta[i][1][1] = numero;
