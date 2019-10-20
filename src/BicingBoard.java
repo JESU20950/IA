@@ -14,7 +14,19 @@ public class BicingBoard {
     La posción [i][0][1] pondremos cuantas bicicletas recoge la furgoneta (en negativo) i en el origen([i][0][0]) y en la posicion [i][1][1] i [i][2][1] pondremos cuantas bicicletas dejamos en la estacion [i][1][0] i [i][2][0].
      */
 
-    public BicingBoard(Estaciones estaciones, int n_furgonetas) {
+    /*public  BicingBoard(Estaciones estaciones, int n_furgonetas) {
+        this.estaciones = estaciones;
+        this.n_furgonetas = n_furgonetas;
+        this.n_estaciones = estaciones.size();
+        ruta = new int[n_furgonetas][3][2];
+        for (int i = 0; i < n_furgonetas; ++i) {
+            ruta[i][0][0] = -1;
+            ruta[i][1][0] = -1;
+            ruta[i][2][0] = -1;
+        }
+    }*/
+
+    /*public BicingBoard(Estaciones estaciones, int n_furgonetas) {
         this.estaciones = estaciones;
         this.n_furgonetas = n_furgonetas;
         this.n_estaciones = estaciones.size();
@@ -42,10 +54,10 @@ public class BicingBoard {
                 ++furgoneta;
             }
         }
-    }
+    }*/
 
     //generación de estado inicial aleatorio
-    /*public BicingBoard(Estaciones estaciones, int n_furgonetas){
+    public BicingBoard(Estaciones estaciones, int n_furgonetas){
         this.estaciones = estaciones;
         this.n_furgonetas = n_furgonetas;
         this.n_estaciones = estaciones.size();
@@ -60,12 +72,13 @@ public class BicingBoard {
                 while ( numero == ruta[i][0][0]) numero = new Random().nextInt(n_estaciones);
                 ruta[i][1][0] = numero;
                 // El random siguiente, a veces peta porque el numero da negativo
-                numero = new Random().nextInt(estaciones.get(ruta[i][0][0]).getNumBicicletasNoUsadas()) % 31;
+                numero = new Random().nextInt(estaciones.get(ruta[i][0][0]).getNumBicicletasNoUsadas()+1) % 31;
+                if (numero == 0) ++numero;
                 ruta[i][0][1] = -numero;
                 ruta[i][1][1] = numero;
                 ruta[i][2][0] = -1;
         }
-    }*/
+    }
 
     public Estaciones getEstaciones() {
         return this.estaciones;
