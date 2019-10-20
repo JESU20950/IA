@@ -4,12 +4,15 @@ import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
 import aima.search.informed.HillClimbingSearch;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
 
 public class BicingDemo {
     public static void main(String[] args) {
+        Instant start = Instant.now();
         int nest = 2;
         int nbic = 1500;
         int dem = Estaciones.EQUILIBRIUM;
@@ -17,14 +20,14 @@ public class BicingDemo {
         int nfurgonetas = 2;
         Estaciones estaciones = new Estaciones(nest, nbic, dem, seed);
         BicingBoard bc = new BicingBoard(estaciones , nfurgonetas);
-        bc.print_info_estaciones();
-        bc.print_info_ruta();
+        //bc.print_info_estaciones();
+        //bc.print_info_ruta();
         System.out.println("Coste inicial: " + bc.biketransport());
         HillClimbingSearch(bc);
-        //System.out.println(bc.transportcost());
-
-
-    }
+        Instant finish = Instant.now();
+        long timeElapsed = Duration.between(start,finish).toMillis();
+        System.out.println("\n\nEl tiempo de ejecucion es de " + timeElapsed +" milisegundos.");
+        }
 
     private static void HillClimbingSearch(BicingBoard b) {
         System.out.println("\nTSP HillClimbing  -->");
@@ -38,7 +41,6 @@ public class BicingDemo {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     private static void printInstrumentation(Properties properties) {
