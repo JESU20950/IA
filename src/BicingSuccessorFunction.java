@@ -200,7 +200,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                 state.setRuta(b.getRuta());
                 state.getRuta()[i][1][0] = destination2;
                 state.getRuta()[i][2][0] = destination1;
-                System.out.println(destination1 + " " + state.getRuta()[i][2][0] + " " + destination2 + " " + state.getRuta()[i][1][0]);
+                //System.out.println(destination1 + " " + state.getRuta()[i][2][0] + " " + destination2 + " " + state.getRuta()[i][1][0]);
                 String info = "Intercambiamos las ciudades destino de la furgoneta " + i;
                 successors.add(new Successor(info, state));
             }

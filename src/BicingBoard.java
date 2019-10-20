@@ -1,6 +1,7 @@
 import IA.Bicing.Estaciones;
-
 import java.util.Random;
+
+import static java.lang.Math.min;
 
 
 public class BicingBoard {
@@ -13,11 +14,41 @@ public class BicingBoard {
     La posción [i][0][1] pondremos cuantas bicicletas recoge la furgoneta (en negativo) i en el origen([i][0][0]) y en la posicion [i][1][1] i [i][2][1] pondremos cuantas bicicletas dejamos en la estacion [i][1][0] i [i][2][0].
      */
 
-    //generación de estado inicial aleatorio
-    public BicingBoard(Estaciones estaciones, int n_furgonetas){
+    public BicingBoard(Estaciones estaciones, int n_furgonetas) {
         this.estaciones = estaciones;
         this.n_furgonetas = n_furgonetas;
-        n_estaciones = estaciones.size();
+        this.n_estaciones = estaciones.size();
+        ruta = new int[n_furgonetas][3][2];
+        int furgoneta = 0;
+        for (int i = 0; i < n_estaciones; ++i) {
+            if (estaciones.get(i).getNumBicicletasNext() - estaciones.get(i).getDemanda() > 0 && estaciones.get(i).getNumBicicletasNoUsadas() > 0 && furgoneta < n_furgonetas) {
+                int bicis_a_recoger = min(estaciones.get(i).getNumBicicletasNoUsadas(), estaciones.get(i).getNumBicicletasNext() - estaciones.get(i).getDemanda());
+                if (bicis_a_recoger > 30) bicis_a_recoger = 30;
+                ruta[furgoneta][0][0] = i;
+                ruta[furgoneta][0][1] = -bicis_a_recoger;
+                ++furgoneta;
+            }
+        }
+        for (int i = furgoneta; i < n_furgonetas; ++i) {
+            ruta[i][0][0] = -1;
+            ruta[i][1][0] = -1;
+            ruta[i][2][0] = -1;
+        }
+        furgoneta = 0;
+        for (int i = 0; i < n_estaciones; ++i) {
+            if (estaciones.get(i).getNumBicicletasNext() - estaciones.get(i).getDemanda() < 0 && furgoneta < n_furgonetas && ruta[furgoneta][0][0] != -1) {
+                ruta[furgoneta][1][0] = i;
+                ruta[furgoneta][1][1] = -ruta[furgoneta][0][1];
+                ++furgoneta;
+            }
+        }
+    }
+
+    //generación de estado inicial aleatorio
+    /*public BicingBoard(Estaciones estaciones, int n_furgonetas){
+        this.estaciones = estaciones;
+        this.n_furgonetas = n_furgonetas;
+        this.n_estaciones = estaciones.size();
         boolean estaciones_de_recogida [] = new boolean[n_estaciones]; //vector para comprobar si ya ha sido ocupado como origen para una furgoneta
         for (int i = 0; i<n_estaciones;++i) estaciones_de_recogida[i] = false;
         ruta = new int[n_furgonetas][3][2];
@@ -34,7 +65,7 @@ public class BicingBoard {
                 ruta[i][1][1] = numero;
                 ruta[i][2][0] = -1;
         }
-    }
+    }*/
 
     public Estaciones getEstaciones() {
         return this.estaciones;
