@@ -25,5 +25,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="AIMA" level="application" />
+    <orderEntry type="library" name="Bicing" level="application" />
   </component>
 </module>

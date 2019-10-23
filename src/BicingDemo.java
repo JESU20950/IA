@@ -3,6 +3,7 @@ import aima.search.framework.Problem;
 import aima.search.framework.Search;
 import aima.search.framework.SearchAgent;
 import aima.search.informed.HillClimbingSearch;
+import aima.search.informed.SimulatedAnnealingSearch;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -23,7 +24,8 @@ public class BicingDemo {
         //bc.print_info_estaciones();
         //bc.print_info_ruta();
         System.out.println("Coste inicial: " + bc.biketransport());
-        HillClimbingSearch(bc);
+        //HillClimbingSearch(bc);
+        SimulatedAnnealingSearch(bc);
         Instant finish = Instant.now();
         long timeElapsed = Duration.between(start,finish).toMillis();
         System.out.println("\n\nEl tiempo de ejecucion es de " + timeElapsed +" milisegundos.");
@@ -39,6 +41,19 @@ public class BicingDemo {
             printActions(agent.getActions());
             printInstrumentation(agent.getInstrumentation());
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private static void SimulatedAnnealingSearch(BicingBoard b) {
+        System.out.println("\nTSP Simulated Annealing  -->");
+        try {
+            Problem problem = new Problem(b, new BicingSuccessorFunction(), new BicingGoalTest(), new BicingHeuristicFunction());
+            SimulatedAnnealingSearch search = new SimulatedAnnealingSearch(200, 100, 5, 0.001);
+            SearchAgent agent = new SearchAgent(problem, search);
+            System.out.println();
+            printActionsSimulatedAnnealing(agent.getActions());
+            printInstrumentation(agent.getInstrumentation());
+        }catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -59,7 +74,12 @@ public class BicingDemo {
         }
     }
 
-    private static void SimulatedAnnealingSearch() {
-
+    private static void printActionsSimulatedAnnealing(List actions){
+        System.out.println(actions.size());
+        for (int i = 0; i < actions.size(); ++i) {
+            BicingBoard b = (BicingBoard) actions.get(i);
+            System.out.println(b.biketransport());
+        }
     }
+
 }
