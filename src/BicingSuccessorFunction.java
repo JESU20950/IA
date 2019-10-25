@@ -1,6 +1,7 @@
 import aima.search.framework.Successor;
 import aima.search.framework.SuccessorFunction;
 
+import javax.swing.plaf.basic.BasicCheckBoxMenuItemUI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -129,23 +130,22 @@ public class BicingSuccessorFunction implements SuccessorFunction {
             if (b.getRuta()[i][0][0] == -1) {
                 for (int j = 0; j < b.getN_estaciones(); ++j) {
                     if (!ciudades_origen_ocupadas[j]) {
-                        for (int k = 0; k < b.getN_furgonetas(); ++k) {
+                        for (int k = 0; k < b.getN_estaciones(); ++k) {
                             if (j != k && b.getEstaciones().get(j).getNumBicicletasNext() - b.getEstaciones().get(j).getDemanda() > 0 && b.getEstaciones().get(j).getNumBicicletasNoUsadas() > 0) {
                                 ciudades_origen_ocupadas[j] = true;
+                                int bicis = b.getEstaciones().get(j).getNumBicicletasNoUsadas();
+                                if (bicis > 30) bicis = 30;
                                 BicingBoard state = new BicingBoard();
                                 state.setRuta(b.getRuta());
                                 state.getRuta()[i][0][0] = j;
                                 state.getRuta()[i][1][0] = k;
-                                int bicis = b.getEstaciones().get(j).getNumBicicletasNoUsadas();
-                                if (bicis > 30) bicis = 30;
-                                for (int l = 1; l <= bicis; ++l) {
-                                    state.getRuta()[i][0][1] = -bicis;
-                                    state.getRuta()[i][1][1] = bicis;
-                                    String info = "Coste " + state.biketransport() + " --> Se añade la furgoneta " + i;
-                                    info += " con ciudad origen " + j + ", ciudad destino1 " + k + " y cargando " + l;
-                                    info += " bicis";
-                                    successors.add(new Successor(info, state));
-                                }
+                                state.getRuta()[i][0][1] = -bicis;
+                                state.getRuta()[i][1][1] = bicis;
+                                String info = "Coste " + state.biketransport() + " --> Se añade la furgoneta " + i;
+                                info += " con ciudad origen " + j + ", ciudad destino1 " + k + " y cargando " + bicis;
+                                info += " bicis";
+                                info += state.print_info_ruta_string();
+                                successors.add(new Successor(info, state));
                             }
                         }
                     }
@@ -164,17 +164,19 @@ public class BicingSuccessorFunction implements SuccessorFunction {
             if (b.getRuta()[i][1][0] != -1){
                 for (int k = 0; k< b.getN_estaciones(); ++k){
                     if (b.getRuta()[i][1][0] != k && b.getRuta()[i][0][0] != k) {
-                        BicingBoard state = new BicingBoard();
-                        state.setRuta(b.getRuta());
-                        state.getRuta()[i][2][0] = k;
-                        state.getRuta()[i][1][1] = (-state.getRuta()[i][0][1])/2;
-                        state.getRuta()[i][2][1] = - state.getRuta()[i][1][1] - state.getRuta()[i][0][1];
-                        String info = "Coste " + state.biketransport() + " --> La furgoneta " + i;
-                        info += " se le añade una nueva ciudad destino2 : " + k;
-                        info += " en la ciudad destino1 dejara " + state.getRuta()[i][1][1] + " bicicletas, en la ";
-                        info += "ciudad destino2 dejara " + state.getRuta()[i][2][1] + " bicicletas y en total habra ";
-                        info += -state.getRuta()[i][0][1] + " bicicletas";
-                        successors.add(new Successor(info, state));
+                        for (int l = 1; l<-b.getRuta()[i][0][1]; ++l) {
+                            BicingBoard state = new BicingBoard();
+                            state.setRuta(b.getRuta());
+                            state.getRuta()[i][2][0] = k;
+                            state.getRuta()[i][1][1] = l;
+                            state.getRuta()[i][2][1] = -b.getRuta()[i][0][1] - state.getRuta()[i][1][1];
+                            String info = "Coste " + state.biketransport() + " --> La furgoneta " + i;
+                            info += " se le añade una nueva ciudad destino2 : " + k;
+                            info += " en la ciudad destino1 dejara " + state.getRuta()[i][1][1] + " bicicletas, en la ";
+                            info += "ciudad destino2 dejara " + state.getRuta()[i][2][1] + " bicicletas y en total habra ";
+                            info += -state.getRuta()[i][0][1] + " bicicletas";
+                            successors.add(new Successor(info, state));
+                        }
                     }
                 }
             }
@@ -244,24 +246,31 @@ public class BicingSuccessorFunction implements SuccessorFunction {
         return successors;
     }
 
+    private List empty_initial_state_set_operators(Object o) {
+        BicingBoard b = (BicingBoard) o;
+        ArrayList successors = new ArrayList();
+
+        return successors;
+    }
+
     public List getSuccessorsHillClimbing(Object o) {
         BicingBoard b = (BicingBoard) o;
         ArrayList successors = new ArrayList();
         ArrayList aux = new ArrayList();
         aux = (ArrayList) add_van(o);
         successors.addAll(aux);
-        aux = (ArrayList) modify_both_destinies(o);
-        successors.addAll(aux);
-        aux = (ArrayList) erase_destination2(o);
-        successors.addAll(aux);
-        aux = (ArrayList) erase_van(o);
-        successors.addAll(aux);
+        //aux = (ArrayList) modify_both_destinies(o);
+        //successors.addAll(aux);
+        //aux = (ArrayList) erase_destination2(o);
+        //successors.addAll(aux);
+        //aux = (ArrayList) erase_van(o);
+        //successors.addAll(aux);
         aux = (ArrayList) add_destination2(o);
         successors.addAll(aux);
         aux = (ArrayList) drop_bikes(o);
         successors.addAll(aux);
-        aux = (ArrayList) swap_destinies(o);
-        successors.addAll(aux);
+        //aux = (ArrayList) swap_destinies(o);
+        //successors.addAll(aux);
         return successors;
     }
     public List getSuccessorsSimulatedAnnealingSearch(Object o){
@@ -272,7 +281,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
         return successors;
     }
     public List getSuccessors(Object o){
-        //return getSuccessorsHillClimbing(o);
-        return getSuccessorsSimulatedAnnealingSearch(o);
+        return getSuccessorsHillClimbing(o);
+        //return getSuccessorsSimulatedAnnealingSearch(o);
     }
 }

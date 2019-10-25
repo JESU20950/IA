@@ -13,7 +13,7 @@ public class BicingBoard {
     La furgoneta i hace una ruta que va des de la estacion [i][0][0](origen) hasta la estacion [i][2][0](esta si es -1 significa que solo hace un viaje).
     La posción [i][0][1] pondremos cuantas bicicletas recoge la furgoneta (en negativo) i en el origen([i][0][0]) y en la posicion [i][1][1] i [i][2][1] pondremos cuantas bicicletas dejamos en la estacion [i][1][0] i [i][2][0].
      */
-    /*
+
     public  BicingBoard(Estaciones estaciones, int n_furgonetas) {
         this.estaciones = estaciones;
         this.n_furgonetas = n_furgonetas;
@@ -25,8 +25,8 @@ public class BicingBoard {
             ruta[i][2][0] = -1;
         }
     }
-    */
-    public BicingBoard(Estaciones estaciones, int n_furgonetas) {
+
+    /*public BicingBoard(Estaciones estaciones, int n_furgonetas) {
         this.estaciones = estaciones;
         this.n_furgonetas = n_furgonetas;
         this.n_estaciones = estaciones.size();
@@ -54,10 +54,10 @@ public class BicingBoard {
                 ++furgoneta;
             }
         }
-    }
-    /*
+    }*/
+
     //generación de estado inicial aleatorio
-    public BicingBoard(Estaciones estaciones, int n_furgonetas){
+    /*public BicingBoard(Estaciones estaciones, int n_furgonetas){
         this.estaciones = estaciones;
         this.n_furgonetas = n_furgonetas;
         this.n_estaciones = estaciones.size();
@@ -78,8 +78,8 @@ public class BicingBoard {
                 ruta[i][1][1] = numero;
                 ruta[i][2][0] = -1;
         }
-    }
-    */
+    }*/
+
     public Estaciones getEstaciones() {
         return this.estaciones;
     }
@@ -140,7 +140,7 @@ public class BicingBoard {
                 else if (Bicicletas_sobrantes+estaciones[i] > 0){
                     beneficios = beneficios - Bicicletas_sobrantes;
                 }
-                else{
+                else if (Bicicletas_sobrantes+estaciones[i] <= 0){
                     beneficios = beneficios + estaciones[i];
                 }
 
@@ -193,4 +193,20 @@ public class BicingBoard {
             System.out.println("Demanda: " +  estaciones.get(i).getDemanda());
         }
     }
+
+   public String print_info_ruta_string() {
+       String s = "";
+       s += "\nINFO RUTA\n";
+       for (int i = 0; i < n_furgonetas; ++i) {
+           s += "La furgoneta " + i + " hace la ruta:\n";
+           for (int j = 0; j < 2; ++j) {
+               if (ruta[i][j][0] != -1) {
+                   s += "Estacion " + ruta[i][j][0] + "\n";
+                   s += "Deja: " + ruta[i][j][1] + " bicicletas\n";
+               }
+           }
+       }
+       return s;
+   }
+
 }
