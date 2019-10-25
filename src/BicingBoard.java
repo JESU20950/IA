@@ -166,19 +166,6 @@ public class BicingBoard {
         return sum;
     }
 
-    public void print_info_ruta(){
-        System.out.println("INFO RUTA");
-        for (int i = 0; i<n_furgonetas; ++i){
-            System.out.println("La furgoneta " + i + " hace la ruta:");
-            for (int j = 0; j<2; ++j){
-                if (ruta[i][j][0] != -1){
-                    System.out.println("Estacion " +  ruta[i][j][0]);
-                    System.out.println("Deja: " + ruta[i][j][1] + " bicicletas" );
-                }
-            }
-
-        }
-    }
     public void print_info_estaciones(){
         System.out.println("INFO ESTACIONES");
         for (int i = 0; i<n_estaciones; ++i){
@@ -203,5 +190,8 @@ public class BicingBoard {
        }
        return s;
    }
+    public void print_info_ruta(){
+        System.out.println(print_info_ruta_string());
+    }
 
 }

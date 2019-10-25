@@ -276,7 +276,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
         return successors;
     }
     public List getSuccessors(Object o){
-        //return getSuccessorsHillClimbing(o);
-        return getSuccessorsSimulatedAnnealingSearch(o);
+        return getSuccessorsHillClimbing(o);
+        //return getSuccessorsSimulatedAnnealingSearch(o);
     }
 }
