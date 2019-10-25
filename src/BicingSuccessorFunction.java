@@ -279,4 +279,5 @@ public class BicingSuccessorFunction implements SuccessorFunction {
         return getSuccessorsHillClimbing(o);
         //return getSuccessorsSimulatedAnnealingSearch(o);
     }
+
 }

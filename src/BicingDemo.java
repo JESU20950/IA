@@ -15,10 +15,10 @@ public class BicingDemo {
     public static void main(String[] args) {
         Instant start = Instant.now();
         int nest = 25;
-        int nbic = 1000;
-        int dem = Estaciones.RUSH_HOUR;
-        int seed = 1234;
-        int nfurgonetas = 2;
+        int nbic = 1250;
+        int dem = Estaciones.EQUILIBRIUM;
+        int seed =1234;
+        int nfurgonetas = 5;
         Estaciones estaciones = new Estaciones(nest, nbic, dem, seed);
         BicingBoard bc = new BicingBoard(estaciones , nfurgonetas);
         bc.print_info_estaciones();
