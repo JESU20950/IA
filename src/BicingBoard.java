@@ -121,13 +121,8 @@ public class BicingBoard {
                 if (ruta[furgoneta][j][0] != -1 ) estaciones[ruta[furgoneta][j][0]] +=  ruta[furgoneta][j][1];
             }
         }
-
-        for (int i = 0; i< n_estaciones; ++i){
-            //System.out.println(estaciones[i]);
-        }
         double beneficios = 0;
         //calculo de beneficios
-
         for (int i = 0; i<n_estaciones; ++i){
             int NumBicicletasNext = this.estaciones.get(i).getNumBicicletasNext();
             int Demanda = this.estaciones.get(i).getDemanda();
@@ -140,7 +135,7 @@ public class BicingBoard {
                 else if (Bicicletas_sobrantes+estaciones[i] > 0){
                     beneficios = beneficios - Bicicletas_sobrantes;
                 }
-                else if (Bicicletas_sobrantes+estaciones[i] <= 0){
+                else {
                     beneficios = beneficios + estaciones[i];
                 }
 

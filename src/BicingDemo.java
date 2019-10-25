@@ -20,14 +20,12 @@ public class BicingDemo {
         int seed = 1234;
         int nfurgonetas = 5;
         Estaciones estaciones = new Estaciones(nest, nbic, dem, seed);
-        //Estaciones estaciones = new Estaciones(2, 45, Estaciones.EQUILIBRIUM, 1234);
         BicingBoard bc = new BicingBoard(estaciones , nfurgonetas);
-        //BicingBoard bc = new BicingBoard(estaciones, 1);
-        bc.print_info_estaciones();
-        bc.print_info_ruta();
+        //bc.print_info_estaciones();
+        //bc.print_info_ruta();
         System.out.println("Coste inicial: " + bc.biketransport());
-        HillClimbingSearch(bc);
-        //SimulatedAnnealingSearch(bc);
+        //HillClimbingSearch(bc);
+        SimulatedAnnealingSearch(bc);
         Instant finish = Instant.now();
         long timeElapsed = Duration.between(start,finish).toMillis();
         System.out.println("\n\nEl tiempo de ejecucion es de " + timeElapsed +" milisegundos.");
@@ -77,7 +75,6 @@ public class BicingDemo {
     }
 
     private static void printActionsSimulatedAnnealing(List actions){
-        System.out.println(actions.size());
         for (int i = 0; i < actions.size(); ++i) {
             BicingBoard b = (BicingBoard) actions.get(i);
             System.out.println(b.biketransport());
