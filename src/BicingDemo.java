@@ -18,7 +18,7 @@ public class BicingDemo {
         int nbic = 1250;
         int dem = Estaciones.EQUILIBRIUM;
         int seed =1234;
-        int nfurgonetas = 5;
+        int nfurgonetas = 20;
         Estaciones estaciones = new Estaciones(nest, nbic, dem, seed);
 
         /*

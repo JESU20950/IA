@@ -59,7 +59,7 @@ public class BicingBoard {
 
 
     //generación de estado inicial aleatorio
-    public BicingBoard(Estaciones estaciones, int n_furgonetas){
+    /*public BicingBoard(Estaciones estaciones, int n_furgonetas){
         this.estaciones = estaciones;
         this.n_furgonetas = n_furgonetas;
         this.n_estaciones = estaciones.size();
@@ -80,9 +80,9 @@ public class BicingBoard {
                 ruta[i][1][1] = numero;
                 ruta[i][2][0] = -1;
         }
-    }
+    }*/
 
-     */
+
     public Estaciones getEstaciones() {
         return this.estaciones;
     }
@@ -169,13 +169,16 @@ public class BicingBoard {
 
     public void print_info_estaciones(){
         System.out.println("INFO ESTACIONES");
+        //int total = 0;
         for (int i = 0; i<n_estaciones; ++i){
             System.out.println("La estacion " + i + " tiene:");
             System.out.println("Bicis no usadas: " + estaciones.get(i).getNumBicicletasNoUsadas());
             System.out.println("Num Bicicletas Next: " + estaciones.get(i).getNumBicicletasNext());
             System.out.println("Demanda: " +  estaciones.get(i).getDemanda());
+            //total += estaciones.get(i).getNumBicicletasNext();
             //System.out.println(Math.min(estaciones.get(i).getNumBicicletasNoUsadas(), estaciones.get(i).getNumBicicletasNext() - estaciones.get(i).getDemanda()));
         }
+        //System.out.println(total);
     }
 
    public String print_info_ruta_string() {

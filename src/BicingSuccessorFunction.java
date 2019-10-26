@@ -131,20 +131,25 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                 for (int j = 0; j < b.getN_estaciones(); ++j) {
                     if (!ciudades_origen_ocupadas[j]) {
                         for (int k = 0; k < b.getN_estaciones(); ++k) {
-                            if (j != k && b.getEstaciones().get(j).getNumBicicletasNext() - b.getEstaciones().get(j).getDemanda() > 0 && b.getEstaciones().get(j).getNumBicicletasNoUsadas() > 0) {
+                            if (j != k && b.getEstaciones().get(j).getNumBicicletasNext() - b.getEstaciones().get(j).getDemanda() >= 0) {
                                 ciudades_origen_ocupadas[j] = true;
                                 int bicis = b.getEstaciones().get(j).getNumBicicletasNoUsadas();
+                                //int bicis = Math.min(b.getEstaciones().get(j).getNumBicicletasNoUsadas(),b.getEstaciones().get(j).getNumBicicletasNext() - b.getEstaciones().get(j).getDemanda());
                                 if (bicis > 30) bicis = 30;
                                 BicingBoard state = new BicingBoard();
                                 state.setRuta(b.getRuta());
                                 state.getRuta()[i][0][0] = j;
                                 state.getRuta()[i][1][0] = k;
+                                //System.out.println(j + " " + k + " " + bicis);
                                 state.getRuta()[i][0][1] = -bicis;
                                 state.getRuta()[i][1][1] = bicis;
+                                if (i == 0 && j == 21 && k == 2) System.out.println(j + " " + k + " " + bicis + " " + state.biketransport());
+                                if (i == 1 && j == 22 && k == 13) System.out.println(j + " " + k + " " + bicis + " " + state.biketransport());
+                                if (i == 1 && j == 22 && k == 20) System.out.println(j + " " + k + " " + bicis + " " + state.biketransport());
                                 String info = "Coste " + state.biketransport() + " --> Se añade la furgoneta " + i;
-                                info += " con ciudad origen " + j + ", ciudad destino1 " + k + " y cargando " + bicis;
-                                info += " bicis";
-                                info += state.print_info_ruta_string();
+                                info += " en la ciudad origen " + j + ", se le asigna la ciudad destino1 " + k + " y carga ";
+                                info += bicis + " bicis";
+                                //info += state.print_info_ruta_string();
                                 successors.add(new Successor(info, state));
                             }
                         }
@@ -172,8 +177,8 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                             state_add_city2.getRuta()[i][2][0] = k;
                             state_add_city2.getRuta()[i][1][1] = -bicisquefaltanciudad1;
                             state_add_city2.getRuta()[i][2][1] = -state_add_city2.getRuta()[i][1][1] - state_add_city2.getRuta()[i][0][1];
-                            String info3 = "Coste " + state_add_city2.biketransport() + " --> El camión empieza a usar ciudad 2 " + k + " dejara una cantidad de bicis " + state_add_city2.getRuta()[i][2][1];
-                            info3 = info3 + " y la ciudad 1 dejara una cantidad de bicis " + state_add_city2.getRuta()[i][1][1] + " .Bicis en total " + state_add_city2.getRuta()[i][0][1];
+                            String info3 = "Coste " + state_add_city2.biketransport() + " --> La furgoneta empieza a usar ciudad destino2 " + k + " dejara una cantidad de bicis " + state_add_city2.getRuta()[i][2][1];
+                            info3 = info3 + " y la ciudad destino1 dejara una cantidad de bicis " + state_add_city2.getRuta()[i][1][1] + ". Bicis en total " + -state_add_city2.getRuta()[i][0][1];
                             successors.add(new Successor(info3, state_add_city2));
                         }
                     }
