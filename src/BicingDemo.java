@@ -17,6 +17,7 @@ public class BicingDemo {
 
     public static void main(String[] args) {
         Instant start = Instant.now();
+
         int nest = 25;
         int nbic = 1250;
         int dem = Estaciones.EQUILIBRIUM;
