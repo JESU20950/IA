@@ -25,8 +25,8 @@ public class BicingBoard {
             ruta[i][2][0] = -1;
         }
     }
-
-    /*public BicingBoard(Estaciones estaciones, int n_furgonetas) {
+    /*
+    public BicingBoard(Estaciones estaciones, int n_furgonetas) {
         this.estaciones = estaciones;
         this.n_furgonetas = n_furgonetas;
         this.n_estaciones = estaciones.size();
@@ -54,10 +54,10 @@ public class BicingBoard {
                 ++furgoneta;
             }
         }
-    }*/
+    }
 
     //generación de estado inicial aleatorio
-    /*public BicingBoard(Estaciones estaciones, int n_furgonetas){
+    public BicingBoard(Estaciones estaciones, int n_furgonetas){
         this.estaciones = estaciones;
         this.n_furgonetas = n_furgonetas;
         this.n_estaciones = estaciones.size();
@@ -78,8 +78,8 @@ public class BicingBoard {
                 ruta[i][1][1] = numero;
                 ruta[i][2][0] = -1;
         }
-    }*/
-
+    }
+    */
     public Estaciones getEstaciones() {
         return this.estaciones;
     }
@@ -173,6 +173,7 @@ public class BicingBoard {
             System.out.println("Bicis no usadas: " + estaciones.get(i).getNumBicicletasNoUsadas());
             System.out.println("Num Bicicletas Next: " + estaciones.get(i).getNumBicicletasNext());
             System.out.println("Demanda: " +  estaciones.get(i).getDemanda());
+            //System.out.println(Math.min(estaciones.get(i).getNumBicicletasNoUsadas(), estaciones.get(i).getNumBicicletasNext() - estaciones.get(i).getDemanda()));
         }
     }
 
@@ -190,8 +191,19 @@ public class BicingBoard {
        }
        return s;
    }
-    public void print_info_ruta(){
-        System.out.println(print_info_ruta_string());
+
+   public void print_info_ruta(){
+            System.out.println("INFO RUTA");
+            for (int i = 0; i<n_furgonetas; ++i){
+                System.out.println("La furgoneta " + i + " hace la ruta:");
+                for (int j = 0; j<2; ++j){
+                    if (ruta[i][j][0] != -1){
+                        System.out.println("Estacion " +  ruta[i][j][0]);
+                        System.out.println("Deja: " + ruta[i][j][1] + " bicicletas" );
+                    }
+                }
+            }
     }
+
 
 }

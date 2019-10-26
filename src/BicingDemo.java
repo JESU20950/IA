@@ -20,6 +20,25 @@ public class BicingDemo {
         int seed =1234;
         int nfurgonetas = 5;
         Estaciones estaciones = new Estaciones(nest, nbic, dem, seed);
+        /*
+        int nest = 3;
+        int nbic = 90;
+        int dem = Estaciones.EQUILIBRIUM;
+        int seed =1234;
+        int nfurgonetas = 1;
+        Estaciones estaciones = new Estaciones(nest, nbic, dem, seed);
+        // Mis estaciones personalizados
+        estaciones.get(0).setNumBicicletasNoUsadas(30);
+        estaciones.get(0).setNumBicicletasNext(30);
+        estaciones.get(0).setDemanda(0);
+        estaciones.get(1).setNumBicicletasNoUsadas(30);
+        estaciones.get(1).setNumBicicletasNext(0);
+        estaciones.get(1).setDemanda(20);
+        estaciones.get(2).setNumBicicletasNoUsadas(30);
+        estaciones.get(2).setNumBicicletasNext(0);
+        estaciones.get(2).setDemanda(10);
+        */
+
         BicingBoard bc = new BicingBoard(estaciones , nfurgonetas);
         bc.print_info_estaciones();
         //bc.print_info_ruta();

@@ -160,18 +160,22 @@ public class BicingSuccessorFunction implements SuccessorFunction {
         BicingBoard b = (BicingBoard) o;
         ArrayList successors = new ArrayList();
         for (int i = 0; i < b.getN_furgonetas(); ++i) {
-            // No anadiremos una ciudad destino 2, si no existe previamente una ciudad destino 1
+            // No anadiremos una ciudad destino 2, si no existe previamente una ciudad destino 1 y no me sobran bicis de la ciudad 1
             if (b.getRuta()[i][1][0] != -1){
-                for (int k = 0; k< b.getN_estaciones(); ++k){
-                    if (b.getRuta()[i][1][0] != k && b.getRuta()[i][0][0] != k) {
-                        BicingBoard state_add_city2 = new BicingBoard();
-                        state_add_city2.setRuta(b.getRuta());
-                        state_add_city2.getRuta()[i][2][0] = k;
-                        state_add_city2.getRuta()[i][1][1] = (-state_add_city2.getRuta()[i][0][1])/2;
-                        state_add_city2.getRuta()[i][2][1] = -state_add_city2.getRuta()[i][1][1] - state_add_city2.getRuta()[i][0][1];
-                        String info3 = "Coste " + state_add_city2.biketransport() + " --> El camión empieza a usar ciudad 2 " + k + " dejara una cantidad de bicis " + state_add_city2.getRuta()[i][2][1];
-                        info3 = info3 + " y la ciudad 1 dejara una cantidad de bicis " + state_add_city2.getRuta()[i][1][1] + " .Bicis en total " + state_add_city2.getRuta()[i][0][1];
-                        successors.add(new Successor(info3, state_add_city2));
+                int bicis = b.getRuta()[i][0][1];
+                int bicisquefaltanciudad1 = b.getEstaciones().get(b.getRuta()[i][1][0]).getNumBicicletasNext() - b.getEstaciones().get(b.getRuta()[i][1][0]).getDemanda();
+                if (-bicisquefaltanciudad1 <  -b.getRuta()[i][0][1]) {
+                    for (int k = 0; k < b.getN_estaciones(); ++k) {
+                        if (b.getRuta()[i][1][0] != k && b.getRuta()[i][0][0] != k) {
+                            BicingBoard state_add_city2 = new BicingBoard();
+                            state_add_city2.setRuta(b.getRuta());
+                            state_add_city2.getRuta()[i][2][0] = k;
+                            state_add_city2.getRuta()[i][1][1] = -bicisquefaltanciudad1;
+                            state_add_city2.getRuta()[i][2][1] = -state_add_city2.getRuta()[i][1][1] - state_add_city2.getRuta()[i][0][1];
+                            String info3 = "Coste " + state_add_city2.biketransport() + " --> El camión empieza a usar ciudad 2 " + k + " dejara una cantidad de bicis " + state_add_city2.getRuta()[i][2][1];
+                            info3 = info3 + " y la ciudad 1 dejara una cantidad de bicis " + state_add_city2.getRuta()[i][1][1] + " .Bicis en total " + state_add_city2.getRuta()[i][0][1];
+                            successors.add(new Successor(info3, state_add_city2));
+                        }
                     }
                 }
             }
