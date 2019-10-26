@@ -177,9 +177,9 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                             state_add_city2.getRuta()[i][2][0] = k;
                             state_add_city2.getRuta()[i][1][1] = -bicisquefaltanciudad1;
                             state_add_city2.getRuta()[i][2][1] = -state_add_city2.getRuta()[i][1][1] - state_add_city2.getRuta()[i][0][1];
-                            String info3 = "Coste " + state_add_city2.biketransport() + " --> La furgoneta empieza a usar ciudad destino2 " + k + " dejara una cantidad de bicis " + state_add_city2.getRuta()[i][2][1];
-                            info3 = info3 + " y la ciudad destino1 dejara una cantidad de bicis " + state_add_city2.getRuta()[i][1][1] + ". Bicis en total " + -state_add_city2.getRuta()[i][0][1];
-                            successors.add(new Successor(info3, state_add_city2));
+                            String info = "Coste " + state_add_city2.biketransport() + " --> La furgoneta empieza a usar ciudad destino2 " + k + " dejara una cantidad de bicis " + state_add_city2.getRuta()[i][2][1];
+                            info = info + " y la ciudad destino1 dejara una cantidad de bicis " + state_add_city2.getRuta()[i][1][1] + ". Bicis en total " + -state_add_city2.getRuta()[i][0][1];
+                            successors.add(new Successor(info, state_add_city2));
                         }
                     }
                 }
