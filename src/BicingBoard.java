@@ -1,7 +1,7 @@
 import IA.Bicing.Estaciones;
 import java.util.Random;
 
-import static java.lang.Math.min;
+import static java.lang.Math.*;
 
 
 public class BicingBoard {
@@ -14,7 +14,7 @@ public class BicingBoard {
     La posción [i][0][1] pondremos cuantas bicicletas recoge la furgoneta (en negativo) i en el origen([i][0][0]) y en la posicion [i][1][1] i [i][2][1] pondremos cuantas bicicletas dejamos en la estacion [i][1][0] i [i][2][0].
      */
 
-    public  BicingBoard(Estaciones estaciones, int n_furgonetas) {
+    /*public  BicingBoard(Estaciones estaciones, int n_furgonetas) {
         this.estaciones = estaciones;
         this.n_furgonetas = n_furgonetas;
         this.n_estaciones = estaciones.size();
@@ -24,9 +24,9 @@ public class BicingBoard {
             ruta[i][1][0] = -1;
             ruta[i][2][0] = -1;
         }
-    }
+    }*/
 
-    /*
+
     public BicingBoard(Estaciones estaciones, int n_furgonetas) {
         this.estaciones = estaciones;
         this.n_furgonetas = n_furgonetas;
@@ -35,7 +35,7 @@ public class BicingBoard {
         int furgoneta = 0;
         for (int i = 0; i < n_estaciones; ++i) {
             if (estaciones.get(i).getNumBicicletasNext() - estaciones.get(i).getDemanda() > 0 && estaciones.get(i).getNumBicicletasNoUsadas() > 0 && furgoneta < n_furgonetas) {
-                int bicis_a_recoger = min(estaciones.get(i).getNumBicicletasNoUsadas(), estaciones.get(i).getNumBicicletasNext() - estaciones.get(i).getDemanda());
+                int bicis_a_recoger = estaciones.get(i).getNumBicicletasNoUsadas();
                 if (bicis_a_recoger > 30) bicis_a_recoger = 30;
                 ruta[furgoneta][0][0] = i;
                 ruta[furgoneta][0][1] = -bicis_a_recoger;
@@ -155,14 +155,14 @@ public class BicingBoard {
     public double transportcost(){
         int sum = 0;
         for (int furgoneta = 0; furgoneta<n_furgonetas;++furgoneta){
-         int nb = ruta[furgoneta][0][1];
-         for (int j = 0; j<2;++j){
-             if (ruta[furgoneta][j+1][0] != -1){
-                 int km = distance_between_stations(ruta[furgoneta][j][0],ruta[furgoneta][j+1][0]);
-                 sum -= km*((nb+9)/10);
-                 nb = nb-ruta[furgoneta][j+1][1];
-             }
-         }
+            int nb = ruta[furgoneta][0][1];
+            for (int j = 0; j<2;++j){
+                if (ruta[furgoneta][j+1][0] != -1){
+                    int km = distance_between_stations(ruta[furgoneta][j][0],ruta[furgoneta][j+1][0]);
+                    sum -= km*((nb+9)/10);
+                    nb = nb-ruta[furgoneta][j+1][1];
+                }
+            }
         }
         return sum;
     }
