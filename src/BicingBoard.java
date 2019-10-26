@@ -25,6 +25,7 @@ public class BicingBoard {
             ruta[i][2][0] = -1;
         }
     }
+
     /*
     public BicingBoard(Estaciones estaciones, int n_furgonetas) {
         this.estaciones = estaciones;
@@ -56,6 +57,7 @@ public class BicingBoard {
         }
     }
 
+
     //generación de estado inicial aleatorio
     public BicingBoard(Estaciones estaciones, int n_furgonetas){
         this.estaciones = estaciones;
@@ -79,7 +81,8 @@ public class BicingBoard {
                 ruta[i][2][0] = -1;
         }
     }
-    */
+
+     */
     public Estaciones getEstaciones() {
         return this.estaciones;
     }

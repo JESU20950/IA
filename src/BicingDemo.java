@@ -20,6 +20,7 @@ public class BicingDemo {
         int seed =1234;
         int nfurgonetas = 5;
         Estaciones estaciones = new Estaciones(nest, nbic, dem, seed);
+
         /*
         int nest = 3;
         int nbic = 90;
