@@ -142,8 +142,6 @@ public class BicingBoard {
                     beneficios = beneficios + estaciones[i];
                 }
 
-            }else if (Bicicletas_sobrantes+estaciones[i]<0){
-                beneficios += Bicicletas_sobrantes+estaciones[i];
             }
         }
         return -beneficios;

@@ -133,7 +133,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                         for (int k = 0; k < b.getN_estaciones(); ++k) {
                             if (j != k && b.getEstaciones().get(j).getNumBicicletasNext() - b.getEstaciones().get(j).getDemanda() > 0 && b.getEstaciones().get(j).getNumBicicletasNoUsadas() > 0) {
                                 ciudades_origen_ocupadas[j] = true;
-                                int bicis = Math.min(b.getEstaciones().get(j).getNumBicicletasNoUsadas(),b.getEstaciones().get(j).getNumBicicletasNext() - b.getEstaciones().get(j).getDemanda());
+                                int bicis = b.getEstaciones().get(j).getNumBicicletasNoUsadas();
                                 if (bicis > 30) bicis = 30;
                                 BicingBoard state = new BicingBoard();
                                 state.setRuta(b.getRuta());
