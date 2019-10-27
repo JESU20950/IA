@@ -27,7 +27,7 @@ public class BicingBoard {
     }*/
 
 
-    public BicingBoard(Estaciones estaciones, int n_furgonetas) {
+    /*public BicingBoard(Estaciones estaciones, int n_furgonetas) {
         this.estaciones = estaciones;
         this.n_furgonetas = n_furgonetas;
         this.n_estaciones = estaciones.size();
@@ -55,11 +55,11 @@ public class BicingBoard {
                 ++furgoneta;
             }
         }
-    }
+    }*/
 
 
     //generación de estado inicial aleatorio
-    /*public BicingBoard(Estaciones estaciones, int n_furgonetas){
+    public BicingBoard(Estaciones estaciones, int n_furgonetas){
         this.estaciones = estaciones;
         this.n_furgonetas = n_furgonetas;
         this.n_estaciones = estaciones.size();
@@ -80,7 +80,7 @@ public class BicingBoard {
                 ruta[i][1][1] = numero;
                 ruta[i][2][0] = -1;
         }
-    }*/
+    }
 
 
     public Estaciones getEstaciones() {

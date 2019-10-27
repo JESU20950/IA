@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 public class BicingSuccessorFunction implements SuccessorFunction {
-    private boolean no_cost = false;
+    private boolean no_cost = true;
     // Recoger mas bicis en el origen
     /*private List take_more_bikes(Object o) {
         BicingBoard b = (BicingBoard) o;
@@ -137,8 +137,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                         for (int k = 0; k < b.getN_estaciones(); ++k) {
                             if (j != k && b.getEstaciones().get(j).getNumBicicletasNext() - b.getEstaciones().get(j).getDemanda() >= 0) {
                                 ciudades_origen_ocupadas[j] = true;
-                                int bicis = b.getEstaciones().get(j).getNumBicicletasNoUsadas();
-                                //int bicis = Math.min(b.getEstaciones().get(j).getNumBicicletasNoUsadas(),b.getEstaciones().get(j).getNumBicicletasNext() - b.getEstaciones().get(j).getDemanda());
+                                int bicis = Math.min(b.getEstaciones().get(j).getNumBicicletasNoUsadas(),b.getEstaciones().get(j).getNumBicicletasNext() - b.getEstaciones().get(j).getDemanda());
                                 if (bicis > 30) bicis = 30;
                                 BicingBoard state = new BicingBoard();
                                 state.setRuta(b.getRuta());
@@ -197,7 +196,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
         ArrayList successors = new ArrayList();
         for (int i = 0; i<b.getN_furgonetas(); ++i){
             if (b.getRuta()[i][0][0] != -1) {
-                int bicis_disponibles = (b.getEstaciones().get(b.getRuta()[i][0][0]).getNumBicicletasNoUsadas());
+                int bicis_disponibles = Math.min(b.getEstaciones().get(b.getRuta()[i][0][0]).getNumBicicletasNoUsadas(),b.getEstaciones().get(b.getRuta()[i][0][0]).getNumBicicletasNext() - b.getEstaciones().get(b.getRuta()[i][0][0]).getDemanda());
                 if (bicis_disponibles > 30) bicis_disponibles = 30;
                 for (int j = 1; j <= bicis_disponibles; ++j) {
                     for (int k = 1; k < j; ++k) {
@@ -236,7 +235,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
     }
 
     // swap destino1 destino2
-    private List swap_destinies(Object o) {
+    /*private List swap_destinies(Object o) {
         BicingBoard b = (BicingBoard) o;
         ArrayList successors = new ArrayList();
         for (int i = 0; i < b.getN_furgonetas(); ++i) {
@@ -254,7 +253,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
             }
         }
         return successors;
-    }
+    }*/
 
     private List change_Origen(Object o){
         BicingBoard b = (BicingBoard) o;
@@ -306,8 +305,6 @@ public class BicingSuccessorFunction implements SuccessorFunction {
         aux = (ArrayList) add_destination2(o);
         successors.addAll(aux);
         aux = (ArrayList) drop_bikes(o);
-        successors.addAll(aux);
-        aux = (ArrayList) swap_destinies(o);
         successors.addAll(aux);
         aux = (ArrayList) change_Origen(o);
         successors.addAll(aux);
