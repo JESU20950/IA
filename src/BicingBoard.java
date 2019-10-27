@@ -66,8 +66,39 @@ public class BicingBoard {
         boolean estaciones_de_recogida [] = new boolean[n_estaciones]; //vector para comprobar si ya ha sido ocupado como origen para una furgoneta
         for (int i = 0; i<n_estaciones;++i) estaciones_de_recogida[i] = false;
         ruta = new int[n_furgonetas][3][2];
-        for (int i = 0; i<n_furgonetas; ++i){
-                int numero =new Random().nextInt(n_estaciones);
+        for (int i = 0; i<n_furgonetas; ++i) {
+            boolean usar_furgoneta = new Random().nextBoolean();
+            if (usar_furgoneta) {
+                int origen = new Random().nextInt(n_estaciones);
+                ruta[i][0][0] = origen;
+                int destino1 = new Random().nextInt(n_estaciones);
+                while (destino1 == origen) destino1 = new Random().nextInt(n_estaciones);
+                ruta[i][1][0] = destino1;
+                int bicis = new Random().nextInt(min(estaciones.get(origen).getNumBicicletasNoUsadas() + 1, 31));
+                ruta[i][0][1] = -bicis;
+                boolean usar_destino2 = new Random().nextBoolean();
+                System.out.println(i + " " + usar_destino2);
+                if (usar_destino2) {
+                    int destino2 = new Random().nextInt(n_estaciones);
+                    while (destino2 == origen || destino2 == destino1) destino2 = new Random().nextInt(n_estaciones);
+                    ruta[i][2][0] = destino2;
+                    int bicis_aux = bicis == 0 ? 0 : new Random().nextInt(bicis + 1);
+                    ruta[i][1][1] = bicis_aux;
+                    ruta[i][2][1] = bicis - bicis_aux;
+                }
+                else {
+                    ruta[i][1][1] = bicis;
+                    ruta[i][2][0] = -1;
+                }
+            }
+            else {
+                ruta[i][0][0] = -1;
+                ruta[i][1][0] = -1;
+                ruta[i][2][0] = -1;
+            }
+        }
+
+                /*int numero = new Random().nextInt(n_estaciones);
                 while (estaciones_de_recogida[numero]) numero = new Random().nextInt(n_estaciones);
                 estaciones_de_recogida[numero] = true;
                 ruta[i][0][0] = numero;
@@ -78,10 +109,8 @@ public class BicingBoard {
                 if (numero == 0) ++numero;
                 ruta[i][0][1] = -numero;
                 ruta[i][1][1] = numero;
-                ruta[i][2][0] = -1;
-        }
+                ruta[i][2][0] = -1;*/
     }
-
 
     public Estaciones getEstaciones() {
         return this.estaciones;
@@ -187,7 +216,7 @@ public class BicingBoard {
        s += "\nINFO RUTA\n";
        for (int i = 0; i < n_furgonetas; ++i) {
            s += "La furgoneta " + i + " hace la ruta:\n";
-           for (int j = 0; j < 2; ++j) {
+           for (int j = 0; j <= 2; ++j) {
                if (ruta[i][j][0] != -1) {
                    s += "Estacion " + ruta[i][j][0] + "\n";
                    s += "Deja: " + ruta[i][j][1] + " bicicletas\n";
@@ -201,7 +230,7 @@ public class BicingBoard {
             System.out.println("INFO RUTA");
             for (int i = 0; i<n_furgonetas; ++i){
                 System.out.println("La furgoneta " + i + " hace la ruta:");
-                for (int j = 0; j<2; ++j){
+                for (int j = 0; j<=2; ++j){
                     if (ruta[i][j][0] != -1){
                         System.out.println("Estacion " +  ruta[i][j][0]);
                         System.out.println("Deja: " + ruta[i][j][1] + " bicicletas" );

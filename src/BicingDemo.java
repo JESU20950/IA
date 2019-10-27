@@ -47,7 +47,7 @@ public class BicingDemo {
 
         BicingBoard bc = new BicingBoard(estaciones , nfurgonetas);
         //bc.print_info_estaciones();
-        //bc.print_info_ruta();
+        bc.print_info_ruta();
         double coste = no_coste ? bc.biketransport() : bc.biketransport() + bc.transportcost();
         System.out.println("Coste inicial: " + coste);
         HillClimbingSearch(bc);
