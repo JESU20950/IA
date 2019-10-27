@@ -77,7 +77,7 @@ public class BicingBoard {
                 int bicis = new Random().nextInt(min(estaciones.get(origen).getNumBicicletasNoUsadas() + 1, 31));
                 ruta[i][0][1] = -bicis;
                 boolean usar_destino2 = new Random().nextBoolean();
-                System.out.println(i + " " + usar_destino2);
+                //System.out.println(i + " " + usar_destino2);
                 if (usar_destino2) {
                     int destino2 = new Random().nextInt(n_estaciones);
                     while (destino2 == origen || destino2 == destino1) destino2 = new Random().nextInt(n_estaciones);
