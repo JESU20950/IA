@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Random;
 
 public class BicingSuccessorFunction implements SuccessorFunction {
-    private boolean no_cost = true;
+    private boolean no_cost = false;
     // Recoger mas bicis en el origen
     /*private List take_more_bikes(Object o) {
         BicingBoard b = (BicingBoard) o;

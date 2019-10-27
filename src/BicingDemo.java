@@ -13,7 +13,7 @@ import java.util.Properties;
 import java.util.Random;
 
 public class BicingDemo {
-    static private boolean no_coste = true;
+    static private boolean no_coste = false;
 
     public static void main(String[] args) {
         Instant start = Instant.now();
@@ -21,7 +21,7 @@ public class BicingDemo {
         int nbic = 1250;
         int dem = Estaciones.EQUILIBRIUM;
         // 10 semillas aleatorias: -380253297, 596713320, 302418613, 980164065, -946974197, -332845435, 112165010, -138435806, -662535913, -407587065
-        int seed = 1234; //new Random().nextInt(10000000);
+        int seed = new Random().nextInt(10000000);
         int nfurgonetas = 5;
         Estaciones estaciones = new Estaciones(nest, nbic, dem, seed);
 
