@@ -77,7 +77,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                                 state.setRuta(b.getRuta());
                                 state.getRuta()[i][1][0] = j;
                                 double coste = no_cost ? state.biketransport() : state.biketransport() + state.transportcost();
-                                String info = "Coste " + coste + " --> Modificar las ciudades destino de la furgoneta " + i + ", ciudad destino1 nuevo : " + j;
+                                String info = "Coste " + coste + " Operador 3 --> Modificar las ciudades destino de la furgoneta " + i + ", ciudad destino1 nuevo : " + j;
                                 if (state.getRuta()[i][2][0] != -1) {
                                     state.getRuta()[i][2][0] = k;
                                     info += ", ciudad destino2 nuevo : " + k;
@@ -101,7 +101,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
             state.setRuta(b.getRuta());
             state.getRuta()[i][2][0] = -1;
             double coste = no_cost ? state.biketransport() : state.biketransport() + state.transportcost();
-            String info = "Coste " + coste + " --> La furgoneta " + i + " deja de usar ciudad destino2";
+            String info = "Coste " + coste + " Operador 4 --> La furgoneta " + i + " deja de usar ciudad destino2";
             successors.add(new Successor(info, state));
         }
         return successors;
@@ -118,7 +118,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
             state.getRuta()[i][1][0] = -1;
             state.getRuta()[i][0][0] = -1;
             double coste = no_cost ? state.biketransport() : state.biketransport() + state.transportcost();
-            String info = "Coste " + coste + " --> La furgoneta " + i + " no se usa";
+            String info = "Coste " + coste + " Operador 5 --> La furgoneta " + i + " no se usa";
             successors.add(new Successor(info, state));
         }
         return successors;
@@ -147,7 +147,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                                 state.getRuta()[i][0][1] = -bicis;
                                 state.getRuta()[i][1][1] = bicis;
                                 double coste = no_cost ? state.biketransport() : state.biketransport() + state.transportcost();
-                                String info = "Coste " + coste + " --> Se añade la furgoneta " + i;
+                                String info = "Coste " + coste + " Operador 1 --> Se añade la furgoneta " + i;
                                 info += " en la ciudad origen " + j + ", se le asigna la ciudad destino1 " + k + " y carga ";
                                 info += bicis + " bicis";
                                 //info += state.print_info_ruta_string();
@@ -179,7 +179,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                             state_add_city2.getRuta()[i][1][1] = -bicisquefaltanciudad1;
                             state_add_city2.getRuta()[i][2][1] = -state_add_city2.getRuta()[i][1][1] - state_add_city2.getRuta()[i][0][1];
                             double coste = no_cost ? state_add_city2.biketransport() : state_add_city2.biketransport() + state_add_city2.transportcost();
-                            String info = "Coste " + coste + " --> La furgoneta empieza a usar ciudad destino2 " + k + " dejara una cantidad de bicis " + state_add_city2.getRuta()[i][2][1];
+                            String info = "Coste " + coste + " Operador 2 --> La furgoneta empieza a usar ciudad destino2 " + k + " dejara una cantidad de bicis " + state_add_city2.getRuta()[i][2][1];
                             info = info + " y la ciudad destino1 dejara una cantidad de bicis " + state_add_city2.getRuta()[i][1][1] + ". Bicis en total " + -state_add_city2.getRuta()[i][0][1];
                             successors.add(new Successor(info, state_add_city2));
                         }
@@ -207,7 +207,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                             state.getRuta()[i][1][1] = k;
                             state.getRuta()[i][2][1] = j - k;
                             double coste = no_cost ? state.biketransport() : state.biketransport() + state.transportcost();
-                            String info = "Coste " + coste + " --> ";
+                            String info = "Coste " + coste + " Operador 6 --> ";
                             info += "Modificamos las cargas entre las estaciones de la furgoneta " + i;
                             info += ", en la ciudad origen recoge " + j + " bicicletas, en la ciudad destino1 ";
                             info += state.getRuta()[i][1][0] + " dejara " + state.getRuta()[i][1][1] + " bicicletas y";
@@ -222,7 +222,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                         state.getRuta()[i][0][1] = -j;
                         state.getRuta()[i][1][1] = j;
                         double coste = no_cost ? state.biketransport() : state.biketransport() + state.transportcost();
-                        String info = "Coste " + coste + " --> ";
+                        String info = "Coste " + coste + " Operador 6 --> ";
                         info += "Modificamos las cargas entre las estaciones de la furgoneta " + i;
                         info += ", en la ciudad origen recoge " + j + " bicicletas y en la ciudad destino1 ";
                         info += state.getRuta()[i][1][0] + " dejara " + state.getRuta()[i][1][1] + " bicicletas";
@@ -276,7 +276,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                         state.getRuta()[i][0][0] = j;
                         state.getRuta()[i][0][1] = -sobrantes;
                         double coste = no_cost ? state.biketransport() : state.biketransport() + state.transportcost();
-                        String info = "Coste " + coste + " --> Modificar las ciudad origen de la furgoneta " + i + ", ciudad origen nueva: " + j;
+                        String info = "Coste " + coste + " Operador 7 --> Modificar las ciudad origen de la furgoneta " + i + ", ciudad origen nueva: " + j;
                         /*if (state.getRuta()[i][2][0] != -1) {
                             state.getRuta()[i][2][0] = k;
                             info += ", ciudad destino2 nuevo : " + k;
