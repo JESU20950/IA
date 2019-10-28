@@ -14,7 +14,7 @@ public class BicingBoard {
     La posción [i][0][1] pondremos cuantas bicicletas recoge la furgoneta (en negativo) i en el origen([i][0][0]) y en la posicion [i][1][1] i [i][2][1] pondremos cuantas bicicletas dejamos en la estacion [i][1][0] i [i][2][0].
      */
 
-    /*public  BicingBoard(Estaciones estaciones, int n_furgonetas) {
+    public  BicingBoard(Estaciones estaciones, int n_furgonetas) {
         this.estaciones = estaciones;
         this.n_furgonetas = n_furgonetas;
         this.n_estaciones = estaciones.size();
@@ -24,7 +24,7 @@ public class BicingBoard {
             ruta[i][1][0] = -1;
             ruta[i][2][0] = -1;
         }
-    }*/
+    }
 
 
     /*public BicingBoard(Estaciones estaciones, int n_furgonetas) {
@@ -59,7 +59,7 @@ public class BicingBoard {
 
 
     //generación de estado inicial aleatorio
-    public BicingBoard(Estaciones estaciones, int n_furgonetas){
+    /*public BicingBoard(Estaciones estaciones, int n_furgonetas){
         this.estaciones = estaciones;
         this.n_furgonetas = n_furgonetas;
         this.n_estaciones = estaciones.size();
@@ -98,19 +98,19 @@ public class BicingBoard {
             }
         }
 
-                /*int numero = new Random().nextInt(n_estaciones);
-                while (estaciones_de_recogida[numero]) numero = new Random().nextInt(n_estaciones);
-                estaciones_de_recogida[numero] = true;
-                ruta[i][0][0] = numero;
-                while ( numero == ruta[i][0][0]) numero = new Random().nextInt(n_estaciones);
-                ruta[i][1][0] = numero;
+                //int numero = new Random().nextInt(n_estaciones);
+                //while (estaciones_de_recogida[numero]) numero = new Random().nextInt(n_estaciones);
+                //estaciones_de_recogida[numero] = true;
+                //ruta[i][0][0] = numero;
+                //while ( numero == ruta[i][0][0]) numero = new Random().nextInt(n_estaciones);
+                //ruta[i][1][0] = numero;
                 // El random siguiente, a veces peta porque el numero da negativo
-                numero = new Random().nextInt(estaciones.get(ruta[i][0][0]).getNumBicicletasNoUsadas()+1) % 31;
-                if (numero == 0) ++numero;
-                ruta[i][0][1] = -numero;
-                ruta[i][1][1] = numero;
-                ruta[i][2][0] = -1;*/
-    }
+                //numero = new Random().nextInt(estaciones.get(ruta[i][0][0]).getNumBicicletasNoUsadas()+1) % 31;
+                //if (numero == 0) ++numero;
+                //ruta[i][0][1] = -numero;
+                //ruta[i][1][1] = numero;
+                //ruta[i][2][0] = -1;
+    }*/
 
     public Estaciones getEstaciones() {
         return this.estaciones;
@@ -185,12 +185,14 @@ public class BicingBoard {
     public double transportcost(){
         int sum = 0;
         for (int furgoneta = 0; furgoneta<n_furgonetas;++furgoneta){
-            int nb = ruta[furgoneta][0][1];
+            int nb = -ruta[furgoneta][0][1];
             for (int j = 0; j<2;++j){
                 if (ruta[furgoneta][j+1][0] != -1){
                     int km = distance_between_stations(ruta[furgoneta][j][0],ruta[furgoneta][j+1][0]);
+                    //System.out.println(km);
                     sum -= km*((nb+9)/10);
                     nb = nb-ruta[furgoneta][j+1][1];
+                    //System.out.println(nb);
                 }
             }
         }

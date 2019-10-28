@@ -303,36 +303,39 @@ public class BicingSuccessorFunction implements SuccessorFunction {
         ArrayList aux = new ArrayList();
         aux = (ArrayList) add_van(o);
         successors.addAll(aux);
-        aux = (ArrayList) modify_both_destinies(o);
-        successors.addAll(aux);
-        aux = (ArrayList) erase_destination2(o);
-        successors.addAll(aux);
-        aux = (ArrayList) erase_van(o);
-        successors.addAll(aux);
+        //aux = (ArrayList) modify_both_destinies(o);
+        //successors.addAll(aux);
+        //aux = (ArrayList) erase_destination2(o);
+        //successors.addAll(aux);
+        //aux = (ArrayList) erase_van(o);
+        //successors.addAll(aux);
         aux = (ArrayList) add_destination2(o);
         successors.addAll(aux);
-        aux = (ArrayList) drop_bikes(o);
-        successors.addAll(aux);
-        aux = (ArrayList) change_Origen(o);
-        successors.addAll(aux);
+        //aux = (ArrayList) drop_bikes(o);
+        //successors.addAll(aux);
+        //aux = (ArrayList) change_Origen(o);
+        //successors.addAll(aux);
         return successors;
     }
 
     public List getSuccessorsSimulatedAnnealingSearch(Object o){
         BicingBoard b = (BicingBoard) o;
         ArrayList successors = new ArrayList();
+        ArrayList sucAux = new ArrayList();
         ArrayList aux;
         aux = (ArrayList) add_van(o);
-        successors.addAll(aux);
+        sucAux.addAll(aux);
         aux = (ArrayList) add_destination2(o);
-        successors.addAll(aux);
-        int i = new Random().nextInt(aux.size());
-        successors.add(aux.get(i));
+        sucAux.addAll(aux);
+        //System.out.println(aux);
+        int i = new Random().nextInt(sucAux.size());
+        successors.add(sucAux.get(i));
         return successors;
     }
+
     public List getSuccessors(Object o){
-        return getSuccessorsHillClimbing(o);
-        //return getSuccessorsSimulatedAnnealingSearch(o);
+        //return getSuccessorsHillClimbing(o);
+        return getSuccessorsSimulatedAnnealingSearch(o);
     }
 
 }
