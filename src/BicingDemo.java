@@ -50,8 +50,8 @@ public class BicingDemo {
         //bc.print_info_ruta();
         double coste = no_coste ? bc.biketransport() : bc.biketransport() + bc.transportcost();
         System.out.println("Coste inicial: " + coste);
-        //HillClimbingSearch(bc);
-        SimulatedAnnealingSearch(bc);
+        HillClimbingSearch(bc);
+        //SimulatedAnnealingSearch(bc);
         Instant finish = Instant.now();
         long timeElapsed = Duration.between(start,finish).toMillis();
         System.out.println("\n\nEl tiempo de ejecucion es de " + timeElapsed +" milisegundos.");

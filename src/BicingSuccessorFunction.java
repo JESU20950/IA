@@ -82,7 +82,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                                     state.getRuta()[i][2][0] = k;
                                     info += ", ciudad destino2 nuevo : " + k;
                                 }
-                                info += "\nDistancia de la ruta es de" + state.distancekm();
+                                info += "\nDistancia de la ruta es de " + state.distancekm();
                                 successors.add(new Successor(info, state));
                             }
                         }
@@ -103,7 +103,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
             state.getRuta()[i][2][0] = -1;
             double coste = no_cost ? state.biketransport() : state.biketransport() + state.transportcost();
             String info = "Coste " + coste + " Operador 4 --> La furgoneta " + i + " deja de usar ciudad destino2";
-            info += "\nDistancia de la ruta es de" + state.distancekm();
+            info += "\nDistancia de la ruta es de " + state.distancekm();
             successors.add(new Successor(info, state));
         }
         return successors;
@@ -121,7 +121,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
             state.getRuta()[i][0][0] = -1;
             double coste = no_cost ? state.biketransport() : state.biketransport() + state.transportcost();
             String info = "Coste " + coste + " Operador 5 --> La furgoneta " + i + " no se usa";
-            info += "\nDistancia de la ruta es de" + state.distancekm();
+            info += "\nDistancia de la ruta es de " + state.distancekm();
             successors.add(new Successor(info, state));
         }
         return successors;
@@ -153,7 +153,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                                 String info = "Coste " + coste + " Operador 1 --> Se añade la furgoneta " + i;
                                 info += " en la ciudad origen " + j + ", se le asigna la ciudad destino1 " + k + " y carga ";
                                 info += bicis + " bicis";
-                                info += "\nDistancia de la ruta es de" + state.distancekm();
+                                info += "\nDistancia de la ruta es de " + state.distancekm();
                                 successors.add(new Successor(info, state));
                             }
                         }
@@ -184,7 +184,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                             double coste = no_cost ? state_add_city2.biketransport() : state_add_city2.biketransport() + state_add_city2.transportcost();
                             String info = "Coste " + coste + " Operador 2 --> La furgoneta empieza a usar ciudad destino2 " + k + " dejara una cantidad de bicis " + state_add_city2.getRuta()[i][2][1];
                             info = info + " y la ciudad destino1 dejara una cantidad de bicis " + state_add_city2.getRuta()[i][1][1] + ". Bicis en total " + -state_add_city2.getRuta()[i][0][1];
-                            info += "\nDistancia de la ruta es de" + state_add_city2.distancekm();
+                            info += "\nDistancia de la ruta es de " + state_add_city2.distancekm();
                             successors.add(new Successor(info, state_add_city2));
                         }
                     }
@@ -217,7 +217,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                             info += state.getRuta()[i][1][0] + " dejara " + state.getRuta()[i][1][1] + " bicicletas y";
                             info += "en la ciudad destino2 " + state.getRuta()[i][2][0] + " dejara " + state.getRuta()[i][2][1];
                             info += " bicicletas";
-                            info += "\nDistancia de la ruta es de" + state.distancekm();
+                            info += "\nDistancia de la ruta es de " + state.distancekm();
                             successors.add(new Successor(info, state));
                         }
                     }
@@ -231,7 +231,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                         info += "Modificamos las cargas entre las estaciones de la furgoneta " + i;
                         info += ", en la ciudad origen recoge " + j + " bicicletas y en la ciudad destino1 ";
                         info += state.getRuta()[i][1][0] + " dejara " + state.getRuta()[i][1][1] + " bicicletas";
-                        info += "\nDistancia de la ruta es de" + state.distancekm();
+                        info += "\nDistancia de la ruta es de " + state.distancekm();
                         successors.add(new Successor(info, state));
                     }
                 }
@@ -287,7 +287,7 @@ public class BicingSuccessorFunction implements SuccessorFunction {
                             state.getRuta()[i][2][0] = k;
                             info += ", ciudad destino2 nuevo : " + k;
                         }*/
-                        info += "\nDistancia de la ruta es de" + state.distancekm();
+                        info += "\nDistancia de la ruta es de " + state.distancekm();
                         successors.add(new Successor(info, state));
                     }
                 }
@@ -331,8 +331,8 @@ public class BicingSuccessorFunction implements SuccessorFunction {
         return successors;
     }
     public List getSuccessors(Object o){
-        //return getSuccessorsHillClimbing(o);
-        return getSuccessorsSimulatedAnnealingSearch(o);
+        return getSuccessorsHillClimbing(o);
+        //return getSuccessorsSimulatedAnnealingSearch(o);
     }
 
 }
