@@ -196,6 +196,18 @@ public class BicingBoard {
         }
         return sum;
     }
+    public double distancekm(){
+        int sum = 0;
+        for (int furgoneta = 0; furgoneta<n_furgonetas;++furgoneta){
+            for (int j = 0; j<2;++j){
+                if (ruta[furgoneta][j+1][0] != -1){
+                    int km = distance_between_stations(ruta[furgoneta][j][0],ruta[furgoneta][j+1][0]);
+                    sum = sum + km;
+                }
+            }
+        }
+        return sum;
+    }
 
     public void print_info_estaciones(){
         System.out.println("INFO ESTACIONES");

@@ -50,8 +50,8 @@ public class BicingDemo {
         //bc.print_info_ruta();
         double coste = no_coste ? bc.biketransport() : bc.biketransport() + bc.transportcost();
         System.out.println("Coste inicial: " + coste);
-        HillClimbingSearch(bc);
-        //SimulatedAnnealingSearch(bc);
+        //HillClimbingSearch(bc);
+        SimulatedAnnealingSearch(bc);
         Instant finish = Instant.now();
         long timeElapsed = Duration.between(start,finish).toMillis();
         System.out.println("\n\nEl tiempo de ejecucion es de " + timeElapsed +" milisegundos.");
@@ -74,7 +74,7 @@ public class BicingDemo {
         System.out.println("\nTSP Simulated Annealing  -->");
         try {
             Problem problem = new Problem(b, new BicingSuccessorFunction(), new BicingGoalTest(), new BicingHeuristicFunction());
-            SimulatedAnnealingSearch search = new SimulatedAnnealingSearch(200, 100, 5, 0.001);
+            SimulatedAnnealingSearch search = new SimulatedAnnealingSearch(3000, 100, 1, 0.001);
             SearchAgent agent = new SearchAgent(problem, search);
             System.out.println();
             printActionsSimulatedAnnealing(agent.getActions());
