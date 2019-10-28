@@ -20,11 +20,11 @@ public class BicingDemo {
 
         int nest = 25;
         int nbic = 1250;
-        int dem = Estaciones.RUSH_HOUR;
+        int dem = Estaciones.EQUILIBRIUM;
         // 10 semillas aleatorias, experimento 1: -380253297, 596713320, 302418613, 980164065, -946974197, -332845435, 112165010, -138435806, -662535913, -407587065
         // 10 semillas aleatorias, experimento 2: 1576461077, 758708761, 706878784, -1338418080, 413787201, -363818193, -604991204, -981864790, 158945471, 753841995
         // 10 semillas aleatorias, experimento 4: -939931890, -1945404253, 1663712827, -473230503, 379015855, 1980490035, -61119046, 749781935, 1072060708, -394902193
-        int seed = -353478536;//new Random().nextInt(10000000);
+        int seed = new Random().nextInt(2147483647);
         int nfurgonetas = 5;
         Estaciones estaciones = new Estaciones(nest, nbic, dem, seed);
 
@@ -52,8 +52,8 @@ public class BicingDemo {
         //bc.print_info_ruta();
         double coste = no_coste ? bc.biketransport() : bc.biketransport() + bc.transportcost();
         System.out.println("Coste inicial: " + coste);
-        //HillClimbingSearch(bc);
-        SimulatedAnnealingSearch(bc);
+        HillClimbingSearch(bc);
+        //SimulatedAnnealingSearch(bc);
         Instant finish = Instant.now();
         long timeElapsed = Duration.between(start,finish).toMillis();
         System.out.println("\n\nEl tiempo de ejecucion es de " + timeElapsed +" milisegundos.");
