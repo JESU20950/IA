@@ -1,0 +1,159 @@
+; Wed Nov 20 23:13:36 CET 2019
+; 
+;+ (version "3.5")
+;+ (build "Build 663")
+
+([KB_395446_Class114] of  Libro
+
+	(adaptada_a_cine FALSE)
+	(escrito_por [KB_395446_Class115])
+	(number_of_pages 328)
+	(pertenece_al_genero
+		[KB_395446_Class130]
+		[KB_395446_Class131]
+		[KB_395446_Class132]
+		[KB_395446_Class133])
+	(precio 0)
+	(publish_date 1984)
+	(Title "Nineteen Eighty-Four"))
+
+([KB_395446_Class115] of  Escritor
+
+	(escribio [KB_395446_Class114])
+	(name "George Orwell"))
+
+([KB_395446_Class123] of  KB_395446_Class0
+)
+
+([KB_395446_Class124] of  KB_395446_Class0
+)
+
+([KB_395446_Class125] of  Libro
+
+	(adaptada_a_cine FALSE)
+	(escrito_por [KB_395446_Class134])
+	(number_of_pages 218)
+	(pertenece_al_genero
+		[KB_395446_Class135]
+		[KB_395446_Class136]
+		[KB_395446_Class137])
+	(precio 0)
+	(publish_date 1925)
+	(Title "The Great Gatsby"))
+
+([KB_395446_Class130] of  Genero
+
+	(libros_del_genero [KB_395446_Class114])
+	(nombre "Science Fiction"))
+
+([KB_395446_Class131] of  Genero
+
+	(libros_del_genero [KB_395446_Class114])
+	(nombre "Dystopian Fiction"))
+
+([KB_395446_Class132] of  Genero
+
+	(libros_del_genero [KB_395446_Class114])
+	(nombre "Social science fiction"))
+
+([KB_395446_Class133] of  Genero
+
+	(libros_del_genero [KB_395446_Class114])
+	(nombre "Political fiction"))
+
+([KB_395446_Class134] of  Escritor
+
+	(escribio [KB_395446_Class125])
+	(name "F. Scott Fitzgerald"))
+
+([KB_395446_Class135] of  Genero
+
+	(libros_del_genero
+		[KB_395446_Class125]
+		[KB_395446_Class138]
+		[KB_395446_Class144])
+	(nombre "Novel"))
+
+([KB_395446_Class136] of  Genero
+
+	(libros_del_genero [KB_395446_Class125])
+	(nombre "Tragedy"))
+
+([KB_395446_Class137] of  Genero
+
+	(libros_del_genero [KB_395446_Class125])
+	(nombre "Psychological Fiction"))
+
+([KB_395446_Class138] of  Libro
+
+	(escrito_por [KB_395446_Class147])
+	(number_of_pages 281)
+	(pertenece_al_genero
+		[KB_395446_Class135]
+		[KB_395446_Class139]
+		[KB_395446_Class140]
+		[KB_395446_Class141]
+		[KB_395446_Class142]
+		[KB_395446_Class143])
+	(precio 0)
+	(primera_persona FALSE)
+	(publish_date 1960)
+	(Title "To Kill a Mockingbird"))
+
+([KB_395446_Class139] of  Genero
+
+	(libros_del_genero [KB_395446_Class138])
+	(nombre "Bildungsroman"))
+
+([KB_395446_Class140] of  Genero
+
+	(libros_del_genero [KB_395446_Class138])
+	(nombre "Thriller"))
+
+([KB_395446_Class141] of  Genero
+
+	(libros_del_genero [KB_395446_Class138])
+	(nombre "Domestic Fiction"))
+
+([KB_395446_Class142] of  Genero
+
+	(libros_del_genero [KB_395446_Class138])
+	(nombre "Southern Gothic"))
+
+([KB_395446_Class143] of  Genero
+
+	(libros_del_genero [KB_395446_Class138])
+	(nombre "Legal Story"))
+
+([KB_395446_Class144] of  Libro
+
+	(adaptada_a_cine FALSE)
+	(escrito_por [KB_395446_Class148])
+	(number_of_pages 464)
+	(pertenece_al_genero
+		[KB_395446_Class135]
+		[KB_395446_Class145]
+		[KB_395446_Class146])
+	(precio 0)
+	(publish_date 1939)
+	(Title "The Grapes of Wrath"))
+
+([KB_395446_Class145] of  Genero
+
+	(libros_del_genero [KB_395446_Class144])
+	(nombre "Literary realism"))
+
+([KB_395446_Class146] of  Genero
+
+	(libros_del_genero [KB_395446_Class144])
+	(nombre "Historical Fiction"))
+
+([KB_395446_Class147] of  Escritor
+
+	(escribio [KB_395446_Class138])
+	(name "Harper Lee"))
+
+([KB_395446_Class148] of  Escritor
+
+	(escribio [KB_395446_Class144])
+	(name "John Steinbeck"))
