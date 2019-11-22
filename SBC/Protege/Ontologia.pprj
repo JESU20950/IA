@@ -1,4 +1,4 @@
-; Wed Nov 20 23:13:36 CET 2019
+; Thu Nov 21 22:59:16 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -20,17 +20,17 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Ontologia_ProjectKB_Class234]
-		[Ontologia_ProjectKB_Class235]
-		[Ontologia_ProjectKB_Class236]
-		[Ontologia_ProjectKB_Class237]
-		[Ontologia_ProjectKB_Class238]
-		[Ontologia_ProjectKB_Class239]
-		[Ontologia_ProjectKB_Class240]
-		[Ontologia_ProjectKB_Class241]
-		[Ontologia_ProjectKB_Class242]
-		[Ontologia_ProjectKB_Class243]
-		[Ontologia_ProjectKB_Class244]))
+		[Ontologia_ProjectKB_Class4]
+		[Ontologia_ProjectKB_Class5]
+		[Ontologia_ProjectKB_Class6]
+		[Ontologia_ProjectKB_Class7]
+		[Ontologia_ProjectKB_Class8]
+		[Ontologia_ProjectKB_Class9]
+		[Ontologia_ProjectKB_Class10]
+		[Ontologia_ProjectKB_Class11]
+		[Ontologia_ProjectKB_Class12]
+		[Ontologia_ProjectKB_Class13]
+		[Ontologia_ProjectKB_Class14]))
 
 ([CLSES_TAB] of  Widget
 
@@ -74,6 +74,9 @@
 	(is_hidden FALSE)
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
 
+([KB_227035_Class3] of  Map
+)
+
 ([KB_339439_Class0] of  String
 
 	(name "factory_class_name")
@@ -82,9 +85,9 @@
 ([KB_339439_Class1] of  Map
 
 	(entries
-		[Ontologia_ProjectKB_Class245]
-		[Ontologia_ProjectKB_Class246]
-		[Ontologia_ProjectKB_Class247]))
+		[Ontologia_ProjectKB_Class15]
+		[Ontologia_ProjectKB_Class16]
+		[Ontologia_ProjectKB_Class17]))
 
 ([KB_339439_Class10] of  Property_List
 )
@@ -95,35 +98,8 @@
 	(property_list [KB_339439_Class12])
 	(widget_class_name "uk.ac.man.cs.mig.coode.debugger.test.DebuggerTestTab"))
 
-([KB_339439_Class117] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "pertenece_al_genero")
-	(property_list [KB_339439_Class118])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceFieldWidget")
-	(width 200)
-	(x 400)
-	(y 0))
-
-([KB_339439_Class118] of  Property_List
-
-	(properties
-		[KB_339439_Class119]
-		[KB_339439_Class120]))
-
-([KB_339439_Class119] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
 ([KB_339439_Class12] of  Property_List
 )
-
-([KB_339439_Class120] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
 
 ([KB_339439_Class13] of  Widget
 
@@ -157,9 +133,6 @@
 	(is_hidden TRUE)
 	(property_list [KB_339439_Class20])
 	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.InstanceTreeTab"))
-
-([KB_339439_Class2] of  Map
-)
 
 ([KB_339439_Class20] of  Property_List
 )
@@ -546,85 +519,85 @@
 	(name "layout properties")
 	(properties [VERTICAL_STRETCHER]))
 
-([Ontologia_ProjectKB_Class233] of  String
-
-	(name "SearchTab_Query"))
-
-([Ontologia_ProjectKB_Class234] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([Ontologia_ProjectKB_Class235] of  String
-
-	(name "Persona")
-	(string_value "name"))
-
-([Ontologia_ProjectKB_Class236] of  String
-
-	(name "Genero")
-	(string_value "nombre"))
-
-([Ontologia_ProjectKB_Class237] of  String
-
-	(name "Animo")
-	(string_value "estado_animo"))
-
-([Ontologia_ProjectKB_Class238] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([Ontologia_ProjectKB_Class239] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([Ontologia_ProjectKB_Class240] of  String
+([Ontologia_ProjectKB_Class10] of  String
 
 	(name "Tiempo")
 	(string_value "identificador"))
 
-([Ontologia_ProjectKB_Class241] of  String
+([Ontologia_ProjectKB_Class11] of  String
 
 	(name "Idioma")
 	(string_value "idioma"))
 
-([Ontologia_ProjectKB_Class242] of  String
+([Ontologia_ProjectKB_Class12] of  String
 
 	(name "Publico")
 	(string_value "Identificador"))
 
-([Ontologia_ProjectKB_Class243] of  String
+([Ontologia_ProjectKB_Class13] of  String
 
 	(name "Libro")
 	(string_value "Title"))
 
-([Ontologia_ProjectKB_Class244] of  String
+([Ontologia_ProjectKB_Class14] of  String
 
 	(name "Personaje")
 	(string_value "Nombre"))
 
-([Ontologia_ProjectKB_Class245] of  Map_Entry
+([Ontologia_ProjectKB_Class15] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Ontologia_ProjectKB_Class246] of  Map_Entry
+([Ontologia_ProjectKB_Class16] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Ontologia_ProjectKB_Class247] of  Map_Entry
+([Ontologia_ProjectKB_Class17] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
+
+([Ontologia_ProjectKB_Class233] of  String
+
+	(name "SearchTab_Query"))
+
+([Ontologia_ProjectKB_Class4] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([Ontologia_ProjectKB_Class5] of  String
+
+	(name "Persona")
+	(string_value "name"))
+
+([Ontologia_ProjectKB_Class6] of  String
+
+	(name "Genero")
+	(string_value "nombre"))
+
+([Ontologia_ProjectKB_Class7] of  String
+
+	(name "Animo")
+	(string_value "estado_animo"))
+
+([Ontologia_ProjectKB_Class8] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([Ontologia_ProjectKB_Class9] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
 
 ([option_instance] of  Options
 
@@ -704,11 +677,11 @@
 
 	(browser_slot_names [BROWSER_SLOT_NAMES])
 	(customized_instance_widgets
-		[STANDARD_FACET_FORM_WIDGET]
-		[PAL_FORM_WIDGET]
-		[STANDARD_CLASS_FORM_WIDGET]
 		[INSTANCE_ANNOTATION_FORM_WIDGET]
-		[STANDARD_SLOT_FORM_WIDGET])
+		[STANDARD_FACET_FORM_WIDGET]
+		[STANDARD_SLOT_FORM_WIDGET]
+		[PAL_FORM_WIDGET]
+		[STANDARD_CLASS_FORM_WIDGET])
 	(default_cls_metaclass ":STANDARD-CLASS")
 	(default_facet_metaclass ":STANDARD-FACET")
 	(default_instance_widget_class_name "edu.stanford.smi.protege.widget.FormWidget")

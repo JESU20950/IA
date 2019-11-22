@@ -1,3 +1,6 @@
+;;;PARA EJECUTAR batch ((batch "carga.clp"))
+;;;;;;;;;;;;;;;;;;;;;;;;; ONTOLOGIA ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ; Thu Nov 21 22:59:16 CET 2019
 ; 
 ;+ (version "3.5")
@@ -288,7 +291,7 @@
 ;+		(allowed-classes Libro)
 		(create-accessor read-write)))
 
-(defclass Personaje "CaracterÃ­sitcas del personaje"
+(defclass Personaje "Caracterísitcas del personaje"
 	(is-a USER)
 	(role concrete)
 	(single-slot Nombre
@@ -351,3 +354,76 @@
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
 		(create-accessor read-write)))
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;; INSTANCIAS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;****************
+;;* DEFFUNCTIONS *
+;;****************
+(defmesssage-handler Libro caracteristics primary ()
+     (printout "Las características del libro recomendado son:")
+     (printout "Titulo:"  ?self:Title)
+)
+
+(deffunction imprime-todo (?v)
+  (if (> (length$ ?v) 0) then
+   (loop-for-count (?i 1 (length ?v))
+     (send (nth$ ?i ?v) print)
+	 (printout t crlf)
+   )
+ )
+)
+
+(deffunction ask-question-number (?question)
+   (printout t ?question)
+   (bind ?answer (read))
+   (while (not (integerp ?answer)) do
+      (printout t ?question)
+      (bind ?answer (read)))
+   (return ?answer)
+)
+
+(deffunction ask-question (?question $?allowed-values)
+   (printout t ?question)
+   (bind ?answer (read))
+   (if (lexemep ?answer) 
+       then (bind ?answer (lowcase ?answer)))
+   (while (not (member ?answer ?allowed-values)) do
+      (printout t ?question)
+      (bind ?answer (read))
+      (if (lexemep ?answer) 
+          then (bind ?answer (lowcase ?answer))))
+   ?answer)
+
+(deffunction yes-or-no-p (?question)
+   (bind ?response (ask-question ?question yes no y n))
+   (if (or (eq ?response yes) (eq ?response y))
+       then TRUE 
+       else FALSE))
+
+
+
+;;;;;;;;;;;;; REGLAS DE ABSTRACCION ;;;;;;;;;;;;;;;;;;;;;;
+    (defrule number-of-pages
+   	(declare (salience 20))	
+	=> 
+	(bind ?response (ask-question-number "How many pages will the book has? (Doesn't matter -1)  "))
+	(if (> ?response 300) then (assert (size-book little-book))
+	else if (= ?response -1) then (assert (size-book no-care))
+	else (assert (size-book long-book))
+    )
+    )
+	
+
+
+;;;;;;;;;;;; REGLAS DE ASOCIACION ;;;;;;;;;;;;;;;;
+	
+(defrule size_book ""
+    (size-book long-book) 
+	=> (bind ?libro (find-instance ((?inst Libro)) (> ?inst:number_of_pages 10)))
+	(send ?libro caracteristics)
+    )
+	
+	
