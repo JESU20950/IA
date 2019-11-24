@@ -1,153 +1,624 @@
-; Thu Nov 21 22:59:16 CET 2019
+; Sun Nov 24 00:47:47 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
 
-([KB_395446_Class114] of  Libro
-
-	(adaptada_a_cine FALSE)
-	(escrito_por [KB_395446_Class115])
-	(number_of_pages 328)
-	(pertenece_al_genero
-		[KB_395446_Class130]
-		[KB_395446_Class131]
-		[KB_395446_Class132]
-		[KB_395446_Class133])
-	(precio 0)
-	(publish_date 1984)
-	(Title "Nineteen Eighty-Four"))
-
-([KB_395446_Class115] of  Escritor
-
-	(escribio [KB_395446_Class114])
-	(name "George Orwell"))
-
-([KB_395446_Class125] of  Libro
-
-	(adaptada_a_cine FALSE)
-	(escrito_por [KB_395446_Class134])
-	(number_of_pages 218)
-	(pertenece_al_genero
-		[KB_395446_Class135]
-		[KB_395446_Class136]
-		[KB_395446_Class137])
-	(precio 0)
-	(publish_date 1925)
-	(Title "The Great Gatsby"))
-
-([KB_395446_Class130] of  Genero
-
-	(libros_del_genero [KB_395446_Class114])
-	(nombre "Science Fiction"))
-
-([KB_395446_Class131] of  Genero
-
-	(libros_del_genero [KB_395446_Class114])
-	(nombre "Dystopian Fiction"))
-
-([KB_395446_Class132] of  Genero
-
-	(libros_del_genero [KB_395446_Class114])
-	(nombre "Social science fiction"))
-
-([KB_395446_Class133] of  Genero
-
-	(libros_del_genero [KB_395446_Class114])
-	(nombre "Political fiction"))
-
-([KB_395446_Class134] of  Escritor
-
-	(escribio [KB_395446_Class125])
-	(name "F. Scott Fitzgerald"))
-
-([KB_395446_Class135] of  Genero
+([Ontologia_Class10] of  Genero
 
 	(libros_del_genero
-		[KB_395446_Class125]
-		[KB_395446_Class138]
-		[KB_395446_Class144])
-	(nombre "Novel"))
+		[Ontologia_Class92]
+		[Ontologia_Class91])
+	(nombre "Black novel"))
 
-([KB_395446_Class136] of  Genero
+([Ontologia_Class101] of  Escritor
 
-	(libros_del_genero [KB_395446_Class125])
-	(nombre "Tragedy"))
+	(escribio [Ontologia_Class74])
+	(name "Albert Camus"))
 
-([KB_395446_Class137] of  Genero
+([Ontologia_Class102] of  Escritor
 
-	(libros_del_genero [KB_395446_Class125])
-	(nombre "Psychological Fiction"))
+	(escribio
+		[Ontologia_Class67]
+		[Ontologia_Class65])
+	(name "Stephen King"))
 
-([KB_395446_Class138] of  Libro
+([Ontologia_Class103] of  Escritor
 
-	(escrito_por [KB_395446_Class147])
-	(number_of_pages 281)
-	(pertenece_al_genero
-		[KB_395446_Class135]
-		[KB_395446_Class139]
-		[KB_395446_Class140]
-		[KB_395446_Class141]
-		[KB_395446_Class142]
-		[KB_395446_Class143])
-	(precio 0)
-	(primera_persona FALSE)
-	(publish_date 1960)
-	(Title "To Kill a Mockingbird"))
+	(escribio [Ontologia_Class68])
+	(name "John le Carre"))
 
-([KB_395446_Class139] of  Genero
+([Ontologia_Class104] of  Escritor
 
-	(libros_del_genero [KB_395446_Class138])
-	(nombre "Bildungsroman"))
+	(escribio [Ontologia_Class78])
+	(name "Ken Follett"))
 
-([KB_395446_Class140] of  Genero
+([Ontologia_Class105] of  Escritor
 
-	(libros_del_genero [KB_395446_Class138])
+	(escribio [Ontologia_Class72])
+	(name "Nicholas Sparks"))
+
+([Ontologia_Class106] of  Escritor
+
+	(escribio [Ontologia_Class82])
+	(name "Patrick Rothfuss"))
+
+([Ontologia_Class107] of  Escritor
+
+	(escribio [Ontologia_Class71])
+	(name "Andy Weir"))
+
+([Ontologia_Class11] of  Genero
+
+	(libros_del_genero
+		[Ontologia_Class87]
+		[Ontologia_Class88]
+		[Ontologia_Class91])
+	(nombre "Detective novel"))
+
+([Ontologia_Class111] of  Escritor
+
+	(escribio [Ontologia_Class92])
+	(name "Dashiell Hammett"))
+
+([Ontologia_Class112] of  Escritor
+
+	(escribio [Ontologia_Class79])
+	(name "Brian Selznick"))
+
+([Ontologia_Class117] of  Escritor
+
+	(escribio [Ontologia_Class87])
+	(name "Arthur Conan Doyle"))
+
+([Ontologia_Class118] of  Escritor
+
+	(escribio [Ontologia_Class83])
+	(name "J. R. R. Tolkien"))
+
+([Ontologia_Class119] of  Escritor
+
+	(escribio [Ontologia_Class61])
+	(name "Jack London"))
+
+([Ontologia_Class12] of  Genero
+
+	(libros_del_genero
+		[Ontologia_Class68]
+		[Ontologia_Class69])
+	(nombre "Spy novel"))
+
+([Ontologia_Class121] of  Escritor
+
+	(escribio [Ontologia_Class91])
+	(name "Raymond Chandler"))
+
+([Ontologia_Class122] of  Escritor
+
+	(escribio [Ontologia_Class88])
+	(name "Dennis Lehane"))
+
+([Ontologia_Class123] of  Escritor
+
+	(escribio [Ontologia_Class64])
+	(name "Zane Grey"))
+
+([Ontologia_Class125] of  Escritor
+
+	(escribio [Ontologia_Class70])
+	(name "George Orwell"))
+
+([Ontologia_Class126] of  Escritor
+
+	(escribio [Ontologia_Class63])
+	(name "Larry McMurtry"))
+
+([Ontologia_Class127] of  Escritor
+
+	(escribio [Ontologia_Class89])
+	(name "Neil Gaiman"))
+
+([Ontologia_Class128] of  Escritor
+
+	(name "Neil Gaiman"))
+
+([Ontologia_Class129] of  Escritor
+
+	(escribio [Ontologia_Class89])
+	(name "Terry Pratchett"))
+
+([Ontologia_Class13] of  Genero
+
+	(libros_del_genero
+		[Ontologia_Class65]
+		[Ontologia_Class67])
+	(nombre "Horror fiction"))
+
+([Ontologia_Class130] of  Escritor
+
+	(escribio [Ontologia_Class73])
+	(name "E. L. James"))
+
+([Ontologia_Class132] of  Escritor
+
+	(escribio [Ontologia_Class86])
+	(name "Agatha Christie"))
+
+([Ontologia_Class133] of  Genero
+)
+
+([Ontologia_Class134] of  Dibujante
+
+	(dibujo [Ontologia_Class81])
+	(name "Jim Steranko"))
+
+([Ontologia_Class135] of  Escritor
+
+	(escribio [Ontologia_Class81])
+	(name "Jim Steranko"))
+
+([Ontologia_Class14] of  Genero
+
+	(libros_del_genero
+		[Ontologia_Class63]
+		[Ontologia_Class64])
+	(nombre "Western novel"))
+
+([Ontologia_Class15] of  Genero
+
+	(libros_del_genero
+		[Ontologia_Class70]
+		[Ontologia_Class86])
+	(nombre "Drama"))
+
+([Ontologia_Class16] of  Genero
+
+	(libros_del_genero
+		[Ontologia_Class61]
+		[Ontologia_Class62])
+	(nombre "Adventure"))
+
+([Ontologia_Class17] of  Genero
+
+	(libros_del_genero
+		[Ontologia_Class65]
+		[Ontologia_Class67]
+		[Ontologia_Class91])
 	(nombre "Thriller"))
 
-([KB_395446_Class141] of  Genero
+([Ontologia_Class18] of  Genero
 
-	(libros_del_genero [KB_395446_Class138])
-	(nombre "Domestic Fiction"))
+	(libros_del_genero
+		[Ontologia_Class77]
+		[Ontologia_Class78]
+		[Ontologia_Class79]
+		[Ontologia_Class81])
+	(nombre "Historical fiction"))
 
-([KB_395446_Class142] of  Genero
+([Ontologia_Class20] of  Genero
 
-	(libros_del_genero [KB_395446_Class138])
-	(nombre "Southern Gothic"))
+	(libros_del_genero
+		[Ontologia_Class79]
+		[Ontologia_Class81])
+	(nombre "Graphic novel"))
 
-([KB_395446_Class143] of  Genero
+([Ontologia_Class21] of  Genero
 
-	(libros_del_genero [KB_395446_Class138])
-	(nombre "Legal Story"))
+	(libros_del_genero
+		[Ontologia_Class89]
+		[Ontologia_Class90])
+	(nombre "Comedy fiction"))
 
-([KB_395446_Class144] of  Libro
+([Ontologia_Class24] of  Idioma
+
+	(idioma "Spanish"))
+
+([Ontologia_Class25] of  Idioma
+
+	(idioma "English"))
+
+([Ontologia_Class27] of  Idioma
+
+	(idioma "Italian"))
+
+([Ontologia_Class28] of  Idioma
+
+	(idioma "French"))
+
+([Ontologia_Class29] of  Idioma
+
+	(idioma "German"))
+
+([Ontologia_Class30] of  Idioma
+
+	(idioma "Japanese"))
+
+([Ontologia_Class31] of  Animo
+
+	(estado_animo "happy"))
+
+([Ontologia_Class32] of  Animo
+
+	(estado_animo "sad"))
+
+([Ontologia_Class33] of  Animo
+
+	(estado_animo "funny"))
+
+([Ontologia_Class34] of  Animo
+
+	(estado_animo "serious"))
+
+([Ontologia_Class35] of  Animo
+
+	(estado_animo "expected"))
+
+([Ontologia_Class36] of  Animo
+
+	(estado_animo "unpredictable"))
+
+([Ontologia_Class37] of  Animo
+
+	(estado_animo "gentle"))
+
+([Ontologia_Class38] of  Animo
+
+	(estado_animo "violent"))
+
+([Ontologia_Class39] of  Animo
+
+	(estado_animo "optimistic"))
+
+([Ontologia_Class40] of  Animo
+
+	(estado_animo "bleak"))
+
+([Ontologia_Class43] of  Tiempo
+
+	(identificador "Past"))
+
+([Ontologia_Class44] of  Tiempo
+
+	(identificador "Present"))
+
+([Ontologia_Class46] of  Tiempo
+
+	(identificador "Future"))
+
+([Ontologia_Class47] of  Genero
+
+	(libros_del_genero
+		[Ontologia_Class75]
+		[Ontologia_Class74])
+	(nombre "Philosophy novel"))
+
+([Ontologia_Class49] of  Publico
+
+	(Identificador "Children"))
+
+([Ontologia_Class50] of  Publico
+
+	(Identificador "Adolescents"))
+
+([Ontologia_Class51] of  Publico
+
+	(Identificador "Young people"))
+
+([Ontologia_Class52] of  Publico
+
+	(Identificador "Adults"))
+
+([Ontologia_Class53] of  Publico
+
+	(Identificador "Old people"))
+
+([Ontologia_Class55] of  Animo
+
+	(estado_animo "disgusting"))
+
+([Ontologia_Class56] of  Animo
+
+	(estado_animo "beautiful"))
+
+([Ontologia_Class61] of  Libro
+
+	(escrito_por [Ontologia_Class119])
+	(number_of_pages 232)
+	(pertenece_al_genero [Ontologia_Class16])
+	(precio 2)
+	(Title "The Call of the Wild"))
+
+([Ontologia_Class62] of  Libro
+
+	(escrito_por [Ontologia_Class99])
+	(Mundo_real FALSE)
+	(number_of_pages 323)
+	(pertenece_al_genero [Ontologia_Class16])
+	(precio 40)
+	(publish_date 1812)
+	(Title "The Swiss Family Robinson"))
+
+([Ontologia_Class63] of  Libro
+
+	(escrito_por [Ontologia_Class126])
+	(Mundo_real FALSE)
+	(number_of_pages 843)
+	(pertenece_al_genero [Ontologia_Class14])
+	(Title "Lonesome Dove"))
+
+([Ontologia_Class64] of  Libro
+
+	(escrito_por [Ontologia_Class123])
+	(novela_independiente FALSE)
+	(number_of_pages 335)
+	(pertenece_al_genero [Ontologia_Class14])
+	(precio 0)
+	(Title "Riders of the Purple Sage"))
+
+([Ontologia_Class65] of  Libro
+
+	(escrito_por [Ontologia_Class102])
+	(number_of_pages 447)
+	(pertenece_al_genero
+		[Ontologia_Class17]
+		[Ontologia_Class13])
+	(precio 2)
+	(Title "The Shining"))
+
+([Ontologia_Class67] of  Libro
+
+	(escrito_por [Ontologia_Class102])
+	(Mundo_real FALSE)
+	(number_of_pages 100)
+	(pertenece_al_genero
+		[Ontologia_Class17]
+		[Ontologia_Class13])
+	(precio 12)
+	(publish_date 2019)
+	(Title "The institute"))
+
+([Ontologia_Class68] of  Libro
+
+	(escrito_por [Ontologia_Class103])
+	(number_of_pages 1)
+	(pertenece_al_genero [Ontologia_Class12])
+	(precio 223)
+	(publish_date 1963)
+	(Title "The Spy Who Came in from the Cold"))
+
+([Ontologia_Class69] of  Libro
+
+	(escrito_por [Ontologia_Class98])
+	(novela_independiente FALSE)
+	(number_of_pages 10)
+	(pertenece_al_genero [Ontologia_Class12])
+	(precio 10)
+	(publish_date 1915)
+	(Title "The Thirty-Nine Steps"))
+
+([Ontologia_Class7] of  Genero
+
+	(libros_del_genero
+		[Ontologia_Class82]
+		[Ontologia_Class83])
+	(nombre "Fantasy"))
+
+([Ontologia_Class70] of  Libro
 
 	(adaptada_a_cine FALSE)
-	(escrito_por [KB_395446_Class148])
-	(number_of_pages 464)
+	(escrito_por [Ontologia_Class125])
+	(number_of_pages 328)
 	(pertenece_al_genero
-		[KB_395446_Class135]
-		[KB_395446_Class145]
-		[KB_395446_Class146])
+		[Ontologia_Class8]
+		[Ontologia_Class15])
+	(precio 100)
+	(primera_persona FALSE)
+	(Title "Nineteen Eighty-Four"))
+
+([Ontologia_Class71] of  Libro
+
+	(escrito_por [Ontologia_Class107])
+	(number_of_pages 369)
+	(pertenece_al_genero [Ontologia_Class8])
+	(precio 10)
+	(Title "The Martian"))
+
+([Ontologia_Class72] of  Libro
+
+	(escrito_por [Ontologia_Class105])
+	(number_of_pages 214)
+	(pertenece_al_genero [Ontologia_Class9])
+	(precio 3)
+	(primera_persona FALSE)
+	(Title "The Notebook"))
+
+([Ontologia_Class73] of  Libro
+
+	(escrito_por [Ontologia_Class130])
+	(novela_independiente FALSE)
+	(number_of_pages 514)
+	(pertenece_al_genero [Ontologia_Class9])
+	(precio 100)
+	(Title "Fifty Shades of Grey"))
+
+([Ontologia_Class74] of  Libro
+
+	(escrito_por [Ontologia_Class101])
+	(number_of_pages 123)
+	(pertenece_al_genero [Ontologia_Class47])
+	(precio 2)
+	(Title "The Stranger"))
+
+([Ontologia_Class75] of  Libro
+
+	(adaptada_a_cine FALSE)
+	(escrito_por [Ontologia_Class97])
+	(number_of_pages 1883)
+	(pertenece_al_genero [Ontologia_Class47])
+	(precio 21)
+	(Title "Thus Spoke Zarathustra"))
+
+([Ontologia_Class77] of  Libro
+
+	(escrito_por [Ontologia_Class95])
+	(number_of_pages 672)
+	(pertenece_al_genero [Ontologia_Class18])
+	(precio 10)
+	(Title "Wolf Hall"))
+
+([Ontologia_Class78] of  Libro
+
+	(adaptada_a_cine TRUE)
+	(escrito_por [Ontologia_Class104])
+	(number_of_pages 806)
+	(pertenece_al_genero [Ontologia_Class18])
+	(precio 10)
+	(Title "The Pillars of the Earth"))
+
+([Ontologia_Class79] of  Libro
+
+	(escrito_por [Ontologia_Class112])
+	(number_of_pages 526)
+	(pertenece_al_genero
+		[Ontologia_Class18]
+		[Ontologia_Class20])
+	(precio 10)
+	(Title "The Invention of Hugo Cabret"))
+
+([Ontologia_Class8] of  Genero
+
+	(libros_del_genero
+		[Ontologia_Class71]
+		[Ontologia_Class70])
+	(nombre "Science fiction"))
+
+([Ontologia_Class81] of  Libro
+
+	(Dibujado_por [Ontologia_Class134])
+	(escrito_por [Ontologia_Class135])
+	(novela_independiente FALSE)
+	(number_of_pages 0)
+	(pertenece_al_genero
+		[Ontologia_Class20]
+		[Ontologia_Class18])
 	(precio 0)
-	(publish_date 1939)
-	(Title "The Grapes of Wrath"))
+	(publish_date 1976)
+	(Title "Chandler: Red Tide"))
 
-([KB_395446_Class145] of  Genero
+([Ontologia_Class82] of  Libro
 
-	(libros_del_genero [KB_395446_Class144])
-	(nombre "Literary realism"))
+	(escrito_por [Ontologia_Class106])
+	(number_of_pages 662)
+	(pertenece_al_genero [Ontologia_Class7])
+	(precio 0)
+	(publish_date 2007)
+	(Title "The Name of the Wind"))
 
-([KB_395446_Class146] of  Genero
+([Ontologia_Class83] of  Libro
 
-	(libros_del_genero [KB_395446_Class144])
-	(nombre "Historical Fiction"))
+	(escrito_por [Ontologia_Class118])
+	(novela_independiente FALSE)
+	(number_of_pages 310)
+	(pertenece_al_genero [Ontologia_Class7])
+	(precio 0)
+	(publish_date 1937)
+	(Title "The Hobbit"))
 
-([KB_395446_Class147] of  Escritor
+([Ontologia_Class86] of  Libro
 
-	(escribio [KB_395446_Class138])
-	(name "Harper Lee"))
+	(adaptada_a_cine FALSE)
+	(escrito_por [Ontologia_Class132])
+	(number_of_pages 288)
+	(pertenece_al_genero [Ontologia_Class15])
+	(precio 0)
+	(publish_date 1937)
+	(Title "Death on the Nile"))
 
-([KB_395446_Class148] of  Escritor
+([Ontologia_Class87] of  Libro
 
-	(escribio [KB_395446_Class144])
-	(name "John Steinbeck"))
+	(adaptada_a_cine FALSE)
+	(escrito_por [Ontologia_Class117])
+	(number_of_pages 22)
+	(pertenece_al_genero [Ontologia_Class11])
+	(precio 22)
+	(publish_date 1902)
+	(Title "The Hound of the Baskervilles"))
+
+([Ontologia_Class88] of  Libro
+
+	(escrito_por [Ontologia_Class122])
+	(number_of_pages 380)
+	(pertenece_al_genero [Ontologia_Class11])
+	(precio 0)
+	(publish_date 2003)
+	(Title "Shutter Island"))
+
+([Ontologia_Class89] of  Libro
+
+	(escrito_por
+		[Ontologia_Class127]
+		[Ontologia_Class129])
+	(number_of_pages 288)
+	(pertenece_al_genero [Ontologia_Class21])
+	(precio 0)
+	(publish_date 1990)
+	(Title "Good Omens"))
+
+([Ontologia_Class9] of  Genero
+
+	(libros_del_genero
+		[Ontologia_Class72]
+		[Ontologia_Class73])
+	(nombre "Romance novel"))
+
+([Ontologia_Class90] of  Libro
+
+	(escrito_por [Ontologia_Class96])
+	(number_of_pages 210)
+	(pertenece_al_genero [Ontologia_Class21])
+	(precio 0)
+	(Title "Without Feathers"))
+
+([Ontologia_Class91] of  Libro
+
+	(escrito_por [Ontologia_Class121])
+	(number_of_pages 277)
+	(pertenece_al_genero
+		[Ontologia_Class10]
+		[Ontologia_Class17]
+		[Ontologia_Class11])
+	(precio 0)
+	(Title "The Big Sleep"))
+
+([Ontologia_Class92] of  Libro
+
+	(escrito_por [Ontologia_Class111])
+	(number_of_pages 0)
+	(pertenece_al_genero [Ontologia_Class10])
+	(precio 0)
+	(publish_date 1929)
+	(Title "The Maltese Falcon"))
+
+([Ontologia_Class95] of  Escritor
+
+	(escribio [Ontologia_Class77])
+	(name "Hilary Mantel"))
+
+([Ontologia_Class96] of  Escritor
+
+	(escribio [Ontologia_Class90])
+	(name "Woody Allen"))
+
+([Ontologia_Class97] of  Escritor
+
+	(escribio [Ontologia_Class75])
+	(name "Friedrich Nietzsche"))
+
+([Ontologia_Class98] of  Escritor
+
+	(escribio [Ontologia_Class69])
+	(name "John Buchan"))
+
+([Ontologia_Class99] of  Escritor
+
+	(escribio [Ontologia_Class62])
+	(name "Johann David Wyss"))

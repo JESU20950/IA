@@ -1,4 +1,4 @@
-; Thu Nov 21 22:59:16 CET 2019
+; Sun Nov 24 00:47:47 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -16,6 +16,11 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(multislot produce_estado
+		(type INSTANCE)
+;+		(allowed-classes Animo)
+;+		(inverse-slot libros_que_producen)
+		(create-accessor read-write))
 	(single-slot Sexualidad
 		(type STRING)
 ;+		(cardinality 0 1)
@@ -24,14 +29,17 @@
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot Ontologia_Class93
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot Nombre
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot lenguaje
+	(multislot lenguaje
 		(type INSTANCE)
 ;+		(allowed-classes Idioma)
-;+		(cardinality 0 1)
 ;+		(inverse-slot inverse_of_lenguaje)
 		(create-accessor read-write))
 	(multislot dibujo
@@ -44,33 +52,46 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot participa_como_principal_en
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-;+		(inverse-slot Personaje_principal)
+	(single-slot publish_date
+		(type INTEGER)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot primera_persona
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot publish_date
-		(type INTEGER)
+	(multislot participa_como_principal_en
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+;+		(inverse-slot Personaje_principal)
+		(create-accessor read-write))
+	(single-slot libros_cuyo_publico
+		(type INSTANCE)
+;+		(allowed-classes Libro)
 ;+		(cardinality 0 1)
+;+		(inverse-slot publico_dirigido)
 		(create-accessor read-write))
 	(single-slot Title
 ;+		(comment "titulo del libro")
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot libros_que_transcurren
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+;+		(cardinality 0 1)
+;+		(inverse-slot tiempo)
+		(create-accessor read-write))
 	(multislot pertenece_al_genero
 		(type INSTANCE)
 ;+		(allowed-classes Genero)
 ;+		(inverse-slot libros_del_genero)
 		(create-accessor read-write))
-	(single-slot KB_395446_Class69
-		(type STRING)
-;+		(cardinality 0 1)
+	(multislot publico_dirigido
+		(type INSTANCE)
+;+		(allowed-classes Publico)
+;+		(inverse-slot libros_cuyo_publico)
 		(create-accessor read-write))
 	(single-slot genero_sexual
 		(type STRING)
@@ -81,19 +102,19 @@
 ;+		(allowed-classes Libro)
 ;+		(inverse-slot pertenece_al_genero)
 		(create-accessor read-write))
-	(multislot escrito_por
-		(type INSTANCE)
-;+		(allowed-classes Escritor)
-;+		(inverse-slot escribio)
+	(single-slot Subtitle
+;+		(comment "subtitulo del libro")
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot estado_animo
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Subtitle
-;+		(comment "subtitulo del libro")
-		(type STRING)
-;+		(cardinality 0 1)
+	(multislot escrito_por
+		(type INSTANCE)
+;+		(allowed-classes Escritor)
+;+		(inverse-slot escribio)
 		(create-accessor read-write))
 	(multislot participa_como_secundario_en
 		(type INSTANCE)
@@ -109,13 +130,18 @@
 ;+		(allowed-classes Dibujante)
 ;+		(inverse-slot dibujo)
 		(create-accessor read-write))
+	(single-slot Tipo
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot a%C3%B1os
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot Tipo
-		(type STRING)
-;+		(cardinality 0 1)
+	(multislot tiempo
+		(type INSTANCE)
+;+		(allowed-classes Tiempo)
+;+		(inverse-slot libros_que_transcurren)
 		(create-accessor read-write))
 	(single-slot Mundo_real
 		(type SYMBOL)
@@ -127,15 +153,18 @@
 ;+		(allowed-classes Libro)
 ;+		(inverse-slot lenguaje)
 		(create-accessor read-write))
-	(single-slot escribio
+	(multislot escribio
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
-;+		(cardinality 0 1)
 ;+		(inverse-slot escrito_por)
 		(create-accessor read-write))
 	(single-slot nombre
 		(type STRING)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Ontologia_Class0
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot name_
 		(type STRING)
@@ -145,6 +174,12 @@
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot libros_que_producen
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+;+		(cardinality 0 1)
+;+		(inverse-slot produce_estado)
 		(create-accessor read-write))
 	(single-slot best_seller
 		(type SYMBOL)
@@ -166,10 +201,6 @@
 	(single-slot Identificador
 		(type STRING)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot KB_395446_Class43
-		(type STRING)
-;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Libro "Clase generica para elaborar la recomendacion"
@@ -184,13 +215,17 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot primera_persona
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
+	(multislot produce_estado
+		(type INSTANCE)
+;+		(allowed-classes Animo)
 		(create-accessor read-write))
 	(single-slot publish_date
 		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot primera_persona
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot adaptada_a_cine
@@ -215,9 +250,9 @@
 		(type INSTANCE)
 ;+		(allowed-classes Dibujante)
 		(create-accessor read-write))
-	(single-slot Personaje_principal
-		(type INSTANCE)
-;+		(allowed-classes Personaje)
+	(single-slot best_seller
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot Personajes_secundarios
@@ -225,29 +260,36 @@
 ;+		(allowed-classes Personaje)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot best_seller
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
+	(single-slot Personaje_principal
+		(type INSTANCE)
+;+		(allowed-classes Personaje)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot lenguaje
+	(multislot lenguaje
 		(type INSTANCE)
 ;+		(allowed-classes Idioma)
-;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot publico_dirigido
+		(type INSTANCE)
+;+		(allowed-classes Publico)
+		(create-accessor read-write))
+	(multislot tiempo
+		(type INSTANCE)
+;+		(allowed-classes Tiempo)
 		(create-accessor read-write))
 	(single-slot Mundo_real
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot escrito_por
-		(type INSTANCE)
-;+		(allowed-classes Escritor)
-		(create-accessor read-write))
 	(single-slot Subtitle
 ;+		(comment "subtitulo del libro")
 		(type STRING)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot escrito_por
+		(type INSTANCE)
+;+		(allowed-classes Escritor)
 		(create-accessor read-write)))
 
 (defclass Persona "Clase generica que representa a todo tipo de persona tanto escritor como dibujante."
@@ -270,10 +312,9 @@
 (defclass Escritor
 	(is-a Persona)
 	(role concrete)
-	(single-slot escribio
+	(multislot escribio
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
-;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Idioma
@@ -319,22 +360,37 @@
 (defclass Animo "Estado de animo"
 	(is-a USER)
 	(role concrete)
+	(single-slot libros_que_producen
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot estado_animo
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
-(defclass Publico
+(defclass Publico "Publico al que va dirigido el libro"
 	(is-a USER)
 	(role concrete)
+	(single-slot libros_cuyo_publico
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot Identificador
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
-(defclass Tiempo
+(defclass Tiempo "Tiempo en el que transcurre el libro"
 	(is-a USER)
 	(role concrete)
+	(single-slot libros_que_transcurren
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot identificador
 		(type STRING)
 ;+		(cardinality 1 1)
