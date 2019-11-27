@@ -1,4 +1,4 @@
-; Wed Nov 27 18:04:39 CET 2019
+; Wed Nov 27 18:20:26 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 660")
@@ -20,17 +20,17 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Ontologia_ProjectKB_Class130]
-		[Ontologia_ProjectKB_Class131]
-		[Ontologia_ProjectKB_Class132]
-		[Ontologia_ProjectKB_Class133]
-		[Ontologia_ProjectKB_Class134]
-		[Ontologia_ProjectKB_Class135]
-		[Ontologia_ProjectKB_Class136]
-		[Ontologia_ProjectKB_Class137]
-		[Ontologia_ProjectKB_Class138]
-		[Ontologia_ProjectKB_Class139]
-		[Ontologia_ProjectKB_Class140]))
+		[Ontologia_ProjectKB_Class4]
+		[Ontologia_ProjectKB_Class5]
+		[Ontologia_ProjectKB_Class6]
+		[Ontologia_ProjectKB_Class7]
+		[Ontologia_ProjectKB_Class8]
+		[Ontologia_ProjectKB_Class9]
+		[Ontologia_ProjectKB_Class10]
+		[Ontologia_ProjectKB_Class11]
+		[Ontologia_ProjectKB_Class12]
+		[Ontologia_ProjectKB_Class13]
+		[Ontologia_ProjectKB_Class14]))
 
 ([CLSES_TAB] of  Widget
 
@@ -74,9 +74,6 @@
 	(is_hidden FALSE)
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
 
-([KB_226390_Class3] of  Map
-)
-
 ([KB_339439_Class0] of  String
 
 	(name "factory_class_name")
@@ -85,9 +82,9 @@
 ([KB_339439_Class1] of  Map
 
 	(entries
-		[Ontologia_ProjectKB_Class141]
-		[Ontologia_ProjectKB_Class142]
-		[Ontologia_ProjectKB_Class143]))
+		[Ontologia_ProjectKB_Class15]
+		[Ontologia_ProjectKB_Class16]
+		[Ontologia_ProjectKB_Class17]))
 
 ([KB_339439_Class10] of  Property_List
 )
@@ -514,95 +511,54 @@
 
 	(properties [Ontologia_ProjectKB_Class233]))
 
+([KB_652866_Class3] of  Map
+)
+
 ([LAYOUT_PROPERTIES] of  Property_List
 
 	(name "layout properties")
 	(properties [VERTICAL_STRETCHER]))
 
-([Ontologia_ProjectKB_Class126] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "Puntuacion")
-	(property_list [Ontologia_ProjectKB_Class127])
-	(widget_class_name "edu.stanford.smi.protege.widget.TextFieldWidget")
-	(width 200)
-	(x 0)
-	(y 540))
-
-([Ontologia_ProjectKB_Class127] of  Property_List
-)
-
-([Ontologia_ProjectKB_Class130] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([Ontologia_ProjectKB_Class131] of  String
-
-	(name "Publico")
-	(string_value "id_publico"))
-
-([Ontologia_ProjectKB_Class132] of  String
-
-	(name "Genero")
-	(string_value "id_genero"))
-
-([Ontologia_ProjectKB_Class133] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([Ontologia_ProjectKB_Class134] of  String
-
-	(name "Tiempo")
-	(string_value "id_tiempo"))
-
-([Ontologia_ProjectKB_Class135] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([Ontologia_ProjectKB_Class136] of  String
+([Ontologia_ProjectKB_Class10] of  String
 
 	(name "Idioma")
 	(string_value "id_idioma"))
 
-([Ontologia_ProjectKB_Class137] of  String
+([Ontologia_ProjectKB_Class11] of  String
 
 	(name "Libro")
 	(string_value "titulo"))
 
-([Ontologia_ProjectKB_Class138] of  String
+([Ontologia_ProjectKB_Class12] of  String
 
 	(name "Personaje")
 	(string_value "id_personaje"))
 
-([Ontologia_ProjectKB_Class139] of  String
+([Ontologia_ProjectKB_Class13] of  String
 
 	(name "Persona")
 	(string_value "id_persona"))
 
-([Ontologia_ProjectKB_Class140] of  String
+([Ontologia_ProjectKB_Class14] of  String
 
 	(name "Animo")
 	(string_value "id_animo"))
 
-([Ontologia_ProjectKB_Class141] of  Map_Entry
+([Ontologia_ProjectKB_Class15] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Ontologia_ProjectKB_Class142] of  Map_Entry
+([Ontologia_ProjectKB_Class16] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Ontologia_ProjectKB_Class143] of  Map_Entry
+([Ontologia_ProjectKB_Class17] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
@@ -612,6 +568,36 @@
 ([Ontologia_ProjectKB_Class233] of  String
 
 	(name "SearchTab_Query"))
+
+([Ontologia_ProjectKB_Class4] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([Ontologia_ProjectKB_Class5] of  String
+
+	(name "Publico")
+	(string_value "id_publico"))
+
+([Ontologia_ProjectKB_Class6] of  String
+
+	(name "Genero")
+	(string_value "id_genero"))
+
+([Ontologia_ProjectKB_Class7] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
+([Ontologia_ProjectKB_Class8] of  String
+
+	(name "Tiempo")
+	(string_value "id_tiempo"))
+
+([Ontologia_ProjectKB_Class9] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
 
 ([option_instance] of  Options
 
@@ -691,9 +677,9 @@
 
 	(browser_slot_names [BROWSER_SLOT_NAMES])
 	(customized_instance_widgets
+		[INSTANCE_ANNOTATION_FORM_WIDGET]
 		[STANDARD_CLASS_FORM_WIDGET]
 		[STANDARD_SLOT_FORM_WIDGET]
-		[INSTANCE_ANNOTATION_FORM_WIDGET]
 		[STANDARD_FACET_FORM_WIDGET]
 		[PAL_FORM_WIDGET])
 	(default_cls_metaclass ":STANDARD-CLASS")
