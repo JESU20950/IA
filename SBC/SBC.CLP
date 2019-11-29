@@ -1553,7 +1553,7 @@
        then TRUE 
        else FALSE))
 
-(deffunction ask-multievaluated (?question $?list)
+(deffunction ask-multievaluated (?question ?list)
     (printout t ?question crlf)
     (loop-for-count (?i 1 (length ?list)) do
 	 (printout t ?i (nth$ ?i ?list) crlf)
@@ -1568,13 +1568,16 @@
             (ask-multievaluated ?question ?list)
       )
     )
+	
     (bind ?result (create$))
     (loop-for-count (?i 1 (length$ ?answer)) do
-        (bind ?var (nth$ ?i ?list))
+        (bind ?number (nth$ ?i ?answer))
+		(bind ?var (nth$ ?number ?list))
         (bind ?result (insert$ ?result ?i ?var))
     )
     (return ?result)
 )
+
 (deffunction get-all-values (?var ?slot) 
 	(bind $?list (create$))
     (loop-for-count (?i 1 (length$ ?var)) do
@@ -1584,11 +1587,7 @@
 	(return ?list)
 )
 
-(deffunction get-all-instances-slot (?class ?slot)
-    (bind ?var (find-all-instances ((?inst ?class)) TRUE))
-	
-    (return (get-all-values ?var ?slot ))
-)
+
 
 (deffunction increase-puntuation (?libro ?puntuation)
       (send  ?libro put-Puntuacion ( + (send ?libro get-Puntuacion) ?puntuation) )
@@ -1598,7 +1597,60 @@
       (send  ?libro put-Puntuacion ( - (send ?libro get-Puntuacion) ?puntuation) )
 	  (return ?libro)
 )
+(deffunction merge (?right ?left)
+	(bind ?length_right (+ (length$ ?right) 1))
+	(bind ?length_left (+ (length$ ?left) 1))
+	(bind ?it 1)
+	(bind ?it2 1)
+	(bind ?result (create$))
+	(while (and (< ?it ?length_left) (< ?it2 ?length_right)) do 
+		(bind ?puntuacion1 (send (nth$ ?it ?left) get-Puntuacion))
+		(bind ?puntuacion2 (send (nth$ ?it2 ?right) get-Puntuacion))
+		(if (<=  ?puntuacion1 ?puntuacion2) then
+			(bind ?result (insert$ ?result (+ (length$ ?result) 1)  (nth$ ?it ?left)))
+			(bind ?it (+ ?it 1))
+		else
+			(bind ?result (insert$ ?result (+ (length$ ?result) 1)  (nth$ ?it2 ?right)))
+			(bind ?it2 (+ ?it2 1))
+		)
+	)
+	(while (< ?it ?length_left) do
+		(bind ?result (insert$ ?result (+ (length$ ?result) 1)  (nth$ ?it ?left)))
+			(bind ?it (+ ?it 1))
+	
+	
+	)
+	(while (< ?it2 ?length_right) do
+		(bind ?result (insert$ ?result (+ (length$ ?result) 1)  (nth$ ?it2 ?right)))
+			(bind ?it2 (+ ?it2 1))
+	)
+	(return ?result)
+)
 
+(deffunction merge_sort (?list)
+	(if (< (length$ ?list) 2) then (return ?list) )
+		(bind ?middle (div (length$ ?list) 2))
+		
+		(bind ?right (create$))
+		(bind ?left (create$))
+		
+		(bind ?it 1)
+		
+		(while (<= ?it ?middle) do 
+			(bind ?left (insert$ ?left (+ (length$ ?left) 1) (nth$ ?it ?list)))
+			(bind ?it (+ ?it 1))
+			)
+		
+		(while (<= ?it (length$ ?list)) do 
+			(bind ?right (insert$ ?right (+ (length$ ?right) 1) (nth$ ?it ?list)))
+			(bind ?it (+ ?it 1))
+			)
+			
+		(bind ?left (merge_sort ?left))
+		(bind ?right (merge_sort ?right))
+		(return (merge ?right ?left))
+	
+)
 
 ;(sym-cat use ful ness) concatenacion de simbolos
 ;(str-cat "use" "ful" "ness") concatenacion de strings
@@ -1630,15 +1682,16 @@
     => 
     (bind ?response (ask-number "How many hours do you read every week?"))
     (if (> ?response 9) then (assert (frequency_read high))
-	else if (< ?response 4) then (assert (frequency_read low))
+	else (if (< ?response 4) then (assert (frequency_read low))
 	else (assert (frequency_read medium))
     )
     )
+	)
     
     (defrule favourite-genre
     (declare (salience 97))
     =>
-    (bind ?response (ask-multievaluated "Number "  (get-all-instances-slot  Genero id_genero) ))
+    (bind ?response (ask-multievaluated "Number "  (get-all-values (find-all-instances ((?inst Genero)) TRUE) id_genero ) ))
     (assert (favourite_genre ?response))
     )
 	
@@ -1659,10 +1712,6 @@
 	else (assert (size-book long-book))
     )
     )
-	
-	
-	
-	
     
 	(defrule time-book
 	=>
@@ -1704,18 +1753,48 @@
 	=>
 	(bind ?*libros*  (find-all-instances ((?ins Libro)) TRUE))
 	)
-	
+
 (defrule puntuation 
 	(size_book little-book)
 	=> 
 	 (loop-for-count (?i 1 (length$ ?*libros*)) do
+		(bind ?puntuacion 1)
 		(bind ?libro (nth$ ?i ?*libros*))
-		( if (< (send ?libro get-numero_de_paginas)  400 ) then (bind ?libro (increase-puntuation ?libro ?puntuation))
-		  else (bind ?libro (decrease-puntuation ?libro ?puntuation))
+		( if (< (send ?libro get-numero_de_paginas)  400 ) then (bind ?libro (increase-puntuation ?libro ?puntuacion))
+		  else (bind ?libro (decrease-puntuation ?libro ?puntuacion))
 		)
 		(replace$ ?*libros* ?i ?i ?libro)
 	 )
 )
+
+(defrule puntuation2 
+	(size_book long-book)
+	=> 
+	 (loop-for-count (?i 1 (length$ ?*libros*)) do
+		(bind ?puntuacion 1)
+		(bind ?libro (nth$ ?i ?*libros*))
+		( if (>= (send ?libro get-numero_de_paginas)  400 ) then (bind ?libro (increase-puntuation ?libro ?puntuacion))
+		  else (bind ?libro (decrease-puntuation ?libro ?puntuacion))
+		)
+		(replace$ ?*libros* ?i ?i ?libro)
+	 )
+)
+
+(defrule puntuation3 ""
+	(declare (salience 96))
+	(favourite_genre $?genero)
+	=>
+	(printout t ?genero crlf)
+	(loop-for-count (?i 1 (length$ ?*libros*)) do
+		(bind ?puntuacion 10)
+		(bind ?libro (nth$ ?i ?*libros*))
+			( if (eq ?genero  (send (send ?libro get-libro-genero) get-id_genero) ) then (bind ?libro (increase-puntuation ?libro ?puntuacion))
+				;else (bind ?libro (decrease-puntuation ?libro ?puntuacion))
+			)
+		(replace$ ?*libros* ?i ?i ?libro)
+	)
+)
+
 
 
     
@@ -1724,10 +1803,15 @@
 (defrule final_solution ""
 	(declare (salience -1))
 	=> 
+	 (bind ?*libros* (merge_sort ?*libros*))
+	 ;(loop-for-count (?i 1 (length$ ?*libros*)) do
+		;(send (nth$ ?i ?*libros*) imprimir)
+		;)
 	 
-     (send (nth$ 1 ?*libros*) imprimir)
-	 (send (nth$ 2 ?*libros*) imprimir)
-	 (send (nth$ 3 ?*libros*) imprimir)
+	 
+    (send (nth$ (- (length$ ?*libros*) 0) ?*libros*) imprimir)
+	(send (nth$ (- (length$ ?*libros*) 1) ?*libros*) imprimir)
+	(send (nth$ (- (length$ ?*libros*) 2) ?*libros*) imprimir)
 )
 	
 	
