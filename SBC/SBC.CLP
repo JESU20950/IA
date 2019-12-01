@@ -1489,6 +1489,10 @@
 ;;* Message-handler *
 ;;*******************
 
+(defmessage-handler Libro imprimir_libro()
+    (printout t ?self:titulo crlf)
+)
+
 (defmessage-handler Libro imprimir ()
      (printout t "The characteristics of the book are:" crlf)
      (printout t "Title: "  ?self:titulo crlf)
@@ -1782,17 +1786,33 @@
 
 (defrule puntuation3 ""
 	(declare (salience 96))
-	(favourite_genre $?genero)
+	(favourite_genre $?generos)
 	=>
-	(printout t ?genero crlf)
-	(loop-for-count (?i 1 (length$ ?*libros*)) do
-		(bind ?puntuacion 10)
-		(bind ?libro (nth$ ?i ?*libros*))
-			( if (eq ?genero  (send (send ?libro get-libro-genero) get-id_genero) ) then (bind ?libro (increase-puntuation ?libro ?puntuacion))
-				;else (bind ?libro (decrease-puntuation ?libro ?puntuacion))
-			)
-		(replace$ ?*libros* ?i ?i ?libro)
+	;(printout t ?generos crlf)
+	(bind ?puntuacion 10)
+	(loop-for-count (?i 1 (length$ ?generos)) do
+        (bind ?genero (nth$ ?i ?generos))
+        ;(printout t ?genero crlf)
+        (loop-for-count (?j 1 (length$ ?*libros*)) do
+            (bind ?libro (nth$ ?j ?*libros*))
+            (bind ?genero_del_libro (send ?libro get-libro_genero))
+            (if (neq ?genero_del_libro nil) then 
+                (bind ?genero_id (send ?genero_del_libro get-id_genero))
+                (if (eq ?genero ?genero_id) then (bind ?libro (increase-puntuation ?libro ?puntuacion))
+                else (bind ?libro (decrease-puntuation ?libro ?puntuacion))
+                )
+            )
+            (replace$ ?*libros* ?j ?j ?libro)
+        )
 	)
+	;(loop-for-count (?i 1 (length$ ?*libros*)) do
+	;	(bind ?puntuacion 10)
+	;	(bind ?libro (nth$ ?i ?*libros*))
+	;		( if (eq ?genero  (send (send ?libro get-libro_genero) get-id_genero) ) then (bind ?libro (increase-puntuation ?libro ?puntuacion))
+	;			;else (bind ?libro (decrease-puntuation ?libro ?puntuacion))
+	;		)
+	;	(replace$ ?*libros* ?i ?i ?libro)
+	;)
 )
 
 
@@ -1808,10 +1828,10 @@
 		;(send (nth$ ?i ?*libros*) imprimir)
 		;)
 	 
-	 
-    (send (nth$ (- (length$ ?*libros*) 0) ?*libros*) imprimir)
-	(send (nth$ (- (length$ ?*libros*) 1) ?*libros*) imprimir)
-	(send (nth$ (- (length$ ?*libros*) 2) ?*libros*) imprimir)
+    (printout t "The recommended books are:" crlf)
+    (send (nth$ (- (length$ ?*libros*) 0) ?*libros*) imprimir_libro)
+	(send (nth$ (- (length$ ?*libros*) 1) ?*libros*) imprimir_libro)
+	(send (nth$ (- (length$ ?*libros*) 2) ?*libros*) imprimir_libro)
 )
 	
 	
