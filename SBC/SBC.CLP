@@ -1682,14 +1682,12 @@
 	
 	
     (defrule frequency-read
-    (declare (salience 98))
-    => 
-    (bind ?response (ask-number "How many hours do you read every week?"))
-    (if (> ?response 9) then (assert (frequency_read high))
-	else (if (< ?response 4) then (assert (frequency_read low))
-	else (assert (frequency_read medium))
-    )
-    )
+		(declare (salience 98))
+		=> 
+		(bind ?response (ask-number "How many hours do you read every week?"))
+		(if (> ?response 9) then (assert (frequency_read high))
+		else (if (< ?response 4) then (assert (frequency_read low))
+		else (assert (frequency_read medium))))
 	)
     
     (defrule favourite-genre
@@ -1698,12 +1696,6 @@
     (bind ?response (ask-multievaluated "Number "  (get-all-values (find-all-instances ((?inst Genero)) TRUE) id_genero ) ))
     (assert (favourite_genre ?response))
     )
-	
-    
-    
-
-
-
 
 
 ;;;;; ABSTRACCION DE LIBRO QUE BUSCA
@@ -1740,11 +1732,21 @@
 	)
 
 	(defrule price-book
-	(years ?var)
-	(test (> ?var 14))
-	=>
-	(bind ?response (ask-interval "Price of the book?"))
-	(assert (price_book ?response))
+		(years ?var)
+		(test (> ?var 14))
+		=>
+		(bind ?response (ask-interval "Price of the book?(give an interval of two numbers)"))
+		(bind ?lowerBound (nth$ 1 ?response))
+		(bind ?upperBound (nth$ 2 ?response))
+		(printout t ?response crlf)
+		(if (< ?upperBound 10) then 
+			(assert (price_book cheap))
+		else
+			(if (> ?lowerBound 30) then 
+				(assert (price_book expensive))
+			else (assert (price_book normal))
+			)
+		)
 	)
 	
 
@@ -1815,9 +1817,11 @@
 	;)
 )
 
-
-
-    
+;(defrule puntuation4 ""
+;	(declare (salience 95))
+;	(size-book long-book)
+;	(price-book)
+;)    
 
 
 (defrule final_solution ""
