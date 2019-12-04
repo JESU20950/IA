@@ -1485,26 +1485,6 @@
      
      
 )
-;;*******************
-;;* Message-handler *
-;;*******************
-
-(defmessage-handler Libro imprimir_libro()
-    (printout t ?self:titulo crlf)
-)
-
-(defmessage-handler Libro imprimir ()
-     (printout t "The characteristics of the book are:" crlf)
-     (printout t "Title: "  ?self:titulo crlf)
-     (if (neq ?self:subtitulo nil) then (printout t "Subtitle: "  ?self:subtitulo crlf))
-     (printout t "Year of publication: " ?self:anyo_publicacion crlf)
-     (printout t "Number of pages: "  ?self:numero_de_paginas crlf)
-     (printout t "Generos: " crlf)
-     (printout t "Idioma: " crlf)
-     (printout t "Price": ?self:precio crlf)
-	 (printout t "Puntuacion: " ?self:Puntuacion crlf)
-)
-
 
 ;;****************
 ;;* DEFFUNCTIONS *
@@ -1658,6 +1638,31 @@
 
 ;(sym-cat use ful ness) concatenacion de simbolos
 ;(str-cat "use" "ful" "ness") concatenacion de strings
+;;*******************
+;;* Message-handler *
+;;*******************
+
+(defmessage-handler Libro imprimir_libro()
+    (printout t ?self:titulo crlf)
+)
+
+(defmessage-handler Libro imprimir ()
+     (printout t "The characteristics of the book are:" crlf)
+     (printout t "Title: "  ?self:titulo crlf)
+     (if (neq ?self:subtitulo nil) then (printout t "Subtitle: "  ?self:subtitulo crlf))
+     (printout t "Year of publication: " ?self:anyo_publicacion crlf)
+     (printout t "Number of pages: "  ?self:numero_de_paginas crlf)
+     (printout t "Generos: " (get-all-values ?self:libro_genero id_genero) crlf)
+     (printout t "Idioma: " (get-all-values ?self:libro_idioma id_idioma) crlf)
+     (printout t "Price": ?self:precio crlf)
+	 (printout t "Puntuacion: " ?self:Puntuacion crlf crlf crlf crlf crlf)
+     (printout t "Motivos:" crlf)
+     (loop-for-count  (?i 1  (length$ ?self:Motivos)) do
+     (printout t ?i ". " (nth$ ?i ?self:Motivos) crlf)
+     )
+)
+
+
 ;;;;;;;;;;;;; REGLAS DE ABSTRACCION ;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -1678,9 +1683,10 @@
 	(if (yes-or-no-p "Actually are you working?") then (assert (working TRUE))
 	 else (assert (working TRUE)))
 	)
-	
-	
-	
+    
+    
+    
+    
     (defrule frequency-read
 		(declare (salience 98))
 		=> 
@@ -1695,6 +1701,13 @@
     =>
     (bind ?response (ask-multievaluated "Number "  (get-all-values (find-all-instances ((?inst Genero)) TRUE) id_genero ) ))
     (assert (favourite_genre ?response))
+    )
+    
+    (defrule user-languages
+    (declare (salience 96))
+    =>
+    (bind ?response (ask-multievaluated "Number "  (get-all-values (find-all-instances ((?inst Idioma)) TRUE) id_idioma ) ))
+    (assert (user_languages ?response))
     )
 
 
@@ -1738,7 +1751,6 @@
 		(bind ?response (ask-interval "Price of the book?(give an interval of two numbers)"))
 		(bind ?lowerBound (nth$ 1 ?response))
 		(bind ?upperBound (nth$ 2 ?response))
-		(printout t ?response crlf)
 		(if (< ?upperBound 10) then 
 			(assert (price_book cheap))
 		else
@@ -1786,42 +1798,38 @@
 	 )
 )
 
-(defrule puntuation3 ""
-	(declare (salience 96))
-	(favourite_genre $?generos)
-	=>
-	;(printout t ?generos crlf)
-	(bind ?puntuacion 10)
-	(loop-for-count (?i 1 (length$ ?generos)) do
-        (bind ?genero (nth$ ?i ?generos))
-        ;(printout t ?genero crlf)
+(deffunction puntuacion_multi_evaluated (?puntuacion ?response ?relacion ?identificador)
+	(loop-for-count (?i 1 (length$ ?response)) do
+        (bind ?unique_response (nth$ ?i ?response))
+
         (loop-for-count (?j 1 (length$ ?*libros*)) do
             (bind ?libro (nth$ ?j ?*libros*))
-            (bind ?genero_del_libro (send ?libro get-libro_genero))
-            (if (neq ?genero_del_libro nil) then 
-                (bind ?genero_id (send ?genero_del_libro get-id_genero))
-                (if (eq ?genero ?genero_id) then (bind ?libro (increase-puntuation ?libro ?puntuacion))
-                else (bind ?libro (decrease-puntuation ?libro ?puntuacion))
-                )
+            (bind ?relacion_libro (send ?libro (sym-cat get- ?relacion)))
+            
+            (loop-for-count (?k 1 (length$ ?relacion_libro)) do
+                (if (eq (send (nth$ ?k ?relacion_libro) (sym-cat get- ?identificador)) ?unique_response) then (bind ?libro (increase-puntuation ?libro ?puntuacion))
             )
+            )
+            
             (replace$ ?*libros* ?j ?j ?libro)
-        )
-	)
-	;(loop-for-count (?i 1 (length$ ?*libros*)) do
-	;	(bind ?puntuacion 10)
-	;	(bind ?libro (nth$ ?i ?*libros*))
-	;		( if (eq ?genero  (send (send ?libro get-libro_genero) get-id_genero) ) then (bind ?libro (increase-puntuation ?libro ?puntuacion))
-	;			;else (bind ?libro (decrease-puntuation ?libro ?puntuacion))
-	;		)
-	;	(replace$ ?*libros* ?i ?i ?libro)
-	;)
+	   )
+    )
 )
 
-;(defrule puntuation4 ""
-;	(declare (salience 95))
-;	(size-book long-book)
-;	(price-book)
-;)    
+
+(defrule puntuation3 ""
+	(favourite_genre $?generos)
+	=>
+    (puntuacion_multi_evaluated 10 ?generos libro_genero id_genero)
+)
+
+(defrule puntuation4 "" 
+    (user_languages $?response)
+    =>
+    (puntuacion_multi_evaluated 10 ?response libro_idioma id_idioma)
+)
+
+
 
 
 (defrule final_solution ""
@@ -1829,13 +1837,13 @@
 	=> 
 	 (bind ?*libros* (merge_sort ?*libros*))
 	 ;(loop-for-count (?i 1 (length$ ?*libros*)) do
-		;(send (nth$ ?i ?*libros*) imprimir)
-		;)
+	;	(send (nth$ ?i ?*libros*) imprimir)
+	;	)
 	 
     (printout t "The recommended books are:" crlf)
-    (send (nth$ (- (length$ ?*libros*) 0) ?*libros*) imprimir_libro)
-	(send (nth$ (- (length$ ?*libros*) 1) ?*libros*) imprimir_libro)
-	(send (nth$ (- (length$ ?*libros*) 2) ?*libros*) imprimir_libro)
+    (send (nth$ (- (length$ ?*libros*) 0) ?*libros*) imprimir)
+	(send (nth$ (- (length$ ?*libros*) 1) ?*libros*) imprimir)
+	(send (nth$ (- (length$ ?*libros*) 2) ?*libros*) imprimir)
 )
 	
 	
