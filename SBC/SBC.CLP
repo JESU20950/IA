@@ -1501,13 +1501,28 @@
 
 (deffunction ask-interval (?question)
 	(printout t ?question crlf)
-	(bind ?var1  (read))
-	(bind ?var2  (read))
-	(while   (and (or (not (integerp ?var1)) (not (integerp ?var2)))  (< ?var1 ?var2)) do
-        	(bind ?var1  (read))
-	        (bind ?var2  (read))
+	(bind ?answer2 (readline))
+	(bind ?answer (explode$ ?answer2))
+	(bind ?var1 (nth$ 1 ?answer))
+	(bind ?var2 (nth$ 2 ?answer))
+	(while (or (or (not (integerp ?var1)) (not (integerp ?var2))) (> ?var1 ?var2)) do
+        (printout t ?question crlf)
+        (bind ?answer2 (readline))
+        (bind ?answer (explode$ ?answer2))
+        (bind ?var1 (nth$ 1 ?answer))
+	    (bind ?var2 (nth$ 2 ?answer))
 	)
 	(return (create$ ?var1 ?var2))
+)
+
+(deffunction ask-age (?question)
+    (printout t ?question crlf)
+    (bind ?answer (read))
+    (while (or (not (integerp ?answer)) (< ?answer 0) (> ?answer 150)) do
+        (printout t ?question crlf)
+        (bind ?answer (read))
+    )
+    (return ?answer)
 )
 
 (deffunction ask-number (?question)
@@ -1517,6 +1532,16 @@
       (printout t ?question crlf)
       (bind ?answer (read)))
    (return ?answer)
+)
+
+(deffunction ask-positive-number (?question)
+    (printout t ?question crlf)
+    (bind ?answer (read))
+    (while (or (not (integerp ?answer)) (< ?answer 0)) do
+        (printout t ?question crlf)
+        (bind ?answer (read))
+    )
+    (return ?answer)
 )
 
 (deffunction ask-question (?question $?allowed-values)
@@ -1549,7 +1574,7 @@
     (loop-for-count (?i 1 (length$ ?answer)) do
        (bind ?var (nth$ ?i ?answer))
        (if  (or (or (not (integerp ?var)) (> ?var (length$ ?list))) (< ?var  1)) then
-            (ask-multievaluated ?question ?list)
+            (return (ask-multievaluated ?question ?list))
       )
     )
 	
@@ -1561,6 +1586,7 @@
     )
     (return ?result)
 )
+
 
 (deffunction get-all-values (?var ?slot) 
 	(bind $?list (create$))
@@ -1655,11 +1681,12 @@
      (printout t "Generos: " (get-all-values ?self:libro_genero id_genero) crlf)
      (printout t "Idioma: " (get-all-values ?self:libro_idioma id_idioma) crlf)
      (printout t "Price": ?self:precio crlf)
-	 (printout t "Puntuacion: " ?self:Puntuacion crlf crlf crlf crlf crlf)
+	 (printout t "Puntuacion: " ?self:Puntuacion crlf)
      (printout t "Motivos:" crlf)
      (loop-for-count  (?i 1  (length$ ?self:Motivos)) do
-     (printout t ?i ". " (nth$ ?i ?self:Motivos) crlf)
+        (printout t ?i ". " (nth$ ?i ?self:Motivos) crlf)
      )
+     (printout t crlf)
 )
 
 
@@ -1670,7 +1697,7 @@
     (defrule years_old
     (declare (salience 100))
     =>
-    (bind ?response (ask-number "How old are you? "))
+    (bind ?response (ask-age "How old are you? "))
     (assert (years ?response))
 	
     )
@@ -1678,7 +1705,7 @@
 	(defrule work 
 	(declare (salience 99))
 	(years ?var)
-	(test (> ?var 14))
+	(test (> ?var 16))
 	=>
 	(if (yes-or-no-p "Actually are you working?") then (assert (working TRUE))
 	 else (assert (working TRUE)))
@@ -1690,7 +1717,7 @@
     (defrule frequency-read
 		(declare (salience 98))
 		=> 
-		(bind ?response (ask-number "How many hours do you read every week?"))
+		(bind ?response (ask-positive-number "How many hours do you read every week?"))
 		(if (> ?response 9) then (assert (frequency_read high))
 		else (if (< ?response 4) then (assert (frequency_read low))
 		else (assert (frequency_read medium))))
@@ -1713,13 +1740,14 @@
 
 ;;;;; ABSTRACCION DE LIBRO QUE BUSCA
     (defrule size-book
-	(frequency_read low)
-	=> 
-	(bind ?response (ask-number "How many pages will the book have? (Doesn't matter -1)  "))
-	(if (< ?response 400) then (assert (size_book little-book))
-	else if (= ?response -1) then (assert (size_book no-care))
-	else (assert (size-book long-book))
-    )
+        (frequency_read low)
+        => 
+        (bind ?response (ask-number "How many pages will the book have? (Doesn't matter: negative value)  "))
+        (if (< ?response 0) then (assert (size_book no-care))
+        else (if (> ?response 400) then (assert (size_book long-book))
+                else (assert (size_book little-book))
+            )
+        )
     )
     
 	(defrule time-book
@@ -1734,7 +1762,7 @@
 	
 	(defrule level-book
 	(years ?var)
-	(test (> ?var 14))
+	(test (> ?var 16))
 	=>
 	(bind ?response (ask-question "Level of the book?(easy,medium,hard, no-care)" easy medium hard no-care))
 	(if (eq ?response easy) then (assert (level_book easy))
@@ -1746,19 +1774,12 @@
 
 	(defrule price-book
 		(years ?var)
-		(test (> ?var 14))
+		(test (> ?var 16))
 		=>
-		(bind ?response (ask-interval "Price of the book?(give an interval of two numbers)"))
+		(bind ?response (ask-interval "Price of the book?(give an interval of two numbers separated with a space, make sure that the number1 is smaller than number2)"))
 		(bind ?lowerBound (nth$ 1 ?response))
 		(bind ?upperBound (nth$ 2 ?response))
-		(if (< ?upperBound 10) then 
-			(assert (price_book cheap))
-		else
-			(if (> ?lowerBound 30) then 
-				(assert (price_book expensive))
-			else (assert (price_book normal))
-			)
-		)
+		(assert (price_book ?response))
 	)
 	
 
@@ -1772,14 +1793,16 @@
 	(bind ?*libros*  (find-all-instances ((?ins Libro)) TRUE))
 	)
 
+	
 (defrule puntuation 
 	(size_book little-book)
 	=> 
 	 (loop-for-count (?i 1 (length$ ?*libros*)) do
-		(bind ?puntuacion 1)
+		(bind ?puntuacion 10)
 		(bind ?libro (nth$ ?i ?*libros*))
-		( if (< (send ?libro get-numero_de_paginas)  400 ) then (bind ?libro (increase-puntuation ?libro ?puntuacion))
-		  else (bind ?libro (decrease-puntuation ?libro ?puntuacion))
+		( if (< (send ?libro get-numero_de_paginas)  400 ) then 
+            (bind ?libro (increase-puntuation ?libro ?puntuacion))
+            (send ?libro put-Motivos "This book is a short book (less than 400 pages)")
 		)
 		(replace$ ?*libros* ?i ?i ?libro)
 	 )
@@ -1789,28 +1812,31 @@
 	(size_book long-book)
 	=> 
 	 (loop-for-count (?i 1 (length$ ?*libros*)) do
-		(bind ?puntuacion 1)
+		(bind ?puntuacion 10)
 		(bind ?libro (nth$ ?i ?*libros*))
-		( if (>= (send ?libro get-numero_de_paginas)  400 ) then (bind ?libro (increase-puntuation ?libro ?puntuacion))
-		  else (bind ?libro (decrease-puntuation ?libro ?puntuacion))
+		( if (>= (send ?libro get-numero_de_paginas) 400) then 
+            (bind ?libro (increase-puntuation ?libro ?puntuacion))
+            (send ?libro put-Motivos "This book is a large book (exactly or more than 400 pages)")
 		)
 		(replace$ ?*libros* ?i ?i ?libro)
 	 )
 )
 
-(deffunction puntuacion_multi_evaluated (?puntuacion ?response ?relacion ?identificador)
+(deffunction puntuacion_multi_evaluated_1 (?puntuacion ?response ?relacion ?identificador)
 	(loop-for-count (?i 1 (length$ ?response)) do
         (bind ?unique_response (nth$ ?i ?response))
 
         (loop-for-count (?j 1 (length$ ?*libros*)) do
             (bind ?libro (nth$ ?j ?*libros*))
             (bind ?relacion_libro (send ?libro (sym-cat get- ?relacion)))
-            
+            (bind ?motives "This book have: ")
             (loop-for-count (?k 1 (length$ ?relacion_libro)) do
-                (if (eq (send (nth$ ?k ?relacion_libro) (sym-cat get- ?identificador)) ?unique_response) then (bind ?libro (increase-puntuation ?libro ?puntuacion))
+                (if (eq (send (nth$ ?k ?relacion_libro) (sym-cat get- ?identificador)) ?unique_response) then 
+                    (bind ?libro (increase-puntuation ?libro ?puntuacion))
+                    (bind ?motives (str-cat ?motives ?unique_response " "))
+                )
             )
-            )
-            
+            (send ?libro put-Motivos ?motives)
             (replace$ ?*libros* ?j ?j ?libro)
 	   )
     )
@@ -1820,25 +1846,45 @@
 (defrule puntuation3 ""
 	(favourite_genre $?generos)
 	=>
-    (puntuacion_multi_evaluated 10 ?generos libro_genero id_genero)
+    (puntuacion_multi_evaluated_1 10 ?generos libro_genero id_genero)
 )
 
 (defrule puntuation4 "" 
     (user_languages $?response)
     =>
-    (puntuacion_multi_evaluated 10 ?response libro_idioma id_idioma)
+    (puntuacion_multi_evaluated_1 10 ?response libro_idioma id_idioma)
 )
 
-
+(defrule puntacion5 ""
+    (price_book $?answer)
+    =>
+    (bind ?puntuacion 10)
+    (bind ?lowerBound (nth$ 1 ?answer))
+    (bind ?upperBound (nth$ 2 ?answer))
+    (loop-for-count (?i 1 (length$ ?*libros*)) do
+        (bind ?libro (nth$ ?i ?*libros*))
+        (bind ?precio (send ?libro get-precio))
+        (if (< ?precio ?lowerBound) then 
+            (bind ?libro (increase-puntuation ?libro ?puntuacion))
+            (send ?libro put-Motivos "This book is cheap")
+        else 
+            (if (< ?precio ?upperBound) then 
+                (bind ?libro (increase-puntuation ?libro (div ?puntuacion 2)))
+                (send ?libro put-Motivos "This book is relatively cheap")
+            )
+        )
+        (replace$ ?*libros* ?i ?i ?libro)
+    )
+)
 
 
 (defrule final_solution ""
 	(declare (salience -1))
 	=> 
 	 (bind ?*libros* (merge_sort ?*libros*))
-	 ;(loop-for-count (?i 1 (length$ ?*libros*)) do
-	;	(send (nth$ ?i ?*libros*) imprimir)
-	;	)
+	 (loop-for-count (?i 1 (length$ ?*libros*)) do
+		(send (nth$ ?i ?*libros*) imprimir)
+		)
 	 
     (printout t "The recommended books are:" crlf)
     (send (nth$ (- (length$ ?*libros*) 0) ?*libros*) imprimir)
