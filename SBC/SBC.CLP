@@ -1699,7 +1699,6 @@
     =>
     (bind ?response (ask-age "How old are you? "))
     (assert (years ?response))
-	
     )
     
 	(defrule work 
@@ -1710,9 +1709,6 @@
 	(if (yes-or-no-p "Actually are you working?") then (assert (working TRUE))
 	 else (assert (working TRUE)))
 	)
-    
-    
-    
     
     (defrule frequency-read
 		(declare (salience 98))
@@ -1737,6 +1733,12 @@
     (assert (user_languages ?response))
     )
 
+    (defrule cinema
+		(declare (salience 95))
+		=>
+		(if (yes-or-no-p "Do you like movies?") then (assert (movies TRUE))
+		else (assert (movies FALSE)))
+	)
 
 ;;;;; ABSTRACCION DE LIBRO QUE BUSCA
     (defrule size-book
@@ -1782,7 +1784,15 @@
 		(assert (price_book ?response))
 	)
 	
-
+	(defrule publico
+		(years ?var)
+		=>
+		(if (and (> ?var 0) (<= ?var 6)) then (assert (public children))
+		else (if (and (> ?var 6) (<= ?var 12)) then (assert (public young))
+		else (if (and (> ?var 12) (<= ?var 18)) then (assert (public teenager))
+		else (if (and (> ?var 18) (<= ?var 50)) then (assert (public adult))
+		else (assert (public old))))))
+	)
 
 ;;;;;;;;;;;; REGLAS DE ASOCIACION HEURÍSITCA ;;;;;;;;;;;;;;;;
 (defglobal ?*libros* = nil)
@@ -1794,7 +1804,7 @@
 	)
 
 	
-(defrule puntuation 
+(defrule puntuation ""
 	(size_book little-book)
 	=> 
 	 (loop-for-count (?i 1 (length$ ?*libros*)) do
@@ -1808,7 +1818,7 @@
 	 )
 )
 
-(defrule puntuation2 
+(defrule puntuation2 ""
 	(size_book long-book)
 	=> 
 	 (loop-for-count (?i 1 (length$ ?*libros*)) do
@@ -1841,6 +1851,7 @@
 	   )
     )
 )
+
 
 
 (defrule puntuation3 ""
@@ -1877,14 +1888,70 @@
     )
 )
 
+(defrule puntuation6 ""
+	(movies TRUE)
+	=>
+	(bind ?puntuacion 10)
+	(loop-for-count (?i 1 (length$ ?*libros*)) do
+		(bind ?libro (nth$ ?i ?*libros*))
+		(bind ?movie (send ?libro get-adaptada_a_cine))
+		(if ?movie then (bind ?libro (increase-puntuation ?libro ?puntuacion)))
+		(replace$ ?*libros* ?i ?i ?libro)
+	)
+)
+
+(defrule puntuation7 ""
+	=>
+	(bind ?puntuacion 3)
+	(loop-for-count (?i 1 (length$ ?*libros*)) do
+		(bind ?libro (nth$ ?i ?*libros*))
+		(bind ?bs (send ?libro get-best_seller))
+		(if ?bs then (bind ?libro (increase-puntuation ?libro ?puntuacion)))
+		(replace$ ?*libros* ?i ?i ?libro)
+	)
+)
+
+(deffunction abc ()
+	(printout t "HOLA")
+)
+
+(deffunction calculo_publico (?response ?ope1 ?cant1 ?ope2 ?cant2 ?ope3 ?cant3 ?ope4 ?cant4 ?ope5 ?cant5)
+	(loop-for-count (?i 1 (length$ ?*libros*)) do
+		(bind ?libro (nth$ ?i ?*libros*))
+		(bind ?publico (send ?libro get-publico))
+		(if (eq ?publico "Children") then 
+			(bind ?libro ((sym-cat ?ope1 -puntuation) ?libro ?cant1))
+		else (if (eq ?publico "Young People") then
+			(bind ?libro ((sym-cat ?ope2 -puntuation) ?libro ?cant2))
+		else (if (eq ?publico "Adolescents") then
+			(bind ?libro ((sym-cat ?ope3 -puntuation) ?libro ?cant3))
+		else (if (eq ?publico "Adults") then
+			(bind ?libro ((sym-cat ?ope4 -puntuation) ?libro ?cant4))
+		else (if (eq ?publico "Old people") then
+			(bind ?libro ((sym-cat ?ope5 -puntuation) ?libro ?cant5))
+		)))))
+		(replace$ ?*libros* ?i ?i ?libro)
+	)
+)
+
+;(defrule puntuation8 ""
+;	(public ?response)
+;	=>
+;	(bind ?puntuacion1 10)
+;	(bind ?puntuacion2 5)
+;	(if (eq ?response children) then 
+;		
+;	else
+;	
+;)
 
 (defrule final_solution ""
 	(declare (salience -1))
 	=> 
 	 (bind ?*libros* (merge_sort ?*libros*))
-	 (loop-for-count (?i 1 (length$ ?*libros*)) do
-		(send (nth$ ?i ?*libros*) imprimir)
-		)
+	 ;(loop-for-count (?i 1 (length$ ?*libros*)) do
+		;(send (nth$ ?i ?*libros*) imprimir)
+		;)
 	 
     (printout t "The recommended books are:" crlf)
     (send (nth$ (- (length$ ?*libros*) 0) ?*libros*) imprimir)
