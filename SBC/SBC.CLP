@@ -1597,8 +1597,6 @@
 	(return ?list)
 )
 
-
-
 (deffunction increase-puntuation (?libro ?puntuation)
       (send  ?libro put-Puntuacion ( + (send ?libro get-Puntuacion) ?puntuation) )
 	  (return ?libro)
@@ -1787,11 +1785,11 @@
 	(defrule publico
 		(years ?var)
 		=>
-		(if (and (> ?var 0) (<= ?var 6)) then (assert (public children))
-		else (if (and (> ?var 6) (<= ?var 12)) then (assert (public young))
-		else (if (and (> ?var 12) (<= ?var 18)) then (assert (public teenager))
-		else (if (and (> ?var 18) (<= ?var 50)) then (assert (public adult))
-		else (assert (public old))))))
+		(if (and (> ?var 0) (<= ?var 6)) then (assert (public "Children"))
+		else (if (and (> ?var 6) (<= ?var 12)) then (assert (public "Young people"))
+		else (if (and (> ?var 12) (<= ?var 18)) then (assert (public "Adolescents"))
+		else (if (and (> ?var 18) (<= ?var 50)) then (assert (public "Adults"))
+		else (assert (public "Old people"))))))
 	)
 
 ;;;;;;;;;;;; REGLAS DE ASOCIACION HEURÍSITCA ;;;;;;;;;;;;;;;;
@@ -1804,146 +1802,174 @@
 	)
 
 	
-(defrule puntuation ""
-	(size_book little-book)
-	=> 
-	 (loop-for-count (?i 1 (length$ ?*libros*)) do
-		(bind ?puntuacion 10)
-		(bind ?libro (nth$ ?i ?*libros*))
-		( if (< (send ?libro get-numero_de_paginas)  400 ) then 
-            (bind ?libro (increase-puntuation ?libro ?puntuacion))
-            (send ?libro put-Motivos "This book is a short book (less than 400 pages)")
-		)
-		(replace$ ?*libros* ?i ?i ?libro)
-	 )
-)
-
-(defrule puntuation2 ""
-	(size_book long-book)
-	=> 
-	 (loop-for-count (?i 1 (length$ ?*libros*)) do
-		(bind ?puntuacion 10)
-		(bind ?libro (nth$ ?i ?*libros*))
-		( if (>= (send ?libro get-numero_de_paginas) 400) then 
-            (bind ?libro (increase-puntuation ?libro ?puntuacion))
-            (send ?libro put-Motivos "This book is a large book (exactly or more than 400 pages)")
-		)
-		(replace$ ?*libros* ?i ?i ?libro)
-	 )
-)
-
-(deffunction puntuacion_multi_evaluated_1 (?puntuacion ?response ?relacion ?identificador)
-	(loop-for-count (?i 1 (length$ ?response)) do
-        (bind ?unique_response (nth$ ?i ?response))
-
-        (loop-for-count (?j 1 (length$ ?*libros*)) do
-            (bind ?libro (nth$ ?j ?*libros*))
-            (bind ?relacion_libro (send ?libro (sym-cat get- ?relacion)))
-            (bind ?motives "This book have: ")
-            (loop-for-count (?k 1 (length$ ?relacion_libro)) do
-                (if (eq (send (nth$ ?k ?relacion_libro) (sym-cat get- ?identificador)) ?unique_response) then 
-                    (bind ?libro (increase-puntuation ?libro ?puntuacion))
-                    (bind ?motives (str-cat ?motives ?unique_response " "))
-                )
-            )
-            (send ?libro put-Motivos ?motives)
-            (replace$ ?*libros* ?j ?j ?libro)
-	   )
-    )
-)
-
-
-
-(defrule puntuation3 ""
-	(favourite_genre $?generos)
-	=>
-    (puntuacion_multi_evaluated_1 10 ?generos libro_genero id_genero)
-)
-
-(defrule puntuation4 "" 
-    (user_languages $?response)
-    =>
-    (puntuacion_multi_evaluated_1 10 ?response libro_idioma id_idioma)
-)
-
-(defrule puntacion5 ""
-    (price_book $?answer)
-    =>
-    (bind ?puntuacion 10)
-    (bind ?lowerBound (nth$ 1 ?answer))
-    (bind ?upperBound (nth$ 2 ?answer))
-    (loop-for-count (?i 1 (length$ ?*libros*)) do
-        (bind ?libro (nth$ ?i ?*libros*))
-        (bind ?precio (send ?libro get-precio))
-        (if (< ?precio ?lowerBound) then 
-            (bind ?libro (increase-puntuation ?libro ?puntuacion))
-            (send ?libro put-Motivos "This book is cheap")
-        else 
-            (if (< ?precio ?upperBound) then 
-                (bind ?libro (increase-puntuation ?libro (div ?puntuacion 2)))
-                (send ?libro put-Motivos "This book is relatively cheap")
-            )
-        )
-        (replace$ ?*libros* ?i ?i ?libro)
-    )
-)
-
-(defrule puntuation6 ""
-	(movies TRUE)
-	=>
-	(bind ?puntuacion 10)
-	(loop-for-count (?i 1 (length$ ?*libros*)) do
-		(bind ?libro (nth$ ?i ?*libros*))
-		(bind ?movie (send ?libro get-adaptada_a_cine))
-		(if ?movie then (bind ?libro (increase-puntuation ?libro ?puntuacion)))
-		(replace$ ?*libros* ?i ?i ?libro)
-	)
-)
-
-(defrule puntuation7 ""
-	=>
-	(bind ?puntuacion 3)
-	(loop-for-count (?i 1 (length$ ?*libros*)) do
-		(bind ?libro (nth$ ?i ?*libros*))
-		(bind ?bs (send ?libro get-best_seller))
-		(if ?bs then (bind ?libro (increase-puntuation ?libro ?puntuacion)))
-		(replace$ ?*libros* ?i ?i ?libro)
-	)
-)
-
-(deffunction abc ()
-	(printout t "HOLA")
-)
-
-(deffunction calculo_publico (?response ?ope1 ?cant1 ?ope2 ?cant2 ?ope3 ?cant3 ?ope4 ?cant4 ?ope5 ?cant5)
-	(loop-for-count (?i 1 (length$ ?*libros*)) do
-		(bind ?libro (nth$ ?i ?*libros*))
-		(bind ?publico (send ?libro get-publico))
-		(if (eq ?publico "Children") then 
-			(bind ?libro ((sym-cat ?ope1 -puntuation) ?libro ?cant1))
-		else (if (eq ?publico "Young People") then
-			(bind ?libro ((sym-cat ?ope2 -puntuation) ?libro ?cant2))
-		else (if (eq ?publico "Adolescents") then
-			(bind ?libro ((sym-cat ?ope3 -puntuation) ?libro ?cant3))
-		else (if (eq ?publico "Adults") then
-			(bind ?libro ((sym-cat ?ope4 -puntuation) ?libro ?cant4))
-		else (if (eq ?publico "Old people") then
-			(bind ?libro ((sym-cat ?ope5 -puntuation) ?libro ?cant5))
-		)))))
-		(replace$ ?*libros* ?i ?i ?libro)
-	)
-)
-
-;(defrule puntuation8 ""
-;	(public ?response)
-;	=>
-;	(bind ?puntuacion1 10)
-;	(bind ?puntuacion2 5)
-;	(if (eq ?response children) then 
-;		
-;	else
-;	
+;(defrule puntuation ""
+;	(size_book little-book)
+;	=> 
+;	 (loop-for-count (?i 1 (length$ ?*libros*)) do
+;		(bind ?puntuacion 10)
+;		(bind ?libro (nth$ ?i ?*libros*))
+;		( if (< (send ?libro get-numero_de_paginas)  400 ) then 
+;            (bind ?libro (increase-puntuation ?libro ?puntuacion))
+;            (send ?libro put-Motivos "This book is a short book (less than 400 pages)")
+;		)
+;		(replace$ ?*libros* ?i ?i ?libro)
+;	 )
 ;)
+;
+;(defrule puntuation2 ""
+;	(size_book long-book)
+;	=> 
+;	 (loop-for-count (?i 1 (length$ ?*libros*)) do
+;		(bind ?puntuacion 10)
+;		(bind ?libro (nth$ ?i ?*libros*))
+;		( if (>= (send ?libro get-numero_de_paginas) 400) then 
+;            (bind ?libro (increase-puntuation ?libro ?puntuacion))
+;            (send ?libro put-Motivos "This book is a large book (exactly or more than 400 pages)")
+;		)
+;		(replace$ ?*libros* ?i ?i ?libro)
+;	 )
+;)
+;
+;(deffunction puntuacion_multi_evaluated_1 (?puntuacion ?response ?relacion ?identificador)
+;	(loop-for-count (?i 1 (length$ ?response)) do
+;        (bind ?unique_response (nth$ ?i ?response))
+;
+;        (loop-for-count (?j 1 (length$ ?*libros*)) do
+;            (bind ?libro (nth$ ?j ?*libros*))
+;            (bind ?relacion_libro (send ?libro (sym-cat get- ?relacion)))
+;            (bind ?motives "This book have: ")
+;            (loop-for-count (?k 1 (length$ ?relacion_libro)) do
+;                (if (eq (send (nth$ ?k ?relacion_libro) (sym-cat get- ?identificador)) ?unique_response) then 
+;                    (bind ?libro (increase-puntuation ?libro ?puntuacion))
+;                    (bind ?motives (str-cat ?motives ?unique_response " "))
+;                )
+;            )
+;            (send ?libro put-Motivos ?motives)
+;            (replace$ ?*libros* ?j ?j ?libro)
+;	   )
+;    )
+;)
+;
+;
+;
+;(defrule puntuation3 ""
+;	(favourite_genre $?generos)
+;	=>
+;    (puntuacion_multi_evaluated_1 10 ?generos libro_genero id_genero)
+;)
+;
+;(defrule puntuation4 "" 
+;    (user_languages $?response)
+;    =>
+;    (puntuacion_multi_evaluated_1 10 ?response libro_idioma id_idioma)
+;)
+;
+;(defrule puntacion5 ""
+;    (price_book $?answer)
+;    =>
+;    (bind ?puntuacion 10)
+;    (bind ?lowerBound (nth$ 1 ?answer))
+;    (bind ?upperBound (nth$ 2 ?answer))
+;    (loop-for-count (?i 1 (length$ ?*libros*)) do
+;        (bind ?libro (nth$ ?i ?*libros*))
+;        (bind ?precio (send ?libro get-precio))
+;        (if (< ?precio ?lowerBound) then 
+;            (bind ?libro (increase-puntuation ?libro ?puntuacion))
+;            (send ?libro put-Motivos "This book is cheap")
+;        else 
+;            (if (< ?precio ?upperBound) then 
+;                (bind ?libro (increase-puntuation ?libro (div ?puntuacion 2)))
+;                (send ?libro put-Motivos "This book is relatively cheap")
+;            )
+;        )
+;        (replace$ ?*libros* ?i ?i ?libro)
+;    )
+;)
+;
+;(defrule puntuation6 ""
+;	(movies TRUE)
+;	=>
+;	(bind ?puntuacion 10)
+;	(loop-for-count (?i 1 (length$ ?*libros*)) do
+;		(bind ?libro (nth$ ?i ?*libros*))
+;		(bind ?movie (send ?libro get-adaptada_a_cine))
+;		(if ?movie then (bind ?libro (increase-puntuation ?libro ?puntuacion)))
+;		(replace$ ?*libros* ?i ?i ?libro)
+;	)
+;)
+;
+;(defrule puntuation7 ""
+;	=>
+;	(bind ?puntuacion 3)
+;	(loop-for-count (?i 1 (length$ ?*libros*)) do
+;		(bind ?libro (nth$ ?i ?*libros*))
+;		(bind ?bs (send ?libro get-best_seller))
+;		(if ?bs then (bind ?libro (increase-puntuation ?libro ?puntuacion)))
+;		(replace$ ?*libros* ?i ?i ?libro)
+;	)
+;)
+
+(deffunction calculo_publico (?response ?puntuacion1 ?puntuacion2)
+	(bind ?value 0)
+	(switch ?response 
+			(case "Children" then 
+				(bind ?value 1)
+			)
+			(case "Young People" then 
+				(bind ?value 2)
+			)
+			(case "Adolescents" then 
+				(bind ?value 3)
+			)
+			(case "Adults" then 
+				(bind ?value 4)
+			)
+			(case "Old people" then 
+				(bind ?value 5)
+			)
+		)
+	(loop-for-count (?i 1 (length$ ?*libros*)) do
+		(bind ?libro (nth$ ?i ?*libros*))
+		(bind ?pub (send ?libro get-libro_publico))
+		(loop-for-count (?i2 1 (length$ ?pub)) do
+			(bind ?publico (send (nth$ ?i2 ?pub) get-id_publico))
+			(if (eq ?publico "Children") then 
+				(bind ?quantity (abs (- 1 ?value)))
+				(bind ?puntuacion (- ?puntuacion1 (* ?puntuacion2 ?quantity)))
+				(bind ?libro (increase-puntuation ?libro ?puntuacion))
+			)
+			(if (eq ?publico "Young People") then 
+				(bind ?quantity (abs (- 2 ?value)))
+				(bind ?puntuacion (- ?puntuacion1 (* ?puntuacion2 ?quantity)))
+				(bind ?libro (increase-puntuation ?libro ?puntuacion))
+			)
+			(if (eq ?publico "Adolescents") then 
+				(bind ?quantity (abs (- 3 ?value)))
+				(bind ?puntuacion (- ?puntuacion1 (* ?puntuacion2 ?quantity)))
+				(bind ?libro (increase-puntuation ?libro ?puntuacion))
+			)
+			(if (eq ?publico "Adults") then 
+				(bind ?quantity (abs (- 4 ?value)))
+				(bind ?puntuacion (- ?puntuacion1 (* ?puntuacion2 ?quantity)))
+				(bind ?libro (increase-puntuation ?libro ?puntuacion))
+			)
+			(if (eq ?publico "Old people") then 
+				(bind ?quantity (abs (- 5 ?value)))
+				(bind ?puntuacion (- ?puntuacion1 (* ?puntuacion2 ?quantity)))
+				(bind ?libro (increase-puntuation ?libro ?puntuacion))
+			)
+		)
+		(replace$ ?*libros* ?i ?i ?libro)
+	)
+)
+
+(defrule puntuation8 ""
+	(public ?response)
+	=>
+	(bind ?base 20)
+	(bind ?interval 5)
+	(calculo_publico ?response ?base ?interval)
+)
 
 (defrule final_solution ""
 	(declare (salience -1))
