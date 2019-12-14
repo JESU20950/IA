@@ -1565,7 +1565,7 @@
 (deffunction ask-multievaluated (?question ?list)
     (printout t ?question crlf)
     (loop-for-count (?i 1 (length ?list)) do
-	 (printout t ?i (nth$ ?i ?list) crlf)
+	 (printout t ?i " " (nth$ ?i ?list) crlf)
     )
     
     (bind ?answer2 (readline))
@@ -1716,21 +1716,21 @@
     (defrule favourite-genre
     (declare (salience 97))
     =>
-    (bind ?response (ask-multievaluated "Number"  (get-all-values (find-all-instances ((?inst Genero)) TRUE) id_genero ) ))
+    (bind ?response (ask-multievaluated "What genres do you want?"  (get-all-values (find-all-instances ((?inst Genero)) TRUE) id_genero ) ))
     (assert (favourite_genre ?response))
     )
     
     (defrule user-languages
     (declare (salience 96))
     =>
-    (bind ?response (ask-multievaluated "Number "  (get-all-values (find-all-instances ((?inst Idioma)) TRUE) id_idioma ) ))
+    (bind ?response (ask-multievaluated "What languagues do you want?"  (get-all-values (find-all-instances ((?inst Idioma)) TRUE) id_idioma ) ))
     (assert (user_languages ?response))
     )
 
     (defrule cinema
 		(declare (salience 95))
 		=>
-		(if (yes-or-no-p "Do you like movies?") then (assert (movies TRUE))
+		(if (yes-or-no-p "Do you like movies? (yes/no)") then (assert (movies TRUE))
 		else (assert (movies FALSE)))
 	)
 
@@ -1989,6 +1989,17 @@
 	(bind ?base 20)
 	(bind ?interval 5)
 	(calculo_publico ?response ?base ?interval)
+)
+
+(defrule filtro1 ""
+    (favourite_genre $?generos)
+    =>
+    ;(printout t (length$ ?generos))
+    (bind ?libros_aux (create$ ))
+    (loop-for-count (?i 1 (length$ ?*libros*)) do
+        (bind ?libro (nth$ ?i ?*libros*))
+        (loop-for-count (and (?j 1 (length$ ?))))
+    )
 )
 
 (defrule final_solution ""
