@@ -1657,7 +1657,6 @@
 		(bind ?left (merge_sort ?left))
 		(bind ?right (merge_sort ?right))
 		(return (merge ?right ?left))
-	
 )
 
 ;(sym-cat use ful ness) concatenacion de simbolos
@@ -1717,7 +1716,7 @@
     (defrule favourite-genre
     (declare (salience 97))
     =>
-    (bind ?response (ask-multievaluated "Number "  (get-all-values (find-all-instances ((?inst Genero)) TRUE) id_genero ) ))
+    (bind ?response (ask-multievaluated "Number"  (get-all-values (find-all-instances ((?inst Genero)) TRUE) id_genero ) ))
     (assert (favourite_genre ?response))
     )
     
@@ -1792,6 +1791,8 @@
 ;;;;;;;;;;;; REGLAS DE ASOCIACION HEURÍSITCA ;;;;;;;;;;;;;;;;
 (defglobal ?*libros* = nil)
 
+
+
 (defrule initial-solution 
 	(declare (salience 1000))
 	=>
@@ -1807,7 +1808,9 @@
 		(bind ?libro (nth$ ?i ?*libros*))
 		( if (< (send ?libro get-numero_de_paginas)  400 ) then 
             (bind ?libro (increase-puntuation ?libro ?puntuacion))
-            (send ?libro put-Motivos "This book is a short book (less than 400 pages)")
+			(bind ?motivo (send ?libro get-Motivos))
+			(bind ?motivo (insert$ ?motivo (+ (length$ ?motivo) 1) "This book is a short book (less than 400 pages)"))
+            (send ?libro put-Motivos ?motivo)
 		)
 		(replace$ ?*libros* ?i ?i ?libro)
 	 )
@@ -1821,28 +1824,35 @@
 		(bind ?libro (nth$ ?i ?*libros*))
 		( if (>= (send ?libro get-numero_de_paginas) 400) then 
             (bind ?libro (increase-puntuation ?libro ?puntuacion))
-            (send ?libro put-Motivos "This book is a large book (exactly or more than 400 pages)")
+			(bind ?motivo (send ?libro get-Motivos))
+			(bind ?motivo (insert$ ?motivo (+ (length$ ?motivo) 1) "This book is a large book (exactly or more than 400 pages)"))
+            (send ?libro put-Motivos ?motivo)
 		)
 		(replace$ ?*libros* ?i ?i ?libro)
 	 )
 )
 
-(deffunction puntuacion_multi_evaluated_1 (?puntuacion ?response ?relacion ?identificador)
+(deffunction puntuacion_multi_evaluated_1 (?puntuacion ?response ?relacion ?identificador ?tipo)
 	(loop-for-count (?i 1 (length$ ?response)) do
         (bind ?unique_response (nth$ ?i ?response))
 
         (loop-for-count (?j 1 (length$ ?*libros*)) do
             (bind ?libro (nth$ ?j ?*libros*))
             (bind ?relacion_libro (send ?libro (sym-cat get- ?relacion)))
-            (bind ?motives "This book have: ")
+            (bind ?motives "")
             (loop-for-count (?k 1 (length$ ?relacion_libro)) do
                 (if (eq (send (nth$ ?k ?relacion_libro) (sym-cat get- ?identificador)) ?unique_response) then 
                     (bind ?libro (increase-puntuation ?libro ?puntuacion))
                     (bind ?motives (str-cat ?motives ?unique_response " "))
                 )
             )
-            (send ?libro put-Motivos ?motives)
-            (replace$ ?*libros* ?j ?j ?libro)
+			(if (not (eq ?motives "")) then
+                (bind ?motives (str-cat ?tipo ?motives))
+				(bind ?motivo (send ?libro get-Motivos))
+				(bind ?motivo (insert$ ?motivo (+ (length$ ?motivo) 1) ?motives))
+				(send ?libro put-Motivos ?motivo)
+				(replace$ ?*libros* ?j ?j ?libro)
+			)
 	   )
     )
 )
@@ -1852,13 +1862,13 @@
 (defrule puntuation3 ""
 	(favourite_genre $?generos)
 	=>
-    (puntuacion_multi_evaluated_1 10 ?generos libro_genero id_genero)
+    (puntuacion_multi_evaluated_1 10 ?generos libro_genero id_genero "The genres of the book are: ")
 )
 
 (defrule puntuation4 "" 
     (user_languages $?response)
     =>
-    (puntuacion_multi_evaluated_1 10 ?response libro_idioma id_idioma)
+    (puntuacion_multi_evaluated_1 10 ?response libro_idioma id_idioma "The book has the following languages: ")
 )
 
 (defrule puntacion5 ""
@@ -1872,11 +1882,15 @@
         (bind ?precio (send ?libro get-precio))
         (if (< ?precio ?lowerBound) then 
             (bind ?libro (increase-puntuation ?libro ?puntuacion))
-            (send ?libro put-Motivos "This book is cheap")
+			(bind ?motivo (send ?libro get-Motivos))
+			(bind ?motivo (insert$ ?motivo (+ (length$ ?motivo) 1) "This book is cheap"))
+            (send ?libro put-Motivos ?motivo)
         else 
             (if (< ?precio ?upperBound) then 
                 (bind ?libro (increase-puntuation ?libro (div ?puntuacion 2)))
-                (send ?libro put-Motivos "This book is relatively cheap")
+				(bind ?motivo (send ?libro get-Motivos))
+				(insert$ ?motivo (+ (length$ ?motivo) 1) "This book is affordable")
+				(send ?libro put-Motivos ?motivo)
             )
         )
         (replace$ ?*libros* ?i ?i ?libro)
@@ -1890,7 +1904,12 @@
 	(loop-for-count (?i 1 (length$ ?*libros*)) do
 		(bind ?libro (nth$ ?i ?*libros*))
 		(bind ?movie (send ?libro get-adaptada_a_cine))
-		(if ?movie then (bind ?libro (increase-puntuation ?libro ?puntuacion)))
+		(if ?movie then 
+			(bind ?libro (increase-puntuation ?libro ?puntuacion))			
+			(bind ?motivo (send ?libro get-Motivos))
+			(bind ?motivo (insert$ ?motivo (+ (length$ ?motivo) 1) "This book has been adapted to a movie"))
+			(send ?libro put-Motivos ?motivo)
+		)
 		(replace$ ?*libros* ?i ?i ?libro)
 	)
 )
@@ -1901,17 +1920,14 @@
 	(loop-for-count (?i 1 (length$ ?*libros*)) do
 		(bind ?libro (nth$ ?i ?*libros*))
 		(bind ?bs (send ?libro get-best_seller))
-		(if ?bs then (bind ?libro (increase-puntuation ?libro ?puntuacion)))
+		(if ?bs then 
+			(bind ?libro (increase-puntuation ?libro ?puntuacion))	
+			(bind ?motivo (send ?libro get-Motivos))
+			(insert$ ?motivo (+ (length$ ?motivo) 1) "This book is a best seller")
+			(send ?libro put-Motivos ?motivo)			
+		)
 		(replace$ ?*libros* ?i ?i ?libro)
 	)
-)
-
-(deffunction a ()
-	(bind ?sum 0)
-	(loop-for-count (?i 1 5) do
-		(bind ?sum (+ ?sum 3))
-	)
-	(printout t ?sum crlf)
 )
 
 (deffunction calculo_publico (?response ?puntuacion1 ?puntuacion2)
