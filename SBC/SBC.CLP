@@ -1669,10 +1669,23 @@
      (printout t "The characteristics of the book are:" crlf)
      (printout t "Title: "  ?self:titulo crlf)
      (if (neq ?self:subtitulo nil) then (printout t "Subtitle: "  ?self:subtitulo crlf))
+     (printout t "Has a film?: " ?self:adaptada_a_cine crlf)
      (printout t "Year of publication: " ?self:anyo_publicacion crlf)
+     (printout t "Best-Seller: " ?self:best_seller crlf)
+     (printout t "Feelings produced: " (get-all-values ?self:libro_animo id_animo) crlf)
+     (printout t "Ilustrators: " (get-all-values ?self:libro_dibujante id_persona) crlf)
+     (printout t "Writter: " (get-all-values ?self:libro_escritor id_persona) crlf)
      (printout t "Number of pages: "  ?self:numero_de_paginas crlf)
-     (printout t "Generos: " (get-all-values ?self:libro_genero id_genero) crlf)
-     (printout t "Idioma: " (get-all-values ?self:libro_idioma id_idioma) crlf)
+     (printout t "Genres: " (get-all-values ?self:libro_genero id_genero) crlf)
+     (printout t "Languages: " (get-all-values ?self:libro_idioma id_idioma) crlf)
+     (printout t "Original language: " (get-all-values ?self:libro_idioma_original id_idioma) crlf)
+     (printout t "Level: " (get-all-values ?self:libro_nivel id_nivel) crlf)
+     (printout t "Main characters: " (get-all-values ?self:libro_personaje_principal id_personaje) crlf)
+     (printout t "Secondary characters: " (get-all-values ?self:libro_personaje_secundario id_personaje) crlf)
+     (printout t "The story take place in the : " (get-all-values ?self:libro_tiempo id_tiempo) crlf)
+     (printout t "Real world?: " ?self:mundo_real crlf)
+     (printout t "Independent novel: " ?self:novela_independiente crlf)
+     (printout t "First person: " ?self:primera_persona crlf)
      (printout t "Price": ?self:precio crlf)
 	 (printout t "Puntuacion: " ?self:Puntuacion crlf)
 	 (printout t "Publico: " (get-all-values ?self:libro_publico id_publico) crlf)
@@ -1700,7 +1713,7 @@
 	(years ?var)
 	(test (> ?var 16))
 	=>
-	(if (yes-or-no-p "Actually are you working?") then (assert (working TRUE))
+	(if (yes-or-no-p "Actually are you working? (yes/no)") then (assert (working TRUE))
 	 else (assert (working TRUE)))
 	)
     
@@ -1857,13 +1870,11 @@
     )
 )
 
-
-
-(defrule puntuation3 ""
-	(favourite_genre $?generos)
-	=>
-    (puntuacion_multi_evaluated_1 10 ?generos libro_genero id_genero "The genres of the book are: ")
-)
+;(defrule puntuation3 ""
+;	(favourite_genre $?generos)
+;	=>
+;   (puntuacion_multi_evaluated_1 10 ?generos libro_genero id_genero "The genres of the book are: ")
+;)
 
 (defrule puntuation4 "" 
     (user_languages $?response)
@@ -1889,7 +1900,7 @@
             (if (< ?precio ?upperBound) then 
                 (bind ?libro (increase-puntuation ?libro (div ?puntuacion 2)))
 				(bind ?motivo (send ?libro get-Motivos))
-				(insert$ ?motivo (+ (length$ ?motivo) 1) "This book is affordable")
+				(bind ?motivo (insert$ ?motivo (+ (length$ ?motivo) 1) "This book is affordable"))
 				(send ?libro put-Motivos ?motivo)
             )
         )
@@ -1923,7 +1934,7 @@
 		(if ?bs then 
 			(bind ?libro (increase-puntuation ?libro ?puntuacion))	
 			(bind ?motivo (send ?libro get-Motivos))
-			(insert$ ?motivo (+ (length$ ?motivo) 1) "This book is a best seller")
+			(bind ?motivo (insert$ ?motivo (+ (length$ ?motivo) 1) "This book is a best seller"))
 			(send ?libro put-Motivos ?motivo)			
 		)
 		(replace$ ?*libros* ?i ?i ?libro)
@@ -1998,22 +2009,38 @@
     (bind ?libros_aux (create$ ))
     (loop-for-count (?i 1 (length$ ?*libros*)) do
         (bind ?libro (nth$ ?i ?*libros*))
-        (loop-for-count (and (?j 1 (length$ ?))))
+        (bind ?notfound TRUE)
+        (bind ?j 1)
+        (while (and ?notfound (<= ?j (length$ ?generos))) do
+            (bind ?gen1 (nth$ ?j ?generos))
+            (bind ?genero (send ?libro get-libro_genero))
+            (bind ?k 1)
+            (while (and ?notfound (<= ?k (length ?genero))) do
+                (bind ?gen2 (send (nth$ ?k ?genero) get-id_genero))
+                (if (eq ?gen1 ?gen2) then
+                    (bind ?libros_aux (insert$ ?libros_aux (+ (length$ ?libros_aux) 1) ?libro))
+                    (bind ?notfound FALSE)
+                )
+                (bind ?k (+ ?k 1))
+            )
+            (bind ?j (+ ?j 1))
+        )
     )
+    (bind ?*libros* ?libros_aux)
 )
 
 (defrule final_solution ""
 	(declare (salience -1))
 	=> 
 	 (bind ?*libros* (merge_sort ?*libros*))
-	 ;(loop-for-count (?i 1 (length$ ?*libros*)) do
-		;(send (nth$ ?i ?*libros*) imprimir)
-		;)
+	 (loop-for-count (?i 1 (length$ ?*libros*)) do
+		(send (nth$ ?i ?*libros*) imprimir)
+     )
 	 
-    (printout t "The recommended books are:" crlf)
-    (send (nth$ (- (length$ ?*libros*) 0) ?*libros*) imprimir)
-	(send (nth$ (- (length$ ?*libros*) 1) ?*libros*) imprimir)
-	(send (nth$ (- (length$ ?*libros*) 2) ?*libros*) imprimir)
+     ;(printout t "The recommended books are:" crlf)
+     ;(send (nth$ (- (length$ ?*libros*) 0) ?*libros*) imprimir)
+     ;(send (nth$ (- (length$ ?*libros*) 1) ?*libros*) imprimir)
+     ;(send (nth$ (- (length$ ?*libros*) 2) ?*libros*) imprimir)
 )
 	
 	
