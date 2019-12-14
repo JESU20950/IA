@@ -1,1489 +1,2039 @@
 ;;;PARA EJECUTAR batch ((batch "carga.clp"))
 ;;;;;;;;;;;;;;;;;;;;;;;;; ONTOLOGIA ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Wed Nov 27 18:13:47 CET 2019
-; 
+; Sat Dec 14 18:30:40 CET 2019
+;
 ;+ (version "3.5")
-;+ (build "Build 660")
-
-; Wed Nov 27 18:20:25 CET 2019
-; 
-;+ (version "3.5")
-;+ (build "Build 660")
+;+ (build "Build 663")
 
 
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
-	(is-a USER)
-	(role abstract)
-	(single-slot id_tiempo
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot libro_publico
-		(type INSTANCE)
-;+		(allowed-classes Publico)
-;+		(inverse-slot publico_libro)
-		(create-accessor read-write))
-	(single-slot sexualidad
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot animo_libro
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-;+		(inverse-slot libro_animo)
-		(create-accessor read-write))
-	(single-slot libro_personaje_principal
-		(type INSTANCE)
-;+		(allowed-classes Personaje)
-;+		(cardinality 0 1)
-;+		(inverse-slot personaje_principal_libro)
-		(create-accessor read-write))
-	(single-slot titulo
-;+		(comment "titulo del libro")
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot publico_libro
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-;+		(inverse-slot libro_publico)
-		(create-accessor read-write))
-	(multislot idioma_libro
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-;+		(inverse-slot libro_idioma)
-		(create-accessor read-write))
-	(single-slot subtitulo
-;+		(comment "subtitulo del libro")
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot primera_persona
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot anyo_publicacion
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot libro_idioma
-		(type INSTANCE)
-;+		(allowed-classes Idioma)
-;+		(inverse-slot idioma_libro)
-		(create-accessor read-write))
-	(single-slot Puntuacion
-;+		(comment "Puntuacion en la que se basa nuestra sistema de bases de conocimientos")
-		(type INTEGER)
-		(default 0)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot libro_personaje_secundario
-		(type INSTANCE)
-;+		(allowed-classes Personaje)
-;+		(cardinality 0 1)
-;+		(inverse-slot personaje_secundario_libro)
-		(create-accessor read-write))
-	(single-slot id_genero
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot id_personaje
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot genero_libro
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-;+		(inverse-slot libro_genero)
-		(create-accessor read-write))
-	(multislot libro_animo
-		(type INSTANCE)
-;+		(allowed-classes Animo)
-;+		(inverse-slot animo_libro)
-		(create-accessor read-write))
-	(multislot escritor_libro
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-;+		(inverse-slot libro_escritor)
-		(create-accessor read-write))
-	(single-slot genero_sexual
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot numero_de_paginas
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot tiempo_libro
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-;+		(inverse-slot libro_tiempo)
-		(create-accessor read-write))
-	(single-slot personaje_secundario_libro
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-;+		(cardinality 0 1)
-;+		(inverse-slot libro_personaje_secundario)
-;+		(subslot-of numero_de_paginas)
-		(create-accessor read-write))
-	(multislot libro_escritor
-		(type INSTANCE)
-;+		(allowed-classes Escritor)
-;+		(inverse-slot escritor_libro)
-		(create-accessor read-write))
-	(multislot libro_dibujante
-		(type INSTANCE)
-;+		(allowed-classes Dibujante)
-;+		(inverse-slot dibujante_libro)
-		(create-accessor read-write))
-	(single-slot id_persona
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot dibujante_libro
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(cardinality 1 ?VARIABLE)
-;+		(inverse-slot libro_dibujante)
-		(create-accessor read-write))
-	(single-slot adaptada_a_cine
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot id_publico
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot Motivos
-;+		(comment "motivos por el que elegimos este libro")
-		(type STRING)
-		(create-accessor read-write))
-	(single-slot Tipo
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot best_seller
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot mundo_real
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot precio
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot personaje_principal_libro
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-;+		(inverse-slot libro_personaje_principal)
-		(create-accessor read-write))
-	(single-slot anyos
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot libro_tiempo
-		(type INSTANCE)
-;+		(allowed-classes Tiempo)
-;+		(inverse-slot tiempo_libro)
-		(create-accessor read-write))
-	(single-slot id_idioma
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot id_animo
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot libro_genero
-		(type INSTANCE)
-;+		(allowed-classes Genero)
-;+		(inverse-slot genero_libro)
-		(create-accessor read-write))
-	(single-slot novela_independiente
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write)))
+    (is-a USER)
+    (role abstract)
+    (multislot nivel_libro
+        (type SYMBOL)
+        ;+        (allowed-parents Libro)
+        ;+        (inverse-slot libro_nivel)
+    (create-accessor read-write))
+    (single-slot id_nivel
+        (type STRING)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (single-slot anyos
+        (type INTEGER)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (single-slot novela_independiente
+        (type SYMBOL)
+        (allowed-values FALSE TRUE)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (single-slot libro_personaje_secundario
+        (type INSTANCE)
+        ;+        (allowed-classes Personaje)
+        ;+        (cardinality 0 1)
+        ;+        (inverse-slot personaje_secundario_libro)
+    (create-accessor read-write))
+    (single-slot numero_de_paginas
+        (type INTEGER)
+        ;+        (cardinality 1 1)
+    (create-accessor read-write))
+    (multislot libro_idioma
+        (type INSTANCE)
+        ;+        (allowed-classes Idioma)
+        ;+        (inverse-slot idioma_libro)
+    (create-accessor read-write))
+    (single-slot id_personaje
+        (type STRING)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (multislot Motivos
+        ;+        (comment "motivos por el que elegimos este libro")
+        (type STRING)
+    (create-accessor read-write))
+    (single-slot id_persona
+        (type STRING)
+        ;+        (cardinality 1 1)
+    (create-accessor read-write))
+    (single-slot subtitulo
+        ;+        (comment "subtitulo del libro")
+        (type STRING)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (multislot idioma_original_libro
+        (type INSTANCE)
+        ;+        (allowed-classes Libro)
+        (cardinality 1 ?VARIABLE)
+        ;+        (inverse-slot libro_idioma_original)
+    (create-accessor read-write))
+    (single-slot precio
+        (type INTEGER)
+        ;+        (cardinality 1 1)
+    (create-accessor read-write))
+    (single-slot id_idioma
+        (type STRING)
+        ;+        (cardinality 1 1)
+    (create-accessor read-write))
+    (single-slot id_genero
+        (type STRING)
+        ;+        (cardinality 1 1)
+    (create-accessor read-write))
+    (single-slot id_animo
+        (type STRING)
+        ;+        (cardinality 1 1)
+    (create-accessor read-write))
+    (multislot personaje_principal_libro
+        (type INSTANCE)
+        ;+        (allowed-classes Libro)
+        ;+        (inverse-slot libro_personaje_principal)
+    (create-accessor read-write))
+    (single-slot id_tiempo
+        (type STRING)
+        ;+        (cardinality 1 1)
+    (create-accessor read-write))
+    (multislot libro_tiempo
+        (type INSTANCE)
+        ;+        (allowed-classes Tiempo)
+        ;+        (inverse-slot tiempo_libro)
+    (create-accessor read-write))
+    (single-slot primera_persona
+        (type SYMBOL)
+        (allowed-values FALSE TRUE)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (single-slot titulo
+        ;+        (comment "titulo del libro")
+        (type STRING)
+        ;+        (cardinality 1 1)
+    (create-accessor read-write))
+    (multislot libro_animo
+        (type INSTANCE)
+        ;+        (allowed-classes Animo)
+        ;+        (inverse-slot animo_libro)
+    (create-accessor read-write))
+    (single-slot libro_nivel
+        (type INSTANCE)
+        ;+        (allowed-classes Nivel)
+        ;+        (cardinality 0 1)
+        ;+        (inverse-slot nivel_libro)
+    (create-accessor read-write))
+    (multislot libro_genero
+        (type INSTANCE)
+        ;+        (allowed-classes Genero)
+        ;+        (inverse-slot genero_libro)
+    (create-accessor read-write))
+    (single-slot sexualidad
+        (type STRING)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (multislot tiempo_libro
+        (type INSTANCE)
+        ;+        (allowed-classes Libro)
+        ;+        (inverse-slot libro_tiempo)
+    (create-accessor read-write))
+    (multislot escritor_libro
+        (type INSTANCE)
+        ;+        (allowed-classes Libro)
+        ;+        (inverse-slot libro_escritor)
+    (create-accessor read-write))
+    (multislot animo_libro
+        (type INSTANCE)
+        ;+        (allowed-classes Libro)
+        ;+        (inverse-slot libro_animo)
+    (create-accessor read-write))
+    (single-slot genero_sexual
+        (type STRING)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (single-slot personaje_secundario_libro
+        (type INSTANCE)
+        ;+        (allowed-classes Libro)
+        ;+        (cardinality 0 1)
+        ;+        (inverse-slot libro_personaje_secundario)
+        ;+        (subslot-of numero_de_paginas)
+    (create-accessor read-write))
+    (multislot publico_libro
+        (type INSTANCE)
+        ;+        (allowed-classes Libro)
+        ;+        (inverse-slot libro_publico)
+    (create-accessor read-write))
+    (single-slot Tipo
+        (type STRING)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (single-slot Puntuacion
+        ;+        (comment "Puntuacion en la que se basa nuestra sistema de bases de conocimientos")
+        (type INTEGER)
+        (default 0)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (multislot dibujante_libro
+        (type INSTANCE)
+        ;+        (allowed-classes Libro)
+        (cardinality 1 ?VARIABLE)
+        ;+        (inverse-slot libro_dibujante)
+    (create-accessor read-write))
+    (single-slot libro_idioma_original
+        (type INSTANCE)
+        ;+        (allowed-classes Idioma)
+        ;+        (cardinality 1 1)
+        ;+        (inverse-slot idioma_original_libro)
+    (create-accessor read-write))
+    (single-slot id_publico
+        (type STRING)
+        ;+        (cardinality 1 1)
+    (create-accessor read-write))
+    (single-slot mundo_real
+        (type SYMBOL)
+        (allowed-values FALSE TRUE)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (single-slot anyo_publicacion
+        (type INTEGER)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (multislot libro_publico
+        (type INSTANCE)
+        ;+        (allowed-classes Publico)
+        ;+        (inverse-slot publico_libro)
+    (create-accessor read-write))
+    (single-slot adaptada_a_cine
+        (type SYMBOL)
+        (allowed-values FALSE TRUE)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (single-slot libro_personaje_principal
+        (type INSTANCE)
+        ;+        (allowed-classes Personaje)
+        ;+        (cardinality 0 1)
+        ;+        (inverse-slot personaje_principal_libro)
+    (create-accessor read-write))
+    (multislot libro_dibujante
+        (type INSTANCE)
+        ;+        (allowed-classes Dibujante)
+        ;+        (inverse-slot dibujante_libro)
+    (create-accessor read-write))
+    (multislot libro_escritor
+        (type INSTANCE)
+        ;+        (allowed-classes Escritor)
+        ;+        (inverse-slot escritor_libro)
+    (create-accessor read-write))
+    (multislot idioma_libro
+        (type INSTANCE)
+        ;+        (allowed-classes Libro)
+        ;+        (inverse-slot libro_idioma)
+    (create-accessor read-write))
+    (single-slot best_seller
+        (type SYMBOL)
+        (allowed-values FALSE TRUE)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (multislot genero_libro
+        (type INSTANCE)
+        ;+        (allowed-classes Libro)
+        ;+        (inverse-slot libro_genero)
+    (create-accessor read-write)))
 
 (defclass Libro "Clase generica para elaborar la recomendacion"
-	(is-a USER)
-	(role concrete)
-	(single-slot mundo_real
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot precio
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot libro_animo
-		(type INSTANCE)
-;+		(allowed-classes Animo)
-		(create-accessor read-write))
-	(multislot libro_dibujante
-		(type INSTANCE)
-;+		(allowed-classes Dibujante)
-		(create-accessor read-write))
-	(multislot libro_publico
-		(type INSTANCE)
-;+		(allowed-classes Publico)
-		(create-accessor read-write))
-	(single-slot adaptada_a_cine
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot Motivos
-;+		(comment "motivos por el que elegimos este libro")
-		(type STRING)
-		(create-accessor read-write))
-	(multislot libro_tiempo
-		(type INSTANCE)
-;+		(allowed-classes Tiempo)
-		(create-accessor read-write))
-	(single-slot numero_de_paginas
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot titulo
-;+		(comment "titulo del libro")
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot libro_personaje_principal
-		(type INSTANCE)
-;+		(allowed-classes Personaje)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot libro_genero
-		(type INSTANCE)
-;+		(allowed-classes Genero)
-		(create-accessor read-write))
-	(single-slot novela_independiente
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot subtitulo
-;+		(comment "subtitulo del libro")
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot anyo_publicacion
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot primera_persona
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot libro_idioma
-		(type INSTANCE)
-;+		(allowed-classes Idioma)
-		(create-accessor read-write))
-	(single-slot Puntuacion
-;+		(comment "Puntuacion en la que se basa nuestra sistema de bases de conocimientos")
-		(type INTEGER)
-		(default 0)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot libro_personaje_secundario
-		(type INSTANCE)
-;+		(allowed-classes Personaje)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot libro_escritor
-		(type INSTANCE)
-;+		(allowed-classes Escritor)
-		(create-accessor read-write))
-	(single-slot best_seller
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write)))
+    (is-a USER)
+    (role concrete)
+    (single-slot precio
+        (type INTEGER)
+        ;+        (cardinality 1 1)
+    (create-accessor read-write))
+    (single-slot libro_personaje_secundario
+        (type INSTANCE)
+        ;+        (allowed-classes Personaje)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (single-slot novela_independiente
+        (type SYMBOL)
+        (allowed-values FALSE TRUE)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (single-slot libro_idioma_original
+        (type INSTANCE)
+        ;+        (allowed-classes Idioma)
+        ;+        (cardinality 1 1)
+    (create-accessor read-write))
+    (single-slot numero_de_paginas
+        (type INTEGER)
+        ;+        (cardinality 1 1)
+    (create-accessor read-write))
+    (multislot libro_idioma
+        (type INSTANCE)
+        ;+        (allowed-classes Idioma)
+    (create-accessor read-write))
+    (single-slot mundo_real
+        (type SYMBOL)
+        (allowed-values FALSE TRUE)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (single-slot anyo_publicacion
+        (type INTEGER)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (single-slot primera_persona
+        (type SYMBOL)
+        (allowed-values FALSE TRUE)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (multislot libro_tiempo
+        (type INSTANCE)
+        ;+        (allowed-classes Tiempo)
+    (create-accessor read-write))
+    (single-slot titulo
+        ;+        (comment "titulo del libro")
+        (type STRING)
+        ;+        (cardinality 1 1)
+    (create-accessor read-write))
+    (multislot libro_publico
+        (type INSTANCE)
+        ;+        (allowed-classes Publico)
+    (create-accessor read-write))
+    (multislot libro_animo
+        (type INSTANCE)
+        ;+        (allowed-classes Animo)
+    (create-accessor read-write))
+    (multislot Motivos
+        ;+        (comment "motivos por el que elegimos este libro")
+        (type STRING)
+    (create-accessor read-write))
+    (single-slot adaptada_a_cine
+        (type SYMBOL)
+        (allowed-values FALSE TRUE)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (single-slot libro_nivel
+        (type INSTANCE)
+        ;+        (allowed-classes Nivel)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (single-slot subtitulo
+        ;+        (comment "subtitulo del libro")
+        (type STRING)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (multislot libro_genero
+        (type INSTANCE)
+        ;+        (allowed-classes Genero)
+    (create-accessor read-write))
+    (single-slot libro_personaje_principal
+        (type INSTANCE)
+        ;+        (allowed-classes Personaje)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (multislot libro_dibujante
+        (type INSTANCE)
+        ;+        (allowed-classes Dibujante)
+    (create-accessor read-write))
+    (multislot libro_escritor
+        (type INSTANCE)
+        ;+        (allowed-classes Escritor)
+    (create-accessor read-write))
+    (single-slot best_seller
+        (type SYMBOL)
+        (allowed-values FALSE TRUE)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (single-slot Puntuacion
+        ;+        (comment "Puntuacion en la que se basa nuestra sistema de bases de conocimientos")
+        (type INTEGER)
+        (default 0)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write)))
 
 (defclass Persona "Clase generica que representa a todo tipo de persona tanto escritor como dibujante."
-	(is-a USER)
-	(role concrete)
-	(single-slot id_persona
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write)))
+    (is-a USER)
+    (role concrete)
+    (single-slot id_persona
+        (type STRING)
+        ;+        (cardinality 1 1)
+    (create-accessor read-write)))
 
 (defclass Dibujante
-	(is-a Persona)
-	(role concrete)
-	(multislot dibujante_libro
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(cardinality 1 ?VARIABLE)
-		(create-accessor read-write)))
+    (is-a Persona)
+    (role concrete)
+    (multislot dibujante_libro
+        (type INSTANCE)
+        ;+        (allowed-classes Libro)
+        (cardinality 1 ?VARIABLE)
+    (create-accessor read-write)))
 
 (defclass Escritor
-	(is-a Persona)
-	(role concrete)
-	(multislot escritor_libro
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(create-accessor read-write)))
+    (is-a Persona)
+    (role concrete)
+    (multislot escritor_libro
+        (type INSTANCE)
+        ;+        (allowed-classes Libro)
+    (create-accessor read-write)))
 
 (defclass Idioma
-	(is-a USER)
-	(role concrete)
-	(single-slot id_idioma
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot idioma_libro
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(create-accessor read-write)))
+    (is-a USER)
+    (role concrete)
+    (multislot idioma_original_libro
+        (type INSTANCE)
+        ;+        (allowed-classes Libro)
+        (cardinality 1 ?VARIABLE)
+    (create-accessor read-write))
+    (multislot idioma_libro
+        (type INSTANCE)
+        ;+        (allowed-classes Libro)
+    (create-accessor read-write))
+    (single-slot id_idioma
+        (type STRING)
+        ;+        (cardinality 1 1)
+    (create-accessor read-write)))
 
-(defclass Personaje "CaracterÃ­sitcas del personaje"
-	(is-a USER)
-	(role concrete)
-	(single-slot anyos
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot id_personaje
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot personaje_principal_libro
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(create-accessor read-write))
-	(single-slot personaje_secundario_libro
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot genero_sexual
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot sexualidad
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write)))
+(defclass Personaje "Caracter’sitcas del personaje"
+    (is-a USER)
+    (role concrete)
+    (single-slot anyos
+        (type INTEGER)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (single-slot sexualidad
+        (type STRING)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (multislot personaje_principal_libro
+        (type INSTANCE)
+        ;+        (allowed-classes Libro)
+    (create-accessor read-write))
+    (single-slot genero_sexual
+        (type STRING)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (single-slot id_personaje
+        (type STRING)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write))
+    (single-slot personaje_secundario_libro
+        (type INSTANCE)
+        ;+        (allowed-classes Libro)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write)))
 
 (defclass Animo "Estado de animo"
-	(is-a USER)
-	(role concrete)
-	(multislot animo_libro
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(create-accessor read-write))
-	(single-slot id_animo
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write)))
+    (is-a USER)
+    (role concrete)
+    (multislot animo_libro
+        (type INSTANCE)
+        ;+        (allowed-classes Libro)
+    (create-accessor read-write))
+    (single-slot id_animo
+        (type STRING)
+        ;+        (cardinality 1 1)
+    (create-accessor read-write)))
 
 (defclass Publico "Publico al que va dirigido el libro"
-	(is-a USER)
-	(role concrete)
-	(multislot publico_libro
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(create-accessor read-write))
-	(single-slot id_publico
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write)))
+    (is-a USER)
+    (role concrete)
+    (single-slot id_publico
+        (type STRING)
+        ;+        (cardinality 1 1)
+    (create-accessor read-write))
+    (multislot publico_libro
+        (type INSTANCE)
+        ;+        (allowed-classes Libro)
+    (create-accessor read-write)))
 
 (defclass Tiempo "Tiempo en el que transcurre el libro"
-	(is-a USER)
-	(role concrete)
-	(multislot tiempo_libro
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(create-accessor read-write))
-	(single-slot id_tiempo
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write)))
+    (is-a USER)
+    (role concrete)
+    (multislot tiempo_libro
+        (type INSTANCE)
+        ;+        (allowed-classes Libro)
+    (create-accessor read-write))
+    (single-slot id_tiempo
+        (type STRING)
+        ;+        (cardinality 1 1)
+    (create-accessor read-write)))
 
 (defclass Genero
-	(is-a USER)
-	(role concrete)
-	(multislot genero_libro
-		(type INSTANCE)
-;+		(allowed-classes Libro)
-		(create-accessor read-write))
-	(single-slot id_genero
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write)))
+    (is-a USER)
+    (role concrete)
+    (multislot genero_libro
+        (type INSTANCE)
+        ;+        (allowed-classes Libro)
+    (create-accessor read-write))
+    (single-slot id_genero
+        (type STRING)
+        ;+        (cardinality 1 1)
+    (create-accessor read-write)))
+
+(defclass Nivel
+    (is-a USER)
+    (role concrete)
+    (multislot nivel_libro
+        (type SYMBOL)
+        ;+        (allowed-parents Libro)
+    (create-accessor read-write))
+    (single-slot id_nivel
+        (type STRING)
+        ;+        (cardinality 0 1)
+    (create-accessor read-write)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;; INSTANCIAS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (definstances instances
+    ; Sat Dec 14 18:30:40 CET 2019
+    ;
+    ;+ (version "3.5")
+    ;+ (build "Build 663")
+    
+    ([Ontologia_Class1] of  Libro
+        
+        (libro_animo [Ontologia_Class33])
+        (libro_idioma
+            [Ontologia_Class28]
+            [Ontologia_Class6])
+        (libro_idioma_original [Ontologia_Class28])
+        (numero_de_paginas 780)
+        (precio 23)
+        (Puntuacion 0)
+    (titulo "Gabriel's Angel"))
+    
+    ([Ontologia_Class10002] of  Libro
+        
+        (libro_animo
+            [Ontologia_Class33]
+            [Ontologia_Class32])
+        (libro_idioma [Ontologia_Class6])
+        (libro_idioma_original [Ontologia_Class6])
+        (numero_de_paginas 368)
+        (precio 20)
+        (Puntuacion 0)
+    (titulo "While the Sun Shines"))
+    
+    ([Ontologia_Class10003] of  Libro
+        
+        (libro_animo
+            [Ontologia_Class32]
+            [Ontologia_Class33])
+        (libro_idioma [Ontologia_Class6])
+        (libro_idioma_original [Ontologia_Class6])
+        (numero_de_paginas 384)
+        (precio 20)
+        (Puntuacion 0)
+    (titulo "The Coffin Path"))
+    
+    ([Ontologia_Class10004] of  Libro
+        
+        (libro_animo
+            [Ontologia_Class32]
+            [Ontologia_Class34])
+        (libro_idioma [Ontologia_Class6])
+        (libro_idioma_original [Ontologia_Class6])
+        (numero_de_paginas 320)
+        (precio 43)
+        (Puntuacion 0)
+    (titulo "The Other Side of Silence"))
+    
+    ([Ontologia_Class10005] of  Libro
+        
+        (libro_animo
+            [Ontologia_Class36]
+            [Ontologia_Class38])
+        (libro_escritor [Ontologia_Class10007])
+        (libro_genero
+            [Ontologia_Class16]
+            [Ontologia_Class7])
+        (libro_idioma
+            [Ontologia_Class28]
+            [Ontologia_Class29]
+            [Ontologia_Class27]
+            [Ontologia_Class30]
+            [Ontologia_Class24]
+            [Ontologia_Class6])
+        (libro_idioma_original [Ontologia_Class6])
+        (numero_de_paginas 544)
+        (precio 23)
+        (Puntuacion 0)
+    (titulo "Mistborn: The Final Empire"))
+    
+    ([Ontologia_Class10006] of  Libro
+        
+        (libro_animo
+            [Ontologia_Class32]
+            [Ontologia_Class34]
+            [Ontologia_Class38])
+        (libro_escritor [Ontologia_Class10007])
+        (libro_genero
+            [Ontologia_Class16]
+            [Ontologia_Class7])
+        (libro_idioma
+            [Ontologia_Class6]
+            [Ontologia_Class28]
+            [Ontologia_Class29]
+            [Ontologia_Class27]
+            [Ontologia_Class30]
+            [Ontologia_Class24])
+        (libro_idioma_original [Ontologia_Class6])
+        (numero_de_paginas 592)
+        (precio 31)
+        (Puntuacion 0)
+    (titulo "Mistborn: The Well of Ascension"))
+    
+    ([Ontologia_Class10007] of  Escritor
+        
+        (escritor_libro
+            [Ontologia_Class10006]
+            [Ontologia_Class10005]
+            [Ontologia_Class10008])
+    (id_persona "Brandon Sanderson"))
+    
+    ([Ontologia_Class10008] of  Libro
+        
+        (libro_animo
+            [Ontologia_Class39]
+            [Ontologia_Class32]
+            [Ontologia_Class36]
+            [Ontologia_Class38])
+        (libro_escritor [Ontologia_Class10007])
+        (libro_genero
+            [Ontologia_Class16]
+            [Ontologia_Class7])
+        (libro_idioma
+            [Ontologia_Class6]
+            [Ontologia_Class28]
+            [Ontologia_Class29]
+            [Ontologia_Class27]
+            [Ontologia_Class30]
+            [Ontologia_Class24])
+        (libro_idioma_original [Ontologia_Class6])
+        (numero_de_paginas 576)
+        (precio 14)
+        (Puntuacion 0)
+    (titulo "Mistborn: The Hero of Ages"))
+    
+    ([Ontologia_Class10009] of  Libro
+        
+        (libro_animo [Ontologia_Class40])
+        (libro_idioma [Ontologia_Class6])
+        (libro_idioma_original [Ontologia_Class6])
+        (numero_de_paginas 240)
+        (precio 1)
+        (Puntuacion 0)
+    (titulo "Seven Tales of Sex and Death"))
+    
+    ([Ontologia_Class10010] of  Libro
+        
+        (libro_idioma
+            [Ontologia_Class24]
+            [Ontologia_Class29])
+        (libro_idioma_original [Ontologia_Class24])
+        (numero_de_paginas 340)
+        (precio 21)
+        (Puntuacion 0)
+    (titulo "Buenas Noches Buenos Aires"))
+    
+    ([Ontologia_Class10011] of  Libro
+        
+        (libro_animo
+            [Ontologia_Class39]
+            [Ontologia_Class33])
+        (libro_idioma_original [Ontologia_Class6])
+        (numero_de_paginas 630)
+        (precio 8)
+        (Puntuacion 0)
+    (titulo "The Wine of Angels"))
+    
+    ([Ontologia_Class10012] of  Libro
+        
+        (libro_idioma [Ontologia_Class6])
+        (libro_idioma_original [Ontologia_Class6])
+        (numero_de_paginas 400)
+        (precio 23)
+        (Puntuacion 0)
+    (titulo "Just Friends"))
+    
+    ([Ontologia_Class10014] of  Libro
+        
+        (best_seller TRUE)
+        (libro_idioma_original [Ontologia_Class6])
+        (numero_de_paginas 384)
+        (precio 10)
+        (Puntuacion 0)
+    (titulo "Where the Crawdads Sing"))
+    
+    ([Ontologia_Class10015] of  Libro
+        
+        (best_seller TRUE)
+        (libro_idioma_original [Ontologia_Class6])
+        (numero_de_paginas 384)
+        (precio 9)
+        (Puntuacion 0)
+    (titulo "Then She Was Gone: A Novel"))
+    
+    ([Ontologia_Class10016] of  Libro
+        
+        (libro_idioma_original [Ontologia_Class6])
+        (numero_de_paginas 299)
+        (precio 14)
+        (primera_persona FALSE)
+        (Puntuacion 0)
+    (titulo "It All Comes Back to You: A Book Club Recommendation!"))
+    
+    ([Ontologia_Class10017] of  Libro
+        
+        (libro_dibujante [Ontologia_Class10018])
+        (libro_escritor [Ontologia_Class10019])
+        (libro_idioma
+            [Ontologia_Class6]
+            [Ontologia_Class28]
+            [Ontologia_Class29]
+            [Ontologia_Class27]
+            [Ontologia_Class30]
+            [Ontologia_Class24])
+        (libro_idioma_original [Ontologia_Class30])
+        (numero_de_paginas 2400)
+        (precio 90)
+        (Puntuacion 0)
+    (titulo "Death Note"))
+    
+    ([Ontologia_Class10018] of  Dibujante
+        
+        (dibujante_libro [Ontologia_Class10017])
+    (id_persona "Takeshi Obata"))
+    
+    ([Ontologia_Class10019] of  Escritor
+        
+        (escritor_libro [Ontologia_Class10017])
+    (id_persona "Tsugumi Ohba"))
+    
+    ([Ontologia_Class10025] of  Nivel
+        
+    (id_nivel "easy"))
+    
+    ([Ontologia_Class10026] of  Nivel
+        
+    (id_nivel "medium"))
+    
+    ([Ontologia_Class10027] of  Nivel
+        
+    (id_nivel "hard"))
+    
+    ([Ontologia_Class10028] of  Libro
+        
+        (libro_escritor [Ontologia_Class10029])
+        (precio 31)
+        (Puntuacion 0)
+    (titulo "The Kingdom Of The Vanished: A Stranger"))
+    
+    ([Ontologia_Class10029] of  Escritor
+        
+        (escritor_libro [Ontologia_Class10028])
+    (id_persona "Unknown"))
+    
+    ([Ontologia_Class10030] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "The Painted Lady"))
+    
+    ([Ontologia_Class10031] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "The Butterfly Boy"))
+    
+    ([Ontologia_Class10032] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "Light as a Feather"))
+    
+    ([Ontologia_Class10033] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "In Love with Freedom"))
+    
+    ([Ontologia_Class10034] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "A Land of Permanent Goodbyes"))
+    
+    ([Ontologia_Class10035] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "Innocent"))
+    
+    ([Ontologia_Class10036] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "Black Sun"))
+    
+    ([Ontologia_Class10037] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "The Search for the Pearl Stone"))
+    
+    ([Ontologia_Class10038] of  Libro
+        
+        (mundo_real FALSE)
+        (Puntuacion 0)
+    (titulo "Scoot Pilgrim"))
+    
+    ([Ontologia_Class10039] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "The Centaur's Daughter"))
+    
+    ([Ontologia_Class10040] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "Summer Boys"))
+    
+    ([Ontologia_Class10041] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "Panic"))
+    
+    ([Ontologia_Class10042] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "The Street Was Mine"))
+    
+    ([Ontologia_Class10043] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "Give Me Your Hand"))
+    
+    ([Ontologia_Class10044] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "Wizard or Witch?"))
+    
+    ([Ontologia_Class10045] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "The Reckoning"))
+    
+    ([Ontologia_Class10046] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "Campside Creeps"))
+    
+    ([Ontologia_Class10047] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "A Mother at Heart"))
+    
+    ([Ontologia_Class10048] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "The Final Fury"))
+    
+    ([Ontologia_Class10049] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "Kathryn: In the Court of Six Queens"))
+    
+    ([Ontologia_Class10050] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "Riptide"))
+    
+    ([Ontologia_Class10051] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "Periodic Tales"))
+    
+    ([Ontologia_Class10052] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "Shapeshifted"))
+    
+    ([Ontologia_Class10053] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "The Desert Crop"))
+    
+    ([Ontologia_Class10054] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "The Man Who Made Husbands Jealous"))
+    
+    ([Ontologia_Class10055] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "Daphne's Book"))
+    
+    ([Ontologia_Class10056] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "Hero of Rome"))
+    
+    ([Ontologia_Class10057] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "Lonely Men"))
+    
+    ([Ontologia_Class10058] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "Glorious Angel"))
+    
+    ([Ontologia_Class10059] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "Darkness Bred"))
+    
+    ([Ontologia_Class10060] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "Blame It on Texas"))
+    
+    ([Ontologia_Class10061] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "Barely a Lady"))
+    
+    ([Ontologia_Class10062] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "The Destiny"))
+    
+    ([Ontologia_Class10063] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "For the Love of Pete"))
+    
+    ([Ontologia_Class10064] of  Libro
+        
+        (Puntuacion 0)
+    (titulo "Forbidden Passion"))
+    
+    ([Ontologia_Class10095] of  Libro
+        
+        (adaptada_a_cine TRUE)
+        (anyo_publicacion 2011)
+        (best_seller TRUE)
+        (mundo_real TRUE)
+        (novela_independiente FALSE)
+        (numero_de_paginas 514)
+        (precio 34)
+    (titulo "Fifty Shades of Grey"))
+    
+    ([Ontologia_Class101] of  Escritor
+        
+        (escritor_libro [Ontologia_Class74])
+    (id_persona "Albert Camus"))
+    
+    ([Ontologia_Class10116] of  Genero
+        
+        (genero_libro [Ontologia_Class92])
+    (id_genero "Black novel"))
+    
+    ([Ontologia_Class10169] of  Libro
+        
+        (adaptada_a_cine TRUE)
+        (anyo_publicacion 2009)
+        (best_seller TRUE)
+        (libro_idioma [Ontologia_Class6])
+        (numero_de_paginas 391)
+        (precio 12)
+        (primera_persona FALSE)
+    (titulo "Catching Fire"))
+    
+    ([Ontologia_Class10170] of  Libro
+        
+        (adaptada_a_cine TRUE)
+        (anyo_publicacion 2008)
+        (best_seller TRUE)
+        (libro_idioma [Ontologia_Class6])
+        (numero_de_paginas 438)
+        (precio 19)
+        (primera_persona FALSE)
+    (titulo "Mockingjay"))
+    
+    ([Ontologia_Class10171] of  Dibujante
+        
+        (dibujante_libro [Ontologia_Class79])
+    (id_persona "Brian Selznick"))
+    
+    ([Ontologia_Class10172] of  Libro
+        
+        (adaptada_a_cine TRUE)
+        (anyo_publicacion 2009)
+        (best_seller TRUE)
+        (libro_animo
+            [Ontologia_Class38]
+            [Ontologia_Class36]
+            [Ontologia_Class32]
+            [Ontologia_Class39])
+        (libro_dibujante [Ontologia_Class10174])
+        (libro_escritor [Ontologia_Class10173])
+        (libro_genero
+            [Ontologia_Class15]
+            [Ontologia_Class8]
+            [Ontologia_Class7])
+        (libro_idioma [Ontologia_Class30])
+        (libro_publico
+            [Ontologia_Class50]
+            [Ontologia_Class51]
+            [Ontologia_Class52])
+        (libro_tiempo [Ontologia_Class43])
+        (numero_de_paginas 0)
+        (precio 8)
+    (titulo "Shingeki no Kyojin"))
+    
+    ([Ontologia_Class10173] of  Escritor
+        
+        (escritor_libro [Ontologia_Class10172])
+    (id_persona "Hajime Isayama"))
+    
+    ([Ontologia_Class10174] of  Dibujante
+        
+        (dibujante_libro [Ontologia_Class10172])
+    (id_persona "Hajime Isayama"))
+    
+    ([Ontologia_Class102] of  Escritor
+        
+        (escritor_libro
+            [Ontologia_Class67]
+            [Ontologia_Class65])
+    (id_persona "Stephen King"))
+    
+    ([Ontologia_Class103] of  Escritor
+        
+        (escritor_libro [Ontologia_Class68])
+    (id_persona "John le Carre"))
+    
+    ([Ontologia_Class104] of  Escritor
+        
+        (escritor_libro [Ontologia_Class78])
+    (id_persona "Ken Follett"))
+    
+    ([Ontologia_Class105] of  Escritor
+        
+        (escritor_libro [Ontologia_Class72])
+    (id_persona "Nicholas Sparks"))
+    
+    ([Ontologia_Class106] of  Escritor
+        
+        (escritor_libro [Ontologia_Class82])
+    (id_persona "Patrick Rothfuss"))
+    
+    ([Ontologia_Class107] of  Escritor
+        
+        (escritor_libro [Ontologia_Class71])
+    (id_persona "Andy Weir"))
+    
+    ([Ontologia_Class11] of  Genero
+        
+        (genero_libro
+            [Ontologia_Class87]
+            [Ontologia_Class86]
+            [Ontologia_Class88]
+            [Ontologia_Class91]
+            [Ontologia_Class92])
+    (id_genero "Detective novel"))
+    
+    ([Ontologia_Class111] of  Escritor
+        
+        (escritor_libro [Ontologia_Class92])
+    (id_persona "Dashiell Hammett"))
+    
+    ([Ontologia_Class112] of  Escritor
+        
+        (escritor_libro [Ontologia_Class79])
+    (id_persona "Brian Selznick"))
+    
+    ([Ontologia_Class117] of  Escritor
+        
+        (escritor_libro [Ontologia_Class87])
+    (id_persona "Arthur Conan Doyle"))
+    
+    ([Ontologia_Class118] of  Escritor
+        
+        (escritor_libro [Ontologia_Class83])
+    (id_persona "J. R. R. Tolkien"))
+    
+    ([Ontologia_Class119] of  Escritor
+        
+        (escritor_libro [Ontologia_Class61])
+    (id_persona "Jack London"))
+    
+    ([Ontologia_Class12] of  Genero
+        
+        (genero_libro
+            [Ontologia_Class68]
+            [Ontologia_Class69])
+    (id_genero "Spy novel"))
+    
+    ([Ontologia_Class121] of  Escritor
+        
+        (escritor_libro [Ontologia_Class91])
+    (id_persona "Raymond Chandler"))
+    
+    ([Ontologia_Class122] of  Escritor
+        
+        (escritor_libro [Ontologia_Class88])
+    (id_persona "Dennis Lehane"))
+    
+    ([Ontologia_Class123] of  Escritor
+        
+        (escritor_libro [Ontologia_Class64])
+    (id_persona "Zane Grey"))
+    
+    ([Ontologia_Class125] of  Escritor
+        
+        (escritor_libro [Ontologia_Class70])
+    (id_persona "George Orwell"))
+    
+    ([Ontologia_Class126] of  Escritor
+        
+        (escritor_libro [Ontologia_Class63])
+    (id_persona "Larry McMurtry"))
+    
+    ([Ontologia_Class128] of  Escritor
+        
+    (id_persona "Neil Gaiman"))
+    
+    ([Ontologia_Class129] of  Escritor
+        
+        (escritor_libro [Ontologia_Class89])
+    (id_persona "Terry Pratchett"))
+    
+    ([Ontologia_Class13] of  Genero
+        
+        (genero_libro
+            [Ontologia_Class65]
+            [Ontologia_Class67]
+            [Ontologia_Class89])
+    (id_genero "Horror fiction"))
+    
+    ([Ontologia_Class130] of  Escritor
+        
+        (escritor_libro
+            [Ontologia_Class73]
+            [Ontologia_Class2])
+    (id_persona "E. L. James"))
+    
+    ([Ontologia_Class132] of  Escritor
+        
+        (escritor_libro [Ontologia_Class86])
+    (id_persona "Agatha Christie"))
+    
+    ([Ontologia_Class134] of  Dibujante
+        
+        (dibujante_libro [Ontologia_Class81])
+    (id_persona "Jim Steranko"))
+    
+    ([Ontologia_Class135] of  Escritor
+        
+        (escritor_libro [Ontologia_Class81])
+    (id_persona "Jim Steranko"))
+    
+    ([Ontologia_Class14] of  Genero
+        
+        (genero_libro
+            [Ontologia_Class63]
+            [Ontologia_Class64])
+    (id_genero "Western novel"))
+    
+    ([Ontologia_Class15] of  Genero
+        
+        (genero_libro
+            [Ontologia_Class70]
+            [Ontologia_Class86]
+            [Ontologia_Class10172])
+    (id_genero "Drama"))
+    
+    ([Ontologia_Class16] of  Genero
+        
+        (genero_libro
+            [Ontologia_Class61]
+            [Ontologia_Class62]
+            [Ontologia_Class79]
+            [Ontologia_Class10005]
+            [Ontologia_Class10006]
+            [Ontologia_Class10008])
+    (id_genero "Adventure"))
+    
+    ([Ontologia_Class17] of  Genero
+        
+        (genero_libro
+            [Ontologia_Class65]
+            [Ontologia_Class67]
+            [Ontologia_Class88]
+            [Ontologia_Class91])
+    (id_genero "Thriller"))
+    
+    ([Ontologia_Class18] of  Genero
+        
+        (genero_libro
+            [Ontologia_Class77]
+            [Ontologia_Class78]
+            [Ontologia_Class81]
+            [Ontologia_Class79]
+            [Ontologia_Class82])
+    (id_genero "Historical fiction"))
+    
+    ([Ontologia_Class2] of  Libro
+        
+        (adaptada_a_cine TRUE)
+        (anyo_publicacion 2012)
+        (best_seller TRUE)
+        (libro_animo
+            [Ontologia_Class56]
+            [Ontologia_Class38])
+        (libro_escritor [Ontologia_Class130])
+        (libro_genero [Ontologia_Class9])
+        (libro_publico [Ontologia_Class52])
+        (libro_tiempo [Ontologia_Class44])
+        (mundo_real TRUE)
+        (novela_independiente FALSE)
+        (numero_de_paginas 544)
+        (precio 11)
+    (titulo "Fifty Shades Darker"))
+    
+    ([Ontologia_Class20] of  Genero
+        
+        (genero_libro
+            [Ontologia_Class81]
+            [Ontologia_Class79])
+    (id_genero "Graphic novel"))
+    
+    ([Ontologia_Class21] of  Genero
+        
+        (genero_libro
+            [Ontologia_Class90]
+            [Ontologia_Class89])
+    (id_genero "Comedy fiction"))
+    
+    ([Ontologia_Class24] of  Idioma
+        
+        (id_idioma "Spanish")
+        (idioma_libro
+            [Ontologia_Class10005]
+            [Ontologia_Class10006]
+            [Ontologia_Class10008]
+            [Ontologia_Class10010]
+            [Ontologia_Class10017])
+    (idioma_original_libro [Ontologia_Class10010]))
+    
+    ([Ontologia_Class27] of  Idioma
+        
+        (id_idioma "Italian")
+        (idioma_libro
+            [Ontologia_Class10005]
+            [Ontologia_Class10006]
+            [Ontologia_Class10008]
+            [Ontologia_Class10017]))
+    
+    ([Ontologia_Class28] of  Idioma
+        
+        (id_idioma "French")
+        (idioma_libro
+            [Ontologia_Class1]
+            [Ontologia_Class10005]
+            [Ontologia_Class10006]
+            [Ontologia_Class10008]
+            [Ontologia_Class10017])
+    (idioma_original_libro [Ontologia_Class1]))
+    
+    ([Ontologia_Class29] of  Idioma
+        
+        (id_idioma "German")
+        (idioma_libro
+            [Ontologia_Class10005]
+            [Ontologia_Class10006]
+            [Ontologia_Class10008]
+            [Ontologia_Class10010]
+            [Ontologia_Class10017]))
+    
+    ([Ontologia_Class30] of  Idioma
+        
+        (id_idioma "Japanese")
+        (idioma_libro
+            [Ontologia_Class10172]
+            [Ontologia_Class10005]
+            [Ontologia_Class10006]
+            [Ontologia_Class10008]
+            [Ontologia_Class10017])
+    (idioma_original_libro [Ontologia_Class10017]))
+    
+    ([Ontologia_Class31] of  Animo
+        
+        (animo_libro
+            [Ontologia_Class89]
+            [Ontologia_Class72])
+    (id_animo "happy"))
+    
+    ([Ontologia_Class32] of  Animo
+        
+        (animo_libro
+            [Ontologia_Class91]
+            [Ontologia_Class10172]
+            [Ontologia_Class10002]
+            [Ontologia_Class10003]
+            [Ontologia_Class10004]
+            [Ontologia_Class10006]
+            [Ontologia_Class10008])
+    (id_animo "sad"))
+    
+    ([Ontologia_Class33] of  Animo
+        
+        (animo_libro
+            [Ontologia_Class89]
+            [Ontologia_Class83]
+            [Ontologia_Class1]
+            [Ontologia_Class10002]
+            [Ontologia_Class10003]
+            [Ontologia_Class10011])
+    (id_animo "funny"))
+    
+    ([Ontologia_Class34] of  Animo
+        
+        (animo_libro
+            [Ontologia_Class86]
+            [Ontologia_Class70]
+            [Ontologia_Class92]
+            [Ontologia_Class10004]
+            [Ontologia_Class10006])
+    (id_animo "serious"))
+    
+    ([Ontologia_Class35] of  Animo
+        
+        (animo_libro
+            [Ontologia_Class61]
+            [Ontologia_Class87]
+            [Ontologia_Class78])
+    (id_animo "expected"))
+    
+    ([Ontologia_Class36] of  Animo
+        
+        (animo_libro
+            [Ontologia_Class64]
+            [Ontologia_Class88]
+            [Ontologia_Class83]
+            [Ontologia_Class67]
+            [Ontologia_Class71]
+            [Ontologia_Class10172]
+            [Ontologia_Class10005]
+            [Ontologia_Class10008])
+    (id_animo "unpredictable"))
+    
+    ([Ontologia_Class37] of  Animo
+        
+        (animo_libro [Ontologia_Class72])
+    (id_animo "gentle"))
+    
+    ([Ontologia_Class38] of  Animo
+        
+        (animo_libro
+            [Ontologia_Class2]
+            [Ontologia_Class73]
+            [Ontologia_Class63]
+            [Ontologia_Class64]
+            [Ontologia_Class91]
+            [Ontologia_Class10172]
+            [Ontologia_Class10005]
+            [Ontologia_Class10006]
+            [Ontologia_Class10008])
+    (id_animo "violent"))
+    
+    ([Ontologia_Class39] of  Animo
+        
+        (animo_libro
+            [Ontologia_Class79]
+            [Ontologia_Class71]
+            [Ontologia_Class10172]
+            [Ontologia_Class10008]
+            [Ontologia_Class10011])
+    (id_animo "optimistic"))
+    
+    ([Ontologia_Class4] of  Escritor
+        
+    (id_persona "Suzanne Collins"))
+    
+    ([Ontologia_Class40] of  Animo
+        
+        (animo_libro
+            [Ontologia_Class83]
+            [Ontologia_Class82]
+            [Ontologia_Class10009])
+    (id_animo "bleak"))
+    
+    ([Ontologia_Class43] of  Tiempo
+        
+        (id_tiempo "Past")
+        (tiempo_libro
+            [Ontologia_Class86]
+            [Ontologia_Class81]
+            [Ontologia_Class63]
+            [Ontologia_Class64]
+            [Ontologia_Class83]
+            [Ontologia_Class82]
+            [Ontologia_Class10172]))
+    
+    ([Ontologia_Class44] of  Tiempo
+        
+        (id_tiempo "Present")
+        (tiempo_libro
+            [Ontologia_Class2]
+            [Ontologia_Class73]
+            [Ontologia_Class70]
+            [Ontologia_Class88]
+            [Ontologia_Class91]
+            [Ontologia_Class61]
+            [Ontologia_Class87]
+            [Ontologia_Class79]
+            [Ontologia_Class92]
+            [Ontologia_Class72]
+            [Ontologia_Class78]))
+    
+    ([Ontologia_Class46] of  Tiempo
+        
+        (id_tiempo "Future")
+        (tiempo_libro
+            [Ontologia_Class89]
+            [Ontologia_Class67]
+            [Ontologia_Class71]))
+    
+    ([Ontologia_Class47] of  Genero
+        
+        (genero_libro
+            [Ontologia_Class75]
+            [Ontologia_Class74])
+    (id_genero "Philosophy novel"))
+    
+    ([Ontologia_Class49] of  Publico
+        
+        (id_publico "Children")
+        (publico_libro
+            [Ontologia_Class81]
+            [Ontologia_Class79]))
+    
+    ([Ontologia_Class5] of  Libro
+        
+        (adaptada_a_cine TRUE)
+        (anyo_publicacion 2008)
+        (best_seller TRUE)
+        (libro_idioma [Ontologia_Class6])
+        (numero_de_paginas 396)
+        (precio 11)
+        (primera_persona FALSE)
+    (titulo "The Hunger Games"))
+    
+    ([Ontologia_Class50] of  Publico
+        
+        (id_publico "Adolescents")
+        (publico_libro
+            [Ontologia_Class86]
+            [Ontologia_Class89]
+            [Ontologia_Class63]
+            [Ontologia_Class64]
+            [Ontologia_Class61]
+            [Ontologia_Class83]
+            [Ontologia_Class87]
+            [Ontologia_Class67]
+            [Ontologia_Class92]
+            [Ontologia_Class71]
+            [Ontologia_Class82]
+            [Ontologia_Class72]
+            [Ontologia_Class78]
+            [Ontologia_Class10172]))
+    
+    ([Ontologia_Class51] of  Publico
+        
+        (id_publico "Young people")
+        (publico_libro
+            [Ontologia_Class81]
+            [Ontologia_Class86]
+            [Ontologia_Class61]
+            [Ontologia_Class83]
+            [Ontologia_Class67]
+            [Ontologia_Class79]
+            [Ontologia_Class71]
+            [Ontologia_Class10172]))
+    
+    ([Ontologia_Class52] of  Publico
+        
+        (id_publico "Adults")
+        (publico_libro
+            [Ontologia_Class2]
+            [Ontologia_Class86]
+            [Ontologia_Class73]
+            [Ontologia_Class89]
+            [Ontologia_Class63]
+            [Ontologia_Class70]
+            [Ontologia_Class64]
+            [Ontologia_Class88]
+            [Ontologia_Class91]
+            [Ontologia_Class61]
+            [Ontologia_Class83]
+            [Ontologia_Class87]
+            [Ontologia_Class92]
+            [Ontologia_Class71]
+            [Ontologia_Class82]
+            [Ontologia_Class72]
+            [Ontologia_Class78]
+            [Ontologia_Class10172]))
+    
+    ([Ontologia_Class53] of  Publico
+        
+        (id_publico "Old people")
+        (publico_libro
+            [Ontologia_Class86]
+            [Ontologia_Class63]
+            [Ontologia_Class70]
+            [Ontologia_Class64]
+            [Ontologia_Class88]
+            [Ontologia_Class91]
+            [Ontologia_Class87]
+            [Ontologia_Class92]
+            [Ontologia_Class82]
+            [Ontologia_Class72]
+            [Ontologia_Class78]))
+    
+    ([Ontologia_Class55] of  Animo
+        
+    (id_animo "disgusting"))
+    
+    ([Ontologia_Class56] of  Animo
+        
+        (animo_libro
+            [Ontologia_Class81]
+            [Ontologia_Class2]
+            [Ontologia_Class73]
+            [Ontologia_Class61]
+            [Ontologia_Class79])
+    (id_animo "beautiful"))
+    
+    ([Ontologia_Class6] of  Idioma
+        
+        (id_idioma "English")
+        (idioma_libro
+            [Ontologia_Class5]
+            [Ontologia_Class10169]
+            [Ontologia_Class10170]
+            [Ontologia_Class67]
+            [Ontologia_Class79]
+            [Ontologia_Class92]
+            [Ontologia_Class71]
+            [Ontologia_Class82]
+            [Ontologia_Class72]
+            [Ontologia_Class78]
+            [Ontologia_Class1]
+            [Ontologia_Class10005]
+            [Ontologia_Class10006]
+            [Ontologia_Class10008]
+            [Ontologia_Class10009]
+            [Ontologia_Class10004]
+            [Ontologia_Class10003]
+            [Ontologia_Class10002]
+            [Ontologia_Class10012]
+            [Ontologia_Class10017])
+        (idioma_original_libro
+            [Ontologia_Class10002]
+            [Ontologia_Class10003]
+            [Ontologia_Class10004]
+            [Ontologia_Class10005]
+            [Ontologia_Class10006]
+            [Ontologia_Class10008]
+            [Ontologia_Class10009]
+            [Ontologia_Class10011]
+            [Ontologia_Class10012]
+            [Ontologia_Class10014]
+            [Ontologia_Class10015]
+            [Ontologia_Class10016]))
+    
+    ([Ontologia_Class61] of  Libro
+        
+        (anyo_publicacion 1903)
+        (libro_animo
+            [Ontologia_Class35]
+            [Ontologia_Class56])
+        (libro_escritor [Ontologia_Class119])
+        (libro_genero [Ontologia_Class16])
+        (libro_publico
+            [Ontologia_Class52]
+            [Ontologia_Class51]
+            [Ontologia_Class50])
+        (libro_tiempo [Ontologia_Class44])
+        (mundo_real TRUE)
+        (novela_independiente TRUE)
+        (numero_de_paginas 232)
+        (precio 9)
+    (titulo "The Call of the Wild"))
+    
+    ([Ontologia_Class62] of  Libro
+        
+        (anyo_publicacion 1812)
+        (libro_escritor [Ontologia_Class99])
+        (libro_genero [Ontologia_Class16])
+        (mundo_real FALSE)
+        (numero_de_paginas 323)
+        (precio 40)
+    (titulo "The Swiss Family Robinson"))
+    
+    ([Ontologia_Class63] of  Libro
+        
+        (adaptada_a_cine TRUE)
+        (anyo_publicacion 1985)
+        (libro_animo [Ontologia_Class38])
+        (libro_escritor [Ontologia_Class126])
+        (libro_genero [Ontologia_Class14])
+        (libro_publico
+            [Ontologia_Class53]
+            [Ontologia_Class52]
+            [Ontologia_Class50])
+        (libro_tiempo [Ontologia_Class43])
+        (mundo_real TRUE)
+        (numero_de_paginas 843)
+        (precio 13)
+    (titulo "Lonesome Dove"))
+    
+    ([Ontologia_Class64] of  Libro
+        
+        (anyo_publicacion 1912)
+        (libro_animo
+            [Ontologia_Class36]
+            [Ontologia_Class38])
+        (libro_escritor [Ontologia_Class123])
+        (libro_genero [Ontologia_Class14])
+        (libro_publico
+            [Ontologia_Class53]
+            [Ontologia_Class52]
+            [Ontologia_Class50])
+        (libro_tiempo [Ontologia_Class43])
+        (novela_independiente TRUE)
+        (numero_de_paginas 335)
+        (precio 23)
+    (titulo "Riders of the Purple Sage"))
+    
+    ([Ontologia_Class65] of  Libro
+        
+        (libro_escritor [Ontologia_Class102])
+        (libro_genero
+            [Ontologia_Class17]
+            [Ontologia_Class13])
+        (numero_de_paginas 447)
+        (precio 2)
+    (titulo "The Shining"))
+    
+    ([Ontologia_Class67] of  Libro
+        
+        (anyo_publicacion 2019)
+        (libro_animo [Ontologia_Class36])
+        (libro_escritor [Ontologia_Class102])
+        (libro_genero
+            [Ontologia_Class17]
+            [Ontologia_Class13])
+        (libro_idioma [Ontologia_Class6])
+        (libro_publico
+            [Ontologia_Class50]
+            [Ontologia_Class51])
+        (libro_tiempo [Ontologia_Class46])
+        (mundo_real FALSE)
+        (novela_independiente TRUE)
+        (numero_de_paginas 576)
+        (precio 17)
+    (titulo "The institute"))
+    
+    ([Ontologia_Class68] of  Libro
+        
+        (anyo_publicacion 1963)
+        (libro_escritor [Ontologia_Class103])
+        (libro_genero [Ontologia_Class12])
+        (numero_de_paginas 1)
+        (precio 223)
+    (titulo "The Spy Who Came in from the Cold"))
+    
+    ([Ontologia_Class69] of  Libro
+        
+        (anyo_publicacion 1915)
+        (libro_escritor [Ontologia_Class98])
+        (libro_genero [Ontologia_Class12])
+        (novela_independiente FALSE)
+        (numero_de_paginas 10)
+        (precio 10)
+    (titulo "The Thirty-Nine Steps"))
+    
+    ([Ontologia_Class7] of  Genero
+        
+        (genero_libro
+            [Ontologia_Class83]
+            [Ontologia_Class89]
+            [Ontologia_Class82]
+            [Ontologia_Class10172]
+            [Ontologia_Class10005]
+            [Ontologia_Class10006]
+            [Ontologia_Class10008])
+    (id_genero "Fantasy"))
+    
+    ([Ontologia_Class70] of  Libro
+        
+        (adaptada_a_cine FALSE)
+        (anyo_publicacion 1949)
+        (libro_animo [Ontologia_Class34])
+        (libro_escritor [Ontologia_Class125])
+        (libro_genero
+            [Ontologia_Class15]
+            [Ontologia_Class8])
+        (libro_publico
+            [Ontologia_Class53]
+            [Ontologia_Class52])
+        (libro_tiempo [Ontologia_Class44])
+        (novela_independiente TRUE)
+        (numero_de_paginas 328)
+        (precio 100)
+        (primera_persona FALSE)
+    (titulo "Nineteen Eighty-Four"))
+    
+    ([Ontologia_Class71] of  Libro
+        
+        (adaptada_a_cine TRUE)
+        (anyo_publicacion 2011)
+        (best_seller TRUE)
+        (libro_animo
+            [Ontologia_Class36]
+            [Ontologia_Class39])
+        (libro_escritor [Ontologia_Class107])
+        (libro_genero [Ontologia_Class8])
+        (libro_idioma [Ontologia_Class6])
+        (libro_publico
+            [Ontologia_Class50]
+            [Ontologia_Class52]
+            [Ontologia_Class51])
+        (libro_tiempo [Ontologia_Class46])
+        (novela_independiente TRUE)
+        (numero_de_paginas 369)
+        (precio 11)
+    (titulo "The Martian"))
+    
+    ([Ontologia_Class72] of  Libro
+        
+        (adaptada_a_cine TRUE)
+        (anyo_publicacion 1996)
+        (libro_animo
+            [Ontologia_Class31]
+            [Ontologia_Class37])
+        (libro_escritor [Ontologia_Class105])
+        (libro_genero [Ontologia_Class9])
+        (libro_idioma [Ontologia_Class6])
+        (libro_publico
+            [Ontologia_Class52]
+            [Ontologia_Class50]
+            [Ontologia_Class53])
+        (libro_tiempo [Ontologia_Class44])
+        (numero_de_paginas 224)
+        (precio 3)
+        (primera_persona FALSE)
+    (titulo "The Notebook"))
+    
+    ([Ontologia_Class73] of  Libro
+        
+        (adaptada_a_cine TRUE)
+        (anyo_publicacion 2012)
+        (best_seller TRUE)
+        (libro_animo
+            [Ontologia_Class56]
+            [Ontologia_Class38])
+        (libro_escritor [Ontologia_Class130])
+        (libro_genero [Ontologia_Class9])
+        (libro_publico [Ontologia_Class52])
+        (libro_tiempo [Ontologia_Class44])
+        (mundo_real TRUE)
+        (novela_independiente FALSE)
+        (numero_de_paginas 592)
+        (precio 26)
+    (titulo "Fifty Shades Freed"))
+    
+    ([Ontologia_Class74] of  Libro
+        
+        (libro_escritor [Ontologia_Class101])
+        (libro_genero [Ontologia_Class47])
+        (numero_de_paginas 123)
+        (precio 2)
+    (titulo "The Stranger"))
+    
+    ([Ontologia_Class75] of  Libro
+        
+        (adaptada_a_cine FALSE)
+        (libro_escritor [Ontologia_Class97])
+        (libro_genero [Ontologia_Class47])
+        (numero_de_paginas 1883)
+        (precio 21)
+    (titulo "Thus Spoke Zarathustra"))
+    
+    ([Ontologia_Class77] of  Libro
+        
+        (libro_escritor [Ontologia_Class95])
+        (libro_genero [Ontologia_Class18])
+        (numero_de_paginas 672)
+        (precio 10)
+    (titulo "Wolf Hall"))
+    
+    ([Ontologia_Class78] of  Libro
+        
+        (adaptada_a_cine TRUE)
+        (anyo_publicacion 1989)
+        (libro_animo [Ontologia_Class35])
+        (libro_escritor [Ontologia_Class104])
+        (libro_genero [Ontologia_Class18])
+        (libro_idioma [Ontologia_Class6])
+        (libro_publico
+            [Ontologia_Class50]
+            [Ontologia_Class52]
+            [Ontologia_Class53])
+        (libro_tiempo [Ontologia_Class44])
+        (novela_independiente TRUE)
+        (numero_de_paginas 806)
+        (precio 40)
+    (titulo "The Pillars of the Earth"))
+    
+    ([Ontologia_Class79] of  Libro
+        
+        (anyo_publicacion 2007)
+        (libro_animo
+            [Ontologia_Class39]
+            [Ontologia_Class56])
+        (libro_dibujante [Ontologia_Class10171])
+        (libro_escritor [Ontologia_Class112])
+        (libro_genero
+            [Ontologia_Class18]
+            [Ontologia_Class20]
+            [Ontologia_Class16])
+        (libro_idioma [Ontologia_Class6])
+        (libro_publico
+            [Ontologia_Class51]
+            [Ontologia_Class49])
+        (libro_tiempo [Ontologia_Class44])
+        (mundo_real TRUE)
+        (novela_independiente TRUE)
+        (numero_de_paginas 526)
+        (precio 16)
+    (titulo "The Invention of Hugo Cabret"))
+    
+    ([Ontologia_Class8] of  Genero
+        
+        (genero_libro
+            [Ontologia_Class71]
+            [Ontologia_Class70]
+            [Ontologia_Class10172])
+    (id_genero "Science fiction"))
+    
+    ([Ontologia_Class81] of  Libro
+        
+        (anyo_publicacion 1976)
+        (libro_animo [Ontologia_Class56])
+        (libro_dibujante [Ontologia_Class134])
+        (libro_escritor [Ontologia_Class135])
+        (libro_genero
+            [Ontologia_Class20]
+            [Ontologia_Class18])
+        (libro_publico
+            [Ontologia_Class49]
+            [Ontologia_Class51])
+        (libro_tiempo [Ontologia_Class43])
+        (novela_independiente TRUE)
+        (numero_de_paginas 146)
+        (precio 60)
+    (titulo "Chandler: Red Tide"))
+    
+    ([Ontologia_Class82] of  Libro
+        
+        (anyo_publicacion 2007)
+        (libro_animo [Ontologia_Class40])
+        (libro_escritor [Ontologia_Class106])
+        (libro_genero
+            [Ontologia_Class7]
+            [Ontologia_Class18])
+        (libro_idioma [Ontologia_Class6])
+        (libro_publico
+            [Ontologia_Class52]
+            [Ontologia_Class50]
+            [Ontologia_Class53])
+        (libro_tiempo [Ontologia_Class43])
+        (mundo_real TRUE)
+        (novela_independiente TRUE)
+        (numero_de_paginas 662)
+        (precio 10)
+    (titulo "The Name of the Wind"))
+    
+    ([Ontologia_Class83] of  Libro
+        
+        (adaptada_a_cine TRUE)
+        (anyo_publicacion 1937)
+        (best_seller TRUE)
+        (libro_animo
+            [Ontologia_Class33]
+            [Ontologia_Class36]
+            [Ontologia_Class40])
+        (libro_escritor [Ontologia_Class118])
+        (libro_genero [Ontologia_Class7])
+        (libro_publico
+            [Ontologia_Class52]
+            [Ontologia_Class51]
+            [Ontologia_Class50])
+        (libro_tiempo [Ontologia_Class43])
+        (novela_independiente FALSE)
+        (numero_de_paginas 310)
+        (precio 9)
+    (titulo "The Hobbit"))
+    
+    ([Ontologia_Class86] of  Libro
+        
+        (adaptada_a_cine TRUE)
+        (anyo_publicacion 1937)
+        (best_seller FALSE)
+        (libro_animo [Ontologia_Class34])
+        (libro_escritor [Ontologia_Class132])
+        (libro_genero
+            [Ontologia_Class15]
+            [Ontologia_Class11])
+        (libro_publico
+            [Ontologia_Class53]
+            [Ontologia_Class52]
+            [Ontologia_Class51]
+            [Ontologia_Class50])
+        (libro_tiempo [Ontologia_Class43])
+        (mundo_real TRUE)
+        (novela_independiente TRUE)
+        (numero_de_paginas 288)
+        (precio 9)
+    (titulo "Death on the Nile"))
+    
+    ([Ontologia_Class87] of  Libro
+        
+        (adaptada_a_cine FALSE)
+        (anyo_publicacion 1902)
+        (libro_animo [Ontologia_Class35])
+        (libro_escritor [Ontologia_Class117])
+        (libro_genero [Ontologia_Class11])
+        (libro_publico
+            [Ontologia_Class53]
+            [Ontologia_Class52]
+            [Ontologia_Class50])
+        (libro_tiempo [Ontologia_Class44])
+        (novela_independiente TRUE)
+        (numero_de_paginas 360)
+        (precio 10)
+    (titulo "The Hound of the Baskervilles"))
+    
+    ([Ontologia_Class88] of  Libro
+        
+        (adaptada_a_cine TRUE)
+        (anyo_publicacion 2003)
+        (best_seller TRUE)
+        (libro_animo [Ontologia_Class36])
+        (libro_escritor [Ontologia_Class122])
+        (libro_genero
+            [Ontologia_Class11]
+            [Ontologia_Class17])
+        (libro_publico
+            [Ontologia_Class53]
+            [Ontologia_Class52])
+        (libro_tiempo [Ontologia_Class44])
+        (mundo_real TRUE)
+        (novela_independiente TRUE)
+        (numero_de_paginas 380)
+        (precio 10)
+    (titulo "Shutter Island"))
+    
+    ([Ontologia_Class89] of  Libro
+        
+        (adaptada_a_cine TRUE)
+        (anyo_publicacion 1990)
+        (libro_animo
+            [Ontologia_Class33]
+            [Ontologia_Class31])
+        (libro_escritor [Ontologia_Class129])
+        (libro_genero
+            [Ontologia_Class21]
+            [Ontologia_Class13]
+            [Ontologia_Class7])
+        (libro_publico
+            [Ontologia_Class52]
+            [Ontologia_Class50])
+        (libro_tiempo [Ontologia_Class46])
+        (novela_independiente FALSE)
+        (numero_de_paginas 288)
+        (precio 9)
+    (titulo "Good Omens"))
+    
+    ([Ontologia_Class9] of  Genero
+        
+        (genero_libro
+            [Ontologia_Class72]
+            [Ontologia_Class73]
+            [Ontologia_Class2])
+    (id_genero "Romance novel"))
+    
+    ([Ontologia_Class90] of  Libro
+        
+        (libro_escritor [Ontologia_Class96])
+        (libro_genero [Ontologia_Class21])
+        (numero_de_paginas 210)
+        (precio 0)
+    (titulo "Without Feathers"))
+    
+    ([Ontologia_Class91] of  Libro
+        
+        (adaptada_a_cine TRUE)
+        (anyo_publicacion 1939)
+        (libro_animo
+            [Ontologia_Class32]
+            [Ontologia_Class38])
+        (libro_escritor [Ontologia_Class121])
+        (libro_genero
+            [Ontologia_Class17]
+            [Ontologia_Class11])
+        (libro_publico
+            [Ontologia_Class53]
+            [Ontologia_Class52])
+        (libro_tiempo [Ontologia_Class44])
+        (novela_independiente TRUE)
+        (numero_de_paginas 277)
+        (precio 11)
+    (titulo "The Big Sleep"))
+    
+    ([Ontologia_Class92] of  Libro
+        
+        (adaptada_a_cine TRUE)
+        (anyo_publicacion 1930)
+        (libro_animo [Ontologia_Class34])
+        (libro_escritor [Ontologia_Class111])
+        (libro_genero
+            [Ontologia_Class11]
+            [Ontologia_Class10116])
+        (libro_idioma [Ontologia_Class6])
+        (libro_publico
+            [Ontologia_Class52]
+            [Ontologia_Class50]
+            [Ontologia_Class53])
+        (libro_tiempo [Ontologia_Class44])
+        (novela_independiente TRUE)
+        (numero_de_paginas 0)
+        (precio 9)
+    (titulo "The Maltese Falcon"))
+    
+    ([Ontologia_Class95] of  Escritor
+        
+        (escritor_libro [Ontologia_Class77])
+    (id_persona "Hilary Mantel"))
+    
+    ([Ontologia_Class96] of  Escritor
+        
+        (escritor_libro [Ontologia_Class90])
+    (id_persona "Woody Allen"))
+    
+    ([Ontologia_Class97] of  Escritor
+        
+        (escritor_libro [Ontologia_Class75])
+    (id_persona "Friedrich Nietzsche"))
+    
+    ([Ontologia_Class98] of  Escritor
+        
+        (escritor_libro [Ontologia_Class69])
+    (id_persona "John Buchan"))
+    
+    ([Ontologia_Class99] of  Escritor
+        
+        (escritor_libro [Ontologia_Class62])
+    (id_persona "Johann David Wyss"))
 
-([Ontologia_Class10095] of  Libro
-
-	(adaptada_a_cine TRUE)
-	(anyo_publicacion 2011)
-	(best_seller TRUE)
-	(mundo_real TRUE)
-	(novela_independiente FALSE)
-	(numero_de_paginas 514)
-	(precio 34)
-	(titulo "Fifty Shades of Grey"))
-
-([Ontologia_Class101] of  Escritor
-
-	(escritor_libro [Ontologia_Class74])
-	(id_persona "Albert Camus"))
-
-([Ontologia_Class10116] of  Genero
-
-	(genero_libro [Ontologia_Class92])
-	(id_genero "Black novel"))
-
-([Ontologia_Class10169] of  Libro
-
-	(adaptada_a_cine TRUE)
-	(anyo_publicacion 2009)
-	(best_seller TRUE)
-	(libro_idioma [Ontologia_Class6])
-	(numero_de_paginas 391)
-	(precio 12)
-	(primera_persona FALSE)
-	(titulo "Catching Fire"))
-
-([Ontologia_Class10170] of  Libro
-
-	(adaptada_a_cine TRUE)
-	(anyo_publicacion 2008)
-	(best_seller TRUE)
-	(libro_idioma [Ontologia_Class6])
-	(numero_de_paginas 438)
-	(precio 19)
-	(primera_persona FALSE)
-	(titulo "Mockingjay"))
-
-([Ontologia_Class10171] of  Dibujante
-
-	(dibujante_libro [Ontologia_Class79])
-	(id_persona "Brian Selznick"))
-
-([Ontologia_Class10172] of  Libro
-
-	(adaptada_a_cine TRUE)
-	(anyo_publicacion 2009)
-	(best_seller TRUE)
-	(libro_animo
-		[Ontologia_Class38]
-		[Ontologia_Class36]
-		[Ontologia_Class32]
-		[Ontologia_Class39])
-	(libro_dibujante [Ontologia_Class10174])
-	(libro_escritor [Ontologia_Class10173])
-	(libro_genero
-		[Ontologia_Class15]
-		[Ontologia_Class8]
-		[Ontologia_Class7])
-	(libro_idioma [Ontologia_Class30])
-	(libro_publico
-		[Ontologia_Class50]
-		[Ontologia_Class51]
-		[Ontologia_Class52])
-	(libro_tiempo [Ontologia_Class43])
-	(numero_de_paginas 0)
-	(precio 8)
-	(titulo "Shingeki no Kyojin"))
-
-([Ontologia_Class10173] of  Escritor
-
-	(escritor_libro [Ontologia_Class10172])
-	(id_persona "Hajime Isayama"))
-
-([Ontologia_Class10174] of  Dibujante
-
-	(dibujante_libro [Ontologia_Class10172])
-	(id_persona "Hajime Isayama"))
-
-([Ontologia_Class102] of  Escritor
-
-	(escritor_libro
-		[Ontologia_Class67]
-		[Ontologia_Class65])
-	(id_persona "Stephen King"))
-
-([Ontologia_Class103] of  Escritor
-
-	(escritor_libro [Ontologia_Class68])
-	(id_persona "John le Carre"))
-
-([Ontologia_Class104] of  Escritor
-
-	(escritor_libro [Ontologia_Class78])
-	(id_persona "Ken Follett"))
-
-([Ontologia_Class105] of  Escritor
-
-	(escritor_libro [Ontologia_Class72])
-	(id_persona "Nicholas Sparks"))
-
-([Ontologia_Class106] of  Escritor
-
-	(escritor_libro [Ontologia_Class82])
-	(id_persona "Patrick Rothfuss"))
-
-([Ontologia_Class107] of  Escritor
-
-	(escritor_libro [Ontologia_Class71])
-	(id_persona "Andy Weir"))
-
-([Ontologia_Class11] of  Genero
-
-	(genero_libro
-		[Ontologia_Class87]
-		[Ontologia_Class86]
-		[Ontologia_Class88]
-		[Ontologia_Class91]
-		[Ontologia_Class92])
-	(id_genero "Detective novel"))
-
-([Ontologia_Class111] of  Escritor
-
-	(escritor_libro [Ontologia_Class92])
-	(id_persona "Dashiell Hammett"))
-
-([Ontologia_Class112] of  Escritor
-
-	(escritor_libro [Ontologia_Class79])
-	(id_persona "Brian Selznick"))
-
-([Ontologia_Class117] of  Escritor
-
-	(escritor_libro [Ontologia_Class87])
-	(id_persona "Arthur Conan Doyle"))
-
-([Ontologia_Class118] of  Escritor
-
-	(escritor_libro [Ontologia_Class83])
-	(id_persona "J. R. R. Tolkien"))
-
-([Ontologia_Class119] of  Escritor
-
-	(escritor_libro [Ontologia_Class61])
-	(id_persona "Jack London"))
-
-([Ontologia_Class12] of  Genero
-
-	(genero_libro
-		[Ontologia_Class68]
-		[Ontologia_Class69])
-	(id_genero "Spy novel"))
-
-([Ontologia_Class121] of  Escritor
-
-	(escritor_libro [Ontologia_Class91])
-	(id_persona "Raymond Chandler"))
-
-([Ontologia_Class122] of  Escritor
-
-	(escritor_libro [Ontologia_Class88])
-	(id_persona "Dennis Lehane"))
-
-([Ontologia_Class123] of  Escritor
-
-	(escritor_libro [Ontologia_Class64])
-	(id_persona "Zane Grey"))
-
-([Ontologia_Class125] of  Escritor
-
-	(escritor_libro [Ontologia_Class70])
-	(id_persona "George Orwell"))
-
-([Ontologia_Class126] of  Escritor
-
-	(escritor_libro [Ontologia_Class63])
-	(id_persona "Larry McMurtry"))
-
-([Ontologia_Class128] of  Escritor
-
-	(id_persona "Neil Gaiman"))
-
-([Ontologia_Class129] of  Escritor
-
-	(escritor_libro [Ontologia_Class89])
-	(id_persona "Terry Pratchett"))
-
-([Ontologia_Class13] of  Genero
-
-	(genero_libro
-		[Ontologia_Class65]
-		[Ontologia_Class67]
-		[Ontologia_Class89])
-	(id_genero "Horror fiction"))
-
-([Ontologia_Class130] of  Escritor
-
-	(escritor_libro
-		[Ontologia_Class73]
-		[Ontologia_Class2])
-	(id_persona "E. L. James"))
-
-([Ontologia_Class132] of  Escritor
-
-	(escritor_libro [Ontologia_Class86])
-	(id_persona "Agatha Christie"))
-
-([Ontologia_Class134] of  Dibujante
-
-	(dibujante_libro [Ontologia_Class81])
-	(id_persona "Jim Steranko"))
-
-([Ontologia_Class135] of  Escritor
-
-	(escritor_libro [Ontologia_Class81])
-	(id_persona "Jim Steranko"))
-
-([Ontologia_Class14] of  Genero
-
-	(genero_libro
-		[Ontologia_Class63]
-		[Ontologia_Class64])
-	(id_genero "Western novel"))
-
-([Ontologia_Class15] of  Genero
-
-	(genero_libro
-		[Ontologia_Class70]
-		[Ontologia_Class86]
-		[Ontologia_Class10172])
-	(id_genero "Drama"))
-
-([Ontologia_Class16] of  Genero
-
-	(genero_libro
-		[Ontologia_Class61]
-		[Ontologia_Class62]
-		[Ontologia_Class79])
-	(id_genero "Adventure"))
-
-([Ontologia_Class17] of  Genero
-
-	(genero_libro
-		[Ontologia_Class65]
-		[Ontologia_Class67]
-		[Ontologia_Class88]
-		[Ontologia_Class91])
-	(id_genero "Thriller"))
-
-([Ontologia_Class18] of  Genero
-
-	(genero_libro
-		[Ontologia_Class77]
-		[Ontologia_Class78]
-		[Ontologia_Class81]
-		[Ontologia_Class79]
-		[Ontologia_Class82])
-	(id_genero "Historical fiction"))
-
-([Ontologia_Class2] of  Libro
-
-	(adaptada_a_cine TRUE)
-	(anyo_publicacion 2012)
-	(best_seller TRUE)
-	(libro_animo
-		[Ontologia_Class56]
-		[Ontologia_Class38])
-	(libro_escritor [Ontologia_Class130])
-	(libro_genero [Ontologia_Class9])
-	(libro_publico [Ontologia_Class52])
-	(libro_tiempo [Ontologia_Class44])
-	(mundo_real TRUE)
-	(novela_independiente FALSE)
-	(numero_de_paginas 544)
-	(precio 11)
-	(titulo "Fifty Shades Darker"))
-
-([Ontologia_Class20] of  Genero
-
-	(genero_libro
-		[Ontologia_Class81]
-		[Ontologia_Class79])
-	(id_genero "Graphic novel"))
-
-([Ontologia_Class21] of  Genero
-
-	(genero_libro
-		[Ontologia_Class90]
-		[Ontologia_Class89])
-	(id_genero "Comedy fiction"))
-
-([Ontologia_Class24] of  Idioma
-
-	(id_idioma "Spanish"))
-
-([Ontologia_Class27] of  Idioma
-
-	(id_idioma "Italian"))
-
-([Ontologia_Class28] of  Idioma
-
-	(id_idioma "French"))
-
-([Ontologia_Class29] of  Idioma
-
-	(id_idioma "German"))
-
-([Ontologia_Class30] of  Idioma
-
-	(id_idioma "Japanese")
-	(idioma_libro [Ontologia_Class10172]))
-
-([Ontologia_Class31] of  Animo
-
-	(animo_libro
-		[Ontologia_Class89]
-		[Ontologia_Class72])
-	(id_animo "happy"))
-
-([Ontologia_Class32] of  Animo
-
-	(animo_libro
-		[Ontologia_Class91]
-		[Ontologia_Class10172])
-	(id_animo "sad"))
-
-([Ontologia_Class33] of  Animo
-
-	(animo_libro
-		[Ontologia_Class89]
-		[Ontologia_Class83])
-	(id_animo "funny"))
-
-([Ontologia_Class34] of  Animo
-
-	(animo_libro
-		[Ontologia_Class86]
-		[Ontologia_Class70]
-		[Ontologia_Class92])
-	(id_animo "serious"))
-
-([Ontologia_Class35] of  Animo
-
-	(animo_libro
-		[Ontologia_Class61]
-		[Ontologia_Class87]
-		[Ontologia_Class78])
-	(id_animo "expected"))
-
-([Ontologia_Class36] of  Animo
-
-	(animo_libro
-		[Ontologia_Class64]
-		[Ontologia_Class88]
-		[Ontologia_Class83]
-		[Ontologia_Class67]
-		[Ontologia_Class71]
-		[Ontologia_Class10172])
-	(id_animo "unpredictable"))
-
-([Ontologia_Class37] of  Animo
-
-	(animo_libro [Ontologia_Class72])
-	(id_animo "gentle"))
-
-([Ontologia_Class38] of  Animo
-
-	(animo_libro
-		[Ontologia_Class2]
-		[Ontologia_Class73]
-		[Ontologia_Class63]
-		[Ontologia_Class64]
-		[Ontologia_Class91]
-		[Ontologia_Class10172])
-	(id_animo "violent"))
-
-([Ontologia_Class39] of  Animo
-
-	(animo_libro
-		[Ontologia_Class79]
-		[Ontologia_Class71]
-		[Ontologia_Class10172])
-	(id_animo "optimistic"))
-
-([Ontologia_Class4] of  Escritor
-
-	(id_persona "Suzanne Collins"))
-
-([Ontologia_Class40] of  Animo
-
-	(animo_libro
-		[Ontologia_Class83]
-		[Ontologia_Class82])
-	(id_animo "bleak"))
-
-([Ontologia_Class43] of  Tiempo
-
-	(id_tiempo "Past")
-	(tiempo_libro
-		[Ontologia_Class86]
-		[Ontologia_Class81]
-		[Ontologia_Class63]
-		[Ontologia_Class64]
-		[Ontologia_Class83]
-		[Ontologia_Class82]
-		[Ontologia_Class10172]))
-
-([Ontologia_Class44] of  Tiempo
-
-	(id_tiempo "Present")
-	(tiempo_libro
-		[Ontologia_Class2]
-		[Ontologia_Class73]
-		[Ontologia_Class70]
-		[Ontologia_Class88]
-		[Ontologia_Class91]
-		[Ontologia_Class61]
-		[Ontologia_Class87]
-		[Ontologia_Class79]
-		[Ontologia_Class92]
-		[Ontologia_Class72]
-		[Ontologia_Class78]))
-
-([Ontologia_Class46] of  Tiempo
-
-	(id_tiempo "Future")
-	(tiempo_libro
-		[Ontologia_Class89]
-		[Ontologia_Class67]
-		[Ontologia_Class71]))
-
-([Ontologia_Class47] of  Genero
-
-	(genero_libro
-		[Ontologia_Class75]
-		[Ontologia_Class74])
-	(id_genero "Philosophy novel"))
-
-([Ontologia_Class49] of  Publico
-
-	(id_publico "Children")
-	(publico_libro
-		[Ontologia_Class81]
-		[Ontologia_Class79]))
-
-([Ontologia_Class5] of  Libro
-
-	(adaptada_a_cine TRUE)
-	(anyo_publicacion 2008)
-	(best_seller TRUE)
-	(libro_idioma [Ontologia_Class6])
-	(numero_de_paginas 396)
-	(precio 11)
-	(primera_persona FALSE)
-	(titulo "The Hunger Games"))
-
-([Ontologia_Class50] of  Publico
-
-	(id_publico "Adolescents")
-	(publico_libro
-		[Ontologia_Class86]
-		[Ontologia_Class89]
-		[Ontologia_Class63]
-		[Ontologia_Class64]
-		[Ontologia_Class61]
-		[Ontologia_Class83]
-		[Ontologia_Class87]
-		[Ontologia_Class67]
-		[Ontologia_Class92]
-		[Ontologia_Class71]
-		[Ontologia_Class82]
-		[Ontologia_Class72]
-		[Ontologia_Class78]
-		[Ontologia_Class10172]))
-
-([Ontologia_Class51] of  Publico
-
-	(id_publico "Young people")
-	(publico_libro
-		[Ontologia_Class81]
-		[Ontologia_Class86]
-		[Ontologia_Class61]
-		[Ontologia_Class83]
-		[Ontologia_Class67]
-		[Ontologia_Class79]
-		[Ontologia_Class71]
-		[Ontologia_Class10172]))
-
-([Ontologia_Class52] of  Publico
-
-	(id_publico "Adults")
-	(publico_libro
-		[Ontologia_Class2]
-		[Ontologia_Class86]
-		[Ontologia_Class73]
-		[Ontologia_Class89]
-		[Ontologia_Class63]
-		[Ontologia_Class70]
-		[Ontologia_Class64]
-		[Ontologia_Class88]
-		[Ontologia_Class91]
-		[Ontologia_Class61]
-		[Ontologia_Class83]
-		[Ontologia_Class87]
-		[Ontologia_Class92]
-		[Ontologia_Class71]
-		[Ontologia_Class82]
-		[Ontologia_Class72]
-		[Ontologia_Class78]
-		[Ontologia_Class10172]))
-
-([Ontologia_Class53] of  Publico
-
-	(id_publico "Old people")
-	(publico_libro
-		[Ontologia_Class86]
-		[Ontologia_Class63]
-		[Ontologia_Class70]
-		[Ontologia_Class64]
-		[Ontologia_Class88]
-		[Ontologia_Class91]
-		[Ontologia_Class87]
-		[Ontologia_Class92]
-		[Ontologia_Class82]
-		[Ontologia_Class72]
-		[Ontologia_Class78]))
-
-([Ontologia_Class55] of  Animo
-
-	(id_animo "disgusting"))
-
-([Ontologia_Class56] of  Animo
-
-	(animo_libro
-		[Ontologia_Class81]
-		[Ontologia_Class2]
-		[Ontologia_Class73]
-		[Ontologia_Class61]
-		[Ontologia_Class79])
-	(id_animo "beautiful"))
-
-([Ontologia_Class6] of  Idioma
-
-	(id_idioma "English")
-	(idioma_libro
-		[Ontologia_Class5]
-		[Ontologia_Class10169]
-		[Ontologia_Class10170]
-		[Ontologia_Class67]
-		[Ontologia_Class79]
-		[Ontologia_Class92]
-		[Ontologia_Class71]
-		[Ontologia_Class82]
-		[Ontologia_Class72]
-		[Ontologia_Class78]))
-
-([Ontologia_Class61] of  Libro
-
-	(anyo_publicacion 1903)
-	(libro_animo
-		[Ontologia_Class35]
-		[Ontologia_Class56])
-	(libro_escritor [Ontologia_Class119])
-	(libro_genero [Ontologia_Class16])
-	(libro_publico
-		[Ontologia_Class52]
-		[Ontologia_Class51]
-		[Ontologia_Class50])
-	(libro_tiempo [Ontologia_Class44])
-	(mundo_real TRUE)
-	(novela_independiente TRUE)
-	(numero_de_paginas 232)
-	(precio 9)
-	(titulo "The Call of the Wild"))
-
-([Ontologia_Class62] of  Libro
-
-	(anyo_publicacion 1812)
-	(libro_escritor [Ontologia_Class99])
-	(libro_genero [Ontologia_Class16])
-	(mundo_real FALSE)
-	(numero_de_paginas 323)
-	(precio 40)
-	(titulo "The Swiss Family Robinson"))
-
-([Ontologia_Class63] of  Libro
-
-	(adaptada_a_cine TRUE)
-	(anyo_publicacion 1985)
-	(libro_animo [Ontologia_Class38])
-	(libro_escritor [Ontologia_Class126])
-	(libro_genero [Ontologia_Class14])
-	(libro_publico
-		[Ontologia_Class53]
-		[Ontologia_Class52]
-		[Ontologia_Class50])
-	(libro_tiempo [Ontologia_Class43])
-	(mundo_real TRUE)
-	(numero_de_paginas 843)
-	(precio 13)
-	(titulo "Lonesome Dove"))
-
-([Ontologia_Class64] of  Libro
-
-	(anyo_publicacion 1912)
-	(libro_animo
-		[Ontologia_Class36]
-		[Ontologia_Class38])
-	(libro_escritor [Ontologia_Class123])
-	(libro_genero [Ontologia_Class14])
-	(libro_publico
-		[Ontologia_Class53]
-		[Ontologia_Class52]
-		[Ontologia_Class50])
-	(libro_tiempo [Ontologia_Class43])
-	(novela_independiente TRUE)
-	(numero_de_paginas 335)
-	(precio 23)
-	(titulo "Riders of the Purple Sage"))
-
-([Ontologia_Class65] of  Libro
-
-	(libro_escritor [Ontologia_Class102])
-	(libro_genero
-		[Ontologia_Class17]
-		[Ontologia_Class13])
-	(numero_de_paginas 447)
-	(precio 2)
-	(titulo "The Shining"))
-
-([Ontologia_Class67] of  Libro
-
-	(anyo_publicacion 2019)
-	(libro_animo [Ontologia_Class36])
-	(libro_escritor [Ontologia_Class102])
-	(libro_genero
-		[Ontologia_Class17]
-		[Ontologia_Class13])
-	(libro_idioma [Ontologia_Class6])
-	(libro_publico
-		[Ontologia_Class50]
-		[Ontologia_Class51])
-	(libro_tiempo [Ontologia_Class46])
-	(mundo_real FALSE)
-	(novela_independiente TRUE)
-	(numero_de_paginas 576)
-	(precio 17)
-	(titulo "The institute"))
-
-([Ontologia_Class68] of  Libro
-
-	(anyo_publicacion 1963)
-	(libro_escritor [Ontologia_Class103])
-	(libro_genero [Ontologia_Class12])
-	(numero_de_paginas 1)
-	(precio 223)
-	(titulo "The Spy Who Came in from the Cold"))
-
-([Ontologia_Class69] of  Libro
-
-	(anyo_publicacion 1915)
-	(libro_escritor [Ontologia_Class98])
-	(libro_genero [Ontologia_Class12])
-	(novela_independiente FALSE)
-	(numero_de_paginas 10)
-	(precio 10)
-	(titulo "The Thirty-Nine Steps"))
-
-([Ontologia_Class7] of  Genero
-
-	(genero_libro
-		[Ontologia_Class83]
-		[Ontologia_Class89]
-		[Ontologia_Class82]
-		[Ontologia_Class10172])
-	(id_genero "Fantasy"))
-
-([Ontologia_Class70] of  Libro
-
-	(adaptada_a_cine FALSE)
-	(anyo_publicacion 1949)
-	(libro_animo [Ontologia_Class34])
-	(libro_escritor [Ontologia_Class125])
-	(libro_genero
-		[Ontologia_Class15]
-		[Ontologia_Class8])
-	(libro_publico
-		[Ontologia_Class53]
-		[Ontologia_Class52])
-	(libro_tiempo [Ontologia_Class44])
-	(novela_independiente TRUE)
-	(numero_de_paginas 328)
-	(precio 100)
-	(primera_persona FALSE)
-	(titulo "Nineteen Eighty-Four"))
-
-([Ontologia_Class71] of  Libro
-
-	(adaptada_a_cine TRUE)
-	(anyo_publicacion 2011)
-	(best_seller TRUE)
-	(libro_animo
-		[Ontologia_Class36]
-		[Ontologia_Class39])
-	(libro_escritor [Ontologia_Class107])
-	(libro_genero [Ontologia_Class8])
-	(libro_idioma [Ontologia_Class6])
-	(libro_publico
-		[Ontologia_Class50]
-		[Ontologia_Class52]
-		[Ontologia_Class51])
-	(libro_tiempo [Ontologia_Class46])
-	(novela_independiente TRUE)
-	(numero_de_paginas 369)
-	(precio 11)
-	(titulo "The Martian"))
-
-([Ontologia_Class72] of  Libro
-
-	(adaptada_a_cine TRUE)
-	(anyo_publicacion 1996)
-	(libro_animo
-		[Ontologia_Class31]
-		[Ontologia_Class37])
-	(libro_escritor [Ontologia_Class105])
-	(libro_genero [Ontologia_Class9])
-	(libro_idioma [Ontologia_Class6])
-	(libro_publico
-		[Ontologia_Class52]
-		[Ontologia_Class50]
-		[Ontologia_Class53])
-	(libro_tiempo [Ontologia_Class44])
-	(numero_de_paginas 224)
-	(precio 3)
-	(primera_persona FALSE)
-	(titulo "The Notebook"))
-
-([Ontologia_Class73] of  Libro
-
-	(adaptada_a_cine TRUE)
-	(anyo_publicacion 2012)
-	(best_seller TRUE)
-	(libro_animo
-		[Ontologia_Class56]
-		[Ontologia_Class38])
-	(libro_escritor [Ontologia_Class130])
-	(libro_genero [Ontologia_Class9])
-	(libro_publico [Ontologia_Class52])
-	(libro_tiempo [Ontologia_Class44])
-	(mundo_real TRUE)
-	(novela_independiente FALSE)
-	(numero_de_paginas 592)
-	(precio 26)
-	(titulo "Fifty Shades Freed"))
-
-([Ontologia_Class74] of  Libro
-
-	(libro_escritor [Ontologia_Class101])
-	(libro_genero [Ontologia_Class47])
-	(numero_de_paginas 123)
-	(precio 2)
-	(titulo "The Stranger"))
-
-([Ontologia_Class75] of  Libro
-
-	(adaptada_a_cine FALSE)
-	(libro_escritor [Ontologia_Class97])
-	(libro_genero [Ontologia_Class47])
-	(numero_de_paginas 1883)
-	(precio 21)
-	(titulo "Thus Spoke Zarathustra"))
-
-([Ontologia_Class77] of  Libro
-
-	(libro_escritor [Ontologia_Class95])
-	(libro_genero [Ontologia_Class18])
-	(numero_de_paginas 672)
-	(precio 10)
-	(titulo "Wolf Hall"))
-
-([Ontologia_Class78] of  Libro
-
-	(adaptada_a_cine TRUE)
-	(anyo_publicacion 1989)
-	(libro_animo [Ontologia_Class35])
-	(libro_escritor [Ontologia_Class104])
-	(libro_genero [Ontologia_Class18])
-	(libro_idioma [Ontologia_Class6])
-	(libro_publico
-		[Ontologia_Class50]
-		[Ontologia_Class52]
-		[Ontologia_Class53])
-	(libro_tiempo [Ontologia_Class44])
-	(novela_independiente TRUE)
-	(numero_de_paginas 806)
-	(precio 40)
-	(titulo "The Pillars of the Earth"))
-
-([Ontologia_Class79] of  Libro
-
-	(anyo_publicacion 2007)
-	(libro_animo
-		[Ontologia_Class39]
-		[Ontologia_Class56])
-	(libro_dibujante [Ontologia_Class10171])
-	(libro_escritor [Ontologia_Class112])
-	(libro_genero
-		[Ontologia_Class18]
-		[Ontologia_Class20]
-		[Ontologia_Class16])
-	(libro_idioma [Ontologia_Class6])
-	(libro_publico
-		[Ontologia_Class51]
-		[Ontologia_Class49])
-	(libro_tiempo [Ontologia_Class44])
-	(mundo_real TRUE)
-	(novela_independiente TRUE)
-	(numero_de_paginas 526)
-	(precio 16)
-	(titulo "The Invention of Hugo Cabret"))
-
-([Ontologia_Class8] of  Genero
-
-	(genero_libro
-		[Ontologia_Class71]
-		[Ontologia_Class70]
-		[Ontologia_Class10172])
-	(id_genero "Science fiction"))
-
-([Ontologia_Class81] of  Libro
-
-	(anyo_publicacion 1976)
-	(libro_animo [Ontologia_Class56])
-	(libro_dibujante [Ontologia_Class134])
-	(libro_escritor [Ontologia_Class135])
-	(libro_genero
-		[Ontologia_Class20]
-		[Ontologia_Class18])
-	(libro_publico
-		[Ontologia_Class49]
-		[Ontologia_Class51])
-	(libro_tiempo [Ontologia_Class43])
-	(novela_independiente TRUE)
-	(numero_de_paginas 146)
-	(precio 60)
-	(titulo "Chandler: Red Tide"))
-
-([Ontologia_Class82] of  Libro
-
-	(anyo_publicacion 2007)
-	(libro_animo [Ontologia_Class40])
-	(libro_escritor [Ontologia_Class106])
-	(libro_genero
-		[Ontologia_Class7]
-		[Ontologia_Class18])
-	(libro_idioma [Ontologia_Class6])
-	(libro_publico
-		[Ontologia_Class52]
-		[Ontologia_Class50]
-		[Ontologia_Class53])
-	(libro_tiempo [Ontologia_Class43])
-	(mundo_real TRUE)
-	(novela_independiente TRUE)
-	(numero_de_paginas 662)
-	(precio 10)
-	(titulo "The Name of the Wind"))
-
-([Ontologia_Class83] of  Libro
-
-	(adaptada_a_cine TRUE)
-	(anyo_publicacion 1937)
-	(best_seller TRUE)
-	(libro_animo
-		[Ontologia_Class33]
-		[Ontologia_Class36]
-		[Ontologia_Class40])
-	(libro_escritor [Ontologia_Class118])
-	(libro_genero [Ontologia_Class7])
-	(libro_publico
-		[Ontologia_Class52]
-		[Ontologia_Class51]
-		[Ontologia_Class50])
-	(libro_tiempo [Ontologia_Class43])
-	(novela_independiente FALSE)
-	(numero_de_paginas 310)
-	(precio 9)
-	(titulo "The Hobbit"))
-
-([Ontologia_Class86] of  Libro
-
-	(adaptada_a_cine TRUE)
-	(anyo_publicacion 1937)
-	(best_seller FALSE)
-	(libro_animo [Ontologia_Class34])
-	(libro_escritor [Ontologia_Class132])
-	(libro_genero
-		[Ontologia_Class15]
-		[Ontologia_Class11])
-	(libro_publico
-		[Ontologia_Class53]
-		[Ontologia_Class52]
-		[Ontologia_Class51]
-		[Ontologia_Class50])
-	(libro_tiempo [Ontologia_Class43])
-	(mundo_real TRUE)
-	(novela_independiente TRUE)
-	(numero_de_paginas 288)
-	(precio 9)
-	(titulo "Death on the Nile"))
-
-([Ontologia_Class87] of  Libro
-
-	(adaptada_a_cine FALSE)
-	(anyo_publicacion 1902)
-	(libro_animo [Ontologia_Class35])
-	(libro_escritor [Ontologia_Class117])
-	(libro_genero [Ontologia_Class11])
-	(libro_publico
-		[Ontologia_Class53]
-		[Ontologia_Class52]
-		[Ontologia_Class50])
-	(libro_tiempo [Ontologia_Class44])
-	(novela_independiente TRUE)
-	(numero_de_paginas 360)
-	(precio 10)
-	(titulo "The Hound of the Baskervilles"))
-
-([Ontologia_Class88] of  Libro
-
-	(adaptada_a_cine TRUE)
-	(anyo_publicacion 2003)
-	(best_seller TRUE)
-	(libro_animo [Ontologia_Class36])
-	(libro_escritor [Ontologia_Class122])
-	(libro_genero
-		[Ontologia_Class11]
-		[Ontologia_Class17])
-	(libro_publico
-		[Ontologia_Class53]
-		[Ontologia_Class52])
-	(libro_tiempo [Ontologia_Class44])
-	(mundo_real TRUE)
-	(novela_independiente TRUE)
-	(numero_de_paginas 380)
-	(precio 10)
-	(titulo "Shutter Island"))
-
-([Ontologia_Class89] of  Libro
-
-	(adaptada_a_cine TRUE)
-	(anyo_publicacion 1990)
-	(libro_animo
-		[Ontologia_Class33]
-		[Ontologia_Class31])
-	(libro_escritor [Ontologia_Class129])
-	(libro_genero
-		[Ontologia_Class21]
-		[Ontologia_Class13]
-		[Ontologia_Class7])
-	(libro_publico
-		[Ontologia_Class52]
-		[Ontologia_Class50])
-	(libro_tiempo [Ontologia_Class46])
-	(novela_independiente FALSE)
-	(numero_de_paginas 288)
-	(precio 9)
-	(titulo "Good Omens"))
-
-([Ontologia_Class9] of  Genero
-
-	(genero_libro
-		[Ontologia_Class72]
-		[Ontologia_Class73]
-		[Ontologia_Class2])
-	(id_genero "Romance novel"))
-
-([Ontologia_Class90] of  Libro
-
-	(libro_escritor [Ontologia_Class96])
-	(libro_genero [Ontologia_Class21])
-	(numero_de_paginas 210)
-	(precio 0)
-	(titulo "Without Feathers"))
-
-([Ontologia_Class91] of  Libro
-
-	(adaptada_a_cine TRUE)
-	(anyo_publicacion 1939)
-	(libro_animo
-		[Ontologia_Class32]
-		[Ontologia_Class38])
-	(libro_escritor [Ontologia_Class121])
-	(libro_genero
-		[Ontologia_Class17]
-		[Ontologia_Class11])
-	(libro_publico
-		[Ontologia_Class53]
-		[Ontologia_Class52])
-	(libro_tiempo [Ontologia_Class44])
-	(novela_independiente TRUE)
-	(numero_de_paginas 277)
-	(precio 11)
-	(titulo "The Big Sleep"))
-
-([Ontologia_Class92] of  Libro
-
-	(adaptada_a_cine TRUE)
-	(anyo_publicacion 1930)
-	(libro_animo [Ontologia_Class34])
-	(libro_escritor [Ontologia_Class111])
-	(libro_genero
-		[Ontologia_Class11]
-		[Ontologia_Class10116])
-	(libro_idioma [Ontologia_Class6])
-	(libro_publico
-		[Ontologia_Class52]
-		[Ontologia_Class50]
-		[Ontologia_Class53])
-	(libro_tiempo [Ontologia_Class44])
-	(novela_independiente TRUE)
-	(numero_de_paginas 0)
-	(precio 9)
-	(titulo "The Maltese Falcon"))
-
-([Ontologia_Class95] of  Escritor
-
-	(escritor_libro [Ontologia_Class77])
-	(id_persona "Hilary Mantel"))
-
-([Ontologia_Class96] of  Escritor
-
-	(escritor_libro [Ontologia_Class90])
-	(id_persona "Woody Allen"))
-
-([Ontologia_Class97] of  Escritor
-
-	(escritor_libro [Ontologia_Class75])
-	(id_persona "Friedrich Nietzsche"))
-
-([Ontologia_Class98] of  Escritor
-
-	(escritor_libro [Ontologia_Class69])
-	(id_persona "John Buchan"))
-
-([Ontologia_Class99] of  Escritor
-
-	(escritor_libro [Ontologia_Class62])
-	(id_persona "Johann David Wyss"))
-
-     
-     
 )
 
 ;;****************
@@ -1678,10 +2228,8 @@
      (printout t "Number of pages: "  ?self:numero_de_paginas crlf)
      (printout t "Genres: " (get-all-values ?self:libro_genero id_genero) crlf)
      (printout t "Languages: " (get-all-values ?self:libro_idioma id_idioma) crlf)
-     (printout t "Original language: " (get-all-values ?self:libro_idioma_original id_idioma) crlf)
-     (printout t "Level: " (get-all-values ?self:libro_nivel id_nivel) crlf)
-     (printout t "Main characters: " (get-all-values ?self:libro_personaje_principal id_personaje) crlf)
-     (printout t "Secondary characters: " (get-all-values ?self:libro_personaje_secundario id_personaje) crlf)
+     ;(printout t "Original language: " (send ?self:libro_idioma_original get-id_idioma) crlf)
+     ;(printout t "Level: " (send ?self:libro_nivel get-id_nivel) crlf)
      (printout t "The story take place in the : " (get-all-values ?self:libro_tiempo id_tiempo) crlf)
      (printout t "Real world?: " ?self:mundo_real crlf)
      (printout t "Independent novel: " ?self:novela_independiente crlf)
@@ -1706,6 +2254,7 @@
     =>
     (bind ?response (ask-age "How old are you? "))
     (assert (years ?response))
+    (if (<= ?response 16) then (assert (level_book easy)))
     )
     
 	(defrule work 
@@ -1736,7 +2285,8 @@
     (defrule user-languages
     (declare (salience 96))
     =>
-    (bind ?response (ask-multievaluated "What languagues do you want?"  (get-all-values (find-all-instances ((?inst Idioma)) TRUE) id_idioma ) ))
+
+    (bind ?response (ask-multievaluated "What languages do you want?"  (get-all-values (find-all-instances ((?inst Idioma)) TRUE) id_idioma ) ))
     (assert (user_languages ?response))
     )
 
@@ -1800,6 +2350,15 @@
 		else (if (and (> ?var 18) (<= ?var 50)) then (assert (public "Adults"))
 		else (assert (public "Old people"))))))
 	)
+    (defrule language-book
+        (user_languages $?response)
+        (test  (< 0(length$ ?response)))
+        =>
+        (bind ?answer (ask-multievaluated "In what language do you want the book?"  ?response))
+        (assert (language_book ?answer))
+    )
+
+
 
 ;;;;;;;;;;;; REGLAS DE ASOCIACION HEURÍSITCA ;;;;;;;;;;;;;;;;
 (defglobal ?*libros* = nil)
@@ -1876,11 +2435,19 @@
 ;   (puntuacion_multi_evaluated_1 10 ?generos libro_genero id_genero "The genres of the book are: ")
 ;)
 
-(defrule puntuation4 "" 
-    (user_languages $?response)
+    
+;(defrule puntuacion3 ""
+;    (level_book ?response)
+;    (not (eq ?response no-care))
+;    =>
+;    (printout t "hooooola112 ")
+;    (puntuacion_multi_evaluated_1 10 ?response libro_nivel id_nivel "The book has the level: ")
+;)
+(defrule puntuation4 ""
+    (language_book $?response)
     =>
     (puntuacion_multi_evaluated_1 10 ?response libro_idioma id_idioma "The book has the following languages: ")
-)
+    )
 
 (defrule puntacion5 ""
     (price_book $?answer)
@@ -1939,6 +2506,13 @@
 		)
 		(replace$ ?*libros* ?i ?i ?libro)
 	)
+)
+(defrule puntuacion8 ""
+    (time_book $?response)
+    (test (not (eq (nth$ 1 ?response) no-care)))
+    =>
+    (puntuacion_multi_evaluated_1 10 ?response libro_tiempo id_tiempo "The story take place in the: ")
+    
 )
 
 (deffunction calculo_publico (?response ?puntuacion1 ?puntuacion2)
@@ -2002,22 +2576,22 @@
 	(calculo_publico ?response ?base ?interval)
 )
 
-(defrule filtro1 ""
-    (favourite_genre $?generos)
-    =>
-    ;(printout t (length$ ?generos))
+;;;;;;;;;;;;;;;PODAS;;;;;;;;;;;;;;
+
+
+(deffunction poda (?list ?id ?relation)
     (bind ?libros_aux (create$ ))
     (loop-for-count (?i 1 (length$ ?*libros*)) do
         (bind ?libro (nth$ ?i ?*libros*))
         (bind ?notfound TRUE)
         (bind ?j 1)
-        (while (and ?notfound (<= ?j (length$ ?generos))) do
-            (bind ?gen1 (nth$ ?j ?generos))
-            (bind ?genero (send ?libro get-libro_genero))
+        (while (and ?notfound (<= ?j (length$ ?list))) do
+            (bind ?element_list1 (nth$ ?j ?list))
+            (bind ?list2 (send ?libro (sym-cat get- ?relation)))
             (bind ?k 1)
-            (while (and ?notfound (<= ?k (length ?genero))) do
-                (bind ?gen2 (send (nth$ ?k ?genero) get-id_genero))
-                (if (eq ?gen1 ?gen2) then
+            (while (and ?notfound (<= ?k (length$ ?list2))) do
+                (bind ?element_list2 (send (nth$ ?k ?list2) (sym-cat get- ?id)))
+                (if (eq ?element_list1 ?element_list2 ) then
                     (bind ?libros_aux (insert$ ?libros_aux (+ (length$ ?libros_aux) 1) ?libro))
                     (bind ?notfound FALSE)
                 )
@@ -2026,16 +2600,27 @@
             (bind ?j (+ ?j 1))
         )
     )
-    (bind ?*libros* ?libros_aux)
+    (return ?libros_aux)
+)
+(defrule poda1 ""
+    (favourite_genre $?generos)
+    =>
+    ;(bind ?*libros* (poda ?generos id_genero libro_genero))
+)
+
+(defrule poda2 ""
+    (user_languages $?idiomas)
+    =>
+    ;(bind ?*libros* (poda ?idiomas id_idioma libro_idioma))
 )
 
 (defrule final_solution ""
 	(declare (salience -1))
 	=> 
-	 (bind ?*libros* (merge_sort ?*libros*))
-	 (loop-for-count (?i 1 (length$ ?*libros*)) do
-		(send (nth$ ?i ?*libros*) imprimir)
-     )
+    (bind ?*libros* (merge_sort ?*libros*))
+    (loop-for-count (?i 1 (length$ ?*libros*)) do
+    	(send (nth$ ?i ?*libros*) imprimir)
+    )
 	 
      ;(printout t "The recommended books are:" crlf)
      ;(send (nth$ (- (length$ ?*libros*) 0) ?*libros*) imprimir)
