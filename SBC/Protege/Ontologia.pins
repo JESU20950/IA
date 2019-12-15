@@ -1,4 +1,4 @@
-; Sun Dec 15 23:08:03 CET 2019
+; Sun Dec 15 23:35:36 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -463,15 +463,89 @@
 
 ([Ontologia_Class10025] of  Nivel
 
-	(id_nivel "easy"))
+	(id_nivel "easy")
+	(nivel_libro
+		[Ontologia_Class10031]
+		[Ontologia_Class10036]
+		[Ontologia_Class10037]
+		[Ontologia_Class10038]
+		[Ontologia_Class10049]
+		[Ontologia_Class10053]
+		[Ontologia_Class10055]
+		[Ontologia_Class10058]
+		[Ontologia_Class10063]
+		[Ontologia_Class10070]
+		[Ontologia_Class10071]
+		[Ontologia_Class10072]
+		[Ontologia_Class10169]
+		[Ontologia_Class10170]
+		[Ontologia_Class10172]
+		[Ontologia_Class5]
+		[Ontologia_Class62]
+		[Ontologia_Class72]
+		[Ontologia_Class81]
+		[Ontologia_Class87]
+		[Ontologia_Class89]
+		[Ontologia_Class92]))
 
 ([Ontologia_Class10026] of  Nivel
 
-	(id_nivel "medium"))
+	(id_nivel "medium")
+	(nivel_libro
+		[Ontologia_Class10033]
+		[Ontologia_Class10034]
+		[Ontologia_Class10035]
+		[Ontologia_Class10039]
+		[Ontologia_Class10040]
+		[Ontologia_Class10043]
+		[Ontologia_Class10045]
+		[Ontologia_Class10046]
+		[Ontologia_Class10050]
+		[Ontologia_Class10052]
+		[Ontologia_Class10056]
+		[Ontologia_Class10059]
+		[Ontologia_Class10060]
+		[Ontologia_Class10061]
+		[Ontologia_Class10062]
+		[Ontologia_Class10095]
+		[Ontologia_Class2]
+		[Ontologia_Class65]
+		[Ontologia_Class67]
+		[Ontologia_Class68]
+		[Ontologia_Class71]
+		[Ontologia_Class73]
+		[Ontologia_Class74]
+		[Ontologia_Class75]
+		[Ontologia_Class77]
+		[Ontologia_Class88]))
 
 ([Ontologia_Class10027] of  Nivel
 
-	(id_nivel "hard"))
+	(id_nivel "hard")
+	(nivel_libro
+		[Ontologia_Class10028]
+		[Ontologia_Class10030]
+		[Ontologia_Class10032]
+		[Ontologia_Class10041]
+		[Ontologia_Class10042]
+		[Ontologia_Class10044]
+		[Ontologia_Class10048]
+		[Ontologia_Class10051]
+		[Ontologia_Class10054]
+		[Ontologia_Class10064]
+		[Ontologia_Class10069]
+		[Ontologia_Class61]
+		[Ontologia_Class63]
+		[Ontologia_Class64]
+		[Ontologia_Class69]
+		[Ontologia_Class70]
+		[Ontologia_Class78]
+		[Ontologia_Class79]
+		[Ontologia_Class82]
+		[Ontologia_Class83]
+		[Ontologia_Class86]
+		[Ontologia_Class90]
+		[Ontologia_Class91]))
 
 ([Ontologia_Class10028] of  Libro
 
