@@ -1,4 +1,4 @@
-; Sat Dec 14 21:51:38 CET 2019
+; Sun Dec 15 16:20:27 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -20,18 +20,18 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Ontologia_ProjectKB_Class10237]
-		[Ontologia_ProjectKB_Class10238]
-		[Ontologia_ProjectKB_Class10239]
-		[Ontologia_ProjectKB_Class10240]
-		[Ontologia_ProjectKB_Class10241]
-		[Ontologia_ProjectKB_Class10242]
-		[Ontologia_ProjectKB_Class10243]
-		[Ontologia_ProjectKB_Class10244]
-		[Ontologia_ProjectKB_Class10245]
-		[Ontologia_ProjectKB_Class10246]
-		[Ontologia_ProjectKB_Class10247]
-		[Ontologia_ProjectKB_Class10248]))
+		[Ontologia_ProjectKB_Class91]
+		[Ontologia_ProjectKB_Class92]
+		[Ontologia_ProjectKB_Class93]
+		[Ontologia_ProjectKB_Class94]
+		[Ontologia_ProjectKB_Class95]
+		[Ontologia_ProjectKB_Class96]
+		[Ontologia_ProjectKB_Class97]
+		[Ontologia_ProjectKB_Class98]
+		[Ontologia_ProjectKB_Class99]
+		[Ontologia_ProjectKB_Class100]
+		[Ontologia_ProjectKB_Class101]
+		[Ontologia_ProjectKB_Class102]))
 
 ([CLSES_TAB] of  Widget
 
@@ -75,7 +75,7 @@
 	(is_hidden FALSE)
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
 
-([KB_051443_Class3] of  Map
+([KB_307151_Class3] of  Map
 )
 
 ([KB_339439_Class0] of  String
@@ -86,9 +86,9 @@
 ([KB_339439_Class1] of  Map
 
 	(entries
-		[Ontologia_ProjectKB_Class10249]
-		[Ontologia_ProjectKB_Class10250]
-		[Ontologia_ProjectKB_Class10251]))
+		[Ontologia_ProjectKB_Class103]
+		[Ontologia_ProjectKB_Class104]
+		[Ontologia_ProjectKB_Class105]))
 
 ([KB_339439_Class10] of  Property_List
 )
@@ -520,243 +520,36 @@
 	(name "layout properties")
 	(properties [VERTICAL_STRETCHER]))
 
-([Ontologia_ProjectKB_Class10018] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "libro_personaje_secundario")
-	(property_list [Ontologia_ProjectKB_Class10019])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceFieldWidget")
-	(width 200)
-	(x 200)
-	(y 60))
-
-([Ontologia_ProjectKB_Class10019] of  Property_List
-
-	(properties
-		[Ontologia_ProjectKB_Class10020]
-		[Ontologia_ProjectKB_Class10021]))
-
-([Ontologia_ProjectKB_Class10020] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([Ontologia_ProjectKB_Class10021] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
-
-([Ontologia_ProjectKB_Class10064] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "libro_personaje_principal")
-	(property_list [Ontologia_ProjectKB_Class10065])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceFieldWidget")
-	(width 200)
-	(x 200)
-	(y 0))
-
-([Ontologia_ProjectKB_Class10065] of  Property_List
-
-	(properties
-		[Ontologia_ProjectKB_Class10066]
-		[Ontologia_ProjectKB_Class10067]))
-
-([Ontologia_ProjectKB_Class10066] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([Ontologia_ProjectKB_Class10067] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
-
-([Ontologia_ProjectKB_Class10111] of  Widget
-
-	(height 120)
-	(is_hidden FALSE)
-	(name "libro_nivel")
-	(property_list [Ontologia_ProjectKB_Class10112])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceListWidget")
-	(width 200)
-	(x 0)
-	(y 600))
-
-([Ontologia_ProjectKB_Class10112] of  Property_List
-
-	(properties
-		[Ontologia_ProjectKB_Class10113]
-		[Ontologia_ProjectKB_Class10114]))
-
-([Ontologia_ProjectKB_Class10113] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([Ontologia_ProjectKB_Class10114] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
-
-([Ontologia_ProjectKB_Class10115] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "libro_nivel")
-	(property_list [Ontologia_ProjectKB_Class10116])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceFieldWidget")
-	(width 200)
-	(x 0)
-	(y 600))
-
-([Ontologia_ProjectKB_Class10116] of  Property_List
-
-	(properties
-		[Ontologia_ProjectKB_Class10117]
-		[Ontologia_ProjectKB_Class10118]))
-
-([Ontologia_ProjectKB_Class10117] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([Ontologia_ProjectKB_Class10118] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
-
-([Ontologia_ProjectKB_Class10195] of  Widget
-
-	(height 120)
-	(is_hidden FALSE)
-	(name "libro_nivel")
-	(property_list [Ontologia_ProjectKB_Class10196])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceListWidget")
-	(width 200)
-	(x 0)
-	(y 900))
-
-([Ontologia_ProjectKB_Class10196] of  Property_List
-
-	(properties
-		[Ontologia_ProjectKB_Class10197]
-		[Ontologia_ProjectKB_Class10198]))
-
-([Ontologia_ProjectKB_Class10197] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([Ontologia_ProjectKB_Class10198] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
-
-([Ontologia_ProjectKB_Class10199] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "libro_nivel")
-	(property_list [Ontologia_ProjectKB_Class10200])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceFieldWidget")
-	(width 200)
-	(x 0)
-	(y 900))
-
-([Ontologia_ProjectKB_Class10200] of  Property_List
-
-	(properties
-		[Ontologia_ProjectKB_Class10201]
-		[Ontologia_ProjectKB_Class10202]))
-
-([Ontologia_ProjectKB_Class10201] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([Ontologia_ProjectKB_Class10202] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
-
-([Ontologia_ProjectKB_Class10237] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([Ontologia_ProjectKB_Class10238] of  String
-
-	(name "Persona")
-	(string_value "id_persona"))
-
-([Ontologia_ProjectKB_Class10239] of  String
-
-	(name "Genero")
-	(string_value "id_genero"))
-
-([Ontologia_ProjectKB_Class10240] of  String
-
-	(name "Animo")
-	(string_value "id_animo"))
-
-([Ontologia_ProjectKB_Class10241] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([Ontologia_ProjectKB_Class10242] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([Ontologia_ProjectKB_Class10243] of  String
-
-	(name "Tiempo")
-	(string_value "id_tiempo"))
-
-([Ontologia_ProjectKB_Class10244] of  String
-
-	(name "Idioma")
-	(string_value "id_idioma"))
-
-([Ontologia_ProjectKB_Class10245] of  String
-
-	(name "Publico")
-	(string_value "id_publico"))
-
-([Ontologia_ProjectKB_Class10246] of  String
-
-	(name "Nivel")
-	(string_value "id_nivel"))
-
-([Ontologia_ProjectKB_Class10247] of  String
+([Ontologia_ProjectKB_Class100] of  String
 
 	(name "Libro")
 	(string_value "titulo"))
 
-([Ontologia_ProjectKB_Class10248] of  String
+([Ontologia_ProjectKB_Class101] of  String
+
+	(name "Nivel")
+	(string_value "id_nivel"))
+
+([Ontologia_ProjectKB_Class102] of  String
 
 	(name "Personaje")
 	(string_value "id_personaje"))
 
-([Ontologia_ProjectKB_Class10249] of  Map_Entry
+([Ontologia_ProjectKB_Class103] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Ontologia_ProjectKB_Class10250] of  Map_Entry
+([Ontologia_ProjectKB_Class104] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Ontologia_ProjectKB_Class10251] of  Map_Entry
+([Ontologia_ProjectKB_Class105] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
@@ -766,6 +559,51 @@
 ([Ontologia_ProjectKB_Class233] of  String
 
 	(name "SearchTab_Query"))
+
+([Ontologia_ProjectKB_Class91] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([Ontologia_ProjectKB_Class92] of  String
+
+	(name "Persona")
+	(string_value "id_persona"))
+
+([Ontologia_ProjectKB_Class93] of  String
+
+	(name "Genero")
+	(string_value "id_genero"))
+
+([Ontologia_ProjectKB_Class94] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
+([Ontologia_ProjectKB_Class95] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([Ontologia_ProjectKB_Class96] of  String
+
+	(name "Animo")
+	(string_value "id_animo"))
+
+([Ontologia_ProjectKB_Class97] of  String
+
+	(name "Tiempo")
+	(string_value "id_tiempo"))
+
+([Ontologia_ProjectKB_Class98] of  String
+
+	(name "Idioma")
+	(string_value "id_idioma"))
+
+([Ontologia_ProjectKB_Class99] of  String
+
+	(name "Publico")
+	(string_value "id_publico"))
 
 ([option_instance] of  Options
 
@@ -845,11 +683,11 @@
 
 	(browser_slot_names [BROWSER_SLOT_NAMES])
 	(customized_instance_widgets
+		[INSTANCE_ANNOTATION_FORM_WIDGET]
+		[STANDARD_SLOT_FORM_WIDGET]
 		[STANDARD_FACET_FORM_WIDGET]
 		[PAL_FORM_WIDGET]
-		[STANDARD_CLASS_FORM_WIDGET]
-		[INSTANCE_ANNOTATION_FORM_WIDGET]
-		[STANDARD_SLOT_FORM_WIDGET])
+		[STANDARD_CLASS_FORM_WIDGET])
 	(default_cls_metaclass ":STANDARD-CLASS")
 	(default_facet_metaclass ":STANDARD-FACET")
 	(default_instance_widget_class_name "edu.stanford.smi.protege.widget.FormWidget")

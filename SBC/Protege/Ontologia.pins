@@ -1,4 +1,4 @@
-; Sat Dec 14 21:51:38 CET 2019
+; Sun Dec 15 16:20:27 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -29,13 +29,33 @@
 	(Puntuacion 0)
 	(titulo "Gabriel's Angel"))
 
+([Ontologia_Class10001] of  Escritor
+
+	(escritor_libro [Ontologia_Class10042])
+	(id_persona "Megan Abbott"))
+
 ([Ontologia_Class10002] of  Libro
 
+	(anyo_publicacion 2003)
 	(libro_animo
 		[Ontologia_Class33]
 		[Ontologia_Class32])
-	(libro_idioma [Ontologia_Class6])
+	(libro_escritor [Ontologia_Class20005])
+	(libro_genero
+		[Ontologia_Class11]
+		[Ontologia_Class13]
+		[Ontologia_Class17]
+		[Ontologia_Class14])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class29]
+		[Ontologia_Class24])
 	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10026])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52])
+	(libro_tiempo [Ontologia_Class44])
 	(novela_independiente TRUE)
 	(numero_de_paginas 368)
 	(precio 20)
@@ -44,11 +64,25 @@
 
 ([Ontologia_Class10003] of  Libro
 
+	(adaptada_a_cine TRUE)
+	(anyo_publicacion 2005)
 	(libro_animo
 		[Ontologia_Class32]
 		[Ontologia_Class33])
-	(libro_idioma [Ontologia_Class6])
+	(libro_escritor [Ontologia_Class20105])
+	(libro_genero
+		[Ontologia_Class11]
+		[Ontologia_Class18]
+		[Ontologia_Class9]
+		[Ontologia_Class8])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class29])
 	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10026])
+	(libro_publico [Ontologia_Class52])
+	(libro_tiempo [Ontologia_Class43])
 	(novela_independiente TRUE)
 	(numero_de_paginas 384)
 	(precio 20)
@@ -58,22 +92,38 @@
 
 ([Ontologia_Class10004] of  Libro
 
+	(anyo_publicacion 2010)
 	(libro_animo
 		[Ontologia_Class32]
 		[Ontologia_Class34])
-	(libro_idioma [Ontologia_Class6])
+	(libro_escritor [Ontologia_Class20111])
+	(libro_genero
+		[Ontologia_Class21]
+		[Ontologia_Class15]
+		[Ontologia_Class47]
+		[Ontologia_Class8])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class27]
+		[Ontologia_Class24])
 	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10025])
+	(libro_publico
+		[Ontologia_Class52]
+		[Ontologia_Class53])
+	(libro_tiempo [Ontologia_Class46])
 	(mundo_real TRUE)
 	(numero_de_paginas 320)
 	(precio 43)
+	(primera_persona TRUE)
 	(Puntuacion 0)
 	(titulo "The Other Side of Silence"))
 
 ([Ontologia_Class10005] of  Libro
 
-	(adaptada_a_cine TRUE)
+	(adaptada_a_cine FALSE)
 	(anyo_publicacion 2007)
-	(best_seller FALSE)
+	(best_seller TRUE)
 	(libro_animo
 		[Ontologia_Class36]
 		[Ontologia_Class38])
@@ -98,13 +148,14 @@
 	(novela_independiente FALSE)
 	(numero_de_paginas 544)
 	(precio 23)
-	(primera_persona TRUE)
+	(primera_persona FALSE)
 	(Puntuacion 0)
 	(titulo "Mistborn: The Final Empire"))
 
 ([Ontologia_Class10006] of  Libro
 
-	(adaptada_a_cine TRUE)
+	(adaptada_a_cine FALSE)
+	(anyo_publicacion 2010)
 	(best_seller TRUE)
 	(libro_animo
 		[Ontologia_Class32]
@@ -122,10 +173,16 @@
 		[Ontologia_Class24]
 		[Ontologia_Class6])
 	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10026])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52]
+		[Ontologia_Class53])
+	(libro_tiempo [Ontologia_Class43])
 	(mundo_real FALSE)
 	(numero_de_paginas 592)
 	(precio 31)
-	(primera_persona TRUE)
+	(primera_persona FALSE)
 	(Puntuacion 0)
 	(titulo "Mistborn: The Well of Ascension"))
 
@@ -139,7 +196,8 @@
 
 ([Ontologia_Class10008] of  Libro
 
-	(adaptada_a_cine TRUE)
+	(adaptada_a_cine FALSE)
+	(anyo_publicacion 2006)
 	(best_seller TRUE)
 	(libro_animo
 		[Ontologia_Class39]
@@ -158,21 +216,41 @@
 		[Ontologia_Class24]
 		[Ontologia_Class6])
 	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10026])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52]
+		[Ontologia_Class53])
+	(libro_tiempo [Ontologia_Class43])
 	(numero_de_paginas 576)
-	(precio 14)
-	(primera_persona TRUE)
+	(precio 23)
+	(primera_persona FALSE)
 	(Puntuacion 0)
 	(titulo "Mistborn: The Hero of Ages"))
 
 ([Ontologia_Class10009] of  Libro
 
+	(anyo_publicacion 2006)
 	(best_seller TRUE)
 	(libro_animo [Ontologia_Class40])
-	(libro_idioma [Ontologia_Class6])
+	(libro_escritor [Ontologia_Class20100])
+	(libro_genero
+		[Ontologia_Class10116]
+		[Ontologia_Class11])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class6]
+		[Ontologia_Class27]
+		[Ontologia_Class24])
 	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10026])
+	(libro_publico
+		[Ontologia_Class52]
+		[Ontologia_Class53])
+	(libro_tiempo [Ontologia_Class44])
 	(mundo_real TRUE)
 	(numero_de_paginas 240)
-	(precio 1)
+	(precio 10)
 	(Puntuacion 0)
 	(titulo "Seven Tales of Sex and Death"))
 
@@ -204,10 +282,28 @@
 
 ([Ontologia_Class10011] of  Libro
 
+	(adaptada_a_cine TRUE)
+	(anyo_publicacion 2001)
 	(libro_animo
 		[Ontologia_Class39]
 		[Ontologia_Class33])
+	(libro_escritor [Ontologia_Class20002])
+	(libro_genero
+		[Ontologia_Class11]
+		[Ontologia_Class13]
+		[Ontologia_Class8])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class29]
+		[Ontologia_Class30])
 	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10027])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52]
+		[Ontologia_Class53])
+	(libro_tiempo [Ontologia_Class43])
+	(novela_independiente TRUE)
 	(numero_de_paginas 630)
 	(precio 8)
 	(Puntuacion 0)
@@ -241,8 +337,29 @@
 
 ([Ontologia_Class10014] of  Libro
 
+	(anyo_publicacion 2010)
 	(best_seller TRUE)
+	(libro_animo
+		[Ontologia_Class37]
+		[Ontologia_Class39]
+		[Ontologia_Class32]
+		[Ontologia_Class38])
+	(libro_escritor [Ontologia_Class20004])
+	(libro_genero
+		[Ontologia_Class10116]
+		[Ontologia_Class11]
+		[Ontologia_Class20]
+		[Ontologia_Class9])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class29]
+		[Ontologia_Class30])
 	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10025])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52])
+	(libro_tiempo [Ontologia_Class44])
 	(mundo_real TRUE)
 	(numero_de_paginas 384)
 	(precio 10)
@@ -251,11 +368,26 @@
 
 ([Ontologia_Class10015] of  Libro
 
+	(anyo_publicacion 2017)
 	(best_seller TRUE)
+	(libro_escritor [Ontologia_Class20003])
+	(libro_genero
+		[Ontologia_Class10116]
+		[Ontologia_Class17])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class29]
+		[Ontologia_Class24])
 	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10027])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52]
+		[Ontologia_Class53])
+	(libro_tiempo [Ontologia_Class44])
 	(novela_independiente TRUE)
 	(numero_de_paginas 384)
-	(precio 9)
+	(precio 15)
 	(primera_persona TRUE)
 	(Puntuacion 0)
 	(titulo "Then She Was Gone: A Novel"))
@@ -343,8 +475,30 @@
 
 ([Ontologia_Class10028] of  Libro
 
+	(anyo_publicacion 2016)
 	(best_seller TRUE)
+	(libro_animo
+		[Ontologia_Class40]
+		[Ontologia_Class35]
+		[Ontologia_Class37]
+		[Ontologia_Class32])
 	(libro_escritor [Ontologia_Class10029])
+	(libro_genero
+		[Ontologia_Class10116]
+		[Ontologia_Class20]
+		[Ontologia_Class13]
+		[Ontologia_Class47])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class29]
+		[Ontologia_Class27])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10027])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52])
+	(libro_tiempo [Ontologia_Class43])
+	(numero_de_paginas 946)
 	(precio 31)
 	(primera_persona TRUE)
 	(Puntuacion 0)
@@ -357,14 +511,59 @@
 
 ([Ontologia_Class10030] of  Libro
 
+	(adaptada_a_cine TRUE)
+	(anyo_publicacion 2011)
+	(libro_animo
+		[Ontologia_Class40]
+		[Ontologia_Class35]
+		[Ontologia_Class37]
+		[Ontologia_Class32])
+	(libro_escritor [Ontologia_Class20112])
+	(libro_genero [Ontologia_Class10116])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class29]
+		[Ontologia_Class30]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10027])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52])
+	(libro_tiempo [Ontologia_Class46])
 	(novela_independiente TRUE)
+	(numero_de_paginas 489)
+	(precio 24)
 	(Puntuacion 0)
 	(titulo "The Painted Lady"))
 
 ([Ontologia_Class10031] of  Libro
 
 	(adaptada_a_cine TRUE)
+	(anyo_publicacion 2006)
+	(libro_animo
+		[Ontologia_Class35]
+		[Ontologia_Class31]
+		[Ontologia_Class32])
+	(libro_escritor [Ontologia_Class20103])
+	(libro_genero
+		[Ontologia_Class10116]
+		[Ontologia_Class15]
+		[Ontologia_Class20]
+		[Ontologia_Class13])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class29]
+		[Ontologia_Class27])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10025])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52])
+	(libro_tiempo [Ontologia_Class43])
 	(novela_independiente TRUE)
+	(numero_de_paginas 224)
+	(precio 10)
 	(primera_persona TRUE)
 	(Puntuacion 0)
 	(titulo "The Butterfly Boy"))
@@ -506,38 +705,187 @@
 
 ([Ontologia_Class10037] of  Libro
 
+	(anyo_publicacion 2013)
+	(libro_animo
+		[Ontologia_Class55]
+		[Ontologia_Class31]
+		[Ontologia_Class32])
+	(libro_escritor [Ontologia_Class20114])
+	(libro_genero
+		[Ontologia_Class21]
+		[Ontologia_Class18]
+		[Ontologia_Class8]
+		[Ontologia_Class17])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class27]
+		[Ontologia_Class30])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10025])
+	(libro_publico
+		[Ontologia_Class52]
+		[Ontologia_Class51])
+	(libro_tiempo [Ontologia_Class46])
 	(novela_independiente TRUE)
+	(numero_de_paginas 60)
+	(precio 5)
 	(Puntuacion 0)
 	(titulo "The Search for the Pearl Stone"))
 
 ([Ontologia_Class10038] of  Libro
 
 	(adaptada_a_cine TRUE)
+	(anyo_publicacion 2004)
+	(best_seller TRUE)
+	(libro_animo
+		[Ontologia_Class56]
+		[Ontologia_Class33]
+		[Ontologia_Class31])
+	(libro_escritor [Ontologia_Class20099])
+	(libro_genero
+		[Ontologia_Class16]
+		[Ontologia_Class21]
+		[Ontologia_Class9])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class29]
+		[Ontologia_Class27]
+		[Ontologia_Class30]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10025])
+	(libro_publico
+		[Ontologia_Class51]
+		[Ontologia_Class50]
+		[Ontologia_Class52])
+	(libro_tiempo [Ontologia_Class44])
 	(mundo_real FALSE)
+	(numero_de_paginas 1203)
+	(precio 90)
+	(primera_persona TRUE)
 	(Puntuacion 0)
 	(titulo "Scoot Pilgrim"))
 
 ([Ontologia_Class10039] of  Libro
 
+	(anyo_publicacion 2012)
+	(libro_animo
+		[Ontologia_Class55]
+		[Ontologia_Class37]
+		[Ontologia_Class34])
+	(libro_escritor [Ontologia_Class20104])
+	(libro_genero
+		[Ontologia_Class11]
+		[Ontologia_Class18]
+		[Ontologia_Class9])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class27]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10026])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52]
+		[Ontologia_Class53])
+	(libro_tiempo [Ontologia_Class44])
+	(novela_independiente TRUE)
+	(numero_de_paginas 362)
+	(precio 15)
 	(Puntuacion 0)
-	(titulo "The Centaur's Daughter"))
+	(titulo "Daughter of the Centaurs"))
 
 ([Ontologia_Class10040] of  Libro
 
+	(anyo_publicacion 2004)
+	(libro_animo
+		[Ontologia_Class55]
+		[Ontologia_Class37]
+		[Ontologia_Class32]
+		[Ontologia_Class38])
+	(libro_escritor [Ontologia_Class20102])
+	(libro_genero
+		[Ontologia_Class15]
+		[Ontologia_Class13]
+		[Ontologia_Class9])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class29]
+		[Ontologia_Class30])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10026])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52]
+		[Ontologia_Class53])
+	(libro_tiempo [Ontologia_Class44])
 	(mundo_real TRUE)
 	(novela_independiente TRUE)
+	(numero_de_paginas 214)
+	(precio 15)
 	(Puntuacion 0)
 	(titulo "Summer Boys"))
 
 ([Ontologia_Class10041] of  Libro
 
+	(anyo_publicacion 2014)
 	(best_seller TRUE)
+	(libro_animo
+		[Ontologia_Class35]
+		[Ontologia_Class31]
+		[Ontologia_Class39])
+	(libro_escritor [Ontologia_Class10094])
+	(libro_genero
+		[Ontologia_Class16]
+		[Ontologia_Class9]
+		[Ontologia_Class17])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class29]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10027])
+	(libro_publico
+		[Ontologia_Class52]
+		[Ontologia_Class53])
+	(libro_tiempo [Ontologia_Class44])
+	(mundo_real TRUE)
+	(novela_independiente TRUE)
+	(numero_de_paginas 408)
+	(precio 15)
+	(primera_persona TRUE)
 	(Puntuacion 0)
 	(titulo "Panic"))
 
 ([Ontologia_Class10042] of  Libro
 
 	(adaptada_a_cine TRUE)
+	(anyo_publicacion 1995)
+	(libro_animo
+		[Ontologia_Class40]
+		[Ontologia_Class37]
+		[Ontologia_Class39]
+		[Ontologia_Class34])
+	(libro_escritor [Ontologia_Class10001])
+	(libro_genero
+		[Ontologia_Class11]
+		[Ontologia_Class7]
+		[Ontologia_Class47])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class27])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10027])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52])
+	(libro_tiempo [Ontologia_Class46])
+	(numero_de_paginas 423)
+	(precio 20)
 	(Puntuacion 0)
 	(titulo "The Street Was Mine"))
 
@@ -570,14 +918,61 @@
 
 ([Ontologia_Class10044] of  Libro
 
+	(anyo_publicacion 1999)
+	(libro_animo
+		[Ontologia_Class35]
+		[Ontologia_Class32]
+		[Ontologia_Class38])
+	(libro_escritor [Ontologia_Class20006])
+	(libro_genero
+		[Ontologia_Class16]
+		[Ontologia_Class15]
+		[Ontologia_Class7]
+		[Ontologia_Class47]
+		[Ontologia_Class8])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class30]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10027])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52]
+		[Ontologia_Class53])
+	(libro_tiempo [Ontologia_Class44])
 	(novela_independiente TRUE)
+	(numero_de_paginas 410)
+	(precio 24)
 	(primera_persona TRUE)
 	(Puntuacion 0)
 	(titulo "Wizard or Witch?"))
 
 ([Ontologia_Class10045] of  Libro
 
+	(anyo_publicacion 2018)
+	(libro_animo
+		[Ontologia_Class39]
+		[Ontologia_Class32]
+		[Ontologia_Class36])
+	(libro_escritor [Ontologia_Class20113])
+	(libro_genero
+		[Ontologia_Class10116]
+		[Ontologia_Class18])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class29])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10026])
+	(libro_publico
+		[Ontologia_Class52]
+		[Ontologia_Class53])
+	(libro_tiempo [Ontologia_Class44])
 	(novela_independiente TRUE)
+	(numero_de_paginas 480)
+	(precio 20)
 	(Puntuacion 0)
 	(titulo "The Reckoning"))
 
@@ -611,8 +1006,31 @@
 
 ([Ontologia_Class10048] of  Libro
 
+	(anyo_publicacion 1996)
 	(best_seller TRUE)
+	(libro_animo
+		[Ontologia_Class56]
+		[Ontologia_Class33]
+		[Ontologia_Class31])
+	(libro_escritor [Ontologia_Class20108])
+	(libro_genero
+		[Ontologia_Class16]
+		[Ontologia_Class7]
+		[Ontologia_Class20])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class29]
+		[Ontologia_Class27])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10027])
+	(libro_publico
+		[Ontologia_Class49]
+		[Ontologia_Class51]
+		[Ontologia_Class50])
+	(libro_tiempo [Ontologia_Class46])
 	(novela_independiente TRUE)
+	(numero_de_paginas 283)
+	(precio 15)
 	(Puntuacion 0)
 	(titulo "The Final Fury"))
 
@@ -644,12 +1062,55 @@
 
 ([Ontologia_Class10050] of  Libro
 
+	(adaptada_a_cine TRUE)
+	(anyo_publicacion 2015)
+	(libro_animo
+		[Ontologia_Class55]
+		[Ontologia_Class37]
+		[Ontologia_Class39])
+	(libro_escritor [Ontologia_Class20097])
+	(libro_genero
+		[Ontologia_Class7]
+		[Ontologia_Class47])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10026])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52])
+	(libro_tiempo [Ontologia_Class44])
+	(numero_de_paginas 621)
+	(precio 32)
+	(primera_persona TRUE)
 	(Puntuacion 0)
 	(titulo "Riptide"))
 
 ([Ontologia_Class10051] of  Libro
 
+	(anyo_publicacion 2012)
+	(libro_animo
+		[Ontologia_Class56]
+		[Ontologia_Class37]
+		[Ontologia_Class34])
+	(libro_escritor [Ontologia_Class20095])
+	(libro_genero
+		[Ontologia_Class21]
+		[Ontologia_Class15])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class30]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10027])
+	(libro_publico
+		[Ontologia_Class52]
+		[Ontologia_Class53])
+	(libro_tiempo [Ontologia_Class44])
 	(novela_independiente TRUE)
+	(numero_de_paginas 464)
+	(precio 11)
 	(primera_persona TRUE)
 	(Puntuacion 0)
 	(titulo "Periodic Tales"))
@@ -657,18 +1118,94 @@
 ([Ontologia_Class10052] of  Libro
 
 	(adaptada_a_cine TRUE)
+	(anyo_publicacion 2013)
+	(best_seller TRUE)
+	(libro_animo
+		[Ontologia_Class55]
+		[Ontologia_Class37]
+		[Ontologia_Class39])
+	(libro_escritor [Ontologia_Class20101])
+	(libro_genero
+		[Ontologia_Class15]
+		[Ontologia_Class20]
+		[Ontologia_Class47])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class29]
+		[Ontologia_Class30])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10026])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52]
+		[Ontologia_Class53])
+	(libro_tiempo [Ontologia_Class46])
+	(novela_independiente TRUE)
+	(numero_de_paginas 321)
+	(precio 5)
 	(Puntuacion 0)
 	(titulo "Shapeshifted"))
 
 ([Ontologia_Class10053] of  Libro
 
 	(adaptada_a_cine TRUE)
+	(anyo_publicacion 2000)
+	(libro_animo
+		[Ontologia_Class35]
+		[Ontologia_Class39]
+		[Ontologia_Class34]
+		[Ontologia_Class36])
+	(libro_escritor [Ontologia_Class20106])
+	(libro_genero
+		[Ontologia_Class10116]
+		[Ontologia_Class11]
+		[Ontologia_Class20]
+		[Ontologia_Class8])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class29]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10025])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52]
+		[Ontologia_Class49])
+	(libro_tiempo [Ontologia_Class46])
+	(numero_de_paginas 468)
+	(precio 25)
 	(Puntuacion 0)
 	(titulo "The Desert Crop"))
 
 ([Ontologia_Class10054] of  Libro
 
+	(adaptada_a_cine TRUE)
+	(anyo_publicacion 1993)
 	(best_seller TRUE)
+	(libro_animo
+		[Ontologia_Class35]
+		[Ontologia_Class31]
+		[Ontologia_Class32])
+	(libro_escritor [Ontologia_Class20110])
+	(libro_genero
+		[Ontologia_Class11]
+		[Ontologia_Class18]
+		[Ontologia_Class9])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class29]
+		[Ontologia_Class27])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10027])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52]
+		[Ontologia_Class51])
+	(libro_tiempo [Ontologia_Class44])
+	(novela_independiente TRUE)
+	(numero_de_paginas 736)
+	(precio 30)
 	(Puntuacion 0)
 	(titulo "The Man Who Made Husbands Jealous"))
 
@@ -833,8 +1370,33 @@
 
 ([Ontologia_Class10062] of  Libro
 
+	(adaptada_a_cine FALSE)
+	(anyo_publicacion 2003)
 	(best_seller TRUE)
+	(libro_animo
+		[Ontologia_Class40]
+		[Ontologia_Class37]
+		[Ontologia_Class36]
+		[Ontologia_Class38])
+	(libro_escritor [Ontologia_Class20107])
+	(libro_genero
+		[Ontologia_Class47]
+		[Ontologia_Class8]
+		[Ontologia_Class17]
+		[Ontologia_Class14])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class27]
+		[Ontologia_Class30])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10026])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52])
+	(libro_tiempo [Ontologia_Class46])
 	(mundo_real TRUE)
+	(numero_de_paginas 900)
+	(precio 24)
 	(primera_persona TRUE)
 	(Puntuacion 0)
 	(titulo "The Destiny"))
@@ -918,7 +1480,10 @@
 		[Ontologia_Class37])
 	(libro_escritor [Ontologia_Class10068])
 	(libro_genero [Ontologia_Class9])
-	(libro_idioma [Ontologia_Class6])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class27]
+		[Ontologia_Class24])
 	(libro_idioma_original [Ontologia_Class6])
 	(libro_nivel [Ontologia_Class10027])
 	(libro_publico
@@ -962,8 +1527,12 @@
 		[Ontologia_Class37])
 	(libro_escritor [Ontologia_Class10068])
 	(libro_genero [Ontologia_Class9])
-	(libro_idioma [Ontologia_Class6])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class27]
+		[Ontologia_Class24])
 	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10025])
 	(libro_publico
 		[Ontologia_Class52]
 		[Ontologia_Class53])
@@ -984,6 +1553,7 @@
 	(libro_genero [Ontologia_Class9])
 	(libro_idioma [Ontologia_Class6])
 	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10025])
 	(libro_publico
 		[Ontologia_Class52]
 		[Ontologia_Class53])
@@ -1085,6 +1655,11 @@
 	(escritor_libro [Ontologia_Class10032])
 	(id_persona "Zoe Aarsen"))
 
+([Ontologia_Class10094] of  Escritor
+
+	(escritor_libro [Ontologia_Class10041])
+	(id_persona "Lauren Oliver"))
+
 ([Ontologia_Class10095] of  Libro
 
 	(adaptada_a_cine TRUE)
@@ -1111,6 +1686,7 @@
 	(numero_de_paginas 514)
 	(precio 34)
 	(primera_persona FALSE)
+	(Puntuacion 0)
 	(titulo "Fifty Shades of Grey"))
 
 ([Ontologia_Class101] of  Escritor
@@ -1123,7 +1699,15 @@
 	(genero_libro
 		[Ontologia_Class92]
 		[Ontologia_Class10010]
-		[Ontologia_Class10059])
+		[Ontologia_Class10059]
+		[Ontologia_Class10009]
+		[Ontologia_Class10031]
+		[Ontologia_Class10053]
+		[Ontologia_Class10028]
+		[Ontologia_Class10030]
+		[Ontologia_Class10045]
+		[Ontologia_Class10014]
+		[Ontologia_Class10015])
 	(id_genero "Black novel"))
 
 ([Ontologia_Class10169] of  Libro
@@ -1156,17 +1740,40 @@
 	(numero_de_paginas 391)
 	(precio 12)
 	(primera_persona TRUE)
+	(Puntuacion 0)
 	(titulo "Catching Fire"))
 
 ([Ontologia_Class10170] of  Libro
 
 	(adaptada_a_cine TRUE)
-	(anyo_publicacion 2008)
+	(anyo_publicacion 2010)
 	(best_seller TRUE)
-	(libro_idioma [Ontologia_Class6])
-	(numero_de_paginas 438)
+	(libro_animo
+		[Ontologia_Class35]
+		[Ontologia_Class32]
+		[Ontologia_Class38])
+	(libro_escritor [Ontologia_Class4])
+	(libro_genero
+		[Ontologia_Class16]
+		[Ontologia_Class7]
+		[Ontologia_Class9])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class29]
+		[Ontologia_Class27]
+		[Ontologia_Class30]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10025])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class51])
+	(libro_tiempo [Ontologia_Class46])
+	(numero_de_paginas 390)
 	(precio 19)
 	(primera_persona TRUE)
+	(Puntuacion 0)
 	(titulo "Mockingjay"))
 
 ([Ontologia_Class10171] of  Dibujante
@@ -1190,7 +1797,15 @@
 		[Ontologia_Class15]
 		[Ontologia_Class8]
 		[Ontologia_Class7])
-	(libro_idioma [Ontologia_Class30])
+	(libro_idioma
+		[Ontologia_Class30]
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class29]
+		[Ontologia_Class27]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class30])
+	(libro_nivel [Ontologia_Class10025])
 	(libro_publico
 		[Ontologia_Class50]
 		[Ontologia_Class51]
@@ -1199,6 +1814,7 @@
 	(novela_independiente TRUE)
 	(numero_de_paginas 0)
 	(precio 8)
+	(Puntuacion 0)
 	(titulo "Shingeki no Kyojin"))
 
 ([Ontologia_Class10173] of  Escritor
@@ -1253,7 +1869,16 @@
 		[Ontologia_Class92]
 		[Ontologia_Class10060]
 		[Ontologia_Class10017]
-		[Ontologia_Class10056])
+		[Ontologia_Class10056]
+		[Ontologia_Class10009]
+		[Ontologia_Class10039]
+		[Ontologia_Class10003]
+		[Ontologia_Class10053]
+		[Ontologia_Class10054]
+		[Ontologia_Class10042]
+		[Ontologia_Class10011]
+		[Ontologia_Class10014]
+		[Ontologia_Class10002])
 	(id_genero "Detective novel"))
 
 ([Ontologia_Class111] of  Escritor
@@ -1331,7 +1956,12 @@
 		[Ontologia_Class67]
 		[Ontologia_Class89]
 		[Ontologia_Class10058]
-		[Ontologia_Class10049])
+		[Ontologia_Class10049]
+		[Ontologia_Class10040]
+		[Ontologia_Class10031]
+		[Ontologia_Class10028]
+		[Ontologia_Class10011]
+		[Ontologia_Class10002])
 	(id_genero "Horror fiction"))
 
 ([Ontologia_Class130] of  Escritor
@@ -1363,18 +1993,26 @@
 		[Ontologia_Class63]
 		[Ontologia_Class64]
 		[Ontologia_Class10046]
-		[Ontologia_Class10059])
+		[Ontologia_Class10059]
+		[Ontologia_Class10062]
+		[Ontologia_Class10002])
 	(id_genero "Western novel"))
 
 ([Ontologia_Class15] of  Genero
 
 	(genero_libro
-		[Ontologia_Class70]
 		[Ontologia_Class86]
 		[Ontologia_Class10172]
 		[Ontologia_Class10034]
 		[Ontologia_Class10036]
-		[Ontologia_Class10058])
+		[Ontologia_Class10058]
+		[Ontologia_Class70]
+		[Ontologia_Class10051]
+		[Ontologia_Class10052]
+		[Ontologia_Class10040]
+		[Ontologia_Class10031]
+		[Ontologia_Class10004]
+		[Ontologia_Class10044])
 	(id_genero "Drama"))
 
 ([Ontologia_Class16] of  Genero
@@ -1385,7 +2023,12 @@
 		[Ontologia_Class79]
 		[Ontologia_Class10005]
 		[Ontologia_Class10006]
-		[Ontologia_Class10008])
+		[Ontologia_Class10008]
+		[Ontologia_Class10170]
+		[Ontologia_Class10041]
+		[Ontologia_Class10038]
+		[Ontologia_Class10048]
+		[Ontologia_Class10044])
 	(id_genero "Adventure"))
 
 ([Ontologia_Class17] of  Genero
@@ -1394,7 +2037,12 @@
 		[Ontologia_Class65]
 		[Ontologia_Class67]
 		[Ontologia_Class88]
-		[Ontologia_Class91])
+		[Ontologia_Class91]
+		[Ontologia_Class10041]
+		[Ontologia_Class10062]
+		[Ontologia_Class10037]
+		[Ontologia_Class10002]
+		[Ontologia_Class10015])
 	(id_genero "Thriller"))
 
 ([Ontologia_Class18] of  Genero
@@ -1407,7 +2055,13 @@
 		[Ontologia_Class82]
 		[Ontologia_Class10036]
 		[Ontologia_Class10169]
-		[Ontologia_Class10063])
+		[Ontologia_Class10063]
+		[Ontologia_Class70]
+		[Ontologia_Class10039]
+		[Ontologia_Class10003]
+		[Ontologia_Class10054]
+		[Ontologia_Class10045]
+		[Ontologia_Class10037])
 	(id_genero "Historical fiction"))
 
 ([Ontologia_Class2] of  Libro
@@ -1435,6 +2089,7 @@
 	(numero_de_paginas 544)
 	(precio 11)
 	(primera_persona TRUE)
+	(Puntuacion 0)
 	(titulo "Fifty Shades Darker"))
 
 ([Ontologia_Class20] of  Genero
@@ -1443,14 +2098,140 @@
 		[Ontologia_Class81]
 		[Ontologia_Class79]
 		[Ontologia_Class10017]
-		[Ontologia_Class10035])
+		[Ontologia_Class10035]
+		[Ontologia_Class10052]
+		[Ontologia_Class10031]
+		[Ontologia_Class10053]
+		[Ontologia_Class10048]
+		[Ontologia_Class5]
+		[Ontologia_Class10028]
+		[Ontologia_Class10014])
 	(id_genero "Graphic novel"))
+
+([Ontologia_Class20002] of  Escritor
+
+	(escritor_libro [Ontologia_Class10011])
+	(id_persona "Phil Rickman"))
+
+([Ontologia_Class20003] of  Escritor
+
+	(escritor_libro [Ontologia_Class10015])
+	(id_persona "Lisa Jewell"))
+
+([Ontologia_Class20004] of  Escritor
+
+	(escritor_libro [Ontologia_Class10014])
+	(id_persona "Delia Owens"))
+
+([Ontologia_Class20005] of  Escritor
+
+	(escritor_libro [Ontologia_Class10002])
+	(id_persona "John Harding"))
+
+([Ontologia_Class20006] of  Escritor
+
+	(escritor_libro [Ontologia_Class10044])
+	(id_persona "Cate Tiernan"))
+
+([Ontologia_Class20095] of  Escritor
+
+	(escritor_libro [Ontologia_Class10051])
+	(id_persona "Hugh Aldersey-Williams"))
+
+([Ontologia_Class20097] of  Escritor
+
+	(escritor_libro [Ontologia_Class10050])
+	(id_persona "Lincoln Child"))
+
+([Ontologia_Class20098] of  Escritor
+
+	(id_persona "Douglas Preston"))
+
+([Ontologia_Class20099] of  Escritor
+
+	(escritor_libro [Ontologia_Class10038])
+	(id_persona "Lee O'Malley"))
+
+([Ontologia_Class20100] of  Escritor
+
+	(escritor_libro [Ontologia_Class10009])
+	(id_persona "Patricia Duncker"))
+
+([Ontologia_Class20101] of  Escritor
+
+	(escritor_libro [Ontologia_Class10052])
+	(id_persona "Cassie Alexander"))
+
+([Ontologia_Class20102] of  Escritor
+
+	(escritor_libro [Ontologia_Class10040])
+	(id_persona "Hailey Abbott"))
+
+([Ontologia_Class20103] of  Escritor
+
+	(escritor_libro [Ontologia_Class10031])
+	(id_persona "Rigoberto González"))
+
+([Ontologia_Class20104] of  Escritor
+
+	(escritor_libro [Ontologia_Class10039])
+	(id_persona "Kate Klimo"))
+
+([Ontologia_Class20105] of  Escritor
+
+	(escritor_libro [Ontologia_Class10003])
+	(id_persona "Katherine Clements"))
+
+([Ontologia_Class20106] of  Escritor
+
+	(escritor_libro [Ontologia_Class10053])
+	(id_persona "Catherine Cookson"))
+
+([Ontologia_Class20107] of  Escritor
+
+	(escritor_libro [Ontologia_Class10062])
+	(id_persona "Sally Beauman"))
+
+([Ontologia_Class20108] of  Escritor
+
+	(escritor_libro [Ontologia_Class10048])
+	(id_persona "Dafydd ab Hugh"))
+
+([Ontologia_Class20110] of  Escritor
+
+	(escritor_libro [Ontologia_Class10054])
+	(id_persona "Jilly Cooper"))
+
+([Ontologia_Class20111] of  Escritor
+
+	(escritor_libro [Ontologia_Class10004])
+	(id_persona "Bernie Gunther"))
+
+([Ontologia_Class20112] of  Escritor
+
+	(escritor_libro [Ontologia_Class10030])
+	(id_persona "Maeve Haran"))
+
+([Ontologia_Class20113] of  Escritor
+
+	(escritor_libro [Ontologia_Class10045])
+	(id_persona "John Grisham"))
+
+([Ontologia_Class20114] of  Escritor
+
+	(escritor_libro [Ontologia_Class10037])
+	(id_persona "S.J.Abbey"))
 
 ([Ontologia_Class21] of  Genero
 
 	(genero_libro
 		[Ontologia_Class90]
-		[Ontologia_Class89])
+		[Ontologia_Class89]
+		[Ontologia_Class10051]
+		[Ontologia_Class10038]
+		[Ontologia_Class5]
+		[Ontologia_Class10004]
+		[Ontologia_Class10037])
 	(id_genero "Comedy fiction"))
 
 ([Ontologia_Class24] of  Idioma
@@ -1470,7 +2251,34 @@
 		[Ontologia_Class10059]
 		[Ontologia_Class2]
 		[Ontologia_Class10058]
-		[Ontologia_Class89])
+		[Ontologia_Class89]
+		[Ontologia_Class10170]
+		[Ontologia_Class70]
+		[Ontologia_Class10069]
+		[Ontologia_Class10071]
+		[Ontologia_Class10041]
+		[Ontologia_Class10051]
+		[Ontologia_Class10038]
+		[Ontologia_Class10009]
+		[Ontologia_Class10172]
+		[Ontologia_Class88]
+		[Ontologia_Class91]
+		[Ontologia_Class10039]
+		[Ontologia_Class10053]
+		[Ontologia_Class83]
+		[Ontologia_Class92]
+		[Ontologia_Class82]
+		[Ontologia_Class71]
+		[Ontologia_Class10004]
+		[Ontologia_Class72]
+		[Ontologia_Class10030]
+		[Ontologia_Class65]
+		[Ontologia_Class74]
+		[Ontologia_Class69]
+		[Ontologia_Class10002]
+		[Ontologia_Class90]
+		[Ontologia_Class10044]
+		[Ontologia_Class10015])
 	(idioma_original_libro [Ontologia_Class10010]))
 
 ([Ontologia_Class27] of  Idioma
@@ -1491,7 +2299,39 @@
 		[Ontologia_Class1]
 		[Ontologia_Class89]
 		[Ontologia_Class10016]
-		[Ontologia_Class10032]))
+		[Ontologia_Class10032]
+		[Ontologia_Class10170]
+		[Ontologia_Class70]
+		[Ontologia_Class10069]
+		[Ontologia_Class10071]
+		[Ontologia_Class64]
+		[Ontologia_Class10038]
+		[Ontologia_Class10009]
+		[Ontologia_Class10172]
+		[Ontologia_Class88]
+		[Ontologia_Class91]
+		[Ontologia_Class10031]
+		[Ontologia_Class61]
+		[Ontologia_Class10039]
+		[Ontologia_Class10062]
+		[Ontologia_Class10048]
+		[Ontologia_Class83]
+		[Ontologia_Class5]
+		[Ontologia_Class67]
+		[Ontologia_Class79]
+		[Ontologia_Class10028]
+		[Ontologia_Class92]
+		[Ontologia_Class10054]
+		[Ontologia_Class82]
+		[Ontologia_Class71]
+		[Ontologia_Class10004]
+		[Ontologia_Class72]
+		[Ontologia_Class10037]
+		[Ontologia_Class65]
+		[Ontologia_Class10042]
+		[Ontologia_Class62]
+		[Ontologia_Class75]
+		[Ontologia_Class77]))
 
 ([Ontologia_Class28] of  Idioma
 
@@ -1521,7 +2361,30 @@
 		[Ontologia_Class10012]
 		[Ontologia_Class10049]
 		[Ontologia_Class10032]
-		[Ontologia_Class63])
+		[Ontologia_Class63]
+		[Ontologia_Class10170]
+		[Ontologia_Class70]
+		[Ontologia_Class10041]
+		[Ontologia_Class10050]
+		[Ontologia_Class10038]
+		[Ontologia_Class10052]
+		[Ontologia_Class10172]
+		[Ontologia_Class88]
+		[Ontologia_Class61]
+		[Ontologia_Class10003]
+		[Ontologia_Class83]
+		[Ontologia_Class87]
+		[Ontologia_Class5]
+		[Ontologia_Class82]
+		[Ontologia_Class71]
+		[Ontologia_Class72]
+		[Ontologia_Class10045]
+		[Ontologia_Class10037]
+		[Ontologia_Class65]
+		[Ontologia_Class68]
+		[Ontologia_Class10042]
+		[Ontologia_Class75]
+		[Ontologia_Class10044])
 	(idioma_original_libro
 		[Ontologia_Class1]
 		[Ontologia_Class10046]))
@@ -1552,22 +2415,83 @@
 		[Ontologia_Class10012]
 		[Ontologia_Class10049]
 		[Ontologia_Class10032]
-		[Ontologia_Class63])
-	(idioma_original_libro [Ontologia_Class10036]))
+		[Ontologia_Class63]
+		[Ontologia_Class10170]
+		[Ontologia_Class70]
+		[Ontologia_Class10041]
+		[Ontologia_Class10038]
+		[Ontologia_Class10052]
+		[Ontologia_Class10172]
+		[Ontologia_Class88]
+		[Ontologia_Class10040]
+		[Ontologia_Class91]
+		[Ontologia_Class10031]
+		[Ontologia_Class10003]
+		[Ontologia_Class10053]
+		[Ontologia_Class10048]
+		[Ontologia_Class83]
+		[Ontologia_Class87]
+		[Ontologia_Class5]
+		[Ontologia_Class79]
+		[Ontologia_Class10028]
+		[Ontologia_Class10054]
+		[Ontologia_Class82]
+		[Ontologia_Class71]
+		[Ontologia_Class72]
+		[Ontologia_Class10030]
+		[Ontologia_Class10045]
+		[Ontologia_Class65]
+		[Ontologia_Class68]
+		[Ontologia_Class74]
+		[Ontologia_Class69]
+		[Ontologia_Class10011]
+		[Ontologia_Class75]
+		[Ontologia_Class10014]
+		[Ontologia_Class10002]
+		[Ontologia_Class90]
+		[Ontologia_Class77]
+		[Ontologia_Class10015])
+	(idioma_original_libro
+		[Ontologia_Class10036]
+		[Ontologia_Class75]))
 
 ([Ontologia_Class30] of  Idioma
 
 	(id_idioma "Japanese")
 	(idioma_libro
-		[Ontologia_Class10172]
 		[Ontologia_Class10005]
 		[Ontologia_Class10006]
 		[Ontologia_Class10008]
 		[Ontologia_Class10017]
-		[Ontologia_Class10035])
+		[Ontologia_Class10035]
+		[Ontologia_Class10170]
+		[Ontologia_Class70]
+		[Ontologia_Class10051]
+		[Ontologia_Class10038]
+		[Ontologia_Class10052]
+		[Ontologia_Class10172]
+		[Ontologia_Class88]
+		[Ontologia_Class10040]
+		[Ontologia_Class10062]
+		[Ontologia_Class83]
+		[Ontologia_Class67]
+		[Ontologia_Class82]
+		[Ontologia_Class71]
+		[Ontologia_Class72]
+		[Ontologia_Class10030]
+		[Ontologia_Class10037]
+		[Ontologia_Class65]
+		[Ontologia_Class68]
+		[Ontologia_Class74]
+		[Ontologia_Class62]
+		[Ontologia_Class10011]
+		[Ontologia_Class10014]
+		[Ontologia_Class90]
+		[Ontologia_Class10044])
 	(idioma_original_libro
 		[Ontologia_Class10017]
-		[Ontologia_Class10035]))
+		[Ontologia_Class10035]
+		[Ontologia_Class10172]))
 
 ([Ontologia_Class31] of  Animo
 
@@ -1577,7 +2501,16 @@
 		[Ontologia_Class10055]
 		[Ontologia_Class10063]
 		[Ontologia_Class10033]
-		[Ontologia_Class10016])
+		[Ontologia_Class10016]
+		[Ontologia_Class10041]
+		[Ontologia_Class10038]
+		[Ontologia_Class10031]
+		[Ontologia_Class10048]
+		[Ontologia_Class10054]
+		[Ontologia_Class10037]
+		[Ontologia_Class74]
+		[Ontologia_Class62]
+		[Ontologia_Class77])
 	(id_animo "happy"))
 
 ([Ontologia_Class32] of  Animo
@@ -1595,7 +2528,20 @@
 		[Ontologia_Class10017]
 		[Ontologia_Class10043]
 		[Ontologia_Class10035]
-		[Ontologia_Class10012])
+		[Ontologia_Class10012]
+		[Ontologia_Class10170]
+		[Ontologia_Class10040]
+		[Ontologia_Class10031]
+		[Ontologia_Class10028]
+		[Ontologia_Class10054]
+		[Ontologia_Class10030]
+		[Ontologia_Class10045]
+		[Ontologia_Class10037]
+		[Ontologia_Class68]
+		[Ontologia_Class62]
+		[Ontologia_Class10014]
+		[Ontologia_Class90]
+		[Ontologia_Class10044])
 	(id_animo "sad"))
 
 ([Ontologia_Class33] of  Animo
@@ -1608,7 +2554,11 @@
 		[Ontologia_Class10003]
 		[Ontologia_Class10011]
 		[Ontologia_Class10056]
-		[Ontologia_Class10033])
+		[Ontologia_Class10033]
+		[Ontologia_Class10038]
+		[Ontologia_Class10048]
+		[Ontologia_Class62]
+		[Ontologia_Class69])
 	(id_animo "funny"))
 
 ([Ontologia_Class34] of  Animo
@@ -1624,7 +2574,14 @@
 		[Ontologia_Class10063]
 		[Ontologia_Class10064]
 		[Ontologia_Class10016]
-		[Ontologia_Class10049])
+		[Ontologia_Class10049]
+		[Ontologia_Class10051]
+		[Ontologia_Class10039]
+		[Ontologia_Class10053]
+		[Ontologia_Class65]
+		[Ontologia_Class10042]
+		[Ontologia_Class69]
+		[Ontologia_Class75])
 	(id_animo "serious"))
 
 ([Ontologia_Class35] of  Animo
@@ -1638,7 +2595,18 @@
 		[Ontologia_Class10017]
 		[Ontologia_Class10043]
 		[Ontologia_Class10035]
-		[Ontologia_Class10049])
+		[Ontologia_Class10049]
+		[Ontologia_Class10170]
+		[Ontologia_Class10041]
+		[Ontologia_Class10031]
+		[Ontologia_Class10053]
+		[Ontologia_Class10028]
+		[Ontologia_Class10054]
+		[Ontologia_Class10030]
+		[Ontologia_Class74]
+		[Ontologia_Class90]
+		[Ontologia_Class10044]
+		[Ontologia_Class77])
 	(id_animo "expected"))
 
 ([Ontologia_Class36] of  Animo
@@ -1653,7 +2621,11 @@
 		[Ontologia_Class10005]
 		[Ontologia_Class10008]
 		[Ontologia_Class10169]
-		[Ontologia_Class10056])
+		[Ontologia_Class10056]
+		[Ontologia_Class10053]
+		[Ontologia_Class10062]
+		[Ontologia_Class10045]
+		[Ontologia_Class65])
 	(id_animo "unpredictable"))
 
 ([Ontologia_Class37] of  Animo
@@ -1665,7 +2637,21 @@
 		[Ontologia_Class10070]
 		[Ontologia_Class10071]
 		[Ontologia_Class10072]
-		[Ontologia_Class10046])
+		[Ontologia_Class10046]
+		[Ontologia_Class10051]
+		[Ontologia_Class10050]
+		[Ontologia_Class10052]
+		[Ontologia_Class10040]
+		[Ontologia_Class10039]
+		[Ontologia_Class10062]
+		[Ontologia_Class5]
+		[Ontologia_Class10028]
+		[Ontologia_Class10030]
+		[Ontologia_Class68]
+		[Ontologia_Class10042]
+		[Ontologia_Class75]
+		[Ontologia_Class10014]
+		[Ontologia_Class90])
 	(id_animo "gentle"))
 
 ([Ontologia_Class38] of  Animo
@@ -1683,7 +2669,13 @@
 		[Ontologia_Class10010]
 		[Ontologia_Class10046]
 		[Ontologia_Class10017]
-		[Ontologia_Class10058])
+		[Ontologia_Class10058]
+		[Ontologia_Class10170]
+		[Ontologia_Class10040]
+		[Ontologia_Class10062]
+		[Ontologia_Class65]
+		[Ontologia_Class10014]
+		[Ontologia_Class10044])
 	(id_animo "violent"))
 
 ([Ontologia_Class39] of  Animo
@@ -1697,12 +2689,23 @@
 		[Ontologia_Class10034]
 		[Ontologia_Class10169]
 		[Ontologia_Class10059]
-		[Ontologia_Class10095])
+		[Ontologia_Class10095]
+		[Ontologia_Class10041]
+		[Ontologia_Class10050]
+		[Ontologia_Class10052]
+		[Ontologia_Class10053]
+		[Ontologia_Class5]
+		[Ontologia_Class10045]
+		[Ontologia_Class10042]
+		[Ontologia_Class10014])
 	(id_animo "optimistic"))
 
 ([Ontologia_Class4] of  Escritor
 
-	(escritor_libro [Ontologia_Class10169])
+	(escritor_libro
+		[Ontologia_Class10169]
+		[Ontologia_Class10170]
+		[Ontologia_Class5])
 	(id_persona "Suzanne Collins"))
 
 ([Ontologia_Class40] of  Animo
@@ -1713,7 +2716,13 @@
 		[Ontologia_Class10009]
 		[Ontologia_Class10064]
 		[Ontologia_Class10058]
-		[Ontologia_Class10032])
+		[Ontologia_Class10032]
+		[Ontologia_Class10062]
+		[Ontologia_Class10028]
+		[Ontologia_Class10030]
+		[Ontologia_Class74]
+		[Ontologia_Class10042]
+		[Ontologia_Class77])
 	(id_animo "bleak"))
 
 ([Ontologia_Class43] of  Tiempo
@@ -1741,7 +2750,21 @@
 		[Ontologia_Class10035]
 		[Ontologia_Class10012]
 		[Ontologia_Class10032]
-		[Ontologia_Class10005]))
+		[Ontologia_Class10005]
+		[Ontologia_Class10008]
+		[Ontologia_Class10006]
+		[Ontologia_Class70]
+		[Ontologia_Class10031]
+		[Ontologia_Class10003]
+		[Ontologia_Class5]
+		[Ontologia_Class10028]
+		[Ontologia_Class65]
+		[Ontologia_Class68]
+		[Ontologia_Class74]
+		[Ontologia_Class10011]
+		[Ontologia_Class75]
+		[Ontologia_Class90]
+		[Ontologia_Class77]))
 
 ([Ontologia_Class44] of  Tiempo
 
@@ -1749,7 +2772,6 @@
 	(tiempo_libro
 		[Ontologia_Class2]
 		[Ontologia_Class73]
-		[Ontologia_Class70]
 		[Ontologia_Class88]
 		[Ontologia_Class91]
 		[Ontologia_Class61]
@@ -1765,7 +2787,21 @@
 		[Ontologia_Class10017]
 		[Ontologia_Class10095]
 		[Ontologia_Class10063]
-		[Ontologia_Class10043]))
+		[Ontologia_Class10043]
+		[Ontologia_Class10041]
+		[Ontologia_Class10051]
+		[Ontologia_Class10050]
+		[Ontologia_Class10038]
+		[Ontologia_Class10009]
+		[Ontologia_Class10040]
+		[Ontologia_Class10039]
+		[Ontologia_Class10054]
+		[Ontologia_Class10045]
+		[Ontologia_Class69]
+		[Ontologia_Class10014]
+		[Ontologia_Class10002]
+		[Ontologia_Class10044]
+		[Ontologia_Class10015]))
 
 ([Ontologia_Class46] of  Tiempo
 
@@ -1778,14 +2814,32 @@
 		[Ontologia_Class10058]
 		[Ontologia_Class10033]
 		[Ontologia_Class10016]
-		[Ontologia_Class10049]))
+		[Ontologia_Class10049]
+		[Ontologia_Class10170]
+		[Ontologia_Class10052]
+		[Ontologia_Class10053]
+		[Ontologia_Class10062]
+		[Ontologia_Class10048]
+		[Ontologia_Class10004]
+		[Ontologia_Class10030]
+		[Ontologia_Class10037]
+		[Ontologia_Class10042]
+		[Ontologia_Class62]))
 
 ([Ontologia_Class47] of  Genero
 
 	(genero_libro
 		[Ontologia_Class75]
 		[Ontologia_Class74]
-		[Ontologia_Class10055])
+		[Ontologia_Class10055]
+		[Ontologia_Class10050]
+		[Ontologia_Class10052]
+		[Ontologia_Class10062]
+		[Ontologia_Class5]
+		[Ontologia_Class10028]
+		[Ontologia_Class10004]
+		[Ontologia_Class10042]
+		[Ontologia_Class10044])
 	(id_genero "Philosophy novel"))
 
 ([Ontologia_Class49] of  Publico
@@ -1794,18 +2848,43 @@
 	(publico_libro
 		[Ontologia_Class81]
 		[Ontologia_Class79]
-		[Ontologia_Class10055]))
+		[Ontologia_Class10055]
+		[Ontologia_Class10053]
+		[Ontologia_Class10048]
+		[Ontologia_Class62]))
 
 ([Ontologia_Class5] of  Libro
 
 	(adaptada_a_cine TRUE)
 	(anyo_publicacion 2008)
 	(best_seller TRUE)
-	(libro_idioma [Ontologia_Class6])
+	(libro_animo
+		[Ontologia_Class56]
+		[Ontologia_Class55]
+		[Ontologia_Class37]
+		[Ontologia_Class39])
+	(libro_escritor [Ontologia_Class4])
+	(libro_genero
+		[Ontologia_Class21]
+		[Ontologia_Class20]
+		[Ontologia_Class47]
+		[Ontologia_Class9])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class29]
+		[Ontologia_Class27])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10025])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52])
+	(libro_tiempo [Ontologia_Class43])
 	(novela_independiente FALSE)
 	(numero_de_paginas 396)
 	(precio 11)
 	(primera_persona FALSE)
+	(Puntuacion 0)
 	(titulo "The Hunger Games"))
 
 ([Ontologia_Class50] of  Publico
@@ -1842,7 +2921,33 @@
 		[Ontologia_Class10035]
 		[Ontologia_Class10012]
 		[Ontologia_Class10032]
-		[Ontologia_Class10005]))
+		[Ontologia_Class10005]
+		[Ontologia_Class10008]
+		[Ontologia_Class10006]
+		[Ontologia_Class10170]
+		[Ontologia_Class10050]
+		[Ontologia_Class10038]
+		[Ontologia_Class10052]
+		[Ontologia_Class10040]
+		[Ontologia_Class10031]
+		[Ontologia_Class10039]
+		[Ontologia_Class10053]
+		[Ontologia_Class10062]
+		[Ontologia_Class10048]
+		[Ontologia_Class5]
+		[Ontologia_Class10028]
+		[Ontologia_Class10054]
+		[Ontologia_Class10030]
+		[Ontologia_Class65]
+		[Ontologia_Class68]
+		[Ontologia_Class10042]
+		[Ontologia_Class10011]
+		[Ontologia_Class75]
+		[Ontologia_Class10014]
+		[Ontologia_Class10002]
+		[Ontologia_Class90]
+		[Ontologia_Class10044]
+		[Ontologia_Class10015]))
 
 ([Ontologia_Class51] of  Publico
 
@@ -1863,7 +2968,14 @@
 		[Ontologia_Class10063]
 		[Ontologia_Class10056]
 		[Ontologia_Class10035]
-		[Ontologia_Class10032]))
+		[Ontologia_Class10032]
+		[Ontologia_Class10170]
+		[Ontologia_Class10038]
+		[Ontologia_Class10048]
+		[Ontologia_Class10054]
+		[Ontologia_Class10037]
+		[Ontologia_Class62]
+		[Ontologia_Class90]))
 
 ([Ontologia_Class52] of  Publico
 
@@ -1911,7 +3023,41 @@
 		[Ontologia_Class10016]
 		[Ontologia_Class10012]
 		[Ontologia_Class10049]
-		[Ontologia_Class10005]))
+		[Ontologia_Class10005]
+		[Ontologia_Class10008]
+		[Ontologia_Class10006]
+		[Ontologia_Class10041]
+		[Ontologia_Class10051]
+		[Ontologia_Class10050]
+		[Ontologia_Class10038]
+		[Ontologia_Class10009]
+		[Ontologia_Class10052]
+		[Ontologia_Class10040]
+		[Ontologia_Class10031]
+		[Ontologia_Class10039]
+		[Ontologia_Class10003]
+		[Ontologia_Class10053]
+		[Ontologia_Class10062]
+		[Ontologia_Class5]
+		[Ontologia_Class10028]
+		[Ontologia_Class10054]
+		[Ontologia_Class10004]
+		[Ontologia_Class10030]
+		[Ontologia_Class10045]
+		[Ontologia_Class10037]
+		[Ontologia_Class65]
+		[Ontologia_Class68]
+		[Ontologia_Class74]
+		[Ontologia_Class10042]
+		[Ontologia_Class69]
+		[Ontologia_Class10011]
+		[Ontologia_Class75]
+		[Ontologia_Class10014]
+		[Ontologia_Class10002]
+		[Ontologia_Class90]
+		[Ontologia_Class10044]
+		[Ontologia_Class77]
+		[Ontologia_Class10015]))
 
 ([Ontologia_Class53] of  Publico
 
@@ -1944,7 +3090,25 @@
 		[Ontologia_Class10016]
 		[Ontologia_Class10012]
 		[Ontologia_Class10049]
-		[Ontologia_Class10005]))
+		[Ontologia_Class10005]
+		[Ontologia_Class10008]
+		[Ontologia_Class10006]
+		[Ontologia_Class10041]
+		[Ontologia_Class10051]
+		[Ontologia_Class10009]
+		[Ontologia_Class10052]
+		[Ontologia_Class10040]
+		[Ontologia_Class10039]
+		[Ontologia_Class10004]
+		[Ontologia_Class10045]
+		[Ontologia_Class65]
+		[Ontologia_Class74]
+		[Ontologia_Class69]
+		[Ontologia_Class10011]
+		[Ontologia_Class75]
+		[Ontologia_Class10044]
+		[Ontologia_Class77]
+		[Ontologia_Class10015]))
 
 ([Ontologia_Class55] of  Animo
 
@@ -1955,7 +3119,17 @@
 		[Ontologia_Class10169]
 		[Ontologia_Class86]
 		[Ontologia_Class10012]
-		[Ontologia_Class10032])
+		[Ontologia_Class10032]
+		[Ontologia_Class10050]
+		[Ontologia_Class10052]
+		[Ontologia_Class10040]
+		[Ontologia_Class10039]
+		[Ontologia_Class5]
+		[Ontologia_Class10037]
+		[Ontologia_Class65]
+		[Ontologia_Class68]
+		[Ontologia_Class69]
+		[Ontologia_Class75])
 	(id_animo "disgusting"))
 
 ([Ontologia_Class56] of  Animo
@@ -1972,35 +3146,26 @@
 		[Ontologia_Class10071]
 		[Ontologia_Class10072]
 		[Ontologia_Class10059]
-		[Ontologia_Class10095])
+		[Ontologia_Class10095]
+		[Ontologia_Class10051]
+		[Ontologia_Class10038]
+		[Ontologia_Class10048]
+		[Ontologia_Class5]
+		[Ontologia_Class75])
 	(id_animo "beautiful"))
 
 ([Ontologia_Class6] of  Idioma
 
 	(id_idioma "English")
 	(idioma_libro
-		[Ontologia_Class5]
-		[Ontologia_Class10170]
-		[Ontologia_Class67]
-		[Ontologia_Class79]
-		[Ontologia_Class92]
-		[Ontologia_Class71]
-		[Ontologia_Class82]
-		[Ontologia_Class72]
 		[Ontologia_Class78]
 		[Ontologia_Class10005]
 		[Ontologia_Class10006]
 		[Ontologia_Class10008]
-		[Ontologia_Class10009]
-		[Ontologia_Class10004]
-		[Ontologia_Class10003]
-		[Ontologia_Class10002]
 		[Ontologia_Class10017]
 		[Ontologia_Class10034]
 		[Ontologia_Class10061]
-		[Ontologia_Class10069]
 		[Ontologia_Class10070]
-		[Ontologia_Class10071]
 		[Ontologia_Class10072]
 		[Ontologia_Class10036]
 		[Ontologia_Class10060]
@@ -2024,7 +3189,58 @@
 		[Ontologia_Class10012]
 		[Ontologia_Class10049]
 		[Ontologia_Class10032]
-		[Ontologia_Class63])
+		[Ontologia_Class63]
+		[Ontologia_Class10170]
+		[Ontologia_Class70]
+		[Ontologia_Class10069]
+		[Ontologia_Class10071]
+		[Ontologia_Class10041]
+		[Ontologia_Class10051]
+		[Ontologia_Class64]
+		[Ontologia_Class10050]
+		[Ontologia_Class10038]
+		[Ontologia_Class10009]
+		[Ontologia_Class10052]
+		[Ontologia_Class10172]
+		[Ontologia_Class88]
+		[Ontologia_Class10040]
+		[Ontologia_Class91]
+		[Ontologia_Class10031]
+		[Ontologia_Class61]
+		[Ontologia_Class10039]
+		[Ontologia_Class10003]
+		[Ontologia_Class10053]
+		[Ontologia_Class10062]
+		[Ontologia_Class10048]
+		[Ontologia_Class83]
+		[Ontologia_Class87]
+		[Ontologia_Class5]
+		[Ontologia_Class67]
+		[Ontologia_Class79]
+		[Ontologia_Class10028]
+		[Ontologia_Class92]
+		[Ontologia_Class10054]
+		[Ontologia_Class82]
+		[Ontologia_Class71]
+		[Ontologia_Class10004]
+		[Ontologia_Class72]
+		[Ontologia_Class10030]
+		[Ontologia_Class10045]
+		[Ontologia_Class10037]
+		[Ontologia_Class65]
+		[Ontologia_Class68]
+		[Ontologia_Class74]
+		[Ontologia_Class10042]
+		[Ontologia_Class62]
+		[Ontologia_Class69]
+		[Ontologia_Class10011]
+		[Ontologia_Class75]
+		[Ontologia_Class10014]
+		[Ontologia_Class10002]
+		[Ontologia_Class90]
+		[Ontologia_Class10044]
+		[Ontologia_Class77]
+		[Ontologia_Class10015])
 	(idioma_original_libro
 		[Ontologia_Class10002]
 		[Ontologia_Class10003]
@@ -2062,7 +3278,48 @@
 		[Ontologia_Class10033]
 		[Ontologia_Class10049]
 		[Ontologia_Class10032]
-		[Ontologia_Class63]))
+		[Ontologia_Class63]
+		[Ontologia_Class10170]
+		[Ontologia_Class70]
+		[Ontologia_Class10041]
+		[Ontologia_Class10051]
+		[Ontologia_Class64]
+		[Ontologia_Class10050]
+		[Ontologia_Class10038]
+		[Ontologia_Class10052]
+		[Ontologia_Class88]
+		[Ontologia_Class10040]
+		[Ontologia_Class91]
+		[Ontologia_Class10031]
+		[Ontologia_Class61]
+		[Ontologia_Class10039]
+		[Ontologia_Class10053]
+		[Ontologia_Class10062]
+		[Ontologia_Class10048]
+		[Ontologia_Class83]
+		[Ontologia_Class87]
+		[Ontologia_Class5]
+		[Ontologia_Class67]
+		[Ontologia_Class79]
+		[Ontologia_Class10028]
+		[Ontologia_Class92]
+		[Ontologia_Class10054]
+		[Ontologia_Class71]
+		[Ontologia_Class82]
+		[Ontologia_Class72]
+		[Ontologia_Class10030]
+		[Ontologia_Class78]
+		[Ontologia_Class10045]
+		[Ontologia_Class10037]
+		[Ontologia_Class65]
+		[Ontologia_Class68]
+		[Ontologia_Class74]
+		[Ontologia_Class10042]
+		[Ontologia_Class62]
+		[Ontologia_Class69]
+		[Ontologia_Class90]
+		[Ontologia_Class10044]
+		[Ontologia_Class77]))
 
 ([Ontologia_Class61] of  Libro
 
@@ -2073,6 +3330,12 @@
 		[Ontologia_Class56])
 	(libro_escritor [Ontologia_Class119])
 	(libro_genero [Ontologia_Class16])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class27])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10027])
 	(libro_publico
 		[Ontologia_Class52]
 		[Ontologia_Class51]
@@ -2082,16 +3345,34 @@
 	(novela_independiente TRUE)
 	(numero_de_paginas 232)
 	(precio 9)
+	(Puntuacion 0)
 	(titulo "The Call of the Wild"))
 
 ([Ontologia_Class62] of  Libro
 
+	(adaptada_a_cine TRUE)
 	(anyo_publicacion 1812)
+	(libro_animo
+		[Ontologia_Class33]
+		[Ontologia_Class31]
+		[Ontologia_Class32])
 	(libro_escritor [Ontologia_Class99])
 	(libro_genero [Ontologia_Class16])
-	(mundo_real FALSE)
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class27]
+		[Ontologia_Class30])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10025])
+	(libro_publico
+		[Ontologia_Class49]
+		[Ontologia_Class51])
+	(libro_tiempo [Ontologia_Class46])
+	(mundo_real TRUE)
 	(numero_de_paginas 323)
 	(precio 40)
+	(primera_persona TRUE)
+	(Puntuacion 0)
 	(titulo "The Swiss Family Robinson"))
 
 ([Ontologia_Class63] of  Libro
@@ -2116,6 +3397,7 @@
 	(novela_independiente TRUE)
 	(numero_de_paginas 843)
 	(precio 13)
+	(Puntuacion 0)
 	(titulo "Lonesome Dove"))
 
 ([Ontologia_Class64] of  Libro
@@ -2128,6 +3410,11 @@
 		[Ontologia_Class38])
 	(libro_escritor [Ontologia_Class123])
 	(libro_genero [Ontologia_Class14])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class27])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10027])
 	(libro_publico
 		[Ontologia_Class53]
 		[Ontologia_Class52]
@@ -2136,16 +3423,42 @@
 	(novela_independiente TRUE)
 	(numero_de_paginas 335)
 	(precio 23)
+	(Puntuacion 0)
 	(titulo "Riders of the Purple Sage"))
 
 ([Ontologia_Class65] of  Libro
 
+	(adaptada_a_cine TRUE)
+	(anyo_publicacion 1977)
+	(best_seller TRUE)
+	(libro_animo
+		[Ontologia_Class55]
+		[Ontologia_Class34]
+		[Ontologia_Class36]
+		[Ontologia_Class38])
 	(libro_escritor [Ontologia_Class102])
 	(libro_genero
 		[Ontologia_Class17]
 		[Ontologia_Class13])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class29]
+		[Ontologia_Class27]
+		[Ontologia_Class30]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10026])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52]
+		[Ontologia_Class53])
+	(libro_tiempo [Ontologia_Class43])
+	(mundo_real TRUE)
+	(novela_independiente FALSE)
 	(numero_de_paginas 447)
-	(precio 2)
+	(precio 10)
+	(Puntuacion 0)
 	(titulo "The Shining"))
 
 ([Ontologia_Class67] of  Libro
@@ -2156,7 +3469,12 @@
 	(libro_genero
 		[Ontologia_Class17]
 		[Ontologia_Class13])
-	(libro_idioma [Ontologia_Class6])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class27]
+		[Ontologia_Class30])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10026])
 	(libro_publico
 		[Ontologia_Class50]
 		[Ontologia_Class51])
@@ -2165,18 +3483,35 @@
 	(novela_independiente TRUE)
 	(numero_de_paginas 576)
 	(precio 17)
+	(Puntuacion 0)
 	(titulo "The institute"))
 
 ([Ontologia_Class68] of  Libro
 
 	(anyo_publicacion 1963)
 	(best_seller TRUE)
+	(libro_animo
+		[Ontologia_Class55]
+		[Ontologia_Class37]
+		[Ontologia_Class32])
 	(libro_escritor [Ontologia_Class103])
 	(libro_genero [Ontologia_Class12])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class29]
+		[Ontologia_Class30])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10026])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52])
+	(libro_tiempo [Ontologia_Class43])
 	(mundo_real TRUE)
 	(numero_de_paginas 1)
 	(precio 223)
 	(primera_persona TRUE)
+	(Puntuacion 0)
 	(titulo "The Spy Who Came in from the Cold"))
 
 ([Ontologia_Class69] of  Libro
@@ -2184,11 +3519,26 @@
 	(adaptada_a_cine TRUE)
 	(anyo_publicacion 1915)
 	(best_seller TRUE)
+	(libro_animo
+		[Ontologia_Class55]
+		[Ontologia_Class33]
+		[Ontologia_Class34])
 	(libro_escritor [Ontologia_Class98])
 	(libro_genero [Ontologia_Class12])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class29]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10027])
+	(libro_publico
+		[Ontologia_Class52]
+		[Ontologia_Class53])
+	(libro_tiempo [Ontologia_Class44])
 	(novela_independiente FALSE)
 	(numero_de_paginas 10)
 	(precio 10)
+	(Puntuacion 0)
 	(titulo "The Thirty-Nine Steps"))
 
 ([Ontologia_Class7] of  Genero
@@ -2202,7 +3552,12 @@
 		[Ontologia_Class10006]
 		[Ontologia_Class10008]
 		[Ontologia_Class1]
-		[Ontologia_Class10032])
+		[Ontologia_Class10032]
+		[Ontologia_Class10170]
+		[Ontologia_Class10050]
+		[Ontologia_Class10048]
+		[Ontologia_Class10042]
+		[Ontologia_Class10044])
 	(id_genero "Fantasy"))
 
 ([Ontologia_Class70] of  Libro
@@ -2213,16 +3568,27 @@
 	(libro_escritor [Ontologia_Class125])
 	(libro_genero
 		[Ontologia_Class15]
-		[Ontologia_Class8])
+		[Ontologia_Class8]
+		[Ontologia_Class18])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class29]
+		[Ontologia_Class27]
+		[Ontologia_Class30]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10027])
 	(libro_publico
 		[Ontologia_Class53]
 		[Ontologia_Class52])
-	(libro_tiempo [Ontologia_Class44])
+	(libro_tiempo [Ontologia_Class43])
 	(mundo_real TRUE)
 	(novela_independiente TRUE)
-	(numero_de_paginas 328)
+	(numero_de_paginas 304)
 	(precio 100)
 	(primera_persona FALSE)
+	(Puntuacion 0)
 	(titulo "Nineteen Eighty-Four"))
 
 ([Ontologia_Class71] of  Libro
@@ -2235,7 +3601,15 @@
 		[Ontologia_Class39])
 	(libro_escritor [Ontologia_Class107])
 	(libro_genero [Ontologia_Class8])
-	(libro_idioma [Ontologia_Class6])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class29]
+		[Ontologia_Class27]
+		[Ontologia_Class30]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10026])
 	(libro_publico
 		[Ontologia_Class50]
 		[Ontologia_Class52]
@@ -2245,6 +3619,7 @@
 	(numero_de_paginas 369)
 	(precio 11)
 	(primera_persona TRUE)
+	(Puntuacion 0)
 	(titulo "The Martian"))
 
 ([Ontologia_Class72] of  Libro
@@ -2257,7 +3632,15 @@
 		[Ontologia_Class37])
 	(libro_escritor [Ontologia_Class105])
 	(libro_genero [Ontologia_Class9])
-	(libro_idioma [Ontologia_Class6])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class29]
+		[Ontologia_Class27]
+		[Ontologia_Class30]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10025])
 	(libro_publico
 		[Ontologia_Class52]
 		[Ontologia_Class50]
@@ -2266,6 +3649,7 @@
 	(numero_de_paginas 224)
 	(precio 3)
 	(primera_persona FALSE)
+	(Puntuacion 0)
 	(titulo "The Notebook"))
 
 ([Ontologia_Class73] of  Libro
@@ -2287,34 +3671,86 @@
 	(numero_de_paginas 592)
 	(precio 26)
 	(primera_persona TRUE)
+	(Puntuacion 0)
 	(titulo "Fifty Shades Freed"))
 
 ([Ontologia_Class74] of  Libro
 
+	(anyo_publicacion 2004)
+	(libro_animo
+		[Ontologia_Class40]
+		[Ontologia_Class35]
+		[Ontologia_Class31])
 	(libro_escritor [Ontologia_Class101])
 	(libro_genero [Ontologia_Class47])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class29]
+		[Ontologia_Class30]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10026])
+	(libro_publico
+		[Ontologia_Class52]
+		[Ontologia_Class53])
+	(libro_tiempo [Ontologia_Class43])
 	(novela_independiente TRUE)
-	(numero_de_paginas 123)
-	(precio 2)
+	(numero_de_paginas 640)
+	(precio 25)
+	(Puntuacion 0)
 	(titulo "The Stranger"))
 
 ([Ontologia_Class75] of  Libro
 
 	(adaptada_a_cine TRUE)
+	(libro_animo
+		[Ontologia_Class56]
+		[Ontologia_Class55]
+		[Ontologia_Class37]
+		[Ontologia_Class34])
 	(libro_escritor [Ontologia_Class97])
 	(libro_genero [Ontologia_Class47])
+	(libro_idioma
+		[Ontologia_Class27]
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class29])
+	(libro_idioma_original [Ontologia_Class29])
+	(libro_nivel [Ontologia_Class10026])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52]
+		[Ontologia_Class53])
+	(libro_tiempo [Ontologia_Class43])
 	(novela_independiente TRUE)
 	(numero_de_paginas 1883)
 	(precio 21)
+	(Puntuacion 0)
 	(titulo "Thus Spoke Zarathustra"))
 
 ([Ontologia_Class77] of  Libro
 
+	(anyo_publicacion 2001)
+	(libro_animo
+		[Ontologia_Class40]
+		[Ontologia_Class35]
+		[Ontologia_Class31])
 	(libro_escritor [Ontologia_Class95])
 	(libro_genero [Ontologia_Class18])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class29]
+		[Ontologia_Class27])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10026])
+	(libro_publico
+		[Ontologia_Class52]
+		[Ontologia_Class53])
+	(libro_tiempo [Ontologia_Class43])
 	(novela_independiente TRUE)
 	(numero_de_paginas 672)
 	(precio 10)
+	(Puntuacion 0)
 	(titulo "Wolf Hall"))
 
 ([Ontologia_Class78] of  Libro
@@ -2326,6 +3762,8 @@
 	(libro_escritor [Ontologia_Class104])
 	(libro_genero [Ontologia_Class18])
 	(libro_idioma [Ontologia_Class6])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10027])
 	(libro_publico
 		[Ontologia_Class50]
 		[Ontologia_Class52]
@@ -2334,6 +3772,7 @@
 	(novela_independiente TRUE)
 	(numero_de_paginas 806)
 	(precio 40)
+	(Puntuacion 0)
 	(titulo "The Pillars of the Earth"))
 
 ([Ontologia_Class79] of  Libro
@@ -2348,7 +3787,12 @@
 		[Ontologia_Class18]
 		[Ontologia_Class20]
 		[Ontologia_Class16])
-	(libro_idioma [Ontologia_Class6])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class29]
+		[Ontologia_Class27])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10027])
 	(libro_publico
 		[Ontologia_Class51]
 		[Ontologia_Class49])
@@ -2357,13 +3801,13 @@
 	(novela_independiente TRUE)
 	(numero_de_paginas 526)
 	(precio 16)
+	(Puntuacion 0)
 	(titulo "The Invention of Hugo Cabret"))
 
 ([Ontologia_Class8] of  Genero
 
 	(genero_libro
 		[Ontologia_Class71]
-		[Ontologia_Class70]
 		[Ontologia_Class10172]
 		[Ontologia_Class10060]
 		[Ontologia_Class10046]
@@ -2371,7 +3815,15 @@
 		[Ontologia_Class10055]
 		[Ontologia_Class10017]
 		[Ontologia_Class10049]
-		[Ontologia_Class10032])
+		[Ontologia_Class10032]
+		[Ontologia_Class70]
+		[Ontologia_Class10003]
+		[Ontologia_Class10053]
+		[Ontologia_Class10062]
+		[Ontologia_Class10004]
+		[Ontologia_Class10037]
+		[Ontologia_Class10011]
+		[Ontologia_Class10044])
 	(id_genero "Science fiction"))
 
 ([Ontologia_Class81] of  Libro
@@ -2398,6 +3850,7 @@
 	(novela_independiente TRUE)
 	(numero_de_paginas 146)
 	(precio 60)
+	(Puntuacion 0)
 	(titulo "Chandler: Red Tide"))
 
 ([Ontologia_Class82] of  Libro
@@ -2409,7 +3862,15 @@
 	(libro_genero
 		[Ontologia_Class7]
 		[Ontologia_Class18])
-	(libro_idioma [Ontologia_Class6])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class29]
+		[Ontologia_Class27]
+		[Ontologia_Class30]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10027])
 	(libro_publico
 		[Ontologia_Class52]
 		[Ontologia_Class50]
@@ -2419,6 +3880,7 @@
 	(novela_independiente TRUE)
 	(numero_de_paginas 662)
 	(precio 10)
+	(Puntuacion 0)
 	(titulo "The Name of the Wind"))
 
 ([Ontologia_Class83] of  Libro
@@ -2432,6 +3894,15 @@
 		[Ontologia_Class40])
 	(libro_escritor [Ontologia_Class118])
 	(libro_genero [Ontologia_Class7])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class29]
+		[Ontologia_Class27]
+		[Ontologia_Class30]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10027])
 	(libro_publico
 		[Ontologia_Class52]
 		[Ontologia_Class51]
@@ -2440,6 +3911,7 @@
 	(novela_independiente FALSE)
 	(numero_de_paginas 310)
 	(precio 9)
+	(Puntuacion 0)
 	(titulo "The Hobbit"))
 
 ([Ontologia_Class86] of  Libro
@@ -2471,6 +3943,7 @@
 	(novela_independiente TRUE)
 	(numero_de_paginas 288)
 	(precio 9)
+	(Puntuacion 0)
 	(titulo "Death on the Nile"))
 
 ([Ontologia_Class87] of  Libro
@@ -2480,6 +3953,12 @@
 	(libro_animo [Ontologia_Class35])
 	(libro_escritor [Ontologia_Class117])
 	(libro_genero [Ontologia_Class11])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class29])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10025])
 	(libro_publico
 		[Ontologia_Class53]
 		[Ontologia_Class52]
@@ -2489,6 +3968,7 @@
 	(novela_independiente TRUE)
 	(numero_de_paginas 360)
 	(precio 10)
+	(Puntuacion 0)
 	(titulo "The Hound of the Baskervilles"))
 
 ([Ontologia_Class88] of  Libro
@@ -2501,6 +3981,15 @@
 	(libro_genero
 		[Ontologia_Class11]
 		[Ontologia_Class17])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class28]
+		[Ontologia_Class29]
+		[Ontologia_Class27]
+		[Ontologia_Class30]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10026])
 	(libro_publico
 		[Ontologia_Class53]
 		[Ontologia_Class52])
@@ -2509,6 +3998,7 @@
 	(novela_independiente TRUE)
 	(numero_de_paginas 380)
 	(precio 10)
+	(Puntuacion 0)
 	(titulo "Shutter Island"))
 
 ([Ontologia_Class89] of  Libro
@@ -2540,6 +4030,7 @@
 	(numero_de_paginas 288)
 	(precio 9)
 	(primera_persona TRUE)
+	(Puntuacion 0)
 	(titulo "Good Omens"))
 
 ([Ontologia_Class9] of  Genero
@@ -2560,17 +4051,44 @@
 		[Ontologia_Class10056]
 		[Ontologia_Class10033]
 		[Ontologia_Class10016]
-		[Ontologia_Class10012])
+		[Ontologia_Class10012]
+		[Ontologia_Class10170]
+		[Ontologia_Class10041]
+		[Ontologia_Class10038]
+		[Ontologia_Class10040]
+		[Ontologia_Class10039]
+		[Ontologia_Class10003]
+		[Ontologia_Class5]
+		[Ontologia_Class10054]
+		[Ontologia_Class10014])
 	(id_genero "Romance novel"))
 
 ([Ontologia_Class90] of  Libro
 
 	(adaptada_a_cine TRUE)
+	(anyo_publicacion 1994)
 	(best_seller TRUE)
+	(libro_animo
+		[Ontologia_Class35]
+		[Ontologia_Class37]
+		[Ontologia_Class32])
 	(libro_escritor [Ontologia_Class96])
 	(libro_genero [Ontologia_Class21])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class29]
+		[Ontologia_Class30]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10027])
+	(libro_publico
+		[Ontologia_Class50]
+		[Ontologia_Class52]
+		[Ontologia_Class51])
+	(libro_tiempo [Ontologia_Class43])
 	(numero_de_paginas 210)
-	(precio 0)
+	(precio 10)
+	(Puntuacion 0)
 	(titulo "Without Feathers"))
 
 ([Ontologia_Class91] of  Libro
@@ -2584,6 +4102,13 @@
 	(libro_genero
 		[Ontologia_Class17]
 		[Ontologia_Class11])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class29]
+		[Ontologia_Class27]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10027])
 	(libro_publico
 		[Ontologia_Class53]
 		[Ontologia_Class52])
@@ -2591,6 +4116,7 @@
 	(novela_independiente TRUE)
 	(numero_de_paginas 277)
 	(precio 11)
+	(Puntuacion 0)
 	(titulo "The Big Sleep"))
 
 ([Ontologia_Class92] of  Libro
@@ -2602,7 +4128,12 @@
 	(libro_genero
 		[Ontologia_Class11]
 		[Ontologia_Class10116])
-	(libro_idioma [Ontologia_Class6])
+	(libro_idioma
+		[Ontologia_Class6]
+		[Ontologia_Class27]
+		[Ontologia_Class24])
+	(libro_idioma_original [Ontologia_Class6])
+	(libro_nivel [Ontologia_Class10025])
 	(libro_publico
 		[Ontologia_Class52]
 		[Ontologia_Class50]
@@ -2611,6 +4142,7 @@
 	(novela_independiente TRUE)
 	(numero_de_paginas 0)
 	(precio 9)
+	(Puntuacion 0)
 	(titulo "The Maltese Falcon"))
 
 ([Ontologia_Class95] of  Escritor
