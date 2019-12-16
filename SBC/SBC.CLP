@@ -4945,6 +4945,12 @@
 
 
 ;;;;;;;; ABSTRACCION DE DATOS DE USURARIO
+    (defrule name "regla que pregunta el nombre del usuario" 
+    (declare (salience 101))
+    =>
+    (printout t "What is your name?" crlf)
+    (bind ?answer2 (readline))
+    )
     (defrule years_old "regla que pregunta la edad del usuario"
     (declare (salience 100))
     =>
