@@ -1,15 +1,4 @@
 digraph "Ontologia" {
 
-"Escritor" [shape=box, label="Escritor", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
-"Persona"->"Escritor" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
-"Publico" [shape=box, label="Publico", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
-"Genero" [shape=box, label="Genero", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
-"Tiempo" [shape=box, label="Tiempo", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
-"Idioma" [shape=box, label="Idioma", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
-"Libro" [shape=box, label="Libro", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
-"Dibujante" [shape=box, label="Dibujante", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
-"Persona"->"Dibujante" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
-"Personaje" [shape=box, label="Personaje", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
-"Persona" [shape=box, label="Persona", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
-"Animo" [shape=box, label="Animo", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Idioma" [shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", label="{Idioma|{idioma_original_libro|Instance*|{Libro}}|{idioma_libro|Instance*|{Libro}}|{id_idioma|String}}"]
 }

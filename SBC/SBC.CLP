@@ -4,33 +4,37 @@
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
+; Sun Dec 15 23:35:36 CET 2019
+; 
+;+ (version "3.5")
+;+ (build "Build 663")
 
 
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
-	(multislot nivel_libro
-		(type SYMBOL)
-;+		(allowed-parents Libro)
-;+		(inverse-slot libro_nivel)
-		(create-accessor read-write))
 	(single-slot id_nivel
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(multislot nivel_libro
+		(type INSTANCE)
+;+		(allowed-classes Libro)
+;+		(inverse-slot libro_nivel)
+		(create-accessor read-write))
 	(single-slot anyos
 		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot novela_independiente
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot libro_personaje_secundario
 		(type INSTANCE)
 ;+		(allowed-classes Personaje)
 ;+		(inverse-slot personaje_secundario_libro)
+		(create-accessor read-write))
+	(single-slot novela_independiente
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot numero_de_paginas
 		(type INTEGER)
@@ -58,15 +62,15 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot precio
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(multislot idioma_original_libro
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
 		(cardinality 1 ?VARIABLE)
 ;+		(inverse-slot libro_idioma_original)
-		(create-accessor read-write))
-	(single-slot precio
-		(type INTEGER)
-;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot id_idioma
 		(type STRING)
@@ -76,7 +80,7 @@
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot id_animo
+	(single-slot id_tiempo
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
@@ -85,19 +89,19 @@
 ;+		(allowed-classes Libro)
 ;+		(inverse-slot libro_personaje_principal)
 		(create-accessor read-write))
-	(single-slot id_tiempo
+	(single-slot id_animo
 		(type STRING)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot libro_tiempo
-		(type INSTANCE)
-;+		(allowed-classes Tiempo)
-;+		(inverse-slot tiempo_libro)
 		(create-accessor read-write))
 	(single-slot primera_persona
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot libro_tiempo
+		(type INSTANCE)
+;+		(allowed-classes Tiempo)
+;+		(inverse-slot tiempo_libro)
 		(create-accessor read-write))
 	(single-slot titulo
 ;+		(comment "titulo del libro")
@@ -237,14 +241,14 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot libro_personaje_secundario
-		(type INSTANCE)
-;+		(allowed-classes Personaje)
-		(create-accessor read-write))
 	(single-slot novela_independiente
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot libro_personaje_secundario
+		(type INSTANCE)
+;+		(allowed-classes Personaje)
 		(create-accessor read-write))
 	(single-slot libro_idioma_original
 		(type INSTANCE)
@@ -255,40 +259,40 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot libro_idioma
-		(type INSTANCE)
-;+		(allowed-classes Idioma)
-		(create-accessor read-write))
 	(single-slot mundo_real
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(multislot libro_idioma
+		(type INSTANCE)
+;+		(allowed-classes Idioma)
+		(create-accessor read-write))
 	(single-slot anyo_publicacion
 		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot primera_persona
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot libro_tiempo
 		(type INSTANCE)
 ;+		(allowed-classes Tiempo)
 		(create-accessor read-write))
+	(single-slot primera_persona
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot titulo
 ;+		(comment "titulo del libro")
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot libro_publico
-		(type INSTANCE)
-;+		(allowed-classes Publico)
-		(create-accessor read-write))
 	(multislot libro_animo
 		(type INSTANCE)
 ;+		(allowed-classes Animo)
+		(create-accessor read-write))
+	(multislot libro_publico
+		(type INSTANCE)
+;+		(allowed-classes Publico)
 		(create-accessor read-write))
 	(multislot Motivos
 ;+		(comment "motivos por el que elegimos este libro")
@@ -299,22 +303,22 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot libro_nivel
+	(multislot libro_personaje_principal
 		(type INSTANCE)
-;+		(allowed-classes Nivel)
+;+		(allowed-classes Personaje)
+		(create-accessor read-write))
+	(multislot libro_genero
+		(type INSTANCE)
+;+		(allowed-classes Genero)
 		(create-accessor read-write))
 	(single-slot subtitulo
 ;+		(comment "subtitulo del libro")
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot libro_genero
+	(multislot libro_nivel
 		(type INSTANCE)
-;+		(allowed-classes Genero)
-		(create-accessor read-write))
-	(multislot libro_personaje_principal
-		(type INSTANCE)
-;+		(allowed-classes Personaje)
+;+		(allowed-classes Nivel)
 		(create-accessor read-write))
 	(multislot libro_dibujante
 		(type INSTANCE)
@@ -361,7 +365,7 @@
 ;+		(allowed-classes Libro)
 		(create-accessor read-write)))
 
-(defclass Idioma
+(defclass Idioma "Representa a los posibles idiomas que puede tener un libro"
 	(is-a USER)
 	(role concrete)
 	(multislot idioma_original_libro
@@ -393,11 +397,11 @@
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
 		(create-accessor read-write))
-	(single-slot genero_sexual
+	(single-slot id_personaje
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot id_personaje
+	(single-slot genero_sexual
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -407,7 +411,7 @@
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
-(defclass Animo "Estado de animo"
+(defclass Animo "Representa a los posibles estados de animos que te puede producir un libro"
 	(is-a USER)
 	(role concrete)
 	(multislot animo_libro
@@ -443,7 +447,7 @@
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
-(defclass Genero
+(defclass Genero "Representa a todos los generos literarios"
 	(is-a USER)
 	(role concrete)
 	(multislot genero_libro
@@ -455,22 +459,22 @@
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
-(defclass Nivel
+(defclass Nivel "Representa a todos los niveles posibles que tiene un libro"
 	(is-a USER)
 	(role concrete)
-	(multislot nivel_libro
-		(type SYMBOL)
-;+		(allowed-parents Libro)
-		(create-accessor read-write))
 	(single-slot id_nivel
 		(type STRING)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot nivel_libro
+		(type INSTANCE)
+;+		(allowed-classes Libro)
 		(create-accessor read-write)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;; INSTANCIAS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (definstances instances
-  ; Sun Dec 15 23:08:03 CET 2019
+ ; Sun Dec 15 23:35:36 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -935,15 +939,89 @@
 
 ([Ontologia_Class10025] of  Nivel
 
-	(id_nivel "easy"))
+	(id_nivel "easy")
+	(nivel_libro
+		[Ontologia_Class10031]
+		[Ontologia_Class10036]
+		[Ontologia_Class10037]
+		[Ontologia_Class10038]
+		[Ontologia_Class10049]
+		[Ontologia_Class10053]
+		[Ontologia_Class10055]
+		[Ontologia_Class10058]
+		[Ontologia_Class10063]
+		[Ontologia_Class10070]
+		[Ontologia_Class10071]
+		[Ontologia_Class10072]
+		[Ontologia_Class10169]
+		[Ontologia_Class10170]
+		[Ontologia_Class10172]
+		[Ontologia_Class5]
+		[Ontologia_Class62]
+		[Ontologia_Class72]
+		[Ontologia_Class81]
+		[Ontologia_Class87]
+		[Ontologia_Class89]
+		[Ontologia_Class92]))
 
 ([Ontologia_Class10026] of  Nivel
 
-	(id_nivel "medium"))
+	(id_nivel "medium")
+	(nivel_libro
+		[Ontologia_Class10033]
+		[Ontologia_Class10034]
+		[Ontologia_Class10035]
+		[Ontologia_Class10039]
+		[Ontologia_Class10040]
+		[Ontologia_Class10043]
+		[Ontologia_Class10045]
+		[Ontologia_Class10046]
+		[Ontologia_Class10050]
+		[Ontologia_Class10052]
+		[Ontologia_Class10056]
+		[Ontologia_Class10059]
+		[Ontologia_Class10060]
+		[Ontologia_Class10061]
+		[Ontologia_Class10062]
+		[Ontologia_Class10095]
+		[Ontologia_Class2]
+		[Ontologia_Class65]
+		[Ontologia_Class67]
+		[Ontologia_Class68]
+		[Ontologia_Class71]
+		[Ontologia_Class73]
+		[Ontologia_Class74]
+		[Ontologia_Class75]
+		[Ontologia_Class77]
+		[Ontologia_Class88]))
 
 ([Ontologia_Class10027] of  Nivel
 
-	(id_nivel "hard"))
+	(id_nivel "hard")
+	(nivel_libro
+		[Ontologia_Class10028]
+		[Ontologia_Class10030]
+		[Ontologia_Class10032]
+		[Ontologia_Class10041]
+		[Ontologia_Class10042]
+		[Ontologia_Class10044]
+		[Ontologia_Class10048]
+		[Ontologia_Class10051]
+		[Ontologia_Class10054]
+		[Ontologia_Class10064]
+		[Ontologia_Class10069]
+		[Ontologia_Class61]
+		[Ontologia_Class63]
+		[Ontologia_Class64]
+		[Ontologia_Class69]
+		[Ontologia_Class70]
+		[Ontologia_Class78]
+		[Ontologia_Class79]
+		[Ontologia_Class82]
+		[Ontologia_Class83]
+		[Ontologia_Class86]
+		[Ontologia_Class90]
+		[Ontologia_Class91]))
 
 ([Ontologia_Class10028] of  Libro
 
@@ -4641,6 +4719,7 @@
 
 	(escritor_libro [Ontologia_Class62])
 	(id_persona "Johann David Wyss"))
+
 )
     
 
@@ -4648,7 +4727,7 @@
 ;;* DEFFUNCTIONS *
 ;;****************
 
-(deffunction set (?list)
+(deffunction set "funcion que elimina todo elemento repetido en una lista" (?list)
     (if (< (length$ ?list) 2) then (return ?list))
     (bind ?first (nth$ 1 ?list))
     (bind ?list (set (delete$ ?list 1 1)))
@@ -4658,7 +4737,7 @@
     (return (insert$ ?list 1 ?first))
 )
 
-(deffunction imprime-todo (?v)
+(deffunction imprime-todo "funcion que imprime una lista" (?v)
   (if (> (length$ ?v) 0) then
    (loop-for-count (?i 1 (length ?v)) do
 	 (printout t (nth$ ?i ?v) crlf)
@@ -4666,7 +4745,7 @@
  )
 )
 
-(deffunction ask-interval (?question)
+(deffunction ask-interval "funcion que pregunta un intervalo" (?question)
 	(printout t ?question crlf)
 	(bind ?answer2 (readline))
 	(bind ?answer (explode$ ?answer2))
@@ -4682,7 +4761,7 @@
 	(return (create$ ?var1 ?var2))
 )
 
-(deffunction ask-age (?question)
+(deffunction ask-age "funcion que perguna la edad" (?question)
     (printout t ?question crlf)
     (bind ?answer (read))
     (while (or (not (integerp ?answer)) (< ?answer 0) (> ?answer 150)) do
@@ -4692,7 +4771,7 @@
     (return ?answer)
 )
 
-(deffunction ask-number (?question)
+(deffunction ask-number "funcion que pregunta un numero" (?question)
    (printout t ?question crlf)
    (bind ?answer (read))
    (while (not (integerp ?answer)) do
@@ -4701,7 +4780,7 @@
    (return ?answer)
 )
 
-(deffunction ask-positive-number (?question)
+(deffunction ask-positive-number "funcion que pregunta un numero positivo" (?question)
     (printout t ?question crlf)
     (bind ?answer (read))
     (while (or (not (integerp ?answer)) (< ?answer 0)) do
@@ -4711,7 +4790,7 @@
     (return ?answer)
 )
 
-(deffunction ask-question (?question $?allowed-values)
+(deffunction ask-question "funcion que pregunta un pregunta respecto a diferente valores permitidos" (?question $?allowed-values)
    (printout t ?question crlf)
    (bind ?answer (read))
    (if (lexemep ?answer) 
@@ -4723,13 +4802,13 @@
           then (bind ?answer (lowcase ?answer))))
    ?answer)
 
-(deffunction yes-or-no-p (?question)
+(deffunction yes-or-no-p "funcion que realiza una pregunta binaria" (?question)
    (bind ?response (ask-question ?question yes no y n))
    (if (or (eq ?response yes) (eq ?response y))
        then TRUE 
        else FALSE))
 
-(deffunction ask-multievaluated (?question ?list)
+(deffunction ask-multievaluated "funcion que realiza una pregunta con mas de un valor permitido" (?question ?list)
     (printout t ?question crlf)
     (loop-for-count (?i 1 (length ?list)) do
 	 (printout t ?i " " (nth$ ?i ?list) crlf)
@@ -4755,7 +4834,7 @@
 )
 
 
-(deffunction get-all-values (?var ?slot) 
+(deffunction get-all-values "funcion que devuelve la lista con todos los slots de los objetos de la variable var" (?var ?slot) 
 	(bind $?list (create$))
     (loop-for-count (?i 1 (length$ ?var)) do
         (bind ?x (send (nth$ ?i ?var) (sym-cat get- ?slot)))
@@ -4764,15 +4843,15 @@
 	(return ?list)
 )
 
-(deffunction increase-puntuation (?libro ?puntuation)
+(deffunction increase-puntuation "funcion que aumenta puntuacio a un libro" (?libro ?puntuation)
       (send  ?libro put-Puntuacion ( + (send ?libro get-Puntuacion) ?puntuation) )
 	  (return ?libro)
 )
-(deffunction decrease-puntuation (?libro ?puntuation)
+(deffunction decrease-puntuation "funcion que disminuye puntuacion a un libro" (?libro ?puntuation)
       (send  ?libro put-Puntuacion ( - (send ?libro get-Puntuacion) ?puntuation) )
 	  (return ?libro)
 )
-(deffunction merge (?right ?left)
+(deffunction merge "funcion que dada dos listas devuelve la fusion de las listas ordenadas segun la puntuacion de los libros" (?right ?left)
 	(bind ?length_right (+ (length$ ?right) 1))
 	(bind ?length_left (+ (length$ ?left) 1))
 	(bind ?it 1)
@@ -4802,7 +4881,7 @@
 	(return ?result)
 )
 
-(deffunction merge_sort (?list)
+(deffunction merge_sort "funcion que ordena una lista de libros segun su puntuacion" (?list)
 	(if (< (length$ ?list) 2) then (return ?list) )
 		(bind ?middle (div (length$ ?list) 2))
 		
@@ -4866,7 +4945,7 @@
 
 
 ;;;;;;;; ABSTRACCION DE DATOS DE USURARIO
-    (defrule years_old
+    (defrule years_old "regla que pregunta la edad del usuario"
     (declare (salience 100))
     =>
     (bind ?response (ask-age "How old are you? "))
@@ -4874,7 +4953,7 @@
     (if (<= ?response 16) then (assert (level_book easy)))
     )
     
-	(defrule work 
+	(defrule work "regla que pregunta si actualmente el usario trabaja"
 	(declare (salience 99))
 	(years ?var)
 	(test (> ?var 16))
@@ -4883,8 +4962,23 @@
 	 else (assert (working TRUE)))
 	)
     
-    (defrule frequency-read
-		(declare (salience 98))
+    (defrule user-languages "regla que pregunta que idiomas sabe"
+    (declare (salience 98))
+    =>
+
+    (bind ?response (ask-multievaluated "What languages do you know?"  (get-all-values (find-all-instances ((?inst Idioma)) TRUE) id_idioma ) ))
+    (assert (user_languages ?response))
+    )
+
+    (defrule cinema "regla que pregunta si es cinefilo"
+		(declare (salience 97))
+		=>
+		(if (yes-or-no-p "Do you like movies? (yes/no)") then (assert (movies TRUE))
+		else (assert (movies FALSE)))
+	)
+    
+    (defrule frequency-read "regla que pregunta la frecuencia de lectura del usuario"
+		(declare (salience 96))
 		=> 
 		(bind ?response (ask-positive-number "How many hours do you read every week?"))
 		(if (> ?response 9) then (assert (frequency_read high))
@@ -4892,32 +4986,18 @@
 		else (assert (frequency_read medium))))
 	)
     
-    
-    (defrule user-languages
-    (declare (salience 97))
-    =>
 
-    (bind ?response (ask-multievaluated "What languages do you know?"  (get-all-values (find-all-instances ((?inst Idioma)) TRUE) id_idioma ) ))
-    (assert (user_languages ?response))
-    )
-
-    (defrule cinema
-		(declare (salience 95))
-		=>
-		(if (yes-or-no-p "Do you like movies? (yes/no)") then (assert (movies TRUE))
-		else (assert (movies FALSE)))
-	)
 
 ;;;;; ABSTRACCION DE LIBRO QUE BUSCA
 
-    (defrule favourite-genre
+    (defrule favourite-genre "regla que pregunta de que genero literario quiere que sea el libro"
     (declare (salience 94))
     =>
     (bind ?response (ask-multievaluated "What genres do you want?"  (get-all-values (find-all-instances ((?inst Genero)) TRUE) id_genero ) ))
     (assert (favourite_genre ?response))
     )
     
-    (defrule size-book
+    (defrule size-book "regla que pregunta cuantas paginas tendra el libro que desea"
         (frequency_read low)
         => 
         (bind ?response (ask-number "How many pages will the book have? (Doesn't matter: negative value)  "))
@@ -4928,7 +5008,7 @@
         )
     )
     
-	(defrule time-book
+	(defrule time-book "regla que pregunta en que tiempo quiere que transucrra la historia"
 	=>
 	(bind ?response (ask-question "The story of the book will be involved in?(past,present,future, no-care)" past present future no-care))
 	(if (eq ?response past) then (assert (time_book past))
@@ -4938,7 +5018,7 @@
 	)
 	)
 	
-	(defrule level-book
+	(defrule level-book "regla que pregunta que nivel de dificultat quiere el libro"
 	(years ?var)
 	(test (> ?var 16))
 	=>
@@ -4950,7 +5030,7 @@
 	)
 	)
 
-	(defrule price-book
+	(defrule price-book "regla que pregunta que precio sera el libro que busca"
 		(years ?var)
 		(test (> ?var 16))
 		=>
@@ -4961,7 +5041,7 @@
 	)
 	
 
-    (defrule language-book
+    (defrule language-book "regla que pregunta en que idioma desea el libro"
         (user_languages $?response)
         (test  (< 1 (length$ ?response)))
         =>
@@ -4969,29 +5049,33 @@
         (assert (language_book ?answer))
     )
 
-    (defrule feelings
+    (defrule feelings "regla que pregunta que sensacion quiere que le produzca el libro"
         =>
         (bind ?response (ask-multievaluated "What feelings would you like while reading a book?" (get-all-values (find-all-instances ((?inst Animo)) TRUE) id_animo)))
         (assert (feeling_state ?response))
     )
 
-    (defrule independent-novel
+    (defrule independent-novel "regla que pregunta si desea una novela independiente"
         =>
         (if (yes-or-no-p "Would you like to read an independent novel? (yes/no)") then (assert (independent_novel TRUE))
         else (assert (independent_novel FALSE)))
     )
-
+    
+    (defrule best-seller "regla que pregunta si desea un bestseller"
+        =>
+        (if (yes-or-no-p "Would you like to read a bestseller? (yes/no)") then (assert (bestseller TRUE)))
+    )
 
 ;;;;;;;;;;;; REGLAS DE ASOCIACION HEURÍSITCA ;;;;;;;;;;;;;;;;
 (defglobal ?*libros* = nil)
 
-(defrule initial-solution 
+(defrule initial-solution "inicializa la variabe global que contendra todos los libros durante la ejecucion del programa"
 	(declare (salience 1000))
 	=>
 	(bind ?*libros*  (find-all-instances ((?ins Libro)) TRUE))
 	)
 
-(defrule publico
+(defrule publico "regla que determina segun la edad que publico pertenecera el usuario"
 		(years ?var)
 		=>
 		(if (and (> ?var 0) (<= ?var 6)) then (assert (public "Children"))
@@ -5001,7 +5085,7 @@
 		else (assert (public "Old people"))))))
 )
 
-(defrule puntuation ""
+(defrule puntuation "regla que puntua un libro si el numero de paginas es menor a 400"
 	(size_book little-book)
 	=> 
 	 (loop-for-count (?i 1 (length$ ?*libros*)) do
@@ -5017,7 +5101,7 @@
 	 )
 )
 
-(defrule puntuation2 ""
+(defrule puntuation2 "regla que puntua un libro si el numero de paginas es mayor a 400"
 	(size_book long-book)
 	=> 
 	 (loop-for-count (?i 1 (length$ ?*libros*)) do
@@ -5033,7 +5117,7 @@
 	 )
 )
 
-(deffunction puntuacion_multi_evaluated_1 (?puntuacion ?response ?relacion ?identificador ?tipo)
+(deffunction puntuacion_multi_evaluated_1 "funcion que puntua elementos multievaludos" (?puntuacion ?response ?relacion ?identificador ?tipo) 
 	(loop-for-count (?i 1 (length$ ?response)) do
         (bind ?unique_response (nth$ ?i ?response))
 
@@ -5050,6 +5134,7 @@
 			(if (not (eq ?motives "")) then
                 (bind ?motives (str-cat ?tipo ?motives))
 				(bind ?motivo (send ?libro get-Motivos))
+                (printout t ?motives crlf)
 				(bind ?motivo (insert$ ?motivo (+ (length$ ?motivo) 1) ?motives))
 				(send ?libro put-Motivos ?motivo)
 				(replace$ ?*libros* ?j ?j ?libro)
@@ -5058,27 +5143,22 @@
     )
 )
 
-;(defrule puntuation3 ""
-;	(favourite_genre $?generos)
-;	=>
-;   (puntuacion_multi_evaluated_1 10 ?generos libro_genero id_genero "The genres of the book are: ")
-;)
 
     
-;(defrule puntuacion3 ""
-;    (level_book $?response)
-;    (test (neq (nth$ 1 ?response) no-care))
-;    =>
-;    (puntuacion_multi_evaluated_1 10 ?response libro_nivel id_nivel "The book has the level: ")
-;)
+(defrule puntuacion3 "regla que puntua segun el nivel del libro"
+    (level_book $?response)
+    (test (neq (nth$ 1 ?response) no-care))
+    =>
+    (puntuacion_multi_evaluated_1 10 ?response libro_nivel id_nivel "The book has the level: ")
+)
 
-(defrule puntuation4 ""
+(defrule puntuation4 "regla que puntua segun el idioma del libro"
     (language_book $?response)
     =>
-    (puntuacion_multi_evaluated_1 10 ?response libro_idioma id_idioma "The book has the following languages: ")
+    (puntuacion_multi_evaluated_1 10 ?response libro_idioma_original id_idioma "The book has the following language: ")
     )
 
-(defrule puntacion5 ""
+(defrule puntacion5 "regla que puntua segun el precio del libro"
     (price_book $?answer)
     =>
     (bind ?puntuacion 10)
@@ -5104,7 +5184,7 @@
     )
 )
 
-(defrule puntuation6 ""
+(defrule puntuation6 "regla que puntua si ha sido adapatada al cine"
 	(movies TRUE)
 	=>
 	(bind ?puntuacion 10)
@@ -5121,7 +5201,8 @@
 	)
 )
 
-(defrule puntuation7 ""
+(defrule puntuation7 "regla que puntua si es un bestseller"
+    (bestseller TRUE)
 	=>
 	(bind ?puntuacion 3)
 	(loop-for-count (?i 1 (length$ ?*libros*)) do
@@ -5130,14 +5211,14 @@
 		(if ?bs then 
 			(bind ?libro (increase-puntuation ?libro ?puntuacion))	
 			(bind ?motivo (send ?libro get-Motivos))
-			(bind ?motivo (insert$ ?motivo (+ (length$ ?motivo) 1) "This book is a best seller"))
+			(bind ?motivo (insert$ ?motivo (+ (length$ ?motivo) 1) "This book is a bestseller"))
 			(send ?libro put-Motivos ?motivo)			
 		)
 		(replace$ ?*libros* ?i ?i ?libro)
 	)
 )
 
-(defrule puntuation8 ""
+(defrule puntuation8 "regla que puntua segun en que tiempo transcurre la historia"
     (time_book $?response)
     (test (neq (nth$ 1 ?response) no-care))
     =>
@@ -5145,7 +5226,7 @@
     
 )
 
-(deffunction calculo_publico (?response ?puntuacion1 ?puntuacion2)
+(deffunction calculo_publico "funcion que puntua segun el publico al que pertenece el libro" (?response ?puntuacion1 ?puntuacion2)
 	(bind ?value 0)
 	(switch ?response 
 			(case "Children" then 
@@ -5198,7 +5279,7 @@
 	)
 )
 
-(defrule puntuation9 ""
+(defrule puntuation9 "regla que que puntua segun el publico al que pertenece el libro"
 	(public ?response)
 	=>
 	(bind ?base 20)
@@ -5206,13 +5287,13 @@
 	(calculo_publico ?response ?base ?interval)
 )
 
-(defrule puntuacion10 ""
+(defrule puntuacion10 "regla que puntua segun que sensacion produce el libro"
     (feeling_state $?response)
     =>
     (puntuacion_multi_evaluated_1 10 ?response libro_animo id_animo "The book emits: ")
 )
 
-(defrule puntuation11 ""
+(defrule puntuation11 "regla que puntua si es una novela independiente o no"
     (independent_novel ?response)
     =>
     (bind ?puntuacion 7)
@@ -5232,7 +5313,7 @@
     )
 )
 
-(defrule puntuacionfinal ""
+(defrule puntuacionfinal "puntuacion para precisar mas en los resultados, pegunta sobre que autor respecto a una lista le interesaria mas"
     (declare (salience -1))
     =>
     (bind ?*libros* (merge_sort ?*libros*))
@@ -5248,13 +5329,13 @@
         (bind ?i (+ ?i 1))
     )
     (bind ?*libros* ?libros)
-    (puntuacion_multi_evaluated_1 10 (ask-multievaluated "Do you want any of this escritors?" ?escs) libro_escritor id_persona "The book has the following author: ")
+    (puntuacion_multi_evaluated_1 10 (ask-multievaluated "Do you want any of this authors?" ?escs) libro_escritor id_persona "The book has the following author: ")
 )
     
 ;;;;;;;;;;;;;;;PODAS;;;;;;;;;;;;;;
 
 
-(deffunction poda (?list ?id ?relation)
+(deffunction poda "funcion encargada de podar respecto a un conjunto de libro" (?list ?id ?relation)
     (bind ?libros_aux (create$ ))
     (loop-for-count (?i 1 (length$ ?*libros*)) do
         (bind ?libro (nth$ ?i ?*libros*))
@@ -5277,13 +5358,13 @@
     )
     (return ?libros_aux)
 )
-(defrule poda1 ""
+(defrule poda1 "regla que poda segun que generos literarios ha elegido el usuario. Poda segun que genero tiene el libro"
     (favourite_genre $?generos)
     =>
     (bind ?*libros* (poda ?generos id_genero libro_genero))
 )
 
-(defrule poda2 ""
+(defrule poda2 "regla que poda segun que idiomas conoce el usuario. Poda respecto en que idiomas se puede encontrar el libro."
     (user_languages $?idiomas)
     =>
     (bind ?*libros* (poda ?idiomas id_idioma libro_idioma))
@@ -5293,24 +5374,12 @@
 
 ;;;;;;;;;;;;;;;;;SOLUCION FINAL;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defrule final_solution ""
+(defrule final_solution "regla que muestra la solucion final"
 	(declare (salience -2))
     
 	=>
     
     (bind ?*libros* (merge_sort ?*libros*))
-    ;(loop-for-count (?i 1 (length$ ?*libros*)) do
-    ;    (send (nth$ ?i ?*libros*) imprimir)
-    ;    )
-    ;(printout t "" crlf)
-    ;(bind ?i 1)
-    ;(while (and (<= ?i (length$ ?*libros*)) (<= ?i 6)) do
-    ;    (bind ?libro (nth$ ?i ?*libros*))
-    ;    (bind ?esc (send ?libro get-libro_escritor))
-    ;    (bind ?pers (send ?esc get-id_persona))
-    ;    (printout t ?i " " ?pers)
-    ;    (bind ?i (+ ?i 1))
-    ;)
     (printout t "The recommended books are:" crlf)
      (send (nth$ (- (length$ ?*libros*) 0) ?*libros*) imprimir)
      (send (nth$ (- (length$ ?*libros*) 1) ?*libros*) imprimir)

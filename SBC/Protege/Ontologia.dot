@@ -1,0 +1,5 @@
+digraph Ontologia {
+	node [label="\N"];
+	graph [bb="0,0,252,94"];
+	Idioma [label="{Idioma|{idioma_original_libro|Instance*|{Libro}}|{idioma_libro|Instance*|{Libro}}|{id_idioma|String}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="126,47", rects="0,70,252,93 0,47,135,70 135,47,205,70 205,47,252,70 0,24,103,47 103,24,189,47 189,24,252,47 0,1,137,24 137,1,252,24", width="3.5", height="1.2917"];
+}
