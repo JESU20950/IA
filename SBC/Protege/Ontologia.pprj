@@ -1,4 +1,4 @@
-; Sun Dec 15 23:35:36 CET 2019
+; Mon Dec 16 21:37:38 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -20,18 +20,18 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
+		[Ontologia_ProjectKB_Class4]
+		[Ontologia_ProjectKB_Class5]
+		[Ontologia_ProjectKB_Class6]
+		[Ontologia_ProjectKB_Class7]
+		[Ontologia_ProjectKB_Class8]
+		[Ontologia_ProjectKB_Class9]
+		[Ontologia_ProjectKB_Class10]
+		[Ontologia_ProjectKB_Class11]
+		[Ontologia_ProjectKB_Class12]
 		[Ontologia_ProjectKB_Class13]
 		[Ontologia_ProjectKB_Class14]
-		[Ontologia_ProjectKB_Class15]
-		[Ontologia_ProjectKB_Class16]
-		[Ontologia_ProjectKB_Class17]
-		[Ontologia_ProjectKB_Class18]
-		[Ontologia_ProjectKB_Class19]
-		[Ontologia_ProjectKB_Class20]
-		[Ontologia_ProjectKB_Class21]
-		[Ontologia_ProjectKB_Class22]
-		[Ontologia_ProjectKB_Class23]
-		[Ontologia_ProjectKB_Class24]))
+		[Ontologia_ProjectKB_Class15]))
 
 ([CLSES_TAB] of  Widget
 
@@ -83,9 +83,9 @@
 ([KB_339439_Class1] of  Map
 
 	(entries
-		[Ontologia_ProjectKB_Class25]
-		[Ontologia_ProjectKB_Class26]
-		[Ontologia_ProjectKB_Class27]))
+		[Ontologia_ProjectKB_Class16]
+		[Ontologia_ProjectKB_Class17]
+		[Ontologia_ProjectKB_Class18]))
 
 ([KB_339439_Class10] of  Property_List
 )
@@ -512,7 +512,7 @@
 
 	(properties [Ontologia_ProjectKB_Class233]))
 
-([KB_435822_Class3] of  Map
+([KB_868485_Class3] of  Map
 )
 
 ([LAYOUT_PROPERTIES] of  Property_List
@@ -520,90 +520,90 @@
 	(name "layout properties")
 	(properties [VERTICAL_STRETCHER]))
 
-([Ontologia_ProjectKB_Class13] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([Ontologia_ProjectKB_Class14] of  String
-
-	(name "Persona")
-	(string_value "id_persona"))
-
-([Ontologia_ProjectKB_Class15] of  String
-
-	(name "Genero")
-	(string_value "id_genero"))
-
-([Ontologia_ProjectKB_Class16] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([Ontologia_ProjectKB_Class17] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([Ontologia_ProjectKB_Class18] of  String
-
-	(name "Animo")
-	(string_value "id_animo"))
-
-([Ontologia_ProjectKB_Class19] of  String
+([Ontologia_ProjectKB_Class10] of  String
 
 	(name "Tiempo")
 	(string_value "id_tiempo"))
 
-([Ontologia_ProjectKB_Class20] of  String
+([Ontologia_ProjectKB_Class11] of  String
 
 	(name "Idioma")
 	(string_value "id_idioma"))
 
-([Ontologia_ProjectKB_Class21] of  String
+([Ontologia_ProjectKB_Class12] of  String
 
 	(name "Publico")
 	(string_value "id_publico"))
 
-([Ontologia_ProjectKB_Class22] of  String
-
-	(name "Libro")
-	(string_value "titulo"))
-
-([Ontologia_ProjectKB_Class23] of  String
+([Ontologia_ProjectKB_Class13] of  String
 
 	(name "Nivel")
 	(string_value "id_nivel"))
 
-([Ontologia_ProjectKB_Class233] of  String
+([Ontologia_ProjectKB_Class14] of  String
 
-	(name "SearchTab_Query"))
+	(name "Libro")
+	(string_value "titulo"))
 
-([Ontologia_ProjectKB_Class24] of  String
+([Ontologia_ProjectKB_Class15] of  String
 
 	(name "Personaje")
 	(string_value "id_personaje"))
 
-([Ontologia_ProjectKB_Class25] of  Map_Entry
+([Ontologia_ProjectKB_Class16] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Ontologia_ProjectKB_Class26] of  Map_Entry
+([Ontologia_ProjectKB_Class17] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Ontologia_ProjectKB_Class27] of  Map_Entry
+([Ontologia_ProjectKB_Class18] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
+
+([Ontologia_ProjectKB_Class233] of  String
+
+	(name "SearchTab_Query"))
+
+([Ontologia_ProjectKB_Class4] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([Ontologia_ProjectKB_Class5] of  String
+
+	(name "Persona")
+	(string_value "id_persona"))
+
+([Ontologia_ProjectKB_Class6] of  String
+
+	(name "Genero")
+	(string_value "id_genero"))
+
+([Ontologia_ProjectKB_Class7] of  String
+
+	(name "Animo")
+	(string_value "id_animo"))
+
+([Ontologia_ProjectKB_Class8] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([Ontologia_ProjectKB_Class9] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
 
 ([option_instance] of  Options
 
@@ -684,8 +684,8 @@
 	(browser_slot_names [BROWSER_SLOT_NAMES])
 	(customized_instance_widgets
 		[INSTANCE_ANNOTATION_FORM_WIDGET]
-		[STANDARD_SLOT_FORM_WIDGET]
 		[STANDARD_FACET_FORM_WIDGET]
+		[STANDARD_SLOT_FORM_WIDGET]
 		[PAL_FORM_WIDGET]
 		[STANDARD_CLASS_FORM_WIDGET])
 	(default_cls_metaclass ":STANDARD-CLASS")

@@ -1,10 +1,6 @@
 ;;;PARA EJECUTAR batch ((batch "carga.clp"))
 ;;;;;;;;;;;;;;;;;;;;;;;;; ONTOLOGIA ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; Sun Dec 15 23:08:03 CET 2019
-; 
-;+ (version "3.5")
-;+ (build "Build 663")
-; Sun Dec 15 23:35:36 CET 2019
+; Mon Dec 16 21:37:38 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -13,28 +9,28 @@
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
-	(single-slot id_nivel
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(multislot nivel_libro
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
 ;+		(inverse-slot libro_nivel)
 		(create-accessor read-write))
+	(single-slot id_nivel
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot anyos
 		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot novela_independiente
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot libro_personaje_secundario
 		(type INSTANCE)
 ;+		(allowed-classes Personaje)
 ;+		(inverse-slot personaje_secundario_libro)
-		(create-accessor read-write))
-	(single-slot novela_independiente
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot numero_de_paginas
 		(type INTEGER)
@@ -62,15 +58,15 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot precio
-		(type INTEGER)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(multislot idioma_original_libro
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
 		(cardinality 1 ?VARIABLE)
 ;+		(inverse-slot libro_idioma_original)
+		(create-accessor read-write))
+	(single-slot precio
+		(type INTEGER)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot id_idioma
 		(type STRING)
@@ -80,7 +76,7 @@
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot id_tiempo
+	(single-slot id_animo
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
@@ -89,19 +85,19 @@
 ;+		(allowed-classes Libro)
 ;+		(inverse-slot libro_personaje_principal)
 		(create-accessor read-write))
-	(single-slot id_animo
+	(single-slot id_tiempo
 		(type STRING)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot primera_persona
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot libro_tiempo
 		(type INSTANCE)
 ;+		(allowed-classes Tiempo)
 ;+		(inverse-slot tiempo_libro)
+		(create-accessor read-write))
+	(single-slot primera_persona
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot titulo
 ;+		(comment "titulo del libro")
@@ -174,10 +170,9 @@
 		(cardinality 1 ?VARIABLE)
 ;+		(inverse-slot libro_dibujante)
 		(create-accessor read-write))
-	(single-slot libro_idioma_original
+	(multislot libro_idioma_original
 		(type INSTANCE)
 ;+		(allowed-classes Idioma)
-;+		(cardinality 1 1)
 ;+		(inverse-slot idioma_original_libro)
 		(create-accessor read-write))
 	(single-slot id_publico
@@ -241,58 +236,57 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(multislot libro_personaje_secundario
+		(type INSTANCE)
+;+		(allowed-classes Personaje)
+		(create-accessor read-write))
 	(single-slot novela_independiente
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot libro_personaje_secundario
-		(type INSTANCE)
-;+		(allowed-classes Personaje)
-		(create-accessor read-write))
-	(single-slot libro_idioma_original
+	(multislot libro_idioma_original
 		(type INSTANCE)
 ;+		(allowed-classes Idioma)
-;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot numero_de_paginas
 		(type INTEGER)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot libro_idioma
+		(type INSTANCE)
+;+		(allowed-classes Idioma)
 		(create-accessor read-write))
 	(single-slot mundo_real
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot libro_idioma
-		(type INSTANCE)
-;+		(allowed-classes Idioma)
-		(create-accessor read-write))
 	(single-slot anyo_publicacion
 		(type INTEGER)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot libro_tiempo
-		(type INSTANCE)
-;+		(allowed-classes Tiempo)
 		(create-accessor read-write))
 	(single-slot primera_persona
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(multislot libro_tiempo
+		(type INSTANCE)
+;+		(allowed-classes Tiempo)
+		(create-accessor read-write))
 	(single-slot titulo
 ;+		(comment "titulo del libro")
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot libro_animo
-		(type INSTANCE)
-;+		(allowed-classes Animo)
-		(create-accessor read-write))
 	(multislot libro_publico
 		(type INSTANCE)
 ;+		(allowed-classes Publico)
+		(create-accessor read-write))
+	(multislot libro_animo
+		(type INSTANCE)
+;+		(allowed-classes Animo)
 		(create-accessor read-write))
 	(multislot Motivos
 ;+		(comment "motivos por el que elegimos este libro")
@@ -303,22 +297,22 @@
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot libro_personaje_principal
+	(multislot libro_nivel
 		(type INSTANCE)
-;+		(allowed-classes Personaje)
-		(create-accessor read-write))
-	(multislot libro_genero
-		(type INSTANCE)
-;+		(allowed-classes Genero)
+;+		(allowed-classes Nivel)
 		(create-accessor read-write))
 	(single-slot subtitulo
 ;+		(comment "subtitulo del libro")
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot libro_nivel
+	(multislot libro_genero
 		(type INSTANCE)
-;+		(allowed-classes Nivel)
+;+		(allowed-classes Genero)
+		(create-accessor read-write))
+	(multislot libro_personaje_principal
+		(type INSTANCE)
+;+		(allowed-classes Personaje)
 		(create-accessor read-write))
 	(multislot libro_dibujante
 		(type INSTANCE)
@@ -397,11 +391,11 @@
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
 		(create-accessor read-write))
-	(single-slot id_personaje
+	(single-slot genero_sexual
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot genero_sexual
+	(single-slot id_personaje
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
@@ -462,19 +456,18 @@
 (defclass Nivel "Representa a todos los niveles posibles que tiene un libro"
 	(is-a USER)
 	(role concrete)
-	(single-slot id_nivel
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(multislot nivel_libro
 		(type INSTANCE)
 ;+		(allowed-classes Libro)
+		(create-accessor read-write))
+	(single-slot id_nivel
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;; INSTANCIAS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (definstances instances
- ; Sun Dec 15 23:35:36 CET 2019
+; Mon Dec 16 21:37:38 CET 2019
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -4719,6 +4712,7 @@
 
 	(escritor_libro [Ontologia_Class62])
 	(id_persona "Johann David Wyss"))
+
 
 )
     
