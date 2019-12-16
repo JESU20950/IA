@@ -5140,7 +5140,6 @@
 			(if (not (eq ?motives "")) then
                 (bind ?motives (str-cat ?tipo ?motives))
 				(bind ?motivo (send ?libro get-Motivos))
-                (printout t ?motives crlf)
 				(bind ?motivo (insert$ ?motivo (+ (length$ ?motivo) 1) ?motives))
 				(send ?libro put-Motivos ?motivo)
 				(replace$ ?*libros* ?j ?j ?libro)
