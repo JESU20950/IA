@@ -1,14 +1,20 @@
 (define (problem book-problem)
   (:domain book)
   (:objects b1  b2  b3 b4 - book
-            Month1 Month2 Month4 Month3 - month)
-  (:init (next b1 b2)
-         (next b1 b3)
-         (next b2 b4)
-         (next b3 b4)
+            Month3 Month4 Month2 Month1 - month)
+  (:init ;(next b1 b2)
+         ;(next b1 b3)
+         ;(next b2 b4)
+         ;(next b3 b4)
          
          (parallel b2 b3)
+         (parallel b2 b4)
+         (parallel b3 b2)
+         (parallel b4 b2)
          
+         (next b1 b2)
+         (next b1 b3)
+         (next b1 b4)
          
          (not_assigned b1)
          (not_assigned b2)
@@ -29,6 +35,13 @@
          (next Month2 Month4)
          (next Month3 Month4)
          
+         (next_consecutive_or_equal Month1 Month2)
+         (next_consecutive_or_equal Month2 Month3)
+         (next_consecutive_or_equal Month3 Month4)
+         (next_consecutive_or_equal Month1 Month1)
+         (next_consecutive_or_equal Month2 Month2)
+         (next_consecutive_or_equal Month3 Month3)
+         (next_consecutive_or_equal Month4 Month4)
          
          ;(book_pages HarryPotter1 10)
          ;(book_pages HarryPotter2 10)

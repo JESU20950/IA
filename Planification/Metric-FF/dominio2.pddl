@@ -4,12 +4,13 @@
            pages
     )
    
-   ;(:functions
-    ;(page_count)
-    ;)
+   (:functions
+    (page_count ?month)
+    )
    
    (:predicates 
       (next ?book - object ?book2 - object)
+      (next_consecutive_or_equal ?month -month ?month2 - month)
       (assigned ?book - object)
       (not_assigned ?book - object)
       (book_month ?book - book ?month - month)
@@ -28,7 +29,7 @@
         (forall (?book2 - book) (or (not (next ?book2 ?book1)) (not (assigned ?book2)) (exists (?month2 - month) (and (book_month ?book2 ?month2) (next ?month2 ?month1)))      ))
         
         ;se cumple la restriccion de paralelo
-        
+        (forall (?book2 - book) (or (not (parallel ?book2 ?book1)) (not (assigned ?book2)) (exists (?month2 - month) (and (book_month ?book2 ?month2) (next_consecutive_or_equal ?month2 ?month1)))      ))
         
         
         )
