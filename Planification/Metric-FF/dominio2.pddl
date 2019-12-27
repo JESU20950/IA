@@ -4,23 +4,35 @@
            pages
     )
    
-   (:functions
-    (page_count)
-    )
+   ;(:functions
+    ;(page_count)
+    ;)
    
    (:predicates 
       (next ?book - object ?book2 - object)
       (assigned ?book - object)
       (not_assigned ?book - object)
-      (book_pages ?book - book ?pages - pages)
+      (book_month ?book - book ?month - month)
+      (parallel ?book1 - book ?book2 - book)
+      ;(book_pages ?book - book ?pages - pages)
     )
 
     (:action asignar_libro
         :parameters (?book1 - book ?month1 - month)
-        :precondition (and  (not_assigned ?book1) (forall (?book2 - book) (or (not (next ?book2 ?book1))  (assigned ?book2)))  
-        (not_assigned ?month1) (forall (?month2 - month) (or (not (next ?month2 ?month1))  (assigned ?month2))) 
+        :precondition 
+        
+        
+        (and  
+        ;se cumple la restriccion de precondicion
+        (not_assigned ?book1) (forall (?book2 - book) (or (not (next ?book2 ?book1))  (assigned ?book2)))  
+        (forall (?book2 - book) (or (not (next ?book2 ?book1)) (not (assigned ?book2)) (exists (?month2 - month) (and (book_month ?book2 ?month2) (next ?month2 ?month1)))      ))
+        
+        ;se cumple la restriccion de paralelo
+        
+        
+        
         )
-	:effect (and (assigned ?book1)  (not (not_assigned ?book1)) (assigned ?month1)  (not (not_assigned ?month1)) )
+        :effect (and (assigned ?book1)  (not (not_assigned ?book1))  (book_month ?book1 ?month1))
      )
 
 )
