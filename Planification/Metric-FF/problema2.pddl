@@ -3,19 +3,27 @@
   (:objects HarryPotter1 HarryPotter2 HarryPotter3 Pokemon1 - book
             Month1 Month2 Month3 Month4 Month5 Month6 Month7 Month8 Month9 Month10 Month11 Month12 - month)
   (:init 
-        (next HarryPotter1 HarryPotter2)
-        (next HarryPotter2 HarryPotter3)
-        (parallel HarryPotter2 Pokemon1)
+        (next_catalogo HarryPotter1 HarryPotter2)
+        (next_catalogo HarryPotter2 HarryPotter3)
+        (parallel_catalogo HarryPotter2 Pokemon1)
+        (parallel Pokemon1 HarryPotter2)
+        
+        (wanna_read HarryPotter3)
+  
+  
+        ;(next HarryPotter1 HarryPotter2)
+        ;(next HarryPotter2 HarryPotter3)
+        ;(parallel HarryPotter2 Pokemon1)
     
     
-         (not_assigned HarryPotter1)
-         (not_assigned HarryPotter2)
-         (not_assigned HarryPotter3)
-         (not_assigned Pokemon1)
+         ;(not_assigned HarryPotter1)
+         ;(not_assigned HarryPotter2)
+         ;(not_assigned HarryPotter3)
+         ;(not_assigned Pokemon1)
          
          
          
-        (= (number_pages HarryPotter1) 10)
+         (= (number_pages HarryPotter1) 10)
          (= (number_pages HarryPotter2) 10)
          (= (number_pages HarryPotter3) 10) 
          (= (number_pages Pokemon1) 800)
@@ -182,5 +190,5 @@
          
 
   )
-  (:goal (forall (?book - book) (assigned ?book)))
+  (:goal (forall (?book - book) (or (not wanna_read ?book) (assigned ?book)))
 )

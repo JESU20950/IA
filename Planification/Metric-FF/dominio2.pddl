@@ -10,6 +10,10 @@
     )
    
    (:predicates 
+      (next_catalogo ?book - book)
+      (parallel_catalogo ?book -book)
+      (wanna_read ?book - book)
+      
       (next ?book - object ?book2 - object)
       (next_or_equal ?month1 -month ?month2 -month)
       (parallel ?book - book ?book - book)
@@ -19,9 +23,22 @@
     )
     
     
+    (:action buscar_parallel_i_next
+        :parameters (?book1 - book)
+        :precondition (and (wanna_read ?book1))
+        :effect 
+           
+          (and  
+          ;(not (wanna_read ?book1))
+          
+          (forall (?book2 - book) (or (not (next_catalogo ?book2 book1))    (next ?book2 ?book1) (wanna_read ?book2) (not_assigned ?book2)   ) )
+          ;(forall (?book2 - book) (or (not (parallel_catalogo ?book2 book1))    (parallel ?book2 ?book1) (wanna_read ?book2) (not_assigned ?book2)   ) )
+          
+          )
+          
+    )
+    
 
-    
-    
     (:action asignar_libro
         :parameters (?book1 - book ?month1 - month)
         :precondition (and  
