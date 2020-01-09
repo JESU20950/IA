@@ -25,20 +25,20 @@
     
     (:action buscar_parallel_i_next
         :parameters (?book1 - book)
-        :precondition (and (wanna_read ?book1))
+        :precondition (and (wanna_read ?book1) (or (next_catalogo ?book2 ?book1 ) (parallel_catalogo ?book2 ?book1)) )
         :effect 
-           
-          (and  
-          ;(not (wanna_read ?book1))
-          
-          (forall (?book2 - book) (or (not (next_catalogo ?book2 book1))    (next ?book2 ?book1) (wanna_read ?book2) (not_assigned ?book2)   ) )
-          ;(forall (?book2 - book) (or (not (parallel_catalogo ?book2 book1))    (parallel ?book2 ?book1) (wanna_read ?book2) (not_assigned ?book2)   ) )
-          
-          )
-          
+        (next ?book2 ?book2)
+        
+    )
+    (:action buscar_parallel_i_next2 
+         :parameters (?book1 - book)
+         :precondition (and (forall (?book2 - book) (or (not (next_catalogo ?book2 ?book1))    (next ?book2 ?book1) (wanna_read ?book2))) 
+                        (forall (?book2 - book) (or (not (parallel_catalogo ?book2 ?book1))    (parallel ?book2 ?book1) (wanna_read ?book2))))
+         :effect 
+             (not_assigned ?book1)
     )
     
-
+    
     (:action asignar_libro
         :parameters (?book1 - book ?month1 - month)
         :precondition (and  
