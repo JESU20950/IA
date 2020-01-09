@@ -5,22 +5,24 @@
   (:init 
        
 
-        (wanna_read HarryPotter3)
+        (wanna_read HarryPotter2)
+        
   
-  
-        (next HarryPotter1 HarryPotter2)
-        (next HarryPotter2 HarryPotter3)
+        ;(next HarryPotter1 HarryPotter2)
+        ;(next HarryPotter2 HarryPotter3)
         (parallel HarryPotter2 Pokemon1)
         (parallel Pokemon1 HarryPotter2)
+        (parallel Pokemon1 HarryPotter1)
+        (parallel HarryPotter1 Pokemon1)
     
         
          
          
          
-         (= (number_pages HarryPotter1) 10)
+         (= (number_pages HarryPotter1) 800)
          (= (number_pages HarryPotter2) 10)
          (= (number_pages HarryPotter3) 10) 
-         (= (number_pages Pokemon1) 10)
+         (= (number_pages Pokemon1) 800)
          
          
          
@@ -124,43 +126,47 @@
          (next_or_equal Month1 Month1)
          (next_or_equal Month1 Month2)
          
+         ;(next_or_equal Month2 Month1)
          (next_or_equal Month2 Month2)
          (next_or_equal Month2 Month3)
          
-         
+         ;(next_or_equal Month3 Month2)
          (next_or_equal Month3 Month3)
          (next_or_equal Month3 Month4)
          
-         
+         ;(next_or_equal Month4 Month3)
          (next_or_equal Month4 Month4)
          (next_or_equal Month4 Month5)
          
-         
+         ;(next_or_equal Month5 Month4)
          (next_or_equal Month5 Month5)
          (next_or_equal Month5 Month6)
          
-         
+         ;(next_or_equal Month6 Month5)
          (next_or_equal Month6 Month6)
          (next_or_equal Month6 Month7)
          
-         
+         ;(next_or_equal Month7 Month6)
          (next_or_equal Month7 Month7)
          (next_or_equal Month7 Month8)
          
-         
+         ;(next_or_equal Month8 Month7)
          (next_or_equal Month8 Month8)
          (next_or_equal Month8 Month9)
          
-         
+         ;(next_or_equal Month9 Month8)
          (next_or_equal Month9 Month9)
          (next_or_equal Month9 Month10)
          
+         ;(next_or_equal Month10 Month9)
          (next_or_equal Month10 Month10)
          (next_or_equal Month10 Month11)
          
+         ;(next_or_equal Month11 Month10)
          (next_or_equal Month11 Month11)
          (next_or_equal Month11 Month12)
          
+         ;(next_or_equal Month12 Month11)
          (next_or_equal Month12 Month12)
          
          ;page_count_inicializacion
