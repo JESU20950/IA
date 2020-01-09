@@ -24,7 +24,7 @@
     
      (:action obtener_libro_predecesor
         :parameters (?book2 - book)
-        :precondition (exists (?book1 - book)  (and (next ?book2 ?book1) (wanna_read ?book1))) 
+        :precondition (exists (?book1 - book)  (and (next ?book2 ?book1) (wanna_read ?book1)))
         :effect (wanna_read ?book2)
     )
     (:action obtener_libro_parallel

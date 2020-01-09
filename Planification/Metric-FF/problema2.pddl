@@ -1,29 +1,54 @@
 (define (problem book-problem)
   (:domain book)
-  (:objects HarryPotter1 HarryPotter2 HarryPotter3 Pokemon1 - book
+  (:objects a b c d e f g - book
             Month1 Month2 Month3 Month4 Month5 Month6 Month7 Month8 Month9 Month10 Month11 Month12 - month)
   (:init 
        
 
-        (wanna_read HarryPotter2)
+        ;(wanna_read HarryPotter2)
+        ;(wanna_read g)
+        (wanna_read c)
+        (wanna_read g)
+        ;(wanna_read a)
+        ;(wanna_read a)
         
-  
+
+        (next b a)
+        (next b g)
+        (next a c)
+        (next a d)
+        (next c f)
+        (parallel c d)
+        (parallel d c)
+        (parallel d e)
+        (parallel e d)
+        
+        
+        
         ;(next HarryPotter1 HarryPotter2)
         ;(next HarryPotter2 HarryPotter3)
-        (parallel HarryPotter2 Pokemon1)
-        (parallel Pokemon1 HarryPotter2)
-        (parallel Pokemon1 HarryPotter1)
-        (parallel HarryPotter1 Pokemon1)
+        ;(parallel HarryPotter2 Pokemon1)
+        ;(parallel Pokemon1 HarryPotter2)
+        ;(parallel Pokemon1 HarryPotter1)
+        ;(parallel HarryPotter1 Pokemon1)
     
         
          
          
+         (= (number_pages a) 200)
+         (= (number_pages b) 200)
+         (= (number_pages c) 400)
+         (= (number_pages d) 200)
+         (= (number_pages e) 300)
+         (= (number_pages f) 400)
+         (= (number_pages g) 800)
          
-         (= (number_pages HarryPotter1) 800)
-         (= (number_pages HarryPotter2) 10)
-         (= (number_pages HarryPotter3) 10) 
-         (= (number_pages Pokemon1) 800)
          
+         ;(= (number_pages HarryPotter1) 800)
+         ;(= (number_pages HarryPotter2) 10)
+         ;(= (number_pages HarryPotter3) 10) 
+         ;(= (number_pages Pokemon1) 800)
+
          
          
          
